@@ -1,0 +1,77 @@
+/* For custom styles in project */
+body.home{
+
+  #navbar-top{
+    transition: height .3s ease;
+    &.large{
+      height: 600px;
+    }
+  }
+  overflow: hidden !important;
+  
+  form#searchform{
+    width: 500px;
+    position: absolute;
+    top: 48%;
+    left: 50%;
+    margin-left: -250px;
+    z-index: 100;
+
+    div{
+      position: absolute;
+      z-index: 110;
+      height: 52px;
+      width: 52px;
+      text-align: center;
+      vertical-align: middle;
+      line-height: 52px;
+      font-size: 26px;
+    }
+
+    input#search {
+      position: absolute;
+      display: inline-block;
+      width: 500px;
+      z-index: 100;
+      height: 52px;
+      line-height: 38px;
+      font-size: 18px;
+      padding: 0 26px 0 56px;
+      border: none;
+      border-radius: 2px;
+      color: #212121;
+      box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),0 3px 1px -2px rgba(0,0,0,0.12),0 1px 5px 0 rgba(0,0,0,0.2);
+      transition: top 0.2s ease;
+    }
+
+    &.founded{
+      top: 100px;
+    }
+  }
+
+  #banner{
+    text-align: center;
+    position: absolute;
+    top: 48%;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    margin-top: -140px;
+
+    h1, h2{
+      text-shadow: 0 0 3px rgba(0, 0, 0, 0.9);
+      color: #fff;
+    }
+  }
+}
+
+.banner-page{
+  height: 280px;
+  background-color: #e8e5d8;
+  background-image: url('/img/banner-page.png');
+}
+
+.octocat{
+  margin-top: -20px;
+  margin-bottom: -10px;
+}
