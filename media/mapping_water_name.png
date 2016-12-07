@@ -1,0 +1,19 @@
+digraph "Imposm Mapping" {
+	graph [rankdir=LR ranksep=3]
+		subgraph water_polygon {
+			node [fixed_size=shape "width:"=20]
+				water_polygon [shape=box]
+				key_waterway [label=waterway shape=box]
+					key_waterway -> water_polygon [label="river
+riverbank
+stream
+canal
+drain
+ditch"]
+				key_landuse [label=landuse shape=box]
+					key_landuse -> water_polygon [label=reservoir]
+				key_natural [label=natural shape=box]
+					key_natural -> water_polygon [label="water
+bay"]
+		}
+}

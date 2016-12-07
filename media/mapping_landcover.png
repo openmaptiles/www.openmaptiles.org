@@ -1,0 +1,36 @@
+digraph "Imposm Mapping" {
+	graph [rankdir=LR ranksep=3]
+		subgraph landcover_polygon {
+			node [fixed_size=shape "width:"=20]
+				landcover_polygon [shape=box]
+				key_natural [label=natural shape=box]
+					key_natural -> landcover_polygon [label="wetland
+grassland"]
+				key_landuse [label=landuse shape=box]
+					key_landuse -> landcover_polygon [label="allotments
+farm
+farmland
+orchard
+plant_nursery
+vineyard
+grass
+grassland
+meadow
+forest
+village_green
+recreation_ground
+park"]
+				key_wetland [label=wetland shape=box]
+					key_wetland -> landcover_polygon [label="bog
+swamp
+wet_meadow
+marsh
+reedbed
+saltern
+tidalflat
+saltmarsh
+mangrove"]
+				key_leisure [label=leisure shape=box]
+					key_leisure -> landcover_polygon [label=park]
+		}
+}

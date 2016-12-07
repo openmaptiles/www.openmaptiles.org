@@ -1,0 +1,11 @@
+digraph "Imposm Mapping" {
+	graph [rankdir=LR ranksep=3]
+		subgraph park_polygon {
+			node [fixed_size=shape "width:"=20]
+				park_polygon [shape=box]
+				key_boundary [label=boundary shape=box]
+					key_boundary -> park_polygon [label=national_park]
+				key_leisure [label=leisure shape=box]
+					key_leisure -> park_polygon [label=nature_reserve]
+		}
+}

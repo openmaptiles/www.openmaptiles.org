@@ -1,0 +1,14 @@
+digraph "Imposm Mapping" {
+	graph [rankdir=LR ranksep=3]
+		subgraph building_polygon {
+			node [fixed_size=shape "width:"=20]
+				building_polygon [shape=box]
+				key_building_part [label="building:part" shape=box]
+					key_building_part -> building_polygon [label=__any__]
+				key_building [label=building shape=box]
+					key_building -> building_polygon [label=__any__]
+				key_aeroway [label=aeroway shape=box]
+					key_aeroway -> building_polygon [label="terminal
+hangar"]
+		}
+}

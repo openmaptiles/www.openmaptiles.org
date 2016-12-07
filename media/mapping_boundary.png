@@ -1,0 +1,9 @@
+digraph "Imposm Mapping" {
+	graph [rankdir=LR ranksep=3]
+		subgraph boundary_linestring {
+			node [fixed_size=shape "width:"=20]
+				boundary_linestring [shape=box]
+				key_boundary [label=boundary shape=box]
+					key_boundary -> boundary_linestring [label=administrative]
+		}
+}

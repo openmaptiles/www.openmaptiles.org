@@ -1,0 +1,24 @@
+digraph "Imposm Mapping" {
+	graph [rankdir=LR ranksep=3]
+		subgraph landuse_polygon {
+			node [fixed_size=shape "width:"=20]
+				landuse_polygon [shape=box]
+				key_amenity [label=amenity shape=box]
+					key_amenity -> landuse_polygon [label="school
+university
+kindergarten
+college
+library
+hospital"]
+				key_landuse [label=landuse shape=box]
+					key_landuse -> landuse_polygon [label="railway
+cemetery
+military
+residential
+commercial
+industrial
+retail"]
+				key_leisure [label=leisure shape=box]
+					key_leisure -> landuse_polygon [label=stadium]
+		}
+}

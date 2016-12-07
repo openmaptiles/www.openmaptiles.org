@@ -1,0 +1,14 @@
+digraph "Imposm Mapping" {
+	graph [rankdir=LR ranksep=3]
+		subgraph aeroway_polygon {
+			node [fixed_size=shape "width:"=20]
+				aeroway_polygon [shape=box]
+				key_aeroway [label=aeroway shape=box]
+					key_aeroway -> aeroway_polygon [label="aerodrome
+heliport
+runway
+helipad
+taxiway
+apron"]
+		}
+}

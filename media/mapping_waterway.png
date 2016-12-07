@@ -1,0 +1,13 @@
+digraph "Imposm Mapping" {
+	graph [rankdir=LR ranksep=3]
+		subgraph waterway_linestring {
+			node [fixed_size=shape "width:"=20]
+				waterway_linestring [shape=box]
+				key_waterway [label=waterway shape=box]
+					key_waterway -> waterway_linestring [label="stream
+river
+canal
+drain
+ditch"]
+		}
+}

@@ -1,0 +1,45 @@
+digraph "Imposm Mapping" {
+	graph [rankdir=LR ranksep=3]
+		subgraph country_point {
+			node [fixed_size=shape "width:"=20]
+				country_point [shape=box]
+				key_place [label=place shape=box]
+					key_place -> country_point [label=country]
+		}
+		subgraph continent_point {
+			node [fixed_size=shape "width:"=20]
+				continent_point [shape=box]
+				key_place [label=place shape=box]
+					key_place -> continent_point [label=continent]
+		}
+		subgraph island_point {
+			node [fixed_size=shape "width:"=20]
+				island_point [shape=box]
+				key_place [label=place shape=box]
+					key_place -> island_point [label=island]
+		}
+		subgraph island_polygon {
+			node [fixed_size=shape "width:"=20]
+				island_polygon [shape=box]
+				key_place [label=place shape=box]
+					key_place -> island_polygon [label=island]
+		}
+		subgraph city_point {
+			node [fixed_size=shape "width:"=20]
+				city_point [shape=box]
+				key_place [label=place shape=box]
+					key_place -> city_point [label="city
+town
+village
+hamlet
+suburb
+neighbourhood
+isolated_dwelling"]
+		}
+		subgraph state_point {
+			node [fixed_size=shape "width:"=20]
+				state_point [shape=box]
+				key_place [label=place shape=box]
+					key_place -> state_point [label=state]
+		}
+}
