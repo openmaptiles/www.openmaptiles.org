@@ -2,7 +2,7 @@ name: "OpenMapTiles"
 
 permalink: pretty
 
-baseurl: "https://klokan.github.io/www.openmaptiles.org/"
+baseurl: "/"
 
 sass:
   style: :compressed
