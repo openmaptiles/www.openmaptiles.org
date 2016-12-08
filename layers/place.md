@@ -1,5 +1,5 @@
 ---
-layout: layer
+layout: page
 title: place
 etl_graph: media/etl_place.png
 mapping_graph: media/mapping_place.png

@@ -1,5 +1,5 @@
 ---
-layout: layer
+layout: page
 title: aeroway
 etl_graph: media/etl_aeroway.png
 mapping_graph: media/mapping_aeroway.png

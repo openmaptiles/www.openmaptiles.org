@@ -1,5 +1,5 @@
 ---
-layout: layer
+layout: page
 title: housenumber
 etl_graph: media/etl_housenumber.png
 mapping_graph: media/mapping_housenumber.png

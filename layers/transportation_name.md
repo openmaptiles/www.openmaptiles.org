@@ -1,5 +1,5 @@
 ---
-layout: layer
+layout: page
 title: transportation_name
 etl_graph: media/etl_transportation_name.png
 mapping_graph: media/mapping_transportation_name.png

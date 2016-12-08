@@ -1,5 +1,5 @@
 ---
-layout: layer
+layout: page
 title: landcover
 etl_graph: media/etl_landcover.png
 mapping_graph: media/mapping_landcover.png

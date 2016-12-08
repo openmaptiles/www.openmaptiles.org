@@ -1,5 +1,5 @@
 ---
-layout: layer
+layout: page
 title: landuse
 etl_graph: media/etl_landuse.png
 mapping_graph: media/mapping_landuse.png

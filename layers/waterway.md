@@ -1,5 +1,5 @@
 ---
-layout: layer
+layout: page
 title: waterway
 etl_graph: media/etl_waterway.png
 mapping_graph: media/mapping_waterway.png

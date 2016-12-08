@@ -1,5 +1,5 @@
 ---
-layout: layer
+layout: page
 title: poi
 etl_graph: media/etl_poi.png
 mapping_graph: media/mapping_poi.png

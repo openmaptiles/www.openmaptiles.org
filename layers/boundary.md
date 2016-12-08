@@ -1,5 +1,5 @@
 ---
-layout: layer
+layout: page
 title: boundary
 etl_graph: media/etl_boundary.png
 mapping_graph: media/mapping_boundary.png
