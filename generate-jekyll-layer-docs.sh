@@ -2,7 +2,7 @@
 set -o errexit
 set -o nounset
 
-LAYER_DOCS_DIR="${LAYER_DOCS_DIR:-_layers}"
+LAYER_DOCS_DIR="${LAYER_DOCS_DIR:-layers}"
 LAYER_DIR="${LAYER_DIR:-../openmaptiles/layers}"
 DIAGRAM_DIR="${DIAGRAM_DIR:-media}"
 
@@ -13,7 +13,7 @@ function generate_doc() {
     local target="$LAYER_DOCS_DIR/$layer_name.md"
 
     generate-etlgraph "$tileset" "$DIAGRAM_DIR"
-    generate-mapping-graph "$tileset" "$DIAGRAM_DIR/mapping_$layer_name.png"
+    generate-mapping-graph "$tileset" "$DIAGRAM_DIR/mapping_$layer_name"
 
     echo '---' > $target
     echo 'layout: layer' >> $target
@@ -23,8 +23,7 @@ function generate_doc() {
     echo '---' >> $target
 
     generate-doc "$tileset" >> $target
-    rm $DIAGRAM_DIR/*.dot
-    rm $DIAGRAM_DIR/*.svg
+    find $DIAGRAM_DIR -type f ! -iname "*.png" -delete
 }
 
 
