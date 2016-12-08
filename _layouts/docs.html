@@ -15,17 +15,24 @@ layout: default
 </div>
 
 <div class="container">  
+
   <div class="row">
-    <div class="col3 pady-4">
+    <div class="col12 padb-0">
+      <p><a href="/docs/">Doc</a> > <a href="/docs/{{ site.category }}">{{ site.data.categories[page.category] }}</a></p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col3 padb-4">
 
       {% for pg in site.pages %}
-      {% if pg.category == page.category %}
+      {% if pg.category == page.category and pg.main != true %}
       <h4><a href="{{ pg.url }}">{{ pg.title }}</a></h4>
       {% endif %}
       {% endfor %}
 
     </div>
-    <div class="col9 pady-4">
+    <div class="col9 padb-4">
 
       {{ content }}
 

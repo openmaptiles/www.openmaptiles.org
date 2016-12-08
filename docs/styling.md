@@ -1,6 +1,7 @@
 ---
 layout: docs
 category: styling
+main: true
 title: Styling the maps
 description: Styling the maps
 keywords: Styling the maps

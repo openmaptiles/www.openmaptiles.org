@@ -1,6 +1,7 @@
 ---
 layout: docs
 category: hosting
+main: true
 title: Hosting map tiles
 description: Hosting map tiles
 keywords: Hosting, map, tiles

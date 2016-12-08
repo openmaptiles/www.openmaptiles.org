@@ -1,6 +1,7 @@
 ---
 layout: docs
 category: viewers
+main: true
 title: Web viewers
 description: Web viewers
 keywords: web, viewers
