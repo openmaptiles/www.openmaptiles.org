@@ -1,0 +1,15 @@
+---
+layout: default
+title: Schema
+---
+
+<h1>Schema</h1>
+{% for page in site.pages %}
+  {% if page.layout == 'layer' %}
+   <article class="page--article">
+    {{ page.content }}
+    <img src="{{ page.etl_graph | prepend:site.baseurl }}" alt="ETL graph" />
+    <img src="{{ page.mapping_graph | prepend:site.baseurl }}" alt="Mapping graph" />
+  </article>
+  {% endif %}
+{% endfor %}
