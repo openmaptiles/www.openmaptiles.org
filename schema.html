@@ -3,14 +3,47 @@ layout: default
 title: Schema
 ---
 
-<h1>Schema</h1>
-{% for page in site.pages %}
-  {% if page.layout == 'layer' %}
-   <article class="page--article">
-    <h2>{{ page.title }}</h2>
-    {{ page.content }}
-    <img src="{{ page.etl_graph | prepend:site.baseurl }}" alt="ETL graph" />
-    <img src="{{ page.mapping_graph | prepend:site.baseurl }}" alt="Mapping graph" />
-  </article>
-  {% endif %}
-{% endfor %}
+
+<div class="row">
+  <div class="col12 banner-page">
+  </div>
+</div>
+<div class="row">
+  <div class="col12 height-68 bg-gray-light">
+    <div class="container padx-2 padt-05">
+      <h1 class="pad-0 mar-0">{{ page.title }}</h1>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col2 pady-4">
+
+      {% for page in site.pages %}
+      {% if page.layout == 'layer' %}
+      <h4><a href="#{{ page.title }}">{{ page.title }}</a></h4>
+      </article>
+      {% endif %}
+      {% endfor %}
+
+    </div>
+    <div class="col10 pady-4">
+
+      {% for page in site.pages %}
+      {% if page.layout == 'layer' %}
+      <article class="page--article">
+        <h2 id="{{ page.title }}" class="primary">{{ page.title }}</h2>
+        {{ page.content }}
+        <img src="{{ page.etl_graph | prepend:site.baseurl }}" alt="ETL graph" />
+        <img src="{{ page.mapping_graph | prepend:site.baseurl }}" alt="Mapping graph" />
+      </article>
+      {% endif %}
+      {% endfor %}
+
+    </div>
+  </div>
+</div>
+
+
+
