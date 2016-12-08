@@ -1,1 +1,1 @@
-# www.openmaptiles.org
+# openmaptiles.org
