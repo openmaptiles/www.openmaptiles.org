@@ -3,6 +3,7 @@ layout: layer
 title: transportation
 etl_graph: media/etl_transportation.png
 mapping_graph: media/mapping_transportation.png
+sql_query: SELECT geometry, class, oneway, ramp, brunnel, service FROM layer_transportation(ST_SetSRID('BOX3D(-20037508.34 -20037508.34, 20037508.34 20037508.34)'::box3d, 3857 ), 14)
 ---
 **transportation** contains roads and railways.
 This layer is directly derived from the OSM road hierarchy.
@@ -12,6 +13,7 @@ It contains all roads from motorways to primary, secondary and
 tertiary roads to residential roads and
 foot paths. Styling the roads is the most essential part of the map.
 The `transportation` layer also contains polygons for things like plazas.
+
 ## Fields
 
 ### brunnel

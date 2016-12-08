@@ -3,9 +3,11 @@ layout: layer
 title: building
 etl_graph: media/etl_building.png
 mapping_graph: media/mapping_building.png
+sql_query: SELECT geom, render_height, render_min_height FROM layer_building(ST_SetSRID('BOX3D(-20037508.34 -20037508.34, 20037508.34 20037508.34)'::box3d, 3857 ), 14)
 ---
 All [OSM Buildings](http://wiki.openstreetmap.org/wiki/Buildings). All building tags are imported ([`building=*`](http://wiki.openstreetmap.org/wiki/Key:building)). The buildings are not yet ready for 3D rendering support and any help to improve
 this is welcomed.
+
 ## Fields
 
 ### render_min_height

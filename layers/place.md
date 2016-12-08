@@ -3,11 +3,13 @@ layout: layer
 title: place
 etl_graph: media/etl_place.png
 mapping_graph: media/mapping_place.png
+sql_query: SELECT geometry, name, name_en, class, rank, capital FROM layer_place(ST_SetSRID('BOX3D(-20037508.34 -20037508.34, 20037508.34 20037508.34)'::box3d, 3857 ), 14, 1)
 ---
 The place layer consists out of [countries](http://wiki.openstreetmap.org/wiki/Tag:place%3Dcountry),
 [states](http://wiki.openstreetmap.org/wiki/Tag:place%3Dstate) and [cities](http://wiki.openstreetmap.org/wiki/Key:place).
 Apart from the roads this is also one of the more important layers to create a beautiful map.
 We suggest you use different font styles and sizes to create a text hierarchy.
+
 ## Fields
 
 ### name_en

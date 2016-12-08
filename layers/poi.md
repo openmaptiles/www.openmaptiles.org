@@ -3,9 +3,11 @@ layout: layer
 title: poi
 etl_graph: media/etl_poi.png
 mapping_graph: media/mapping_poi.png
+sql_query: SELECT geometry, name, name_en, class, subclass, rank FROM layer_poi(ST_SetSRID('BOX3D(-20037508.34 -20037508.34, 20037508.34 20037508.34)'::box3d, 3857 ), 14, 1)
 ---
 [Points of interests](http://wiki.openstreetmap.org/wiki/Points_of_interest) containing
 a of a variety of OpenStreetMap tags. Mostly contains amenities, sport, shop and tourist POIs.
+
 ## Fields
 
 ### class

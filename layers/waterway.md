@@ -3,11 +3,13 @@ layout: layer
 title: waterway
 etl_graph: media/etl_waterway.png
 mapping_graph: media/mapping_waterway.png
+sql_query: SELECT geometry, name, class FROM layer_waterway(ST_SetSRID('BOX3D(-20037508.34 -20037508.34, 20037508.34 20037508.34)'::box3d, 3857 ), 14)
 ---
 Rivers based of OpenStreetMap [waterways](http://wiki.openstreetmap.org/wiki/Waterways) for *z9* to *z14*
 and Natural Earth rivers and lake centerlines from *z3* to *z8*.
 Linestrings without a name or which are too short are filtered
 out at low zoom levels. Waterways do no not have a `subclass` field.
+
 ## Fields
 
 ### name

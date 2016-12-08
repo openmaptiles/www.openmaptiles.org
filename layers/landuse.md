@@ -3,9 +3,11 @@ layout: layer
 title: landuse
 etl_graph: media/etl_landuse.png
 mapping_graph: media/mapping_landuse.png
+sql_query: SELECT geometry, class FROM layer_landuse(ST_SetSRID('BOX3D(-20037508.34 -20037508.34, 20037508.34 20037508.34)'::box3d, 3857 ), 14)
 ---
 Landuse is used to describe use of land by humans.At lower zoom levels this is
 from Natural Earth data for residential (urban) areas and at higher zoom levels mostly OSM `landuse` tags.
+
 ## Fields
 
 ### class

@@ -20,6 +20,10 @@ function generate_doc() {
     echo "title: $layer_name" >> $target
     echo "etl_graph: $DIAGRAM_DIR/etl_$layer_name.png" >> $target
     echo "mapping_graph: $DIAGRAM_DIR/mapping_$layer_name.png" >> $target
+
+    local zoom='14'
+    sql=$(generate-sqlquery "$tileset" "$zoom")
+    echo "sql_query: $sql" >> $target
     echo '---' >> $target
 
     generate-doc "$tileset" >> $target
