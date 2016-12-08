@@ -3,9 +3,42 @@ layout: default
 title: Search
 ---
 
+<link rel="stylesheet" type="text/css" href="https://api.mapbox.com/mapbox-gl-js/v0.28.0/mapbox-gl.css" />
+<script src="https://api.mapbox.com/mapbox-gl-js/v0.28.0/mapbox-gl.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
+
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans" />
+<script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=fetch,Promise"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ol3/3.19.1/ol.js"></script>
+<script src="js/olms.js"></script>
+
+<link rel="stylesheet" href="https://mapzen.com/js/mapzen.css">
+<script src="https://mapzen.com/js/mapzen.min.js"></script>
+
+<style>
+  .map {position:absolute;top:0;left:0;height:100%;width:100%;opacity:0;transition:opacity ease 1s;z-index:0;}
+  .map.active {opacity:1;z-index:5;}
+  .map-switchers {position:absolute;bottom:0;background:gray;z-index:10;}
+  .map-switch {padding:10px;color:#000;}
+</style>
+
+<div class="map active" id="map-mbgljs"></div>
+<div class="map" id="map-leaflet"></div>
+<div class="map" id="map-ol3"></div>
+<div class="map" id="map-tangram">tangram</div>
+
+<div class="map-switchers">
+  <div class="map-switch" id="map-switch-mbgljs" onclick="javascript:switchMap('mbgljs')">mbgljs</div>
+  <div class="map-switch" id="map-switch-leaflet" onclick="javascript:switchMap('leaflet')">leaflet</div>
+  <div class="map-switch" id="map-switch-ol3" onclick="javascript:switchMap('ol3')">ol3</div>
+  <div class="map-switch" id="map-switch-tangram" onclick="javascript:switchMap('tangram')">tangram</div>
+</div>
+
+<script src="js/home.js"></script>
+
 <div id="banner">
   <h1>Maps from OpenData and OpenStreetMap</h1>
   <h3>Vector and raster map tiles for your web and mobile apps</h3>
 </div>
-
-

@@ -1,13 +1,10 @@
 /* For custom styles in project */
 body.home{
-
-  #navbar-top{
-    transition: height .3s ease;
-    &.large{
-      height: 600px;
-    }
-  }
   overflow: hidden !important;
+
+  #navbar-top {
+    background:transparent;
+  }
 
   #banner{
     text-align: center;
@@ -17,6 +14,7 @@ body.home{
     right: 0;
     z-index: 100;
     margin-top: -140px;
+    pointer-events:none;
 
     h1, h2, h3, h4{
       text-shadow: 0 0 3px rgba(0, 0, 0, 0.9);
