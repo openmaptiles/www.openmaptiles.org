@@ -4,13 +4,10 @@ title: waterway
 etl_graph: media/etl_waterway.png
 mapping_graph: media/mapping_waterway.png
 ---
-# waterway
-
 Rivers based of OpenStreetMap [waterways](http://wiki.openstreetmap.org/wiki/Waterways) for *z9* to *z14*
 and Natural Earth rivers and lake centerlines from *z3* to *z8*.
 Linestrings without a name or which are too short are filtered
 out at low zoom levels. Waterways do no not have a `subclass` field.
-
 ## Fields
 
 ### name

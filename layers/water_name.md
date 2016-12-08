@@ -4,12 +4,9 @@ title: water_name
 etl_graph: media/etl_water_name.png
 mapping_graph: media/mapping_water_name.png
 ---
-# water_name
-
 Lake center lines for labelling lake bodies.
 This is based of the [osm-lakelines](https://github.com/lukasmartinelli/osm-lakelines) project
 which derives nice centerlines from OSM water bodies. Only the most important lakes contain labels.
-
 ## Fields
 
 ### name_en

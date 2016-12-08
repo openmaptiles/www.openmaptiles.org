@@ -4,12 +4,9 @@ title: landcover
 etl_graph: media/etl_landcover.png
 mapping_graph: media/mapping_landcover.png
 ---
-# landcover
-
 Landcover is used to describe the physical material at the surface of the earth. At lower zoom levels this is
 from Natural Earth data for glaciers and ice shelves and at higher zoom levels the [landcover is [implied by OSM tags](http://wiki.openstreetmap.org/wiki/Landcover). The most common use case for this layer
   is to style wood (`class=wood`) and grass (`class=`grass`) areas.
-
 ## Fields
 
 ### class

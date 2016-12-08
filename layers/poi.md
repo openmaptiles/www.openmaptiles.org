@@ -4,11 +4,8 @@ title: poi
 etl_graph: media/etl_poi.png
 mapping_graph: media/mapping_poi.png
 ---
-# poi
-
 [Points of interests](http://wiki.openstreetmap.org/wiki/Points_of_interest) containing
 a of a variety of OpenStreetMap tags. Mostly contains amenities, sport, shop and tourist POIs.
-
 ## Fields
 
 ### class

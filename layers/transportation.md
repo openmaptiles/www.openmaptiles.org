@@ -4,8 +4,6 @@ title: transportation
 etl_graph: media/etl_transportation.png
 mapping_graph: media/mapping_transportation.png
 ---
-# transportation
-
 **transportation** contains roads and railways.
 This layer is directly derived from the OSM road hierarchy.
 Only at zoom level 4 to 6 some major highways from Natural Earth
@@ -14,7 +12,6 @@ It contains all roads from motorways to primary, secondary and
 tertiary roads to residential roads and
 foot paths. Styling the roads is the most essential part of the map.
 The `transportation` layer also contains polygons for things like plazas.
-
 ## Fields
 
 ### brunnel
