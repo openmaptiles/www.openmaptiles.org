@@ -30,6 +30,9 @@ Simple way how to start with styling is to choose one of existing styles that is
 
 [GitHub](https://github.com/openmaptiles/klokantech-basic-gl-style)
 
+## Download style
+Go to GitHub repository of chosen style and download it as zip file (Clone or download > Download ZIP). The repository consists of `style.json` that contains style definitions, and optionally also `icons/` folder, that contains SVG files that are used as symbols in the map.
+
 
 
 
