@@ -23,7 +23,7 @@ var map = new ol.Map({
   view: view
 });
 
-fetch('https://openmaptiles.github.io/klokantech-basic-gl-style/style.json').then(function(response) {
+fetch('https://openmaptiles.github.io/klokantech-basic-gl-style/style-cdn.json').then(function(response) {
   response.json().then(function(glStyle) {
     olms.applyStyle(layer, glStyle, 'openmaptiles').then(function() {
       map.addLayer(layer);
