@@ -43,6 +43,7 @@ To correctly display your style, you will also need to download fonts used in `s
 ## Upload sample style to Mapbox Studio
 [Mapbox Studio](https://www.mapbox.com/studio/) is design platform by Mapbox that you can use to edit your style.
 - Create new account if you don't have any.
+- Go to [Fonts](https://www.mapbox.com/studio/styles/fonts/), click __Upload fonts__ and upload fonts that you downloaded before.
 - Go to [Tilesets](https://www.mapbox.com/studio/tilesets/), click __New tileset__, and upload tileset you will use for styling. Note this can be only a sample (e.g. one city) and not the whole tileset you want to publish later. After the tileset is uploaded, go back to list of tilesets, click on your tileset and remember __Map ID__ on the right side.
 - Edit `style.json` in text editor and change tileset's __Map ID__ to yours:
 ```
@@ -53,8 +54,8 @@ To correctly display your style, you will also need to download fonts used in `s
     }
   },
 ```
-- Go to [Fonts](https://www.mapbox.com/studio/styles/fonts/), click __Upload fonts__ and upload fonts that you downloaded before.
 - Go to [Styles](https://www.mapbox.com/studio/styles/) section and click __New style__ button. Name your style and select __Empty__ from style previews.
+- Go to [Styles](https://www.mapbox.com/studio/styles/) click __Edit__ next to your style, click __Properties__ in the bottom left corner, then __Images__, click to input field next to `Background pattern`, then __Add SVG Images__ and upload SVG files from `icons` folder you downloaded before.
 
 
 Mapbox Studio is the new map design platform by Mapbox.
