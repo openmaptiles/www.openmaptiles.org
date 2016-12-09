@@ -97,4 +97,5 @@ function switchMap(id) {
   newActive.className = 'map active';
   activeId = id;
   maps[activeId].setPos(oldPos);
+  document.querySelector('#navbar-top').className = id;
 }

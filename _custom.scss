@@ -4,6 +4,30 @@ body.home{
 
   #navbar-top {
     background:transparent;
+
+    &, &.mbgljs{
+      a{
+        color: #B75076;
+      }
+    }
+
+    &.leaflet{
+      a{
+        color: #E4973F;
+      }
+    }
+
+    &.ol3{
+      a{
+        color: #AFC75B;
+      }
+    }
+    
+    &.tangram{
+      a{
+        color: #fff;
+      }
+    }
   }
 
   #banner{
