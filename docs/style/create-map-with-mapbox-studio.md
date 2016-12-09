@@ -38,11 +38,22 @@ Simple way how to start with styling is to choose one of existing styles that is
 
 ## Download sample style
 Go to GitHub repository of chosen style and download it as zip file (Clone or download > Download ZIP). The repository consists of `style.json` that contains style definitions, and optionally also `icons/` folder, that contains SVG files that are used as symbols in the map.
+To correctly display your style, you will also need to download fonts used in `style.json`. Those can be found in [OpenMapTiles Fonts repository](https://github.com/openmaptiles/fonts).
 
 ## Upload sample style to Mapbox Studio
 [Mapbox Studio](https://www.mapbox.com/studio/) is design platform by Mapbox that you can use to edit your style.
 - Create new account if you don't have any.
-- Go to [Tilesets](https://www.mapbox.com/studio/tilesets/), click __New tileset__, and upload tileset you will use for styling. Note this can be only a sample (e.g. one city) and not the whole tileset you want to publish later. After the tileset is uploaded, go back to list of tilesets, click on your tileset and remember __Map ID__ on the right side - you will need it later.
+- Go to [Tilesets](https://www.mapbox.com/studio/tilesets/), click __New tileset__, and upload tileset you will use for styling. Note this can be only a sample (e.g. one city) and not the whole tileset you want to publish later. After the tileset is uploaded, go back to list of tilesets, click on your tileset and remember __Map ID__ on the right side.
+- Edit `style.json` in text editor and change tileset's __Map ID__ to yours:
+```
+  "sources": {
+    "openmaptiles": {
+      "url": "__mapbox://<YOUR TILESET'S MAP ID>",
+      "type": "vector"
+    }
+  },
+```
+- Go to [Fonts](https://www.mapbox.com/studio/styles/fonts/), click __Upload fonts__ and upload fonts that you downloaded before.
 - Go to [Styles](https://www.mapbox.com/studio/styles/) section and click __New style__ button. Name your style and select __Empty__ from style previews.
 
 
