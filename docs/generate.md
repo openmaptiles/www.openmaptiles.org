@@ -2,9 +2,9 @@
 layout: docs
 category: generate
 main: true
-title: Creating vector tiles
-description: Creating vector tiles
-keywords: Creating vector tiles
+title: Generate vector tiles
+description: Generate vector tiles
+keywords: Generate, vector, tiles
 ---
 
 ## Overview

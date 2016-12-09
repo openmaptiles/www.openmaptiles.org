@@ -2,8 +2,8 @@
 layout: docs
 category: mobile
 main: true
-title: Mobile apps
-description: Mobile apps
+title: Create a mobile app
+description: Create a mobile app
 keywords: Mobile, apps
 ---
 
