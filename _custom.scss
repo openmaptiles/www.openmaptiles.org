@@ -22,7 +22,7 @@ body.home{
         color: #AFC75B;
       }
     }
-    
+
     &.tangram{
       a{
         color: #fff;
@@ -56,4 +56,27 @@ body.home{
 .octocat{
   margin-top: -20px;
   margin-bottom: -10px;
+}
+
+.download-section-circle {
+  width: 200px;
+  height: 200px;
+  background-size: cover;
+  border: 6px solid black;
+  border-radius: 100px;
+  -webkit-border-radius: 100px;
+  -moz-border-radius: 100px;
+  margin: 0 auto;
+  cursor: pointer;
+}
+.downloads-item{
+  padding: 20px;
+  margin-bottom: 5px !important;
+  border: 2px solid green;
+}
+.tabs-btn{
+  padding: 20px 10px 10px 10px;
+}
+.tabs-btn.active{
+  background: #F3F3F3 !important;
 }
