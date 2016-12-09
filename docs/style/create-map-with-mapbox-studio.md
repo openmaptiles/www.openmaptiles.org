@@ -13,14 +13,22 @@ Simple way how to start with styling is to choose one of existing styles that is
 ### OSM Bright
 [![OSM Bright](https://api.mapbox.com/styles/v1/openmaptiles/ciw6czz2n00242kmg6hw20box/static/8.540587,47.370555,14.08,0.00,0.00/300x200?access_token=pk.eyJ1Ijoib3Blbm1hcHRpbGVzIiwiYSI6ImNpdnY3eTJxZzAwMGMyb3BpdWJmajcxNzcifQ.hP1BxcxldIhakMcPSJLQ1Q)](https://openmaptiles.github.io/osm-bright-gl-style/#13.27/47.3704/8.5480)
 
+[GitHub](https://github.com/openmaptiles/osm-bright-gl-style)
+
 ### Positron
 [![Positron](https://api.mapbox.com/styles/v1/openmaptiles/ciwf3o3u2008z2pmq7pmvm6xq/static/8.540587,47.370555,14.08,0.00,0.00/300x200?access_token=pk.eyJ1Ijoib3Blbm1hcHRpbGVzIiwiYSI6ImNpdnY3eTJxZzAwMGMyb3BpdWJmajcxNzcifQ.hP1BxcxldIhakMcPSJLQ1Q)](https://openmaptiles.github.io/positron-gl-style/#13.27/47.3704/8.5480)
+
+[GitHub](https://github.com/openmaptiles/positron-gl-style)
 
 ### Dark Matter
 [![Dark Matter](https://api.mapbox.com/styles/v1/openmaptiles/ciwf4jmfe00882qmzvu5vh0zx/static/8.540587,47.370555,14.08,0.00,0.00/300x200?access_token=pk.eyJ1Ijoib3Blbm1hcHRpbGVzIiwiYSI6ImNpdnY3eTJxZzAwMGMyb3BpdWJmajcxNzcifQ.hP1BxcxldIhakMcPSJLQ1Q)](https://openmaptiles.github.io/dark-matter-gl-style/#13.27/47.3704/8.5480)
 
+[GitHub](https://github.com/openmaptiles/dark-matter-gl-style)
+
 ### KlokanTech Basic
 [![KlokanTech Basic](https://api.mapbox.com/styles/v1/openmaptiles/ciwf4zbsv007y2pmt2rspc1dc/static/8.540587,47.370555,14.08,0.00,0.00/300x200?access_token=pk.eyJ1Ijoib3Blbm1hcHRpbGVzIiwiYSI6ImNpdnY3eTJxZzAwMGMyb3BpdWJmajcxNzcifQ.hP1BxcxldIhakMcPSJLQ1Q)](https://openmaptiles.github.io/klokantech-basic-gl-style/#13.27/47.3704/8.5480)
+
+[GitHub](https://github.com/openmaptiles/klokantech-basic-gl-style)
 
 
 
