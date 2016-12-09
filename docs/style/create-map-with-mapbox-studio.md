@@ -47,7 +47,8 @@ To correctly display your style, you will also need to download fonts used in `s
 - Go to [Fonts](https://www.mapbox.com/studio/styles/fonts/), click __Upload fonts__ and upload fonts that you downloaded before.
 - Go to [Tilesets](https://www.mapbox.com/studio/tilesets/), click __New tileset__, and upload tileset you will use for styling. Note this can be only a sample (e.g. one city) and not the whole tileset you want to publish later. After the tileset is uploaded, go back to list of tilesets, click on your tileset and remember __Map ID__ on the right side.
 - Edit `style.json` in text editor and change tileset's __Map ID__ to yours:
-```
+
+```javascript
   "sources": {
     "openmaptiles": {
       "url": "__mapbox://<YOUR TILESET'S MAP ID>",
