@@ -6,9 +6,15 @@ description: Create a new Style with new Mapbox Studio
 keywords: create, style, Mapbox Studio 
 ---
 
+## Steps
+- Choose sample style
+- Download sample style
+- Upload sample style to Mapbox Studio
 
-## Choose an existing style
-Simple way how to start with styling is to choose one of existing styles that is close to what you want to achieve. Here is the list of styles you can choose from:
+
+
+## Choose sample style
+Simple way how to start with styling is to choose one of existing styles that is close to what you want to achieve, and edit the style as you want. You can choose from following styles:
 
 ### OSM Bright
 [![OSM Bright](https://api.mapbox.com/styles/v1/openmaptiles/ciw6czz2n00242kmg6hw20box/static/8.540587,47.370555,14.08,0.00,0.00/300x200?access_token=pk.eyJ1Ijoib3Blbm1hcHRpbGVzIiwiYSI6ImNpdnY3eTJxZzAwMGMyb3BpdWJmajcxNzcifQ.hP1BxcxldIhakMcPSJLQ1Q)](https://openmaptiles.github.io/osm-bright-gl-style/#13.27/47.3704/8.5480)
@@ -30,10 +36,14 @@ Simple way how to start with styling is to choose one of existing styles that is
 
 [GitHub](https://github.com/openmaptiles/klokantech-basic-gl-style)
 
-## Download style
+## Download sample style
 Go to GitHub repository of chosen style and download it as zip file (Clone or download > Download ZIP). The repository consists of `style.json` that contains style definitions, and optionally also `icons/` folder, that contains SVG files that are used as symbols in the map.
 
-
+## Upload sample style to Mapbox Studio
+[Mapbox Studio](https://www.mapbox.com/studio/) is design platform by Mapbox that you can use to edit your style.
+- Create new account if you don't have any.
+- Go to [Tilesets](https://www.mapbox.com/studio/tilesets/), click __New tileset__, and upload tileset you will use for styling. Note this can be only a sample (e.g. one city) and not the whole tileset you want to publish later. After the tileset is uploaded, go back to list of tilesets, click on your tileset and remember __Map ID__ on the right side - you will need it later.
+- Go to [Styles](https://www.mapbox.com/studio/styles/) section and click __New style__ button. Name your style and select __Empty__ from style previews.
 
 
 Mapbox Studio is the new map design platform by Mapbox.
