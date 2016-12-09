@@ -43,7 +43,7 @@ Notice linked fonts used in the style and `omls.js` that is compiled ol-mapbox-s
 Notice link to the tileset (`url` of `ol.source.VectorTile`) and link to style as a parameter of `fetch` function.
 
 
-```js
+```javascript
 var tilegrid = ol.tilegrid.createXYZ({tileSize: 512, maxZoom: 22});
 
 var layer = new ol.layer.VectorTile({
