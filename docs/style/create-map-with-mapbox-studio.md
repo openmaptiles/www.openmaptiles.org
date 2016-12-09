@@ -55,7 +55,7 @@ To correctly display your style, you will also need to download fonts used in `s
   },
 ```
 - Go to [Styles](https://www.mapbox.com/studio/styles/) section and click __New style__ button. Name your style and select __Empty__ from style previews.
-- Go to [Styles](https://www.mapbox.com/studio/styles/) click __Edit__ next to your style, click __Properties__ in the bottom left corner, then __Images__, click to input field next to `Background pattern`, then __Add SVG Images__ and upload SVG files from `icons` folder you downloaded before.
+- Go to [Styles](https://www.mapbox.com/studio/styles/) click __Edit__ next to your style, click __Properties__ in the bottom left corner, then __Images__, click to input field next to __Background pattern__, then __Add SVG Images__ and upload SVG files from `icons` folder you downloaded before.
 
 
 Mapbox Studio is the new map design platform by Mapbox.
