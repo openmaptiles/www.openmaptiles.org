@@ -58,7 +58,7 @@ To correctly display your style, you will also need to download fonts used in `s
 - Go to [Styles](https://www.mapbox.com/studio/styles/), click __Edit__ next to your style, click __Properties__ in the bottom left corner, then __Images__, click to input field next to __Background pattern__, then __Add SVG Images__ and upload SVG files from `icons` folder you downloaded before.
 - Go to [Styles](https://www.mapbox.com/studio/styles/), click to menu button next to your style, select __Replace__, and upload your `style.json`.
 
-Now you are ready to edit your style using Mapbox Studio. When it is done, you can download you style from Mapbox Studio and save it anywhere you want (go to [Styles](https://www.mapbox.com/studio/styles/), click to menu button next to your style, select __Download__). Then you can use the style e.g. for web or mobile viewers.
+Now you are ready to edit your style using Mapbox Studio. When it is done, you can download your style from Mapbox Studio and save it anywhere you want (go to [Styles](https://www.mapbox.com/studio/styles/), click to menu button next to your style, select __Download__). Then you can use the style e.g. for web or mobile viewers.
 
 
 
