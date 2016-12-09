@@ -1,6 +1,6 @@
 ---
 layout: docs
-category: hosting
+category: host
 title: TileServer Kitematic
 description: TileServer Kitematic
 keywords: TileServer, Kitematic

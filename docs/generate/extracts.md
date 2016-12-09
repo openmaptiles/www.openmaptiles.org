@@ -1,6 +1,6 @@
 ---
 layout: docs
-category: creating-tiles
+category: generate
 title: Create custom Extract
 description: Create custom Extract
 keywords: create, custom, extract

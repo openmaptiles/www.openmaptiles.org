@@ -1,6 +1,6 @@
 ---
 layout: docs
-category: styling
+category: style
 title: Create a new Style with new Mapbox Studio 
 description: Create a new Style with new Mapbox Studio 
 keywords: create, style, Mapbox Studio 

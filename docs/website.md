@@ -1,6 +1,6 @@
 ---
 layout: docs
-category: viewers
+category: website
 main: true
 title: Web viewers
 description: Web viewers

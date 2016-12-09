@@ -1,6 +1,6 @@
 ---
 layout: docs
-category: creating-tiles
+category: generate
 main: true
 title: Creating vector tiles
 description: Creating vector tiles

@@ -1,6 +1,6 @@
 ---
 layout: docs
-category: creating-tiles
+category: generate
 title: Generate your own vector tiles
 description: Generate your own vector tiles
 keywords: Generate your own vector tiles
