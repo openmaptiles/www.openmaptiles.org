@@ -1,5 +1,6 @@
 ---
 layout: page
+category: layer
 title: landuse
 etl_graph: media/etl_landuse.png
 mapping_graph: media/mapping_landuse.png

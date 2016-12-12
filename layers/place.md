@@ -1,5 +1,6 @@
 ---
 layout: page
+category: layer
 title: place
 etl_graph: media/etl_place.png
 mapping_graph: media/mapping_place.png
@@ -12,10 +13,30 @@ We suggest you use different font styles and sizes to create a text hierarchy.
 
 ## Fields
 
+### name
+
+The OSM [`name`](http://wiki.openstreetmap.org/wiki/Key:name) value of the POI.
+
 ### name_en
 
 The English `name:en` value or local `name` if not available.
 
+### rank
+
+Countries, states and the most important cities all have a
+**rank** to boost their importance on the map.
+The **rank** field for counries and states ranges from
+`1` to `6` while the **rank** field for cities ranges from
+`1` to `10` for the most important cities
+and continues from `10` serially based on the
+local importance of the city (derived from population and city class).
+You can use the **rank** to limit density of labels or improve
+the text hierarchy.
+The rank value is a combination of the Natural Earth
+`scalerank`, `labelrank` and `datarank` values for countries
+and states and for cities consists out of a shifted
+Natural Earth `scalerank` combined with a local rank
+within a grid for cities that do not have a Natural Earth `scalerank`.
 ### capital
 
 The **capital** field marks the
@@ -47,26 +68,6 @@ values:
 - suburb
 - neighbourhood
 - isolated_dwelling
-
-### rank
-
-Countries, states and the most important cities all have a
-**rank** to boost their importance on the map.
-The **rank** field for counries and states ranges from
-`1` to `6` while the **rank** field for cities ranges from
-`1` to `10` for the most important cities
-and continues from `10` serially based on the
-local importance of the city (derived from population and city class).
-You can use the **rank** to limit density of labels or improve
-the text hierarchy.
-The rank value is a combination of the Natural Earth
-`scalerank`, `labelrank` and `datarank` values for countries
-and states and for cities consists out of a shifted
-Natural Earth `scalerank` combined with a local rank
-within a grid for cities that do not have a Natural Earth `scalerank`.
-### name
-
-The OSM [`name`](http://wiki.openstreetmap.org/wiki/Key:name) value of the POI.
 
 
 

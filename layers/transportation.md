@@ -1,5 +1,6 @@
 ---
 layout: page
+category: layer
 title: transportation
 etl_graph: media/etl_transportation.png
 mapping_graph: media/mapping_transportation.png
@@ -16,15 +17,15 @@ The `transportation` layer also contains polygons for things like plazas.
 
 ## Fields
 
-### brunnel
+### oneway
 
-Mark whether way is a tunnel or bridge.
+Mark with `1` whether way is a oneway (in the direction of the way)
+or not with `0`.
 
 Possible values:
 
-- `bridge`
-- `tunnel`
-- `ford`
+- `0`
+- `1`
 
 ### ramp
 
@@ -35,6 +36,20 @@ Possible values:
 
 - `0`
 - `1`
+
+### service
+
+Original value of the [`service`](http://wiki.openstreetmap.org/wiki/Key:service) tag.
+
+Possible values:
+
+- `spur`
+- `yard`
+- `siding`
+- `crossover`
+- `driveway`
+- `alley`
+- `parking_aisle`
 
 ### class
 
@@ -58,29 +73,15 @@ Possible values:
 - `rail`
 - `transit`
 
-### service
+### brunnel
 
-Original value of the [`service`](http://wiki.openstreetmap.org/wiki/Key:service) tag.
-
-Possible values:
-
-- `spur`
-- `yard`
-- `siding`
-- `crossover`
-- `driveway`
-- `alley`
-- `parking_aisle`
-
-### oneway
-
-Mark with `1` whether way is a oneway (in the direction of the way)
-or not with `0`.
+Mark whether way is a tunnel or bridge.
 
 Possible values:
 
-- `0`
-- `1`
+- `bridge`
+- `tunnel`
+- `ford`
 
 
 

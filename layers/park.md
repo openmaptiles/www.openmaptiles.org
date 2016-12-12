@@ -1,5 +1,6 @@
 ---
 layout: page
+category: layer
 title: park
 etl_graph: media/etl_park.png
 mapping_graph: media/mapping_park.png

@@ -1,5 +1,6 @@
 ---
 layout: page
+category: layer
 title: water
 etl_graph: media/etl_water.png
 mapping_graph: media/mapping_water.png

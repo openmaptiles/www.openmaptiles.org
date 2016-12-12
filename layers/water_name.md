@@ -1,5 +1,6 @@
 ---
 layout: page
+category: layer
 title: water_name
 etl_graph: media/etl_water_name.png
 mapping_graph: media/mapping_water_name.png
@@ -11,13 +12,13 @@ which derives nice centerlines from OSM water bodies. Only the most important la
 
 ## Fields
 
-### name_en
-
-The english `name:en` value if available.
-
 ### name
 
 The OSM [`name`](http://wiki.openstreetmap.org/wiki/Key:name) value of the water body.
+
+### name_en
+
+The english `name:en` value if available.
 
 ### class
 

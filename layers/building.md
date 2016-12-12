@@ -1,5 +1,6 @@
 ---
 layout: page
+category: layer
 title: building
 etl_graph: media/etl_building.png
 mapping_graph: media/mapping_building.png

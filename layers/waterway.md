@@ -1,5 +1,6 @@
 ---
 layout: page
+category: layer
 title: waterway
 etl_graph: media/etl_waterway.png
 mapping_graph: media/mapping_waterway.png
@@ -12,11 +13,6 @@ out at low zoom levels. Waterways do no not have a `subclass` field.
 
 ## Fields
 
-### name
-
-The OSM [`name`](http://wiki.openstreetmap.org/wiki/Key:name) value of the waterway.
-The `name` field is empty for NaturalEarth data until **z9** when OSM data is used.
-
 ### class
 
 The original value of the [`waterway`](http://wiki.openstreetmap.org/wiki/Key:waterway) tag.
@@ -25,6 +21,11 @@ Can be one of [`stream`](http://wiki.openstreetmap.org/wiki/Tag:waterway%3Dstrea
 [`canal`](http://wiki.openstreetmap.org/wiki/Tag:waterway%3Dcanal),
 [`drain`](http://wiki.openstreetmap.org/wiki/Tag:waterway%3Ddrain),
 [`ditch`](http://wiki.openstreetmap.org/wiki/Tag:waterway%3Dditch)`.
+
+### name
+
+The OSM [`name`](http://wiki.openstreetmap.org/wiki/Key:name) value of the waterway.
+The `name` field is empty for NaturalEarth data until **z9** when OSM data is used.
 
 
 
