@@ -1,6 +1,7 @@
 var maps = {};
 
 var mbgljsMap = new mapboxgl.Map({
+  attributionControl: false,
   container: 'map-mbgljs',
   style: 'https://openmaptiles.github.io/positron-gl-style/style-cdn.json',
   zoom: 2
@@ -15,7 +16,7 @@ maps['mbgljs'] = {
   }
 };
 
-var leafletMap = L.map('map-leaflet', {zoomControl: false}).setView([0, 0], 2);
+var leafletMap = L.map('map-leaflet', {zoomControl: false, attributionControl: false}).setView([0, 0], 2);
 L.tileLayer('https://klokantech-0.tilehosting.com/styles/streets/rendered/{z}/{x}/{y}.png?key=asfagatXavjkb34rasf35asf', {
   attribution: '&copy; <a href="http://openmaptiles.org">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a>',
   maxZoom: 18,
@@ -48,7 +49,7 @@ var viewOl3 = new ol.View({
 });
 var mapOl3 = new ol.Map({
   target: 'map-ol3',
-  controls: [new ol.control.Attribution({collapsible: false})],
+  controls: [],
   view: viewOl3
 });
 
@@ -73,6 +74,7 @@ maps['ol3'] = {
 
 var mapTangram = L.Mapzen.map('map-tangram', {
   zoomControl: false,
+  attributionControl: false,
   scene: 'https://gist.githubusercontent.com/petrsloup/27ee74e2cdebc7ac72129da3a89a440f/raw/19385aae40b9d0ba0a6c0ef1c3afe87f2743d54d/gistfile1.txt'
 });
 mapTangram.setView([0, 0], 0);
