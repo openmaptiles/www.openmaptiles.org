@@ -6,8 +6,18 @@ h1{
   font-family: 'MuseoSans', 'OpenSans', sans-serif;
 }
 
-#navbar-top .title{
-  font-family: 'MuseoSans', 'OpenSans', sans-serif;
+#navbar-top{
+  position: absolute;
+
+  .title{
+    font-family: 'MuseoSans', 'OpenSans', sans-serif;
+
+    .icon{
+      font-size: 40px;
+      vertical-align: top;
+      padding-right: 5px;
+    }
+  }
 }
 
 body.home{
@@ -16,27 +26,43 @@ body.home{
   #navbar-top {
     border: 0;
 
+    a{
+      text-shadow: 0 0 3px rgba(255, 255, 255, 0.9);
+    }
+
     &, &.mbgljs{
       a{
         color: #B75076;
+        &:hover{
+          color: lighten(#B75076, 20%);
+        }
       }
     }
 
     &.leaflet{
       a{
         color: #E4973F;
+        &:hover{
+          color: lighten(#E4973F, 20%);
+        }
       }
     }
 
     &.ol3{
       a{
         color: #AFC75B;
+        &:hover{
+          color: lighten(#AFC75B, 20%);
+        }
       }
     }
 
     &.tangram{
       a{
         color: #fff;
+        &:hover{
+          color: darken(#fff, 20%);
+        }
       }
     }
   }
@@ -55,13 +81,21 @@ body.home{
       text-shadow: 0 0 3px rgba(0, 0, 0, 0.9);
       color: #fff;
     }
+
+    h1{
+      font-size: 40px;
+    }
+    h2{
+      font-size: 30px;
+    }
   }
 }
 
 .banner-page{
-  height: 180px;
+  height: 190px;
   background-color: $color-primary;
   background-image: url('/img/header-bg.png');
+  background-position: top center;
 }
 
 .octocat{

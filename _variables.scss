@@ -4,7 +4,7 @@ $color-secondary: #fff;
 
 $color-gray-dark: #393939;
 $color-gray: #898989;
-$color-gray-light: #f3f3f3;
+$color-gray-light: #f3f5f7;
 
 $color-success: #00AA4A;
 $color-warning: #EF8A00;
@@ -56,7 +56,7 @@ $padding-y: 15px;
 $padding-x: 15px;
 
 /* Container */
-$container-max: 1200px;
+$container-max: 1100px;
 $container-width: 95%;
 $container-padding-x: 0;
 $container-padding-y: 0;
@@ -202,11 +202,11 @@ $tabs-tab-border: none;
 /* Top navbar */
 $navbar-top-height: 72px;
 $navbar-top-small-height: 48px;
-$navbar-top-border-bottom: 1px solid $color-primary;
+$navbar-top-border-bottom: 0;
 $navbar-top-margin-bottom: 20px;
 
 $navbar-top-zindex: 90;
-$navbar-top-bg: rgba(255, 255, 255, 0.2);
+$navbar-top-bg: rgba(255, 255, 255, 0.15);
 $navbar-top-menu-padding-bottom: 28px;
 
 $navbar-top-title-size: 24px;
