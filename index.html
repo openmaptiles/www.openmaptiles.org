@@ -17,18 +17,6 @@ title: Search
 <link rel="stylesheet" href="https://mapzen.com/js/mapzen.css">
 <script src="https://mapzen.com/js/mapzen.min.js"></script>
 
-<style>
-  .map {position:absolute;top:0;left:0;height:100%;width:100%;opacity:0;transition:opacity ease 1s;z-index:0;}
-  .map.active {opacity:1;z-index:5;}
-  .map-switchers {position:absolute;bottom:0;z-index:10;left:calc((100% - 1200px)/2);}
-  @media screen and (max-width: 1200px) {.map-switchers {left:0;bottom:20px;}}
-  .map-switch {position:relative;cursor:pointer;display:inline-block;border:1px solid #000;width:100px;height:100px;color:#000;float:left;margin-right:5px;}
-  .map-switch img {width:100%;height:100%;}
-  .map-switch span {position:absolute;bottom:0;left:0;right:0;text-align:center;text-shadow: -1px 0 #ccc,0 1px #ccc,1px 0 #ccc,0 -1px #ccc;}
-
-  .attribution {position:absolute;bottom:0;left:0;right:0;text-align:center;z-index:10000;}
-</style>
-
 <div class="map active" id="map-mbgljs"></div>
 <div class="map" id="map-leaflet"></div>
 <div class="map" id="map-ol3"></div>
