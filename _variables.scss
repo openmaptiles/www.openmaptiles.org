@@ -26,7 +26,7 @@ $font-primary: 'OpenSans', sans-serif, Arial;
 $font-secondary: 'OpenSans', sans-serif, Arial;
 $font-monospace: Menlo, Monaco, 'Courier New', monospace;
 $font-icon: Menlo, Monaco, 'Courier New', monospace;
-$font-size: 14px !default;
+$font-size: 18px;
 
 /* Line height*/
 $line-height: 1.4 !default; 
@@ -40,10 +40,10 @@ $headings-font-weight: normal;
 $headings-line-height: 100%;
 $headings-color: #424242;
 
-$font-size-h1: 20px !default;
-$font-size-h2: 30px !default;
-$font-size-h3: 20px !default;
-$font-size-h4: 16px !default;
+$font-size-h1: 24px !default;
+$font-size-h2: 32px !default;
+$font-size-h3: 24px !default;
+$font-size-h4: 18px !default;
 $font-size-h5: $font-size !default;
 $font-size-h6: 12px !default;
 
@@ -196,7 +196,7 @@ $tabs-btn-color-active: $color-primary;
 $tabs-btn-border-bottom: 2px solid #fff;
 $tabs-btn-border-bottom-active: 2px solid $color-primary;
 $tabs-btn-fontweight: bold;
-$tabs-tab-padding: 10px;
+$tabs-tab-padding: 18px;
 $tabs-tab-border: none;
 
 /* Top navbar */
@@ -216,7 +216,7 @@ $navbar-top-title-padding-bottom: 24px;
 $navbar-top-title-width: auto;
 
 $navbar-top-link-color: $color-gray-light;
-$navbar-top-link-size: 13px;
+$navbar-top-link-size: 14px;
 $navbar-top-link-font: $font-primary;
 $navbar-top-link-fontweight: bold;
 $navbar-top-link-padding: 28px 14px;
