@@ -1,5 +1,5 @@
 /* Colors */
-$color-primary: #5A8500;//#6B2B58;
+$color-primary: #36435e; //#5A8500;//#6B2B58;
 $color-secondary: #fff;
 
 $color-gray-dark: #393939;
@@ -23,7 +23,7 @@ $link-hover-color: lighten($color-primary, 8%);
 
 /* Fonts */
 $font-primary: 'OpenSans', sans-serif, Arial;
-$font-secondary: 'MuseoSans', 'OpenSans', sans-serif;
+$font-secondary: 'OpenSans', sans-serif, Arial;
 $font-monospace: Menlo, Monaco, 'Courier New', monospace;
 $font-icon: Menlo, Monaco, 'Courier New', monospace;
 $font-size: 14px !default;
@@ -38,9 +38,9 @@ $headings-font-weight-h1: normal;
 $headings-font-family: $font-secondary;
 $headings-font-weight: normal;
 $headings-line-height: 100%;
-$headings-color: $color-gray-dark;
+$headings-color: #424242;
 
-$font-size-h1: 40px !default;
+$font-size-h1: 20px !default;
 $font-size-h2: 30px !default;
 $font-size-h3: 20px !default;
 $font-size-h4: 16px !default;
@@ -202,17 +202,17 @@ $tabs-tab-border: none;
 /* Top navbar */
 $navbar-top-height: 72px;
 $navbar-top-small-height: 48px;
-$navbar-top-border-bottom: 0;
+$navbar-top-border-bottom: 1px solid $color-primary;
 $navbar-top-margin-bottom: 20px;
 
 $navbar-top-zindex: 90;
-$navbar-top-bg: $color-primary;
+$navbar-top-bg: rgba(255, 255, 255, 0.2);
 $navbar-top-menu-padding-bottom: 28px;
 
-$navbar-top-title-size: 36px;
+$navbar-top-title-size: 24px;
 $navbar-top-title-color: #ffffff;
 $navbar-top-title-bg: transparent;
-$navbar-top-title-padding-bottom: 16px;
+$navbar-top-title-padding-bottom: 24px;
 $navbar-top-title-width: auto;
 
 $navbar-top-link-color: $color-gray-light;

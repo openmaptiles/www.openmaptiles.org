@@ -1,9 +1,16 @@
 /* For custom styles in project */
+
+
+h1{
+  color: #616161;
+  font-family: 'MuseoSans', 'OpenSans', sans-serif;
+}
+
 body.home{
   overflow: hidden !important;
 
   #navbar-top {
-    background:transparent;
+    border: 0;
 
     &, &.mbgljs{
       a{
@@ -48,9 +55,9 @@ body.home{
 }
 
 .banner-page{
-  height: 280px;
+  height: 180px;
   background-color: $color-primary;
-  background-image: url('/img/header-map-2560px.png');
+  background-image: url('/img/header-bg.png');
 }
 
 .octocat{
@@ -72,7 +79,7 @@ body.home{
 .downloads-item{
   padding: 20px;
   margin-bottom: 5px !important;
-  border: 2px solid green;
+  border: 2px solid $color-primary;;
 }
 .tabs-btn{
   padding: 20px 10px 10px 10px;
