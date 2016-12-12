@@ -17,6 +17,7 @@ function generate_doc() {
 
     echo '---' > $target
     echo 'layout: page' >> $target
+    echo 'category: layer' >> $target
     echo "title: $layer_name" >> $target
     echo "etl_graph: $DIAGRAM_DIR/etl_$layer_name.png" >> $target
     echo "mapping_graph: $DIAGRAM_DIR/mapping_$layer_name.png" >> $target
