@@ -5,92 +5,91 @@ description: Documentation
 keywords: Documentation
 ---
 
-<h2>Get started</h2>
+<div class="container">
+  <div class="col8 pady-4">
+    <div class="row">
+      <h2>Get started</h2>
 
-<h3>1. Download the Vector Tiles</h3>
+      <h3>1. Download Vector Tiles</h3>
 
-In order to get started you first need to <a href="/downloads">download the vector tiles for your region
-or the planet</a>. If you don't want to host the tiles yourself, consider using the
-public CDN provided by <b>tilehosting.com</b>.
+      Head over to the <b><a href="/downloads">downloads page</a></b>
+      and download the vector tiles for your region or the planet.
+      If you don't want to host the tiles yourself, consider using the public CDN.
 
-<h3>2. Run a tileserver</h3>
-<p>
-  To serve the tiles to the web via HTTP you need to choose a tileserver for your platform and
-  configure it to serve the downloaded vector tiles.
+      <h3>2. Run a Tileserver</h3>
+      <p>
+        To serve the tiles to your mobile or web client you need to choose a tileserver
+        for your platform and configure it to serve the previously downloaded vector tiles.
+      </p>
+      <div class="tabs" style="min-height: 200px;">
+        <ul>
+          <li class="tabs-btn active" id="btn-1">Node.js</li>
+          <li class="tabs-btn" id="btn-2">Docker CLI</li>
+          <li class="tabs-btn" id="btn-3">PHP</li>
+          <li class="tabs-btn" id="btn-4">Serverless</li>
+        </ul>
+        <div class="tabs-content">
+          <div class="tabs-tab active" id="tab-1">
+            <p>Using <a href="https://github.com/klokantech/tileserver-gl">tileserver-gl</a> you can immediately serve vector tiles and even have the capabilities to fall back to serve raster tiles for interoperability with other clients.<br/>
+            You can install <b>tileserver-gl</b> using npm.
+            </p>
+            <pre class="highlight"><code>npm install -g tileserver-gl</code></pre>
+            <p>Now run <b>tileserver-gl</b> together with the previously downloaded vector tiles</p>
+            <pre class="highlight"><code>tileserver-gl zurich_switzerland.mbtiles</code></pre>
+          </div>
+          <div class="tabs-tab" id="tab-2">
+            If you don't have Node.js installed locally we recommend to use the offical Docker image.
+            <pre class="highlight"><code>docker run -it -v $(pwd):/data -p 8080:80 klokantech/tileserver-gl</code></pre>
+          </div>
+          <div class="tabs-tab" id="tab-3">
+            Tileserver-PHP can be installed on any PHP hosting and supports
+            serving vector tiles directly from a MBTiles file.
+          </div>
+          <div class="tabs-tab" id="tab-4">
+            <p>Because the vector tiles are prerendered you can also copy the tiles to S3, a CDN or
+            a simple static file hosting once you unpack them from the SQLite database.</p>
+          </div>
+        </div>
+      </div>
+      <p>
+        Read the <a href="/docs/hosting">hosting map tiles</a> section for more in-depth information.
+      </p>
 
-<div class="tabs" style="min-height: 200px;">
-  <ul>
-    <li class="tabs-btn active" id="btn-1">Node.js</li>
-    <li class="tabs-btn" id="btn-2">Docker CLI</li>
-    <li class="tabs-btn" id="btn-3">PHP</li>
-    <li class="tabs-btn" id="btn-4">Serverless</li>
-  </ul>
-  <div class="tabs-content">
-    <div class="tabs-tab active" id="tab-1">
-      <p>Using <a href="https://github.com/klokantech/tileserver-gl">tileserver-gl</a> you can immediately serve vector tiles and even have the capabilities to fall back to serve raster tiles for
-      older clients.<br/>
-			You can install <b>tileserver-gl</b> using npm.
-			</p>
-      <pre class="highlight"><code>npm install -g tileserver-gl</code></pre>
-      <p>Now run <b>tileserver-gl</b> together with the previously downloaded vector tiles</p>
-      <pre class="highlight"><code>tileserver-gl zurich_switzerland.mbtiles</code></pre>
+      <h3>3. Choose a Style</h3>
+      <p>
+      Once you have your own vector tile server running you can
+      <a href="/styles">choose one of the many styles</a> supporting
+      the OpenMapTiles schema.
+      </p>
+      <p>
+      After you downloaded the style, point the endpoint URL to your tileserver and embedd it in a mobile
+      app or web viewer.
+      </p>
+
+
     </div>
-    <div class="tabs-tab" id="tab-2">
-      If you don't have Node.js installed locally we recommend to use the offical Docker image.
-      <pre class="highlight"><code>docker run -it -v $(pwd):/data -p 8080:80 klokantech/tileserver-gl</code></pre>
+  </div>
+  <div class="col4 pady-4">
+    <h2>Sections</h2>
+    <div class="row doc-section">
+      <h3 class="padb-1"><a href="/docs/style/">Style your map</a></h3>
+      <p>Learn about styling the vector tiles with the GL style specification and how to reuse existing styles for OpenMapTiles</p>
     </div>
-    <div class="tabs-tab" id="tab-3">
-      Tileserver-PHP can be installed on any PHP hosting and supports
-      serving vector tiles directly from a MBTiles file.
+    <div class="row doc-section">
+        <h3 class="padb-1"><a href="/docs/host/">Hosting map tiles</a></h3>
+        <p>Tutorials how to set up different tileservers and hosting the vector tiles yourself.p</p>
     </div>
-    <div class="tabs-tab" id="tab-4">
-      <p>Because the vector tiles are prerendered you can also copy the tiles to S3, a CDN or
-      a simple static file hosting once you unpack them from the SQLite database.</p>
+    <div class="row doc-section">
+        <h3 class="padb-1"><a href="/docs/website/">Display in website</a></h3>
+        <p>Display vector tiles in a web client using either MapboxGL, Leaflet, Tangram or OpenLayers3.</p>
+    </div>
+    <div class="row doc-section">
+        <h3 class="padb-1"><a href="/docs/generate/">Generate vector tiles</a></h3>
+        <p>Use the open process and tools to create the vector tiles yourself.</p>
+    </div>
+    <div class="row doc-section">
+        <h3 class="padb-1"><a href="/docs/generate/">Generate vector tiles</a></h3>
+        <p>Use the vector tiles in Android and iOS and even offline.</p>
     </div>
   </div>
-</div>
-
-<h3>3. Choose a Style</h3>
-<p>
-Once you have your own vector tile server running you can choose
-<a href="/styles">one of the many styles</a> supporting
-the OpenMapTiles schema.
-</p>
-<p>
-After you downloaded the style, point the endpoint URL to your tileserver and embedd it in a mobile
-app or web viewer.
-</p>
-
-<div class="row">
-  <div class="col12 center padt-4">
-    <h2>Categories</h2>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col2 center border-primary marx-1 row4">
-    <h3 class="padb-1"><a href="/docs/style/">Style your map</a></h3>
-    <p>gl-styles, cartography, CatoCSS</p>
-  </div>
-
-  <div class="col2 center border-primary marx-1 row4">
-    <h3 class="padb-1"><a href="/docs/host/">Hosting map tiles</a></h3>
-    <p>TileServer, wmts, tileserver-php</p>
-  </div>
-
-  <div class="col2 center border-primary marx-1 row4">
-    <h3 class="padb-1"><a href="/docs/website/">Display in website</a></h3>
-    <p>code examples, mapbox-gl, openlayers, mapzen</p>
-  </div>
-
-  <div class="col2 center border-primary marx-1 row4">
-    <h3 class="padb-1"><a href="/docs/generate/">Generate vector tiles</a></h3>
-    <p>create extracts, postgres, tools</p>
-  </div>
-
-  <div class="col2 center border-primary marx-1 row4">
-    <h3 class="padb-1"><a href="/docs/mobile/">Create a mobile app</a></h3>
-    <p>Android, iOS, offline xamples</p>
-  </div>
-
 </div>

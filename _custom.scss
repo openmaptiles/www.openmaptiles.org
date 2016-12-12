@@ -186,3 +186,14 @@ body.home{
 .tabs-btn.active{
   background: #F3F3F3 !important;
 }
+
+.doc-section {
+  margin-bottom: 18px;
+  padding: 10px;
+  background: rgba(167, 168, 202, 0.13);
+
+  &:hover {
+    background: rgba(167, 168, 202, 0.17);
+    cursor: pointer;
+  }
+}
