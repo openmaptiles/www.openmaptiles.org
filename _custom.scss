@@ -18,6 +18,18 @@ h1{
       padding-right: 5px;
     }
   }
+
+  .github{
+    font-family: 'icons' !important;
+    font-size: 36px !important;
+    vertical-align: middle;
+    font-weight: normal !important;
+    padding-left: 10px !important;
+  }
+
+  &.filled{
+    background: $color-primary;
+  }
 }
 
 body.home{
@@ -27,7 +39,7 @@ body.home{
     border: 0;
 
     a{
-      text-shadow: 0 0 3px rgba(255, 255, 255, 0.9);
+      text-shadow: 0 0 1px rgba(255, 255, 255, 0.9);
     }
 
     &, &.mbgljs{
