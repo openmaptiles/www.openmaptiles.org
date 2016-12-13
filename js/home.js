@@ -3,7 +3,7 @@ var maps = {};
 var mbgljsMap = new mapboxgl.Map({
   attributionControl: false,
   container: 'map-mbgljs',
-  style: 'https://openmaptiles.github.io/positron-gl-style/style-cdn.json',
+  style: 'https://openmaptiles.github.io/fiord-color-gl-style/style-cdn.json',
   zoom: 2
 });
 maps['mbgljs'] = {
