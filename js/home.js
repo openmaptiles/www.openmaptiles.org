@@ -17,9 +17,8 @@ maps['mbgljs'] = {
 };
 
 var leafletMap = L.map('map-leaflet', {zoomControl: false, attributionControl: false}).setView([0, 0], 2);
-L.tileLayer('https://klokantech-0.tilehosting.com/styles/streets/rendered/{z}/{x}/{y}.png?key=asfagatXavjkb34rasf35asf', {
-  attribution: '&copy; <a href="http://openmaptiles.org">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a>',
-  maxZoom: 18,
+L.tileLayer('https://klokantech-0.tilehosting.com/styles/streets/rendered/{z}/{x}/{y}.png?key=tXiQqN3lIgskyDErJCeY', {
+  maxZoom: 18
 }).addTo(leafletMap);
 
 maps['leaflet'] = {
@@ -33,19 +32,17 @@ maps['leaflet'] = {
 
 var layer = new ol.layer.VectorTile({
   source: new ol.source.VectorTile({
-    attributions: '© <a href="https://openmaptiles.org/">OpenMapTiles</a> ' +
-      '© <a href="http://www.openstreetmap.org/copyright">' +
-      'OpenStreetMap contributors</a>',
     format: new ol.format.MVT(),
     tileGrid: ol.tilegrid.createXYZ({tileSize: 512, maxZoom: 14}),
     tilePixelRatio: 8,
-    url: 'https://osm2vectortiles-0.tileserver.com/v3/{z}/{x}/{y}.pbf'
+    url: 'https://free-{0-3}.tilehosting.com/data/v3/{z}/{x}/{y}.pbf?key=tXiQqN3lIgskyDErJCeY'
   })
 });
 var viewOl3 = new ol.View({
-  center: [732602.1417165294, 5864590.06411005],
-  resolution: 2445,
-  maxResolution: 78271.51696402048 * 2
+  center: [0, 0],
+  zoom: 0,
+  minZoom: 0,
+  maxZoom: 15
 });
 var mapOl3 = new ol.Map({
   target: 'map-ol3',
