@@ -175,13 +175,58 @@ body.home{
   margin: 0 auto;
   cursor: pointer;
 }
+.downloads-search{
+  padding: 5px 20px;
+  margin-bottom: 5px !important;
+  border: 2px solid $color-primary;
+  font-size:20px;
+  width:100%;
+}
 .downloads-item{
   padding: 20px;
   margin-bottom: 5px !important;
-  border: 2px solid $color-primary;;
+  border: 2px solid $color-primary;
 }
+#downloads-loading{
+  text-align:center;
+}
+
+#conditions-dialog-veil {
+  content:'';
+  display:block;
+  position:absolute;
+  top:0;left:0;right:0;bottom:0;
+  background:#ccc;
+  opacity:0.6;
+}
+#conditions-dialog {
+  position:absolute;
+  width:650px;
+  margin-left:-325px;
+  top:30%;
+  left:50%;
+  border:1px solid $color-primary;
+  background:#fff;
+  padding:15px;
+
+  &, & p {
+    font-size:14px;
+  }
+}
+#conditions-dialog-download {
+
+  &.gray {
+    .btn {
+      background:gray !important;
+      color:#ddd !important;
+    }
+    pointer-events:none;
+  }
+}
+
 .tabs-btn{
   padding: 20px 10px 10px 10px;
+  cursor:pointer;
 }
 .tabs-btn.active{
   background: #F3F3F3 !important;
