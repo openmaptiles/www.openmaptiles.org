@@ -186,6 +186,13 @@ body.home{
   padding: 20px;
   margin-bottom: 5px !important;
   border: 2px solid $color-primary;
+  &:hover {
+    background-color: $color-primary;
+    cursor: pointer;
+    a {
+      color: white;
+    }
+  }
 }
 #downloads-loading{
   text-align:center;
