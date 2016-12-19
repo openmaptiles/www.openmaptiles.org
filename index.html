@@ -1,6 +1,5 @@
 ---
 layout: default
-title: Search
 ---
 
 <link rel="stylesheet" type="text/css" href="https://api.mapbox.com/mapbox-gl-js/v0.28.0/mapbox-gl.css" />
@@ -22,10 +21,10 @@ title: Search
 <div class="map" id="map-ol3"></div>
 <div class="map" id="map-tangram"></div>
 
-<div class="map-switchers"><!--
+<div class="map-switchers"><h4>Try different viewers</h4><!--
   --><div class="map-switch" id="map-switch-mbgljs" onclick="javascript:switchMap('mbgljs')">
     <img src="img/home-mbgljs.png" />
-    <span>MB GL JS</span>
+    <span>MapBox&nbsp;GL</span>
   </div><!--
   --><div class="map-switch" id="map-switch-leaflet" onclick="javascript:switchMap('leaflet')">
     <img src="img/home-leaflet.png" />
@@ -33,7 +32,7 @@ title: Search
   </div><!--
   --><div class="map-switch" id="map-switch-ol3" onclick="javascript:switchMap('ol3')">
     <img src="img/home-ol3.png" />
-    <span>OpenLayers 3</span>
+    <span>OpenLayers</span>
   </div><!--
   --><div class="map-switch" id="map-switch-tangram" onclick="javascript:switchMap('tangram')">
     <img src="img/home-tangram.png" />
@@ -42,6 +41,10 @@ title: Search
 --></div>
 
 <div class="attribution">© <a href="https://openmaptiles.org">OpenMapTiles</a> © <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors</div>
+
+<div id="phone">
+  <h4>Mobile App</h4>
+</div>
 
 <script src="js/home.js"></script>
 

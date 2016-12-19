@@ -7,10 +7,10 @@ var mbgljsMap = new mapboxgl.Map({
   zoom: 2
 });
 maps['mbgljs'] = {
-  getPos: function() {
+  getPos: function () {
     return [mbgljsMap.getCenter().lng, mbgljsMap.getCenter().lat, mbgljsMap.getZoom() + 1];
   },
-  setPos: function(pos) {
+  setPos: function (pos) {
     mbgljsMap.setCenter([pos[0], pos[1]]);
     mbgljsMap.setZoom(pos[2] - 1);
   }
@@ -22,10 +22,10 @@ L.tileLayer('https://klokantech-0.tilehosting.com/styles/streets/rendered/{z}/{x
 }).addTo(leafletMap);
 
 maps['leaflet'] = {
-  getPos: function() {
+  getPos: function () {
     return [leafletMap.getCenter().lng, leafletMap.getCenter().lat, leafletMap.getZoom()];
   },
-  setPos: function(pos) {
+  setPos: function (pos) {
     leafletMap.setView([pos[1], pos[0]], pos[2], {animate: false});
   }
 };
@@ -50,19 +50,19 @@ var mapOl3 = new ol.Map({
   view: viewOl3
 });
 
-fetch('https://openmaptiles.github.io/klokantech-basic-gl-style/style-cdn.json').then(function(response) {
-  response.json().then(function(glStyle) {
-    olms.applyStyle(layer, glStyle, 'openmaptiles').then(function() {
+fetch('https://openmaptiles.github.io/klokantech-basic-gl-style/style-cdn.json').then(function (response) {
+  response.json().then(function (glStyle) {
+    olms.applyStyle(layer, glStyle, 'openmaptiles').then(function () {
       mapOl3.addLayer(layer);
     });
   });
 });
 maps['ol3'] = {
-  getPos: function() {
+  getPos: function () {
     var center = ol.proj.toLonLat(viewOl3.getCenter());
     return [center[0], center[1], Math.log((Math.PI * 6378137 * 2 / 256) / viewOl3.getResolution()) / Math.LN2];
   },
-  setPos: function(pos) {
+  setPos: function (pos) {
     var center = ol.proj.fromLonLat(pos);
     viewOl3.setCenter(center);
     viewOl3.setResolution((Math.PI * 6378137 * 2 / 256) / Math.pow(2, pos[2]));
@@ -77,10 +77,10 @@ var mapTangram = L.Mapzen.map('map-tangram', {
 mapTangram.setView([0, 0], 0);
 
 maps['tangram'] = {
-  getPos: function() {
+  getPos: function () {
     return [mapTangram.getCenter().lng, mapTangram.getCenter().lat, mapTangram.getZoom()];
   },
-  setPos: function(pos) {
+  setPos: function (pos) {
     mapTangram.setView([pos[1], pos[0]], pos[2], {animate: false});
   }
 };
@@ -99,3 +99,11 @@ function switchMap(id) {
   maps[activeId].setPos(oldPos);
   document.querySelector('#navbar-top').className = id;
 }
+
+document.getElementById('phone').addEventListener('click', function () {
+  if (this.className == 'open') {
+    this.className = '';
+  } else {
+    this.className = 'open';
+  }
+});

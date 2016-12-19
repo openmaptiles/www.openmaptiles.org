@@ -40,14 +40,13 @@ body.home{
     border: 0;
 
     a{
-      text-shadow: 0 0 1px rgba(255, 255, 255, 0.9);
     }
 
     &, &.mbgljs{
       a{
-        color: #B75076;
+        color: #fff;
         &:hover{
-          color: lighten(#B75076, 20%);
+          color: darken(#fff, 20%);
         }
       }
     }
@@ -112,6 +111,11 @@ body.home{
   bottom: 0;
   z-index: 10;
   left: calc((100% - 1200px)/2);
+  
+  h4{
+    color: #fff;
+  }
+  
 }
 @media screen and (max-width: 1200px) {
   .map-switchers {left:0;bottom:20px;}
@@ -120,7 +124,6 @@ body.home{
   position: relative;
   cursor: pointer;
   display: inline-block;
-  border: 1px solid $color-primary;
   width: 100px;
   height: 100px;
   color: $color-primary;
@@ -139,7 +142,8 @@ body.home{
     left: 0;
     right: 0;
     text-align: center;
-    text-shadow: -1px 0 #ccc,0 1px #ccc,1px 0 #ccc,0 -1px #ccc;
+    color: #fff;
+    font-size: 14px;
   }
 }
 
@@ -150,6 +154,35 @@ body.home{
   right: 0;
   text-align: center;
   z-index: 10000;
+  font-size: 10px;
+  color: #ababab;
+  a{
+    color: #ababab;
+  }
+}
+
+#phone{
+  position: absolute;
+  right: calc((100% - 1200px)/2);
+  bottom: -300px;
+  width: 200px;
+  height: 420px;
+  background: url('/img/phone.png');
+  background-size: 200px 400px;
+  z-index: 1000;
+  cursor: pointer;
+  transition: bottom 0.5s linear;
+  
+  h4{
+    color: #fff;
+    font-family: 'MuseoSans';
+    text-align: center;
+    padding: 70px 0 0 0;
+  }
+  
+  &.open{
+    bottom: -100px;
+  }
 }
 
 .banner-page{
