@@ -1,26 +1,56 @@
 ---
 layout: page
-title: Schema
+title: Open Tile Schema
 ---
 
+<style>
+  h2.main:before{
+    display: inline-block;
+    content: '';
+    width: 10px;
+    height: 10px;
+    margin: 6px 10px 6px 0;
+    background: #898989;
+  }
+  h2:not(.main){
+    font-size: 24px;
+  }
+  h3{
+    text-transform: capitalize;
+    font-size: 18px;
+  }  
+</style>
 <div class="container">
   <div class="row">
     <div class="col2 padx-0">
-
-      {% for page in site.pages %}
-      {% if page.category == 'layer' %}
-      <h4><a href="#{{ page.title }}">{{ page.title }}</a></h4>
-      </article>
-      {% endif %}
-      {% endfor %}
-
+      <div style="top: 296px; position: fixed;">
+        <h3>Layes</h3>
+        <ul>
+          {% for page in site.pages %}
+          {% if page.category == 'layer' %}
+          <li><a href="#{{ page.title }}">{{ page.title }}</a></li>
+          </article>
+          {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
     </div>
     <div class="col10">
-
+      <p>What is tile schema? How it is used. Designers editors</p>
+      <p>Open, well documented - free to hack, free to fork, free to implement 
+        in another software. Go and use it! no restrictions on commercial re-use 
+        (license BSD+CC-BY - please mention link to OpenMapTiles.org in documentation)</p>
+      <p>Developed by Klokan Technologies GmbH and Lukas Martinelli originally 
+        to implement the cartography of the Carto (CartoDB) Basemaps Positron.</p>
+      <p>The tile schema refined and improved in cooperation with Wikipedia 
+        foundation who hired Paul Norman to give us feedback, and many other 
+        contributors, Imresamu (quickstart), StiringHalo (3D buildings).</p>
+      
+      <h1 class="padb-0 padt-2 mary-0">Definition of layers:</h1>
       {% for page in site.pages %}
       {% if page.category == 'layer' %}
       <article class="page--article">
-        <h2 id="{{ page.title }}" class="primary">{{ page.title }}</h2>
+        <h2 id="{{ page.title }}" class="main">{{ page.title }}</h2>
         {{ page.content | markdownify }}
       </article>
       {% endif %}
