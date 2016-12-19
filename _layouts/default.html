@@ -28,7 +28,7 @@
     <script>
       function unlock() {
         if (location.search != '?unlock') {
-          document.body.innerHTML = '<h1>OpenMapTiles</h1><h2>Under construction</h2>';
+          document.body.innerHTML = '<div class="center padt-6"><h1>OpenMapTiles</h1><h4>Under construction</h4></div>';
         } else {
           document.body.querySelectorAll('a').forEach(function(a) {
             a.href += '?unlock';
