@@ -221,8 +221,11 @@ body.home{
   }
 }
 #conditions-dialog-download {
-
   &.gray {
+    &, & * {
+      background:#eee;
+      opacity:0.6;
+    }
     .btn {
       background:gray !important;
       color:#ddd !important;
