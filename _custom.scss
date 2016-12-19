@@ -111,11 +111,11 @@ body.home{
   bottom: 0;
   z-index: 10;
   left: calc((100% - 1200px)/2);
-  
+
   h4{
     color: #fff;
   }
-  
+
 }
 @media screen and (max-width: 1200px) {
   .map-switchers {left:0;bottom:20px;}
@@ -171,17 +171,24 @@ body.home{
   background-size: 200px 400px;
   z-index: 1000;
   cursor: pointer;
-  transition: bottom 0.5s linear;
-  
-  h4{
-    color: #fff;
-    font-family: 'MuseoSans';
-    text-align: center;
-    padding: 70px 0 0 0;
-  }
-  
+  transition: bottom 0.3s linear;
+
   &.open{
-    bottom: -100px;
+    bottom: -130px;
+  }
+
+  h3, h5{
+    color: #fff;
+    text-align: center;
+  }
+  h3{
+    padding: 60px 0 10px 0;
+    font-family: 'MuseoSans';
+  }
+  img{
+    width: 120px;
+    margin: 20px auto 0 auto;
+    display: block;
   }
 }
 
