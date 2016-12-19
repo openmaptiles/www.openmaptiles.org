@@ -1,6 +1,5 @@
 /* For custom styles in project */
 
-
 h1{
   color: #616161;
   font-family: 'MuseoSans', 'OpenSans', sans-serif;
@@ -241,7 +240,7 @@ body.home{
 #conditions-dialog-veil {
   content:'';
   display:block;
-  position:absolute;
+  position: fixed;
   top:0;left:0;right:0;bottom:0;
   background:#ccc;
   opacity:0.6;
@@ -252,9 +251,8 @@ body.home{
   margin-left:-325px;
   top:30%;
   left:50%;
-  border:1px solid $color-primary;
   background:#fff;
-  padding:15px;
+  padding: 30px;
 
   &, & p {
     font-size:14px;
