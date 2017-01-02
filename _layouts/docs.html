@@ -17,11 +17,20 @@ layout: default
 
   <div class="row">
     <div class="col12 padb-0">
-      <p><a href="/docs/">Doc</a> > <a href="/docs/{{ site.category }}">{{ site.data.categories[page.category] }}</a></p>
+      {% for cat in site.data.categories %}
+        {% if cat.id == page.category %}
+          <p><a href="/docs/">Doc</a> > <a href="/docs/{{ cat.id }}">{{ cat.title }}</a></p>
+        {% endif %}
+      {% endfor %}
     </div>
   </div>
 
   <div class="row">
+    <div class="col9 padb-4">
+      <article>
+        {{ content }}
+      </article>
+    </div>
     <div class="col3 padb-4">
 
       {% for pg in site.pages %}
@@ -30,13 +39,6 @@ layout: default
       {% endif %}
       {% endfor %}
 
-    </div>
-    <div class="col9 padb-4">
-      <article>
-
-        {{ content }}
-
-      </article>
     </div>
   </div>
 </div>

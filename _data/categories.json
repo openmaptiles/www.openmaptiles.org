@@ -1,8 +1,33 @@
-{
-  "generate": "Generate vector tiles",
-  "host": "Hosting map tiles",
-  "mobile": "Create a mobile app",
-  "style": "Style your map",
-  "website": "Display in website"
-}
+[
+  {
+    "id": "style",
+    "title": "Style your map",
+    "desc": "Learn about styling the vector tiles with the GL style specification and how to reuse existing styles for OpenMapTiles."
+  },
+  {
+    "id": "website",
+    "title": "Maps in a website",
+    "desc": "Display vector tiles in a web client using either MapboxGL, Leaflet, Tangram or OpenLayers3."
+  },
+  {
+    "id": "mobile",
+    "title": "Maps in a mobile app",
+    "desc": "Use the vector tiles in Android and iOS and even offline."
+  },
+  {
+    "id": "host",
+    "title": "Hosting map tiles",
+    "desc": "Tutorials how to set up different tileservers and hosting the vector tiles yourself."
+  },
+  {
+    "id": "generate",
+    "title": "Generate vector tiles",
+    "desc": "Use the open process and tools to create the vector tiles yourself."
+  },
+  {
+    "id": "raster",
+    "title": "Generate raster tiles",
+    "desc": "Create raster tiles from your images."
+  }
+]
 
