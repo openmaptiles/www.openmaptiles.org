@@ -2,7 +2,7 @@
 layout: docs
 category: style
 title: Design a Style with Maputnik
-description: Create a Style with Mapbox Studio
+description: Edit Style with Mapbox Studio
 keywords: create, style
 ---
 
