@@ -18,19 +18,19 @@ $body-bg:  #fff !default;
 $text-color: $color-gray !default;
 
 /* Links color */
-$link-color: $color-primary;
-$link-hover-color: lighten($color-primary, 8%);
+$link-color: $color-secondary;
+$link-hover-color: lighten($color-secondary, 8%);
 
 /* Fonts */
 $font-primary: 'OpenSans', sans-serif, Arial;
-$font-secondary: "MuseoSans", "OpenSans", sans-serif;
+$font-secondary: 'MuseoSans', 'OpenSans', sans-serif;
 $font-monospace: Menlo, Monaco, 'Courier New', monospace;
 $font-icon: Menlo, Monaco, 'Courier New', monospace;
 $font-size: 16px;
 
 /* Line height*/
 $line-height: 1.8 !default; 
-$line-height-computed: floor(($font-size * $line-height)) !default; // ~20px
+$line-height-computed: floor(($font-size * $line-height)) !default;
 
 
 /* Headings */
