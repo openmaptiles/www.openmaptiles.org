@@ -1,8 +1,9 @@
 ---
 layout: docs
-category: website
+category: style
 title: Mapbox GL
-description: Using OpenMapTiles with Mapbox GL
+title: Mapbox GL Style Specification
+description: Mapbox GL Style Specification
 keywords: Openlayers3
 ---
 
@@ -71,4 +72,3 @@ In order to use the prepared fonts hosted via GitHub pages change the glyphs end
 ```json
 "glyphs": "http://fonts.openmaptiles.org/{fontstack}/{range}.pbf",
 ```
-
