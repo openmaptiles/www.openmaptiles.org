@@ -10,33 +10,28 @@ layout: default
 
 <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans" />
 <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=fetch,Promise"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ol3/3.19.1/ol.js"></script>
-<script src="js/olms.js"></script>
 
-<link rel="stylesheet" href="https://mapzen.com/js/mapzen.css">
-<script src="https://mapzen.com/js/mapzen.min.js"></script>
+<div class="map active" id="map-fiord"></div>
+<div class="map" id="map-bright"></div>
+<div class="map" id="map-positron"></div>
+<div class="map" id="map-dark-matter"></div>
 
-<div class="map active" id="map-mbgljs"></div>
-<div class="map" id="map-leaflet"></div>
-<div class="map" id="map-ol3"></div>
-<div class="map" id="map-tangram"></div>
-
-<div class="map-switchers"><h4>Try different viewers</h4><!--
-  --><div class="map-switch" id="map-switch-mbgljs" onclick="javascript:switchMap('mbgljs')">
+<div class="map-switchers"><h4>Try different styles</h4><!--
+  --><div class="map-switch" id="map-switch-mbgljs" onclick="javascript:switchMap('fiord')">
     <img src="img/home-mbgljs.png" />
-    <span>MapBox&nbsp;GL</span>
+    <span>Fiord</span>
   </div><!--
-  --><div class="map-switch" id="map-switch-leaflet" onclick="javascript:switchMap('leaflet')">
-    <img src="img/home-leaflet.png" />
-    <span>Leaflet</span>
-  </div><!--
-  --><div class="map-switch" id="map-switch-ol3" onclick="javascript:switchMap('ol3')">
-    <img src="img/home-ol3.png" />
-    <span>OpenLayers</span>
-  </div><!--
-  --><div class="map-switch" id="map-switch-tangram" onclick="javascript:switchMap('tangram')">
+  --><div class="map-switch" id="map-switch-dark-matter" onclick="javascript:switchMap('dark-matter')">
     <img src="img/home-tangram.png" />
-    <span>Tangram</span>
+    <span>Dark Matter</span>
+  </div><!--
+  --><div class="map-switch" id="map-switch-positron" onclick="javascript:switchMap('positron')">
+    <img src="img/home-ol3.png" />
+    <span>Positron</span>
+  </div><!--
+  --><div class="map-switch" id="map-switch-bright" onclick="javascript:switchMap('bright')">
+    <img src="img/home-leaflet.png" />
+    <span>OSM Bright</span>
   </div><!--
   --></div>
 

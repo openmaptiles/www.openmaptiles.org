@@ -117,7 +117,10 @@ body.home{
 
 }
 @media screen and (max-width: 1200px) {
-  .map-switchers {left:0;bottom:20px;}
+  .map-switchers {
+    left: 20px;
+    bottom: 20px;
+  }
 }
 .map-switch {
   position: relative;
