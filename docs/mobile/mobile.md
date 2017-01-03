@@ -1,9 +1,8 @@
 ---
 layout: docs
 category: mobile
-title: Mobile
+title: Use OpenMapTiles in a mobile app
 description: Mobile
-keywords: Mobile
+redirect_to:
+- /mobile
 ---
-
-Text...

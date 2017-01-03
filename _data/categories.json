@@ -15,14 +15,14 @@
     "desc": "Tutorials how to set up different tileservers and hosting the vector tiles yourself."
   },
   {
-    "id": "mobile",
-    "title": "Maps in a mobile app",
-    "desc": "Use the vector tiles in Android and iOS and even offline."
-  },
-  {
     "id": "generate",
     "title": "Generate vector tiles",
     "desc": "Use the open process and tools to create the vector tiles yourself."
+  },
+  {
+    "id": "mobile",
+    "title": "Maps in a mobile app",
+    "desc": "Use the vector tiles in Android and iOS and even offline."
   }
 ]
 
