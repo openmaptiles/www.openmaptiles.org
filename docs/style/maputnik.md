@@ -14,25 +14,34 @@ at [http://maputnik.com/editor](http://maputnik.com/editor)
 ## Choose a Style
 
 The easiest way to get started is choosing an existing style as a starting point.
-Under [Styles](http://openmaptiles.org/styles) you can find a list of styles targeted using OpenMapTiles.
+On [http://maputnik.com/editor](http://maputnik.com/editor) you can choose from many existing
+styles that work well with OpenMapTiles and directly edit them.
+
+Once you are done editing the style you can download the modified style JSON.
+
+![Choose style in Maputnik](/media/maputnik_choose_style.png)
+
+## Edit the Style locally
+
+If you want to edit the style locally with the [Maputnik CLI](https://github.com/maputnik/editor/releases) you can clone the GitHub repository of one of the OpenMapTiles styles.  Under [Styles](http://openmaptiles.org/styles) you can find a list of styles.
 
 In this example we will use the [Positron style](https://github.com/openmaptiles/positron-gl-style).
-
 Clone the repository containing the style JSON file.
 
 ```bash
 git clone https://github.com/openmaptiles/positron-gl-style.git
 ```
 
-## Edit the Style
+Now start Maputnik and tell it to watch the `style.json` file for changes. Any time you change
+something in Maputnik it will save back the changes to the `style.json` file.
+You can even edit the `style.json` file in your favorite text editor and it will reload Maputnik.
 
-You can either upload the `style.json` file to [http://maputnik.com/editor](http://maputnik.com/editor) or work locally with the [maputnik CLI](https://github.com/maputnik/editor/releases).
+After Maputnik has started visit `http://localhost:8000` to access the editor.
 
 ```
 maputnik --watch --file style.json
 ```
 
-This will expose Maputnik on `http://localhost:8000`.
 Check out the video tutorial how to use Maputnik to edit a local style.
 
 <iframe width="100%" height="400" src="https://www.youtube.com/embed/vCFsrwocE9s" frameborder="0" allowfullscreen></iframe>
