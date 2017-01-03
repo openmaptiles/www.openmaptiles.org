@@ -25,8 +25,8 @@ keywords: Documentation
         <ul>
           <li class="tabs-btn active" id="btn-1">Node.js</li>
           <li class="tabs-btn" id="btn-2">Docker</li>
-          <li class="tabs-btn" id="btn-3">PHP</li>
-          <li class="tabs-btn" id="btn-4">CDN</li>
+          <li class="tabs-btn" id="btn-3">CDN</li>
+          <li class="tabs-btn" id="btn-4">PHP</li>
         </ul>
         <div class="tabs-content">
           <div class="tabs-tab active" id="tab-1">
@@ -44,12 +44,12 @@ keywords: Documentation
             <pre class="highlight"><code>docker run -it -v $(pwd):/data -p 8080:80 klokantech/tileserver-gl</code></pre>
           </div>
           <div class="tabs-tab" id="tab-3">
-            Tileserver-PHP can be installed on any PHP hosting and supports
-            serving vector tiles directly from a MBTiles file.
-          </div>
-          <div class="tabs-tab" id="tab-4">
             <p>Because the vector tiles are prerendered you can also copy the tiles to S3, a CDN or
               a simple static file hosting once you unpack them from the SQLite database.</p>
+          </div>
+          <div class="tabs-tab" id="tab-4">
+            Tileserver-PHP can be installed on any PHP hosting and supports
+            serving vector tiles directly from a MBTiles file.
           </div>
         </div>
       </div>

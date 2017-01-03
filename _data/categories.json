@@ -10,14 +10,14 @@
     "desc": "Display vector tiles in a web client using either MapboxGL, Leaflet, Tangram or OpenLayers3."
   },
   {
-    "id": "mobile",
-    "title": "Maps in a mobile app",
-    "desc": "Use the vector tiles in Android and iOS and even offline."
-  },
-  {
     "id": "host",
     "title": "Hosting map tiles",
     "desc": "Tutorials how to set up different tileservers and hosting the vector tiles yourself."
+  },
+  {
+    "id": "mobile",
+    "title": "Maps in a mobile app",
+    "desc": "Use the vector tiles in Android and iOS and even offline."
   },
   {
     "id": "generate",
