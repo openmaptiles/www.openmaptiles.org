@@ -23,11 +23,6 @@
     "id": "generate",
     "title": "Generate vector tiles",
     "desc": "Use the open process and tools to create the vector tiles yourself."
-  },
-  {
-    "id": "raster",
-    "title": "Generate raster tiles",
-    "desc": "Create raster tiles from your images."
   }
 ]
 
