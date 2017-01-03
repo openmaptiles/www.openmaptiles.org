@@ -23,23 +23,25 @@ keywords: Documentation
       </p>
       <div class="tabs" style="min-height: 320px;">
         <ul>
-          <li class="tabs-btn active" id="btn-1">Docker</li>
-          <li class="tabs-btn" id="btn-2">Node.js</li>
+          <li class="tabs-btn active" id="btn-1">Node.js</li>
+          <li class="tabs-btn" id="btn-2">Docker</li>
           <li class="tabs-btn" id="btn-3">PHP</li>
-          <li class="tabs-btn" id="btn-4">Serverless</li>
+          <li class="tabs-btn" id="btn-4">CDN</li>
         </ul>
         <div class="tabs-content">
           <div class="tabs-tab active" id="tab-1">
-            If you don't have Node.js installed locally we recommend to use the offical Docker image.
-            <pre class="highlight"><code>docker run -it -v $(pwd):/data -p 8080:80 klokantech/tileserver-gl</code></pre>
-          </div>
-          <div class="tabs-tab" id="tab-2">
             <p>Using <a href="https://github.com/klokantech/tileserver-gl">tileserver-gl</a> you can immediately serve vector tiles and even have the capabilities to fall back to serve raster tiles for interoperability with other clients.<br/>
               You can install <b>tileserver-gl</b> using npm.
             </p>
             <pre class="highlight"><code>npm install -g tileserver-gl</code></pre>
             <p>Now run <b>tileserver-gl</b> together with the previously downloaded vector tiles</p>
             <pre class="highlight"><code>tileserver-gl zurich_switzerland.mbtiles</code></pre>
+          </div>
+          <div class="tabs-tab" id="tab-2">
+            If you don't have Node.js installed locally we recommend to use the offical Docker image of <b>tileserver-gl</b>.
+            Mount the Docker container to the same directory
+            where the previously downloaded vector tiles are and expose it to a local port.
+            <pre class="highlight"><code>docker run -it -v $(pwd):/data -p 8080:80 klokantech/tileserver-gl</code></pre>
           </div>
           <div class="tabs-tab" id="tab-3">
             Tileserver-PHP can be installed on any PHP hosting and supports
@@ -74,9 +76,15 @@ keywords: Documentation
 
     {% for category in site.data.categories %}
     <div class="row doc-section">
-      <h3 class="padb-1"><a href="/docs/{{ category.id }}/">{{ category.title }}</a></h3>
-      <p>{{ category.desc }}</p>
-    </div> 
+      <h4 class="padb-1">{{ category.title }}</h4>
+      <ul>
+      {% for pg in site.pages %}
+      {% if pg.category == category.id and pg.main != true %}
+      <li><a href="{{ pg.url }}">{{ pg.title }}</a></li>
+      {% endif %}
+      {% endfor %}
+      </ul>
+    </div>
     {% endfor %}
 
   </div>

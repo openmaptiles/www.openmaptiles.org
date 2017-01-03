@@ -33,12 +33,16 @@ layout: default
     </div>
     <div class="col3 padb-4">
 
+    {% for category in site.data.categories %}
+    <div class="row doc-section">
+      <h3 class="padb-1"><a href="/docs/{{ category.id }}/">{{ category.title }}</a></h3>
       {% for pg in site.pages %}
-      {% if pg.category == page.category and pg.main != true %}
+      {% if pg.category == category.id and pg.main != true %}
       <h4><a href="{{ pg.url }}">{{ pg.title }}</a></h4>
       {% endif %}
       {% endfor %}
-
+    </div>
+    {% endfor %}
     </div>
   </div>
 </div>
