@@ -9,14 +9,13 @@ keywords: Openlayers3
 
 ## Using OpenMapTiles with Mapbox GL
 
-Mapbox GL is a web mapping library based on WebGL.
 To display maps with Mapbox GL you need
 
 1. Style: A JSON style specification which describes how your map looks like
 2. Data: Vector Tiles as data source for your style
 
 OpenMapTiles provides both vector tiles you can download and ready-made styles
-to use together with them.
+to use together with them. Check out how to [display a map with Mapbox GL JS](/docs/website/mapbox-gl-js).
 
 ## Styles
 
@@ -54,7 +53,6 @@ you need to use the [spritezero-cli](https://github.com/mapbox/spritezero-cli).
 ```bash
 npm install -g spritezero-cli
 ```
-
 
 ### Fonts
 

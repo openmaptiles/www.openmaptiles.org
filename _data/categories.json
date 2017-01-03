@@ -1,27 +1,27 @@
 [
   {
     "id": "style",
-    "title": "Style your map",
+    "title": "Style your Map",
     "desc": "Learn about styling the vector tiles with the GL style specification and how to reuse existing styles for OpenMapTiles."
   },
   {
     "id": "website",
-    "title": "Maps in a website",
+    "title": "Display Map",
     "desc": "Display vector tiles in a web client using either MapboxGL, Leaflet, Tangram or OpenLayers3."
   },
   {
     "id": "host",
-    "title": "Hosting map tiles",
+    "title": "Hosting Map Tiles",
     "desc": "Tutorials how to set up different tileservers and hosting the vector tiles yourself."
   },
   {
     "id": "generate",
-    "title": "Generate vector tiles",
+    "title": "Generate Vector Tiles",
     "desc": "Use the open process and tools to create the vector tiles yourself."
   },
   {
     "id": "mobile",
-    "title": "Maps in a mobile app",
+    "title": "Maps in a Mobile App",
     "desc": "Use the vector tiles in Android and iOS and even offline."
   }
 ]

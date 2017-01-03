@@ -5,9 +5,14 @@ title: Mapbox GL JS
 description: Mapbox GL JS
 ---
 
+[Mapbox GL JS](https://www.mapbox.com/mapbox-gl-js/api/) is a web mapping library based on WebGL. Using Mapbox GL JS to consume the OpenMapTiles is the most common use case.
+
 <iframe src="/maps/mapboxgljs.html" frameborder="0" scrolling="0" width="100%" height="540px" style="margin-bottom:25px;"></iframe>
 
-Create a HTML page and include the Tangram viewer and reference your scene file.
+### Reference the Style
+
+Create a HTML page and include the Mapbox GL JS viewer. You need to point the `style` to a HTTP endpoint of
+your [Mapbox GL style specification JSON](/docs/style/mapbox-gl-style-spec).
 
 ```html
 <!DOCTYPE html>
@@ -36,3 +41,22 @@ Create a HTML page and include the Tangram viewer and reference your scene file.
 </body>
 </html>
 ```
+
+### Use the OpenMapTiles styles
+
+The [OpenMapTiles styles](/styles/) can all be referenced directly in a viewer.
+
+- **OSM Bright**:
+  `https://openmaptiles.github.io/osm-bright-gl-style/style-cdn.json`
+- **Positron**:
+  `https://openmaptiles.github.io/positron-gl-style/style-cdn.json`
+- **Dark Matter**:
+  `https://openmaptiles.github.io/dark-matter-gl-style/style-cdn.json`
+- **Klokantech Basic**:
+  `https://openmaptiles.github.io/klokantech-basic-gl-style/style-cdn.json`
+
+### Fonts and Sprites
+
+Mapbox GL JS requires fonts being packaged as PBFs and symbols packaged as sprites.
+Check the [Mapbox GL style specification documentation](/docs/style/mapbox-gl-style-spec) for OpenMapTiles
+to create your own fonts and sprites.
