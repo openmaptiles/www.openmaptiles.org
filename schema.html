@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Open Tile Schema
+title: OpenMapTiles Vector Tile Schema
 ---
 
 <style>
@@ -36,16 +36,12 @@ title: Open Tile Schema
       </div>
     </div>
     <div class="col10">
-      <p>What is tile schema? How it is used. Designers editors</p>
-      <p>Open, well documented - free to hack, free to fork, free to implement 
-        in another software. Go and use it! no restrictions on commercial re-use 
-        (license BSD+CC-BY - please mention link to OpenMapTiles.org in documentation)</p>
-      <p>Developed by Klokan Technologies GmbH and Lukas Martinelli originally 
-        to implement the cartography of the Carto (CartoDB) Basemaps Positron.</p>
-      <p>The tile schema refined and improved in cooperation with Wikipedia 
-        foundation who hired Paul Norman to give us feedback, and many other 
-        contributors, Imresamu (quickstart), StiringHalo (3D buildings).</p>
-      
+      <p>The vector tile schema describes how the vector data is organized into different thematic layers and which attribute and values each layer contains. This is useful for writing a map style and allows for alternative implementations of a schema.
+      </p>
+      <p>The OpenMapTiles schema is open (CC-BY) and you are free to use, extend or <a href="https://github.com/openmaptiles/openmaptiles">build upon the existing implementation</a> (BSD license). Please reference OpenMapTiles if you build upon the schema.
+      </p>
+      <p>The vector tile schema has been developed by <a href="https://www.klokantech.com/">Klokan Technologies GmbH</a> and was initially modelled after the cartography of the <a href="https://carto.com/location-data-services/basemaps/">Carto Basemap Positron</a>. The vector tile schema has been refined and improved in cooperation with the <a href="https://www.mediawiki.org/wiki/Maps">Wikimedia Foundation</a> and is heavily influenced by the many years Paul Norman's experience of creating maps from OpenStreetMap.
+      </p>
       <h1 class="padb-0 padt-2 mary-0">Definition of layers:</h1>
       {% for page in site.pages %}
       {% if page.category == 'layer' %}
