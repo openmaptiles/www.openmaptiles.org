@@ -20,7 +20,7 @@ keywords: Documentation
       To serve the tiles to your mobile or web client you need to choose a tileserver
       for your platform and configure it to serve the previously downloaded vector tiles.
     </p>
-    <div class="tabs" style="min-height: 350px;">
+    <div class="tabs" style="min-height: 400px;">
       <ul>
         <li class="tabs-btn active" id="btn-1">Node.js</li>
         <li class="tabs-btn" id="btn-2">Docker</li>
@@ -34,22 +34,32 @@ keywords: Documentation
           <pre class="highlight"><code>npm install -g tileserver-gl</code></pre>
           <p>Now run <b>tileserver-gl</b> together with the previously downloaded vector tiles</p>
           <pre class="highlight"><code>tileserver-gl zurich_switzerland.mbtiles</code></pre>
+          <p>
+          Read the <a href="/docs/host/tileserver-gl">Tileserver GL</a> tutorial for more in-depth information.
+          </p>
         </div>
         <div class="tabs-tab" id="tab-2">
           If you don't have Node.js installed locally we recommend to use the offical Docker image of <b>tileserver-gl</b>.
           Mount the Docker container to the same directory
           where the previously downloaded vector tiles are and expose it to a local port.
           <pre class="highlight"><code>docker run -it -v $(pwd):/data -p 8080:80 klokantech/tileserver-gl</code></pre>
+          <p>
+          Read the <a href="/docs/host/tileserver-gl">Tileserver GL</a> tutorial for more in-depth information.
+          </p>
         </div>
         <div class="tabs-tab" id="tab-3">
-          <p>Because the vector tiles are prerendered you can also copy the tiles to S3, a CDN or
-            a simple static file hosting once you unpack them from the SQLite database.</p>
+          <p>
+          <b><a href="http://openmaptiles.com/hosting/">OpenMapTiles.com</a></b> provides a free CDN for non-commercial
+          and demonstration purposes. Once you sign in, you can create an access key and can use the
+          TileJSON endpoint of the CDN in the rendering clients.
+          </p>
+          <pre class="highlight"><code>https://free.tilehosting.com/data/v3.json?key={access_key}</code></pre>
+          <p>
+          If you need fast and reliable tile serving for your production applications <b><a href="http://openmaptiles.com/hosting/">OpenMapTiles.com</a></b> also provides a paid CDN service and other complimentary services.
+          </p>
         </div>
       </div>
     </div>
-    <p>
-      Read the <a href="/docs/hosting">hosting map tiles</a> section for more in-depth information.
-    </p>
 
     <h3>3. Choose a Style</h3>
     <p>
