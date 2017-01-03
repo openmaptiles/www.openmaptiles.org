@@ -275,6 +275,14 @@ body.home{
   }
 }
 
+ol {
+  list-style-type: decimal;
+}
+
+ol li {
+  padding-bottom: 5px;
+}
+
 .tabs-btn{
   padding: 20px 10px 10px 10px;
   cursor:pointer;
