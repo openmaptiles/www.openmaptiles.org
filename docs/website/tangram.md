@@ -10,9 +10,11 @@ keywords: tangram
 rendering client that supports the [Mapbox vector tiles specification](https://www.mapbox.com/vector-tiles/specification/)
 and therefore can be used together with OpenMapTiles.
 
-## Data Source
+<iframe src="/maps/tangram.html" frameborder="0" scrolling="0" width="100%" height="540px" style="margin-bottom:25px;"></iframe>
 
-Specify OpenMapTiles as data source of type `MVT` inside Tangram.
+### Data Source
+
+Specify OpenMapTiles as data source of type `MVT` inside your Tangram scene file.
 
 ```yaml
 sources:
@@ -23,7 +25,7 @@ sources:
 
 ```
 
-You can check out an example style we made for Tangram.
+Create a HTML page and include the Tangram viewer and reference your scene file.
 
 ```html
 <!DOCTYPE html>
@@ -47,7 +49,6 @@ You can check out an example style we made for Tangram.
       map.setView([45.2, -9.3], 2);
 
       L.Mapzen.locator().setPosition('bottomright').addTo(map);
-
       L.Mapzen.hash({
         map: map
       });
@@ -55,7 +56,3 @@ You can check out an example style we made for Tangram.
   </body>
 </html>
 ```
-
-### Example
-
-<iframe src="/maps/tangram.html" frameborder="0" scrolling="0" width="100%" height="540px" style="margin-bottom:25px;"></iframe>

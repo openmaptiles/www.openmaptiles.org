@@ -8,7 +8,7 @@ var layer = new ol.layer.VectorTile({
     format: new ol.format.MVT(),
     tileGrid: tilegrid,
     tilePixelRatio: 8,
-    url: 'https://osm2vectortiles-0.tileserver.com/v3/{z}/{x}/{y}.pbf'
+    url: 'https://free-0.tilehosting.com/data/v3/{z}/{x}/{y}.pbf?key=tXiQqN3lIgskyDErJCeY'
   })
 });
 

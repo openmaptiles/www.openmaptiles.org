@@ -1,15 +1,26 @@
 ---
 layout: docs
 category: website
-title: Openlayers3
-description: Openlayers3
+title: OpenLayers 3
+description: OpenLayers 3
 keywords: Openlayers3
 ---
 
-You can check out an example style we made for OpenLayers 3 using [ol-mapbox-style](https://github.com/boundlessgeo/ol-mapbox-style) extension.
+This is an example how to use for OpenLayers 3 using the [ol-mapbox-style](https://github.com/boundlessgeo/ol-mapbox-style) extension together with OpenMapTiles. Check out the code [here](https://github.com/openmaptiles/www.openmaptiles.org/tree/master/maps).
+
+<iframe src="/maps/ol3.html" frameborder="0" scrolling="0" width="100%" height="540px" style="margin-bottom:25px;"></iframe>
+
+### Convert Mapbox GL style to OpenLayers style functions
+
+The [ol-mapbox-style](https://github.com/boundlessgeo/ol-mapbox-style) converts the original Mapbox GL style specification into OpenLayers style functions. Thanks to this extension you are able to design
+maps for vector tiles using the existing tools and then switch
+to a different renderer.
 
 ### index.html
-Notice linked fonts used in the style and `omls.js` that is compiled ol-mapbox-style package.
+
+Create a HTML page and include OpenLayers 3 and the standalone build
+of [ol-mapbox-style](https://github.com/boundlessgeo/ol-mapbox-style) `omls.js`. Since OpenLayers 3 draws on the browser canvas you also need
+to include the fonts used in the style in the page.
 
 ```html
 <!DOCTYPE html>
@@ -40,8 +51,13 @@ Notice linked fonts used in the style and `omls.js` that is compiled ol-mapbox-s
 ```
 
 ### ol3.js
-Notice link to the tileset (`url` of `ol.source.VectorTile`) and link to style as a parameter of `fetch` function.
 
+Create a new MVT source (`url` of `ol.source.VectorTile`) which points
+to the CDN of OpenMapTiles or your own tileserver.
+
+We fetch our GL style specification (`fetch` function) and turn
+it into OpenLayers functions which we can apply to
+our vector tile layer.
 
 ```javascript
 var tilegrid = ol.tilegrid.createXYZ({tileSize: 512, maxZoom: 22});
@@ -54,7 +70,7 @@ var layer = new ol.layer.VectorTile({
     format: new ol.format.MVT(),
     tileGrid: tilegrid,
     tilePixelRatio: 8,
-    url: 'https://osm2vectortiles-0.tileserver.com/v3/{z}/{x}/{y}.pbf'
+    url: 'https://free-0.tilehosting.com/data/v3/{z}/{x}/{y}.pbf?key=tXiQqN3lIgskyDErJCeY'
   })
 });
 
@@ -77,8 +93,3 @@ fetch('https://openmaptiles.github.io/klokantech-basic-gl-style/style-cdn.json')
   });
 });
 ```
-
-
-### Example
-
-<iframe src="/maps/ol3.html" frameborder="0" scrolling="0" width="100%" height="540px" style="margin-bottom:25px;"></iframe>
