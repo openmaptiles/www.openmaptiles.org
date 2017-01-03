@@ -20,7 +20,7 @@ npm install -g tilelive mbtiles
 
 ## Choose your Bounding Box
 
-1 Visit [boundingbox.klokantech.com](http://boundingbox.klokantech.com/){:target="_blank"}
+1. Visit [boundingbox.klokantech.com](http://boundingbox.klokantech.com/){:target="_blank"}
 and drag a rectangle around your desired area.
 2. Copy the bounding box in CSV format
 
