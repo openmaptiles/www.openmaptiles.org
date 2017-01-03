@@ -26,16 +26,16 @@
     <link href="{{ site.baseurl }}base.css" rel="stylesheet" />
     <script type="text/javascript" src="{{ site.baseurl }}js/index.js"></script>
     <script>
-      function unlock() {
-        if (location.search != '?unlock') {
-          document.body.innerHTML = '<div class="center padt-6"><h1>OpenMapTiles</h1><h4>Under construction</h4></div>';
-        } else {
-          document.body.querySelectorAll('a').forEach(function(a) {
-            a.href += '?unlock';
-          });
-        }
-        document.body.style.visibility = '';
-      }
+function unlock() {
+  if (location.search != '?unlock') {
+    document.body.innerHTML = '<div class="center padt-6"><h1>OpenMapTiles</h1><h4>Under construction</h4></div>';
+  } else {
+    document.body.querySelectorAll('a').forEach(function (a) {
+      a.href += '?unlock';
+    });
+  }
+  document.body.style.visibility = '';
+}
     </script>
   </head>
   <body {% if page.url == "/" %}class="home"{% endif %} {% if site.url != 'http://localhost:4000' %}style="visibility:hidden;" onload="unlock()"{% endif %}>
@@ -55,12 +55,14 @@
           </div>
           <div class="nav-mobile">
             <div id="nav-mobile-btn">H</div>
-            <a href="{{ site.baseurl }}about/">About</a>
-            <a href="{{ site.baseurl }}docs/">Docs</a>
-            <a href="{{ site.baseurl }}downloads/">Downloads</a>
-            <a href="{{ site.baseurl }}styles/">Styles</a>
-            <a href="{{ site.baseurl }}schema/">Schema</a>
-            <a href="https://github.com/openmaptiles">Github</a>
+            <div id="nav-mobile-nav">
+              <a href="{{ site.baseurl }}about/">About</a>
+              <a href="{{ site.baseurl }}docs/">Docs</a>
+              <a href="{{ site.baseurl }}downloads/">Downloads</a>
+              <a href="{{ site.baseurl }}styles/">Styles</a>
+              <a href="{{ site.baseurl }}schema/">Schema</a>
+              <a href="https://github.com/openmaptiles">Github</a>
+            </div>
           </div>
         </div>
       </div>
@@ -69,10 +71,17 @@
     {{ content }}
 
     <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+      (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
       ga('create', '', 'auto');
       ga('send', 'pageview');

@@ -5,86 +5,81 @@ description: Documentation
 keywords: Documentation
 ---
 
-<div class="container">
-  <div class="col8 pady-4">
-    <div class="row">
-      <h2>Get started</h2>
+<div class="row">
+  <div class="col8 padx-0">
+    <h2>Get started</h2>
 
-      <h3>1. Download Vector Tiles</h3>
+    <h3>1. Download Vector Tiles</h3>
 
-      Head over to the <b><a href="/downloads">downloads page</a></b>
-      and download the vector tiles for your region or the planet.
-      If you don't want to host the tiles yourself, consider using the public CDN.
+    Head over to the <b><a href="/downloads">downloads page</a></b>
+    and download the vector tiles for your region or the planet.
+    If you don't want to host the tiles yourself, consider using the public CDN.
 
-      <h3>2. Run a Tileserver</h3>
-      <p>
-        To serve the tiles to your mobile or web client you need to choose a tileserver
-        for your platform and configure it to serve the previously downloaded vector tiles.
-      </p>
-      <div class="tabs" style="min-height: 320px;">
-        <ul>
-          <li class="tabs-btn active" id="btn-1">Node.js</li>
-          <li class="tabs-btn" id="btn-2">Docker</li>
-          <li class="tabs-btn" id="btn-3">PHP</li>
-          <li class="tabs-btn" id="btn-4">CDN</li>
-        </ul>
-        <div class="tabs-content">
-          <div class="tabs-tab active" id="tab-1">
-            <p>Using <a href="https://github.com/klokantech/tileserver-gl">tileserver-gl</a> you can immediately serve vector tiles and even have the capabilities to fall back to serve raster tiles for interoperability with other clients.<br/>
-              You can install <b>tileserver-gl</b> using npm.
-            </p>
-            <pre class="highlight"><code>npm install -g tileserver-gl</code></pre>
-            <p>Now run <b>tileserver-gl</b> together with the previously downloaded vector tiles</p>
-            <pre class="highlight"><code>tileserver-gl zurich_switzerland.mbtiles</code></pre>
-          </div>
-          <div class="tabs-tab" id="tab-2">
-            If you don't have Node.js installed locally we recommend to use the offical Docker image of <b>tileserver-gl</b>.
-            Mount the Docker container to the same directory
-            where the previously downloaded vector tiles are and expose it to a local port.
-            <pre class="highlight"><code>docker run -it -v $(pwd):/data -p 8080:80 klokantech/tileserver-gl</code></pre>
-          </div>
-          <div class="tabs-tab" id="tab-3">
-            Tileserver-PHP can be installed on any PHP hosting and supports
-            serving vector tiles directly from a MBTiles file.
-          </div>
-          <div class="tabs-tab" id="tab-4">
-            <p>Because the vector tiles are prerendered you can also copy the tiles to S3, a CDN or
-              a simple static file hosting once you unpack them from the SQLite database.</p>
-          </div>
+    <h3>2. Run a Tileserver</h3>
+    <p>
+      To serve the tiles to your mobile or web client you need to choose a tileserver
+      for your platform and configure it to serve the previously downloaded vector tiles.
+    </p>
+    <div class="tabs" style="min-height: 350px;">
+      <ul>
+        <li class="tabs-btn active" id="btn-1">Node.js</li>
+        <li class="tabs-btn" id="btn-2">Docker</li>
+        <li class="tabs-btn" id="btn-3">PHP</li>
+        <li class="tabs-btn" id="btn-4">CDN</li>
+      </ul>
+      <div class="tabs-content">
+        <div class="tabs-tab active" id="tab-1">
+          <p>Using <a href="https://github.com/klokantech/tileserver-gl">tileserver-gl</a> you can immediately serve vector tiles and even have the capabilities to fall back to serve raster tiles for interoperability with other clients.<br/>
+            You can install <b>tileserver-gl</b> using npm.
+          </p>
+          <pre class="highlight"><code>npm install -g tileserver-gl</code></pre>
+          <p>Now run <b>tileserver-gl</b> together with the previously downloaded vector tiles</p>
+          <pre class="highlight"><code>tileserver-gl zurich_switzerland.mbtiles</code></pre>
+        </div>
+        <div class="tabs-tab" id="tab-2">
+          If you don't have Node.js installed locally we recommend to use the offical Docker image of <b>tileserver-gl</b>.
+          Mount the Docker container to the same directory
+          where the previously downloaded vector tiles are and expose it to a local port.
+          <pre class="highlight"><code>docker run -it -v $(pwd):/data -p 8080:80 klokantech/tileserver-gl</code></pre>
+        </div>
+        <div class="tabs-tab" id="tab-3">
+          Tileserver-PHP can be installed on any PHP hosting and supports
+          serving vector tiles directly from a MBTiles file.
+        </div>
+        <div class="tabs-tab" id="tab-4">
+          <p>Because the vector tiles are prerendered you can also copy the tiles to S3, a CDN or
+            a simple static file hosting once you unpack them from the SQLite database.</p>
         </div>
       </div>
-      <p>
-        Read the <a href="/docs/hosting">hosting map tiles</a> section for more in-depth information.
-      </p>
-
-      <h3>3. Choose a Style</h3>
-      <p>
-        Once you have your own vector tile server running you can
-        <a href="/styles">choose one of the many styles</a> supporting
-        the OpenMapTiles schema.
-      </p>
-      <p>
-        After you downloaded the style, point the endpoint URL to your tileserver and embedd it in a mobile
-        app or web viewer.
-      </p>
-
-
     </div>
+    <p>
+      Read the <a href="/docs/hosting">hosting map tiles</a> section for more in-depth information.
+    </p>
+
+    <h3>3. Choose a Style</h3>
+    <p>
+      Once you have your own vector tile server running you can
+      <a href="/styles">choose one of the many styles</a> supporting
+      the OpenMapTiles schema.
+    </p>
+    <p>
+      After you downloaded the style, point the endpoint URL to your tileserver and embedd it in a mobile
+      app or web viewer.
+    </p>
   </div>
-  <div class="col4 pady-4">
+  <div class="col4">
     <h2 class="padb-1" >Tutorials</h2>
     {% for category in site.data.categories %}
     <div class="row doc-section">
       <h4>{{ category.title }}</h4>
       <ul>
-      {% for pg in site.pages %}
-      {% if pg.category == category.id and pg.main != true %}
-      <li><a href="{{ pg.url }}">{{ pg.title }}</a></li>
-      {% endif %}
-      {% endfor %}
+        {% for pg in site.pages %}
+        {% if pg.category == category.id and pg.main != true %}
+        <li><a href="{{ pg.url }}">{{ pg.title }}</a></li>
+        {% endif %}
+        {% endfor %}
       </ul>
     </div>
     {% endfor %}
-
   </div>
 </div>

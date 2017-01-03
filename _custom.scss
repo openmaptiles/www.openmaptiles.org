@@ -1,4 +1,9 @@
 /* For custom styles in project */
+body {
+  background: url(img/page-bg.jpg);
+  background-position: top center;
+  background-repeat: no-repeat;
+}
 
 h1{
   color: #616161;
@@ -9,8 +14,6 @@ h1{
   position: absolute;
 
   .title{
-    font-family: 'MuseoSans', 'OpenSans', sans-serif;
-
     .icon{
       font-size: 40px;
       vertical-align: top;
@@ -195,10 +198,30 @@ body.home{
 }
 
 .banner-page{
-  height: 190px;
-  background-color: $color-primary;
-  background-image: url('/img/header-bg.png');
-  background-position: top center;
+  height: 270px;
+  border-top: 4px solid #2571a2;
+  border-bottom: 1px solid #439595;
+
+  h1{
+    margin: 100px 0 0 0;
+    font-size: 45px;
+  }
+}
+
+@media (max-width: 841px){
+  .banner-page h1 {
+    font-size: 30px;
+    margin-top: 100px;
+  }
+}
+
+.banner-page-title{
+  font-size: 18px;
+  font-family: OpenSans, sans-serif, Arial;
+  font-weight: bold;
+  line-height: 28px;
+  margin: 0 15px;
+  color: #606c71;
 }
 
 .octocat{
