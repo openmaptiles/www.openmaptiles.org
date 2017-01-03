@@ -1,7 +1,7 @@
 ---
 layout: docs
 category: style
-title: Create a Style with Mapbox Studio
+title: Upload Style to Mapbox Studio
 description: Create a Style with Mapbox Studio
 keywords: create, style, Mapbox Studio 
 ---
