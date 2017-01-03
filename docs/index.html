@@ -72,11 +72,10 @@ keywords: Documentation
     </div>
   </div>
   <div class="col4 pady-4">
-    <h2>Sections</h2>
-
+    <h2 class="padb-1" >Tutorials</h2>
     {% for category in site.data.categories %}
     <div class="row doc-section">
-      <h4 class="padb-1">{{ category.title }}</h4>
+      <h4>{{ category.title }}</h4>
       <ul>
       {% for pg in site.pages %}
       {% if pg.category == category.id and pg.main != true %}

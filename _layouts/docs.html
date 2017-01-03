@@ -19,30 +19,32 @@ layout: default
     <div class="col12 padb-0">
       {% for cat in site.data.categories %}
         {% if cat.id == page.category %}
-          <p><a href="/docs/">Doc</a> > <a href="/docs/{{ cat.id }}">{{ cat.title }}</a></p>
+          <p><a href="/docs/">Docs</a> > <a href="/docs/{{ cat.id }}">{{ cat.title }}</a></p>
         {% endif %}
       {% endfor %}
     </div>
   </div>
 
   <div class="row">
-    <div class="col9 padb-4">
+    <div class="col8 padb-4">
       <article>
         {{ content }}
       </article>
     </div>
-    <div class="col3 padb-4">
-
+    <div class="col4 padb-4">
     {% for category in site.data.categories %}
     <div class="row doc-section">
-      <h3 class="padb-1"><a href="/docs/{{ category.id }}/">{{ category.title }}</a></h3>
+      <h4>{{ category.title }}</h4>
+      <ul>
       {% for pg in site.pages %}
       {% if pg.category == category.id and pg.main != true %}
-      <h4><a href="{{ pg.url }}">{{ pg.title }}</a></h4>
+      <li><a href="{{ pg.url }}">{{ pg.title }}</a></li>
       {% endif %}
       {% endfor %}
+      </ul>
     </div>
     {% endfor %}
+
     </div>
   </div>
 </div>
