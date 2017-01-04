@@ -5,12 +5,12 @@ title: Use the OpenMapTiles.com CDN
 description: Use the public CDN
 ---
 
-**[OpenMapTiles.com](http://openmaptiles.com/hosting/)** provides a free CDN for non-commercial
+**[OpenMapTiles.com](https://openmaptiles.com/hosting/)** provides a free CDN for non-commercial
 and demonstration purposes.
 
 ### Sign In
 
-Head over to [OpenMapTiles.com](/docs/host/tileserver-gl/) and sign in using your GitHub, Google or mail account.
+Head over to [OpenMapTiles.com](https://openmaptiles.com/hosting/) and sign in using your GitHub, Google or mail account.
 In the **hosting** section request a new key for your application.
 
 ![Request a access key](/media/openmaptiles_com_request_key.png)
