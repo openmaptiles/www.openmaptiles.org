@@ -1,10 +1,3 @@
-/* For custom styles in project */
-body {
-  background: url(img/page-bg.jpg);
-  background-position: top center;
-  background-repeat: no-repeat;
-}
-
 h1{
   color: #616161;
   font-family: 'MuseoSans', 'OpenSans', sans-serif;
@@ -201,7 +194,10 @@ body.home{
   height: 270px;
   border-top: 4px solid #2571a2;
   border-bottom: 1px solid #439595;
-
+  background: url(img/page-bg.jpg);
+  background-position: top center;
+  background-repeat: repeat-x;
+  
   h1{
     margin: 100px 0 0 0;
     font-size: 45px;
