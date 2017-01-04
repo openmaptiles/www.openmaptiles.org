@@ -8,7 +8,7 @@ function initMap(container, style) {
 }
 
 var maps = {
-  'fiord': initMap('map-fiord', 'https://openmaptiles.github.io/fiord-color-gl-style/style-cdn.json'),
+  'klokantech-basic': initMap('map-klokantech-basic', 'https://openmaptiles.github.io/klokantech-basic-gl-style/style-cdn.json'),
   'dark-matter': initMap('map-dark-matter', 'https://openmaptiles.github.io/dark-matter-gl-style/style-cdn.json'),
   'positron': initMap('map-positron', 'https://openmaptiles.github.io/positron-gl-style/style-cdn.json'),
   'bright': initMap('map-bright', 'https://openmaptiles.github.io/osm-bright-gl-style/style-cdn.json')
@@ -23,7 +23,7 @@ function setPos(map, pos) {
   map.setZoom(pos[2])
 }
 
-var activeId = 'fiord';
+var activeId = 'klokantech-basic';
 function switchMap(id) {
   var oldPos = getPos(maps[activeId]);
   var active = document.querySelector('.map.active');
