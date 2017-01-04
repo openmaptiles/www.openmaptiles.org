@@ -1,0 +1,180 @@
+{
+  "tiles": [
+    "https://free-0.tilehosting.com/data/v3/{z}/{x}/{y}.pbf?key=25ItXg7aI5wurYDtttD",
+    "https://free-1.tilehosting.com/data/v3/{z}/{x}/{y}.pbf?key=25ItXg7aI5wurYDtttD",
+    "https://free-2.tilehosting.com/data/v3/{z}/{x}/{y}.pbf?key=25ItXg7aI5wurYDtttD",
+    "https://free-3.tilehosting.com/data/v3/{z}/{x}/{y}.pbf?key=25ItXg7aI5wurYDtttD"
+  ],
+  "name": "OpenMapTiles",
+  "format": "pbf",
+  "basename": "v3",
+  "id": "openmaptiles",
+  "filesize": 43869806592,
+  "attribution": "<a href=\"http://openmaptiles.org/\" target=\"_blank\">&copy; OpenMapTiles</a> <a href=\"http://www.openstreetmap.org/about/\" target=\"_blank\">&copy; OpenStreetMap contributors</a>",
+  "center": [
+    -12.2168,
+    28.6135,
+    4
+  ],
+  "description": "http://openmaptiles.org",
+  "maxzoom": 14,
+  "minzoom": 0,
+  "mtime": "1481242156753",
+  "vector_layers": [
+    {
+      "description": "",
+      "fields": {
+        "class": "String"
+      },
+      "id": "water",
+      "maxzoom": 14,
+      "minzoom": 0
+    },
+    {
+      "description": "",
+      "fields": {
+        "class": "String",
+        "name": "String"
+      },
+      "id": "waterway",
+      "maxzoom": 14,
+      "minzoom": 0
+    },
+    {
+      "description": "",
+      "fields": {
+        "class": "String",
+        "subclass": "String"
+      },
+      "id": "landcover",
+      "maxzoom": 14,
+      "minzoom": 0
+    },
+    {
+      "description": "",
+      "fields": {
+        "class": "String"
+      },
+      "id": "landuse",
+      "maxzoom": 14,
+      "minzoom": 0
+    },
+    {
+      "description": "",
+      "fields": {
+        "class": "String"
+      },
+      "id": "park",
+      "maxzoom": 14,
+      "minzoom": 0
+    },
+    {
+      "description": "",
+      "fields": {
+        "admin_level": "Number"
+      },
+      "id": "boundary",
+      "maxzoom": 14,
+      "minzoom": 0
+    },
+    {
+      "description": "",
+      "fields": {
+        "class": "String"
+      },
+      "id": "aeroway",
+      "maxzoom": 14,
+      "minzoom": 0
+    },
+    {
+      "description": "",
+      "fields": {
+        "brunnel": "String",
+        "class": "String",
+        "oneway": "Number",
+        "ramp": "Number",
+        "service": "String"
+      },
+      "id": "transportation",
+      "maxzoom": 14,
+      "minzoom": 0
+    },
+    {
+      "description": "",
+      "fields": {
+        "render_height": "Number",
+        "render_min_height": "Number"
+      },
+      "id": "building",
+      "maxzoom": 14,
+      "minzoom": 0
+    },
+    {
+      "description": "",
+      "fields": {
+        "class": "String",
+        "name": "String",
+        "name_en": "String"
+      },
+      "id": "water_name",
+      "maxzoom": 14,
+      "minzoom": 0
+    },
+    {
+      "description": "",
+      "fields": {
+        "class": "String",
+        "name": "String",
+        "ref": "String",
+        "ref_length": "Number"
+      },
+      "id": "transportation_name",
+      "maxzoom": 14,
+      "minzoom": 0
+    },
+    {
+      "description": "",
+      "fields": {
+        "capital": "Number",
+        "class": "String",
+        "name": "String",
+        "name_en": "String",
+        "rank": "Number"
+      },
+      "id": "place",
+      "maxzoom": 14,
+      "minzoom": 0
+    },
+    {
+      "description": "",
+      "fields": {
+        "housenumber": "String"
+      },
+      "id": "housenumber",
+      "maxzoom": 14,
+      "minzoom": 0
+    },
+    {
+      "description": "",
+      "fields": {
+        "class": "String",
+        "name": "String",
+        "name_en": "String",
+        "rank": "Number",
+        "subclass": "String"
+      },
+      "id": "poi",
+      "maxzoom": 14,
+      "minzoom": 0
+    }
+  ],
+  "bounds": [
+    -180,
+    -85.0511,
+    180,
+    85.0511
+  ],
+  "maskLevel": "8",
+  "version": "3.3",
+  "tilejson": "2.0.0"
+}
