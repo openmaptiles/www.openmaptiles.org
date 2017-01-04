@@ -3,23 +3,17 @@ layout: default
 ---
 
 <div class="row">
-  <div class="col12 banner-page"></div>
-</div>
-<div class="row">
-  <div class="col12 height-68 bg-gray-light">
-    <div class="container padx-2 padt-05">
-      <h1 style="display: inline-block;" class="pady-1 mar-0">{{ page.title }}</h1>
-      <a id="edit-button" class="btn" href="https://github.com/openmaptiles/www.openmaptiles.org/tree/master/{{page.path}}">Edit in GitHub</a>
-    </div>
+  <div class="col12 banner-page center">
+    <h1 class="white">{{ page.title }}</h1>
   </div>
 </div>
 
 <div class="container">
   <div class="row">
-    <div class="col12 padb-0">
+    <div class="col12 padt-2 padb-0">
       {% for cat in site.data.categories %}
         {% if cat.id == page.category %}
-          <p><a href="/docs/">Docs</a> > <a href="/docs/{{ cat.id }}">{{ cat.title }}</a></p>
+          <p class="marb-0"><a href="/docs/">Docs</a> > <a href="/docs/{{ cat.id }}">{{ cat.title }}</a></p>
         {% endif %}
       {% endfor %}
     </div>
