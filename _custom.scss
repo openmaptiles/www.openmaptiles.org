@@ -297,6 +297,14 @@ body.home{
     pointer-events:none;
   }
 }
+#edit-button {
+  display: inline-block;
+  float: right;
+
+  @media screen and (max-width: 900px) {
+    display: none;
+  }
+}
 
 ol {
   list-style-type: decimal;
