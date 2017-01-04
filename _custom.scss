@@ -191,7 +191,7 @@ body.home{
 }
 
 .banner-page{
-  height: 270px;
+  height: 210px;
   border-top: 4px solid #2571a2;
   border-bottom: 1px solid #439595;
   background: url(img/page-bg.jpg);
@@ -199,25 +199,16 @@ body.home{
   background-repeat: repeat-x;
   
   h1{
-    margin: 100px 0 0 0;
-    font-size: 45px;
+    margin: 80px 0 0 0;
+    font-size: 40px;
   }
 }
 
 @media (max-width: 841px){
   .banner-page h1 {
     font-size: 30px;
-    margin-top: 100px;
+    margin-top: 80px;
   }
-}
-
-.banner-page-title{
-  font-size: 18px;
-  font-family: OpenSans, sans-serif, Arial;
-  font-weight: bold;
-  line-height: 28px;
-  margin: 0 15px;
-  color: #606c71;
 }
 
 .octocat{
