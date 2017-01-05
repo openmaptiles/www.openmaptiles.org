@@ -2,18 +2,6 @@
 layout: page
 title: OpenMapTiles Vector Tile Schema
 ---
-
-<script>
-window.addEventListener('scroll', function(e) {
-  var layernav = document.getElementById('layernav')
-  console.log(window.scrollY)
-  if(window.scrollY > 210) {
-    layernav.className = "top"
-  } else {
-    layernav.className = ""
-  }
-});
-</script>
 <style>
   #layernav {
     top: 250px;
@@ -25,13 +13,23 @@ window.addEventListener('scroll', function(e) {
   .layer-title {
     display: inline-block;
   }
+  .layer-title {
+    display: inline-block;
+  }
   .layer-btn {
+    margin-left: 10px;
     margin-top: 28px;
     float: right;
     display: inline-block;
     padding: 10px;
     line-height: 1.2;
     height: auto;
+  }
+  .layer-diagram-btn {
+    background: #cacaca;
+  }
+  .layer-diagram-btn:hover {
+    background: #aeaeae;
   }
   h2.main:before{
     display: inline-block;
@@ -88,8 +86,13 @@ window.addEventListener('scroll', function(e) {
         <div class="clearfix">
           <h2 id="{{ page.title }}" class="layer-title main">{{ page.title }}</h2>
           <a class="btn layer-btn" href="https://github.com/openmaptiles/openmaptiles/tree/master/layers/{{page.title}}">View on GitHub</a>
+          <button class="btn layer-btn layer-diagram-btn" >Show Diagrams</button>
         <div>
         {{ page.content | markdownify }}
+        <div class="layer-diagrams" style="display: none;">
+          <img alt="ETL diagram" src="/media/mapping_{{ page.title }}.png" />
+          <img alt="Mapping diagram" src="/media/etl_{{ page.title }}.png" />
+        </div>
       </article>
       {% endif %}
       {% endfor %}
@@ -97,6 +100,26 @@ window.addEventListener('scroll', function(e) {
     </div>
   </div>
 </div>
+<script>
+window.addEventListener('scroll', function(e) {
+  var layernav = document.getElementById('layernav')
+  if(window.scrollY > 210) {
+    layernav.className = "top"
+  } else {
+    layernav.className = ""
+  }
+});
 
-
+[].forEach.call(document.querySelectorAll('.layer-diagram-btn'), function(btn) {
+  btn.addEventListener("click", function() {
+    console.log('button clickd');
+    [].forEach.call(document.querySelectorAll('.layer-diagrams'), function(diagram) {
+      diagram.style.display = 'block';
+    });
+    [].forEach.call(document.querySelectorAll('.layer-diagram-btn'), function(btn) {
+      btn.style.display = 'none';
+    });
+  });
+});
+</script>
 
