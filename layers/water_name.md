@@ -12,17 +12,21 @@ which derives nice centerlines from OSM water bodies. Only the most important la
 
 ## Fields
 
-### name
-
-The OSM [`name`](http://wiki.openstreetmap.org/wiki/Key:name) value of the water body.
-
 ### name_en
 
 The english `name:en` value if available.
 
+### name
+
+The OSM [`name`](http://wiki.openstreetmap.org/wiki/Key:name) value of the water body.
+
 ### class
 
 At the moment only `lake` since no ocean parts are labelled. *Reserved for future use*.
+
+Possible values:
+
+- `lake`
 
 
 

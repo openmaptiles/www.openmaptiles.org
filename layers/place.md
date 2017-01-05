@@ -13,13 +13,46 @@ We suggest you use different font styles and sizes to create a text hierarchy.
 
 ## Fields
 
+### name_en
+
+The English `name:en` value or local `name` if not available.
+
+### capital
+
+The **capital** field marks the
+[`admin_level`](http://wiki.openstreetmap.org/wiki/Tag:boundary%3Dadministrative#admin_level)
+of the boundary the place is a capital of.
+
+Possible values:
+
+- `2`
+- `4`
+
 ### name
 
 The OSM [`name`](http://wiki.openstreetmap.org/wiki/Key:name) value of the POI.
 
-### name_en
+### class
 
-The English `name:en` value or local `name` if not available.
+Original value of the
+[`place`](http://wiki.openstreetmap.org/wiki/Key:place) tag.
+Distinguish between continents, countries, states and
+places like settlements or smaller entities.
+Use **class** to separately style the different places and build
+a text hierarchy according to their importance.
+
+Possible values:
+
+- `continent`
+- `country`
+- `state`
+- `city`
+- `town`
+- `village`
+- `hamlet`
+- `suburb`
+- `neighbourhood`
+- `isolated_dwelling`
 
 ### rank
 
@@ -37,38 +70,6 @@ The rank value is a combination of the Natural Earth
 and states and for cities consists out of a shifted
 Natural Earth `scalerank` combined with a local rank
 within a grid for cities that do not have a Natural Earth `scalerank`.
-### capital
-
-The **capital** field marks the
-[`admin_level`](http://wiki.openstreetmap.org/wiki/Tag:boundary%3Dadministrative#admin_level)
-of the boundary the place is a capital of.
-
-Possible values:
-
-- `2`
-- `4`
-
-### class
-
-description: |
-    Original value of the
-    [`place`](http://wiki.openstreetmap.org/wiki/Key:place) tag.
-    Distinguish between continents, countries, states and
-    places like settlements or smaller entities.
-    Use **class** to separately style the different places and build
-    a text hierarchy according to their importance.
-values:
-- continent
-- country
-- state
-- city
-- town
-- village
-- hamlet
-- suburb
-- neighbourhood
-- isolated_dwelling
-
 
 
 

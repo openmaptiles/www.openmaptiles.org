@@ -8,14 +8,23 @@ sql_query: SELECT geometry, class, oneway, ramp, brunnel, service FROM layer_tra
 ---
 **transportation** contains roads and railways.
 This layer is directly derived from the OSM road hierarchy.
-Only at zoom level 4 to 6 some major highways from Natural Earth
-are used.
+At lower zoom levels major highways from Natural Earth are used.
 It contains all roads from motorways to primary, secondary and
 tertiary roads to residential roads and
 foot paths. Styling the roads is the most essential part of the map.
-The `transportation` layer also contains polygons for things like plazas.
+The `transportation` layer also contains polygons for features like plazas.
 
 ## Fields
+
+### brunnel
+
+Mark whether way is a tunnel or bridge.
+
+Possible values:
+
+- `bridge`
+- `tunnel`
+- `ford`
 
 ### oneway
 
@@ -26,6 +35,28 @@ Possible values:
 
 - `0`
 - `1`
+
+### class
+
+Distinguish between more and less important roads or railways.
+Class is derived from the value of the
+[`highway`](http://wiki.openstreetmap.org/wiki/Key:highway) or
+[`railway`](http://wiki.openstreetmap.org/wiki/Key:railway) tag.
+
+Possible values:
+
+- `motorway`
+- `trunk`
+- `primary`
+- `secondary`
+- `tertiary`
+- `minor`
+- `service`
+- `track`
+- `path`
+- `raceway`
+- `rail`
+- `transit`
 
 ### ramp
 
@@ -50,38 +81,6 @@ Possible values:
 - `driveway`
 - `alley`
 - `parking_aisle`
-
-### class
-
-Distinguish between more and less important roads or railways.
-Class is derived from the value of the
-[`highway`](http://wiki.openstreetmap.org/wiki/Key:highway) or
-[`railway`](http://wiki.openstreetmap.org/wiki/Key:railway) tag.
-
-Possible values:
-
-- `motorway`
-- `trunk`
-- `primary`
-- `secondary`
-- `tertiary`
-- `minor`
-- `service`
-- `track`
-- `path`
-- `raceway`
-- `rail`
-- `transit`
-
-### brunnel
-
-Mark whether way is a tunnel or bridge.
-
-Possible values:
-
-- `bridge`
-- `tunnel`
-- `ford`
 
 
 

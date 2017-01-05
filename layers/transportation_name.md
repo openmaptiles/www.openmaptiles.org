@@ -13,6 +13,14 @@ For motorways you should use the `ref` field to label them while for other roads
 
 ## Fields
 
+### ref
+
+The OSM [`ref`](http://wiki.openstreetmap.org/wiki/Key:ref) tag of the motorway or road.
+
+### network
+
+The OSM [`network`](http://wiki.openstreetmap.org/wiki/Key:network) tag of the road.
+
 ### name
 
 The OSM [`name`](http://wiki.openstreetmap.org/wiki/Highways#Names_and_references) value of the highway.
@@ -20,10 +28,6 @@ The OSM [`name`](http://wiki.openstreetmap.org/wiki/Highways#Names_and_reference
 ### ref_length
 
 Length of the `ref` field. Useful for having a shield icon as background for labeling motorways.
-
-### ref
-
-The OSM [`ref`](http://wiki.openstreetmap.org/wiki/Key:ref) tag of the motorway or road.
 
 ### class
 
@@ -43,10 +47,6 @@ Possible values:
 - `raceway`
 - `rail`
 - `transit`
-
-### network
-
-The OSM [`network`](http://wiki.openstreetmap.org/wiki/Key:network) tag of the road.
 
 
 

@@ -14,6 +14,14 @@ but for most styles it makes sense to just style `admin_level=2` and `admin_leve
 
 ## Fields
 
+### admin_level
+
+OSM [admin_level](http://wiki.openstreetmap.org/wiki/Tag:boundary%3Dadministrative#admin_level)
+indicating the level of importance of this boundary.
+The `admin_level` corresponds to the lowest `admin_level`
+the line participates in.
+At low zoom levels the Natural Earth boundaries are mapped to the equivalent admin levels.
+
 ### disputed
 
 Mark with `1` if the boundary is disputed.
@@ -22,14 +30,6 @@ Possible values:
 
 - `0`
 - `1`
-
-### admin_level
-
-OSM [admin_level](http://wiki.openstreetmap.org/wiki/Tag:boundary%3Dadministrative#admin_level)
-indicating the level of importance of this boundary.
-The `admin_level` corresponds to the lowest `admin_level`
-the line participates in.
-At low zoom levels the Natural Earth boundaries are mapped to the equivalent admin levels.
 
 
 
