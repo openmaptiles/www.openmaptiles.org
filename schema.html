@@ -3,7 +3,30 @@ layout: page
 title: OpenMapTiles Vector Tile Schema
 ---
 
+<script>
+window.addEventListener('scroll', function(e) {
+  var layernav = document.getElementById('layernav')
+  console.log(window.scrollY)
+  if(window.scrollY > 210) {
+    layernav.className = "top"
+  } else {
+    layernav.className = ""
+  }
+});
+</script>
 <style>
+  @media (max-width: 900px) {
+    #layernav {
+      display: none;
+    }
+  }
+  #layernav {
+    top: 250px;
+    position: fixed;
+  }
+  #layernav.top {
+    top: 10px;
+  }
   h2.main:before{
     display: inline-block;
     content: '';
@@ -24,8 +47,8 @@ title: OpenMapTiles Vector Tile Schema
 </style>
 <div class="container">
   <div class="row">
-    <div class="col2 padx-0">
-      <div style="top: 320px; position: fixed;">
+    <div class="col3 padx-0">
+      <div id="layernav">
         <h3>Layers</h3>
         <ul>
           {% for page in site.pages %}
@@ -37,7 +60,7 @@ title: OpenMapTiles Vector Tile Schema
         </ul>
       </div>
     </div>
-    <div class="col10">
+    <div class="col9">
       <p>The vector tile schema describes how the vector data is organized into different thematic layers and which attribute and values each layer contains. This is useful for writing a map style and allows for alternative implementations of a schema.
       </p>
       <p>The OpenMapTiles schema is open (CC-BY) and you are free to use, extend or <a href="https://github.com/openmaptiles/openmaptiles">build upon the existing implementation</a> (BSD license). Please reference OpenMapTiles if you build upon the schema.
