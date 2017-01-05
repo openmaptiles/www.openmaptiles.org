@@ -197,7 +197,7 @@ body.home{
   background: url(img/page-bg.jpg);
   background-position: top center;
   background-repeat: repeat-x;
-  
+
   h1{
     margin: 80px 0 0 0;
     font-size: 40px;
@@ -215,17 +215,34 @@ body.home{
   margin-top: -20px;
   margin-bottom: -10px;
 }
-
+.downloads{
+  .tabs-btn{
+    display: inline-block;
+    width: 100%;
+  }
+}
 .download-section-circle {
   width: 200px;
   height: 200px;
   background-size: cover;
   border: 6px solid black;
   border-radius: 100px;
-  -webkit-border-radius: 100px;
-  -moz-border-radius: 100px;
   margin: 0 auto;
   cursor: pointer;
+}
+@media (max-width: 770px){
+  .download-section-circle {
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+    float: left;
+  }
+  .download-circle-label{
+    font-size: 24px;
+    display: inline-block;
+    float: left;
+    margin: 40px 30px;
+  }
 }
 .downloads-search{
   padding: 5px 20px;
