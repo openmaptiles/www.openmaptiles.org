@@ -227,7 +227,13 @@ body.home{
   .tabs-btn{
     display: inline-block;
     width: 100%;
+    white-space: nowrap;
+    padding: 10px 0px 10px 10px;
   }
+}
+.downloads-embed .downloads-item{
+  border-left: none;
+  border-right: none;
 }
 .download-section-circle {
   width: 200px;
@@ -245,14 +251,14 @@ body.home{
     display: inline-block;
     float: left;
   }
-  .download-circle-label{
+  .download-circle-label {
     font-size: 24px;
     display: inline-block;
     float: left;
-    margin: 40px 30px;
+    margin: 40px 0 40px 20px;
   }
 }
-.downloads-search{
+.downloads-search {
   padding: 5px 20px;
   margin-bottom: 5px !important;
   border: 2px solid $color-primary;
