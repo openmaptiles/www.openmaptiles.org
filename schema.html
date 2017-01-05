@@ -15,17 +15,23 @@ window.addEventListener('scroll', function(e) {
 });
 </script>
 <style>
-  @media (max-width: 900px) {
-    #layernav {
-      display: none;
-    }
-  }
   #layernav {
     top: 250px;
     position: fixed;
   }
   #layernav.top {
     top: 10px;
+  }
+  .layer-title {
+    display: inline-block;
+  }
+  .layer-btn {
+    margin-top: 28px;
+    float: right;
+    display: inline-block;
+    padding: 10px;
+    line-height: 1.2;
+    height: auto;
   }
   h2.main:before{
     display: inline-block;
@@ -43,6 +49,14 @@ window.addEventListener('scroll', function(e) {
   }
   a code {
     color: #8791c7;
+  }
+  @media (max-width: 900px) {
+    #layernav {
+      display: none;
+    }
+    .layer-btn {
+      display: none;
+    }
   }
 </style>
 <div class="container">
@@ -71,7 +85,10 @@ window.addEventListener('scroll', function(e) {
       {% for page in site.pages %}
       {% if page.category == 'layer' %}
       <article class="page--article">
-        <h2 id="{{ page.title }}" class="main">{{ page.title }}</h2>
+        <div class="clearfix">
+          <h2 id="{{ page.title }}" class="layer-title main">{{ page.title }}</h2>
+          <a class="btn layer-btn" href="https://github.com/openmaptiles/openmaptiles/tree/master/layers/{{page.title}}">View on GitHub</a>
+        <div>
         {{ page.content | markdownify }}
       </article>
       {% endif %}
