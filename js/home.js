@@ -1,9 +1,19 @@
+var center = [
+  [-122.445600, 37.789508, 13],
+  [-73.997291, 40.725438, 13],
+  [2.294433, 48.858288, 14.5],
+  [8.541147, 47.376333, 12]
+];
+
+var rnd = Math.floor(Math.random()*4);
+
 function initMap(container, style) {
   return new mapboxgl.Map({
     attributionControl: false,
     container: container,
     style: style,
-    zoom: 2
+    center: [center[rnd][0], center[rnd][1]],
+    zoom: center[rnd][2]
   });
 }
 

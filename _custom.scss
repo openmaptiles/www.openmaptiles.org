@@ -31,19 +31,35 @@ body.home{
   overflow: hidden !important;
   background: #f2f3f0;
 
-  #banner{
-    text-align: center;
+  #navbar-top{
+    background: url(img/org-banner-bg.png);
+    background-position: top center;
+    background-repeat: repeat-x; 
+  }
+  #banner-bg{
     position: absolute;
-    top: 48%;
+    top: 33%;
+    left: 0;
+    right: 33%;
+    height: 200px;
+    z-index: 99;
+    background: rgba(255, 255, 255, 0.9);
+
+  }
+  #banner{
+    position: absolute;
+    top: 33%;
     left: 0;
     right: 0;
     z-index: 100;
-    margin-top: -140px;
-    pointer-events:none;
+    /*pointer-events:none;*/
+
+    .container{
+      padding: 25px 0 0 30px;
+    }
 
     h1, h2, h3, h4{
-      text-shadow: 0 0 3px rgba(0, 0, 0, 0.9);
-      color: #fff;
+      color: #616161;
     }
 
     h1{
@@ -65,7 +81,7 @@ body.home{
   left: calc((100% - 1200px)/2);
 
   h4{
-    color: #fff;
+    color: #616161;
   }
 
 }
@@ -97,8 +113,12 @@ body.home{
     left: 0;
     right: 0;
     text-align: center;
-    color: #fff;
+    color: #616161;
     font-size: 14px;
+    white-space: nowrap;
+  }
+  &:last-child span{
+    color: #fff;
   }
 }
 
