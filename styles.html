@@ -10,6 +10,9 @@ title: Open Map Styles
   .style-title h2 {
     display: inline-block;
   }
+  .style-thumb {
+    max-width: 300px;
+  }
   .style-btn {
     margin-left: 10px;
     margin-top: 28px;
@@ -30,9 +33,8 @@ title: Open Map Styles
 <div class="container">
   <div class="row">
     <div class="col12 padx-0">
-      <p>OpenMapTiles comes with a variety of different styles optimized for the <a href="/schema">OpenMapTiles vector tile schema</a>. The styles and schema are free and open-source and you can adapt the design and code for your project or commercial product however you like.</p>
-
-      <p>Our styles are written in the <a href="/docs/style/mapbox-gl-style-spec">Mapbox GL style specification</a> and you can <a href="/docs/style/maputnik">edit them using Maputnik</a>. You can either use them directly as basemap or as starting point for your own map style.
+      <p>OpenMapTiles comes with a variety of different styles optimized for the <a href="/schema">OpenMapTiles vector tile schema</a>. The styles and schema are free and open-source and you can adapt the design and code for your project or commercial product however you like.
+      You can either use the styles directly as basemap or as starting point for your own map style.
       </p>
     </div>
   </div>
@@ -48,6 +50,13 @@ title: Open Map Styles
       <h4><a href="#klokantech-3d">Klokantech 3D</a></h4>
     </div>
     <div class="col9 pady-2">
+      <h1>GL Styles</h1>
+      <p>Our styles are written in the <a href="/docs/style/mapbox-gl-style-spec">Mapbox GL style specification</a> and you can <a href="/docs/style/maputnik">edit them using Maputnik</a>.
+      </p>
+      <p>
+        These styles are used to design maps from vector tiles.
+        It is possible to have completely client based maps with <a href="/docs/website/mapbox-gl-js/">Mapbox GL JS</a> as well as raster maps for older clients thanks to <a href="/docs/host/tileserver-gl">Tileserver GL</a>.
+      </p>
       <div class="style-title clearfix">
         <h2>
           <span>Positron</span>
@@ -142,7 +151,80 @@ title: Open Map Styles
         A Map showcasing 3D buildings.
       </p>
       <div class="map-style" id="klokantech-3d"></div>
+      <h1>TM2 Styles</h1>
+      <p>
+      You can also create Mapnik based styles with OpenMapTiles. These styles are created in Mapbox Studio Classic and use Mapnik to generate raster tiles from vector tiles and CartoCSS..
+      </p>
 
+      <div class="style-title clearfix">
+        <h2>
+          <span>Pencil</span>
+          <a class="github-button" href="https://github.com/openmaptiles/mapbox-studio-pencil.tm2" data-icon="octicon-star" data-style="mega" data-count-href="/openmaptiles/mapbox-studio-pencil.tm2/stargazers" data-count-api="/repos/openmaptiles/mapbox-studio-pencil.tm2#stargazers_count">Star</a>
+        </h2>
+        <a class="btn style-btn" href="http://maputnik.com/editor?style=https://rawgit.com/openmaptiles/mapbox-studio-pencil.tm2/master/style.json">Edit in Maputnik</a>
+        <a class="btn style-btn style-github-btn" href="https://github.com/openmaptiles/mapbox-studio-pencil.tm2">View on GitHub</a>
+      </div>
+      <img class="style-thumb" src="https://cdn.rawgit.com/openmaptiles/mapbox-studio-pencil.tm2/master/.thumb.png" />
+
+      <div class="style-title clearfix">
+        <h2>
+          <span>Dark</span>
+          <a class="github-button" href="https://github.com/openmaptiles/mapbox-studio-dark.tm2" data-icon="octicon-star" data-style="mega" data-count-href="/openmaptiles/mapbox-studio-dark.tm2/stargazers" data-count-api="/repos/openmaptiles/mapbox-studio-dark.tm2#stargazers_count">Star</a>
+        </h2>
+        <a class="btn style-btn" href="http://maputnik.com/editor?style=https://rawgit.com/openmaptiles/mapbox-studio-dark.tm2/master/style.json">Edit in Maputnik</a>
+        <a class="btn style-btn style-github-btn" href="https://github.com/openmaptiles/mapbox-studio-pencil.tm2">View on GitHub</a>
+      </div>
+      <img class="style-thumb" src="https://cdn.rawgit.com/openmaptiles/mapbox-studio-dark.tm2/master/.thumb.png" />
+
+      <div class="style-title clearfix">
+        <h2>
+          <span>Light</span>
+          <a class="github-button" href="https://github.com/openmaptiles/mapbox-studio-light.tm2" data-icon="octicon-star" data-style="mega" data-count-href="/openmaptiles/mapbox-studio-light.tm2/stargazers" data-count-api="/repos/openmaptiles/mapbox-studio-light.tm2#stargazers_count">Star</a>
+        </h2>
+        <a class="btn style-btn" href="http://maputnik.com/editor?style=https://rawgit.com/openmaptiles/mapbox-studio-light.tm2/master/style.json">Edit in Maputnik</a>
+        <a class="btn style-btn style-github-btn" href="https://github.com/openmaptiles/mapbox-studio-pencil.tm2">View on GitHub</a>
+      </div>
+      <img class="style-thumb" src="https://cdn.rawgit.com/openmaptiles/mapbox-studio-light.tm2/master/.thumb.png" />
+
+      <div class="style-title clearfix">
+        <h2>
+          <span>Pirates</span>
+          <a class="github-button" href="https://github.com/openmaptiles/mapbox-studio-pirates.tm2" data-icon="octicon-star" data-style="mega" data-count-href="/openmaptiles/mapbox-studio-pirates.tm2/stargazers" data-count-api="/repos/openmaptiles/mapbox-studio-pirates.tm2#stargazers_count">Star</a>
+        </h2>
+        <a class="btn style-btn" href="http://maputnik.com/editor?style=https://rawgit.com/openmaptiles/mapbox-studio-pirates.tm2/master/style.json">Edit in Maputnik</a>
+        <a class="btn style-btn style-github-btn" href="https://github.com/openmaptiles/mapbox-studio-pencil.tm2">View on GitHub</a>
+      </div>
+      <img class="style-thumb" src="https://cdn.rawgit.com/openmaptiles/mapbox-studio-pirates.tm2/master/.thumb.png" />
+
+      <div class="style-title clearfix">
+        <h2>
+          <span>Woodcut</span>
+          <a class="github-button" href="https://github.com/openmaptiles/mapbox-studio-woodcut.tm2" data-icon="octicon-star" data-style="mega" data-count-href="/openmaptiles/mapbox-studio-woodcut.tm2/stargazers" data-count-api="/repos/openmaptiles/mapbox-studio-woodcut.tm2#stargazers_count">Star</a>
+        </h2>
+        <a class="btn style-btn" href="http://maputnik.com/editor?style=https://rawgit.com/openmaptiles/mapbox-studio-woodcut.tm2/master/style.json">Edit in Maputnik</a>
+        <a class="btn style-btn style-github-btn" href="https://github.com/openmaptiles/mapbox-studio-pencil.tm2">View on GitHub</a>
+      </div>
+      <img class="style-thumb" src="https://cdn.rawgit.com/openmaptiles/mapbox-studio-woodcut.tm2/master/.thumb.png" />
+
+      <div class="style-title clearfix">
+        <h2>
+          <span>Wheatpaste</span>
+          <a class="github-button" href="https://github.com/openmaptiles/mapbox-studio-wheatpaste.tm2" data-icon="octicon-star" data-style="mega" data-count-href="/openmaptiles/mapbox-studio-wheatpaste.tm2/stargazers" data-count-api="/repos/openmaptiles/mapbox-studio-wheatpaste.tm2#stargazers_count">Star</a>
+        </h2>
+        <a class="btn style-btn" href="http://maputnik.com/editor?style=https://rawgit.com/openmaptiles/mapbox-studio-wheatpaste.tm2/master/style.json">Edit in Maputnik</a>
+        <a class="btn style-btn style-github-btn" href="https://github.com/openmaptiles/mapbox-studio-pencil.tm2">View on GitHub</a>
+      </div>
+      <img class="style-thumb" src="https://cdn.rawgit.com/openmaptiles/mapbox-studio-wheatpaste.tm2/master/.thumb.png" />
+
+      <div class="style-title clearfix">
+        <h2>
+          <span>OSM Bright</span>
+          <a class="github-button" href="https://github.com/openmaptiles/mapbox-studio-osm-bright.tm2" data-icon="octicon-star" data-style="mega" data-count-href="/openmaptiles/mapbox-studio-osm-bright.tm2/stargazers" data-count-api="/repos/openmaptiles/mapbox-studio-osm-bright.tm2#stargazers_count">Star</a>
+        </h2>
+        <a class="btn style-btn" href="http://maputnik.com/editor?style=https://rawgit.com/openmaptiles/mapbox-studio-osm-bright.tm2/master/style.json">Edit in Maputnik</a>
+        <a class="btn style-btn style-github-btn" href="https://github.com/openmaptiles/mapbox-studio-pencil.tm2">View on GitHub</a>
+      </div>
+      <img class="style-thumb" src="https://cdn.rawgit.com/openmaptiles/mapbox-studio-osm-bright.tm2/master/.thumb.png" />
     </div>
   </div>
   
