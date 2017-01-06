@@ -2,7 +2,9 @@ var styleUrls = {
   'positron': 'https://openmaptiles.github.io/positron-gl-style/style-cdn.json',
   'dark-matter': 'https://openmaptiles.github.io/dark-matter-gl-style/style-cdn.json',
   'osm-bright': 'https://openmaptiles.github.io/osm-bright-gl-style/style-cdn.json',
-  'klokantech-basic': 'https://openmaptiles.github.io/klokantech-basic-gl-style/style-cdn.json'
+  'klokantech-basic': 'https://openmaptiles.github.io/klokantech-basic-gl-style/style-cdn.json',
+  'fiord-color': 'https://openmaptiles.github.io/fiord-color-gl-style/style-cdn.json',
+  'toner': 'https://openmaptiles.github.io/toner-gl-style/style-cdn.json'
 };
 var maps = {};
 var mapContainers = document.getElementsByClassName('map-style');
