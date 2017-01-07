@@ -37,4 +37,5 @@ for (var i = 0; i < mapContainers.length; ++i) {
       bearing: bearing
   });
   maps[mapId].addControl(new mapboxgl.NavigationControl());
+  maps[mapId].addControl(new MapboxInspector());
 }
