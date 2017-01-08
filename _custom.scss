@@ -207,9 +207,18 @@ body.home{
 }
 
 .foot{
+  .container{
+    border-top: 1px solid #e2e2e2;
+  }
+  
+  p, .social a{
+    color: #a9a9a9;
+  }
+
   .icon{
-    font-size: 40px;
+    font-size: 44px;
     vertical-align: middle;
+    color: #a9a9a9;
   }
 }
 
