@@ -13,6 +13,7 @@ We love the open-source and open-data community. Our OpenStreetMap vector tiles 
 - non-commercial personal projects
 - evaluation and education purposes
 
+<br>
 For any other use,  there are 2 ways, how to apply OpenMapTiles maps in your project: 
 
 1) Generate your own tiles, just follow our [documentation]. Consider the time 
