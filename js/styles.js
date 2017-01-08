@@ -4,6 +4,7 @@ var styleUrls = {
   'osm-bright': 'https://openmaptiles.github.io/osm-bright-gl-style/style-cdn.json',
   'klokantech-basic': 'https://openmaptiles.github.io/klokantech-basic-gl-style/style-cdn.json',
   'klokantech-3d': 'https://openmaptiles.github.io/klokantech-3d-gl-style/style-cdn.json',
+  'klokantech-terrain': 'https://openmaptiles.github.io/klokantech-terrain-gl-style/style-cdn.json',
   'fiord-color': 'https://openmaptiles.github.io/fiord-color-gl-style/style-cdn.json',
   'toner': 'https://openmaptiles.github.io/toner-gl-style/style-cdn.json'
 };
@@ -27,6 +28,10 @@ for (var i = 0; i < mapContainers.length; ++i) {
     zoom = 14.47;
     pitch = 56;
     bearing = 16;
+  }
+  if(mapId == 'klokantech-terrain') {
+    center = [8.7211, 46.7737]
+    zoom = 12.14;
   }
   maps[mapId] = new mapboxgl.Map({
       container: mapId,
