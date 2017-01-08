@@ -34,7 +34,7 @@ body.home{
   #navbar-top{
     background: url(img/org-banner-bg.png);
     background-position: top center;
-    background-repeat: repeat-x; 
+    background-repeat: repeat-x;
   }
   #banner-bg{
     position: absolute;
@@ -159,13 +159,13 @@ body.home{
 
   h3, h5{
     color: #fff !important;
-    text-align: center; 
+    text-align: center;
     a{
       color: #fff;
       font-size: 16px;
     }
   }
-  h3{ 
+  h3{
     padding: 50px 0 0 0;
     a{
       font-size: 18px;
@@ -208,9 +208,16 @@ body.home{
 
 .foot{
   .container{
-    border-top: 1px solid #e2e2e2;
+    padding: 15px;
+
+    .foot-firstline{
+      border-top: 1px solid #e2e2e2;
+      a:hover, a:focus{
+        text-decoration: none;
+      }
+    }
   }
-  
+
   p, .social a{
     color: #a9a9a9;
   }
