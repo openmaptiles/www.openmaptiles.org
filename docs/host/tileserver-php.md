@@ -1,7 +1,7 @@
 ---
 layout: docs
 category: host
-title: TileServer-php with vector tiles
+title: TileServer PHP
 description: TileServer-php
 keywords: TileServer-php
 redirect_to:
