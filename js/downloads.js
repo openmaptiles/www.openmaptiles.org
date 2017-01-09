@@ -6,11 +6,10 @@ ajax(url, function (data) {
     item._name = name;
     item.className = 'pad-2 downloads-item';
     item.innerHTML = '<a href="' + url + '">' + name + '</a>' +
-            '<a class="float-right" href="' + url + '">download</a>';
+            '<a class="float-right" href="' + url + '">Download</a>';
     container.appendChild(item);
 
     if (location.href.indexOf('embed') == -1) {
-      console.log('ssss')
       item.onclick = function (e) {
         showDialog(url);
         return false;
@@ -25,12 +24,12 @@ ajax(url, function (data) {
 
   var countriesTab = document.getElementById('tab-2');
   data.country.forEach(function (dato) {
-    addItem(countriesTab, dato.country, dato.link);
+    addItem(countriesTab, dato.name, dato.link);
   });
 
   var citiesTab = document.getElementById('tab-3');
   data.city.forEach(function (dato) {
-    addItem(citiesTab, dato.city + ', ' + dato.country, dato.link);
+    addItem(citiesTab, dato.name, dato.link);
   });
 
   var countrySearch = document.getElementById('search-2');
