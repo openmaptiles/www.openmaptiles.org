@@ -52,6 +52,13 @@ var mapOl3 = new ol.Map({
 
 fetch('https://openmaptiles.github.io/klokantech-basic-gl-style/style-cdn.json').then(function(response) {
   response.json().then(function(glStyle) {
+    glStyle.layers.forEach(function(layer) {
+      if(layer.layout && layer.layout['text-font']) {
+        var newFont = layer.layout['text-font'][0].split(' ');
+        newFont = 'Open Sans '+newFont[newFont.length-1];
+        layer.layout['text-font'] = [newFont];
+      }
+    });
     olms.applyStyle(layer, glStyle, 'openmaptiles').then(function () {
       mapOl3.addLayer(layer);
     });
