@@ -5,6 +5,7 @@ h1{
 
 #navbar-top{
   position: absolute;
+  z-index: 110;
 
   .title{
     .icon{
@@ -40,11 +41,16 @@ body.home{
     position: absolute;
     top: 33%;
     left: 0;
-    right: 33%;
     height: 200px;
     z-index: 99;
     background: rgba(255, 255, 255, 0.8);
     pointer-events:none;
+
+    right: 33%;
+    @media screen and (max-width: 500px) {
+      right: 0%;
+      height: 300px;
+    }
   }
   #banner{
     position: absolute;
@@ -86,6 +92,16 @@ body.home{
 
   h4{
     color: #616161;
+  }
+}
+@media screen and (max-width: 500px) {
+  .map-switchers {
+    display: none;
+  }
+}
+@media screen and (max-width: 900px) {
+  #phone {
+    display: none;
   }
 }
 @media screen and (max-width: 1200px) {
