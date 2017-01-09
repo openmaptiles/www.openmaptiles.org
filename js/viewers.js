@@ -90,11 +90,17 @@ var activeId = 'mbgljs';
 function switchMap(id) {
   var oldPos = maps[activeId].getPos();
   var active = document.querySelector('.map.active');
+  var activeSwitch = document.querySelector('.map-switch.active');
   if (active) {
     active.className = 'map';
   }
+  if (activeSwitch) {
+    activeSwitch.className = 'map-switch';
+  }
   var newActive = document.getElementById('map-' + id);
   newActive.className = 'map active';
+  var newActiveSwitch = document.getElementById('map-switch-' + id);
+  newActiveSwitch.className = 'map-switch active';
   activeId = id;
   maps[activeId].setPos(oldPos);
   document.querySelector('#navbar-top').className = id;

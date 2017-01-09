@@ -7,8 +7,8 @@ baseurl: "/"
 sass:
   style: :compressed
   sass_dir: styles/_sass
-  
-exclude: 
+
+exclude:
 - "styles/lib/*"
-gems:
-- jekyll-redirect-from
+#gems:
+#- jekyll-redirect-from

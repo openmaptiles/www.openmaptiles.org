@@ -145,6 +145,38 @@ body.home{
     color: #fff;
   }
 }
+.viewers.map-switchers {
+  top: 72px;
+  left: 50%;
+  transform: translate(-50%, 0);
+
+  h4 {
+    color: #616161;
+    text-align: center;
+    background-color: rgba(255,255,255,0.8);
+    margin: 14px auto;
+    display: block;
+    width: 200px;
+    padding: 10px;
+  }
+  .map-switch {
+    background-color: rgba(255,255,255,0.8);
+    &:last-child span {
+      color: #616161;
+    }
+    height: 50px;
+    font-weight: bold;
+    span {
+      bottom: 50%;
+      transform: translate(0, 50%);
+    }
+  }
+  .map-switch.active {
+    span {
+      color: $color-primary;
+    }
+  }
+}
 
 .attribution {
   position: absolute;
