@@ -1,0 +1,57 @@
+---
+layout: default
+title: Viewers
+---
+
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans" />
+
+<link rel="stylesheet" type="text/css" href="https://api.mapbox.com/mapbox-gl-js/v0.30.0/mapbox-gl.css" />
+<script src="https://api.mapbox.com/mapbox-gl-js/v0.30.0/mapbox-gl.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=fetch,Promise"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ol3/3.20.1/ol.js"></script>
+<script src="/js/olms.js"></script>
+
+<link rel="stylesheet" href="https://mapzen.com/js/mapzen.css">
+<script src="https://mapzen.com/js/mapzen.min.js"></script>
+
+<div class="map active" id="map-mbgljs"></div>
+<div class="map" id="map-leaflet"></div>
+<div class="map" id="map-ol3"></div>
+<div class="map" id="map-tangram"></div>
+
+<div class="map-switchers"><h4>Try different viewers</h4><!--
+  --><div class="map-switch" id="map-switch-mbgljs" onclick="javascript:switchMap('mbgljs')">
+    <img src="/img/home/klokantech-basic.png" />
+    <span>MB GL JS</span>
+  </div><!--
+  --><div class="map-switch" id="map-switch-leaflet" onclick="javascript:switchMap('leaflet')">
+    <img src="/img/home/osm-bright.png" />
+    <span>Leaflet</span>
+  </div><!--
+  --><div class="map-switch" id="map-switch-ol3" onclick="javascript:switchMap('ol3')">
+    <img src="/img/home/positron.png" />
+    <span>OpenLayers 3</span>
+  </div><!--
+  --><div class="map-switch" id="map-switch-tangram" onclick="javascript:switchMap('tangram')">
+    <img src="/img/home/dark-matter.png" />
+    <span>Tangram</span>
+  </div><!--
+  --></div>
+
+<div class="attribution">© <a href="https://openmaptiles.org">OpenMapTiles</a> © <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors</div>
+
+<script src="/js/viewers.js"></script>
+
+<!--
+<div id="banner-bg"></div>
+<div id="banner">
+  <div class="container">
+    <h1>Use different viewers</h1>
+    <h3>Vector tiles from OpenStreetMap</h3>
+  </div>
+</div>
+-->

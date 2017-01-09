@@ -38,7 +38,7 @@ function unlock() {
 }
     </script>
   </head>
-  <body {% if page.url == "/" %}class="home"{% endif %} {% if site.url != 'http://localhost:4000' %}style="visibility:hidden;" onload="unlock()"{% endif %}>
+  <body {% if page.url == "/" or page.url == "/viewers/" %}class="home"{% endif %} {% if site.url != 'http://localhost:4000' %}style="visibility:hidden;" onload="unlock()"{% endif %}>
     <div class="container">
       <div id="navbar-top" class="large">
         <div class="container">
@@ -84,10 +84,10 @@ function unlock() {
             </div>
           </div>
           <p class="center">
-            <span class="small">OpenMapTiles.org is an open-source project from 
-              <a target="_blank" href="http://www.klokantech.com/">Klokan Technologies GmbH</a> 
-              and <a href="https://github.com/openmaptiles">OSM community</a>.<br> 
-              Commercial <a href="http://openmaptiles.com/support/">support</a> 
+            <span class="small">OpenMapTiles.org is an open-source project from
+              <a target="_blank" href="http://www.klokantech.com/">Klokan Technologies GmbH</a>
+              and <a href="https://github.com/openmaptiles">OSM community</a>.<br>
+              Commercial <a href="http://openmaptiles.com/support/">support</a>
               is available.</span>
           </p>
         </div>

@@ -32,7 +32,7 @@ body.home{
   background: #f2f3f0;
 
   #navbar-top{
-    background: url(img/org-banner-bg.png);
+    background: url('/img/org-banner-bg.png');
     background-position: top center;
     background-repeat: repeat-x;
   }
@@ -68,6 +68,10 @@ body.home{
     h2{
       font-size: 30px;
     }
+  }
+
+  .foot {
+    display:none;
   }
 }
 
@@ -180,7 +184,7 @@ body.home{
 
 .banner-org, .banner-com{
   height: 210px;
-  background: url(img/org-banner-bg.png);
+  background: url('/img/org-banner-bg.png');
   background-position: top center;
   background-repeat: repeat-x;
 
@@ -191,7 +195,7 @@ body.home{
 }
 
 .banner-com{
-  background: url(img/com-banner-bg.png);
+  background: url('/img/com-banner-bg.png');
 }
 
 @media (max-width: 841px){
