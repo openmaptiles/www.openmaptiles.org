@@ -28,6 +28,13 @@ h1{
   }
 }
 
+.flashes{
+  top: 180px;
+}
+.message{
+  list-style-type: none;
+}
+
 body.home{
   overflow: hidden !important;
   background: #f2f3f0;
@@ -290,7 +297,7 @@ body.home{
     padding: 15px 0px 15px 15px;
     border: 2px solid #f1f3f4;
     border-left: none;
-    
+
     &.active h2{
       color: $color-secondary;
     }
