@@ -67,7 +67,6 @@ function init() {
   if (personBtn) {
     personBtn.addEventListener('click', function() {
       var userNav = document.getElementById('nav-person-nav');
-      console.log(userNav.className);
       if (userNav.className == 'open') {
         userNav.className = '';
       } else {
