@@ -61,6 +61,20 @@ function init() {
       tabsTab[i].className = 'tabs-tab';
     }
   }
+
+  //COM
+  var personBtn = document.getElementById('nav-person-btn');
+  if (personBtn) {
+    personBtn.addEventListener('click', function() {
+      var userNav = document.getElementById('nav-person-nav');
+      console.log(userNav.className);
+      if (userNav.className == 'open') {
+        userNav.className = '';
+      } else {
+        userNav.className = 'open';
+      }
+    });
+  }
 }
 
 window.onload = init;
