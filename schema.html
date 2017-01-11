@@ -112,7 +112,6 @@ window.addEventListener('scroll', function(e) {
 
 [].forEach.call(document.querySelectorAll('.layer-diagram-btn'), function(btn) {
   btn.addEventListener("click", function() {
-    console.log('button clickd');
     [].forEach.call(document.querySelectorAll('.layer-diagrams'), function(diagram) {
       diagram.style.display = 'block';
     });
