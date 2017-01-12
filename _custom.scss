@@ -268,17 +268,10 @@ body.home{
 
 .foot{
   .container{
-    padding: 15px;
-
-    .foot-firstline{
-      border-top: 1px solid #e2e2e2;
-      a:hover, a:focus{
-        text-decoration: none;
-      }
-    }
+    border-top: 1px solid #e2e2e2;
   }
 
-  p, .social a{
+  .social a{
     color: #a9a9a9;
     vertical-align: middle;
     font-size: 19px;
@@ -286,8 +279,15 @@ body.home{
 
   .icon{
     font-size: 44px;
+    line-height: 44px;
     vertical-align: middle;
     color: #a9a9a9;
+    margin-top: 10px;
+
+    &:hover, &:active, &:focus{
+      text-decoration: none;
+      color: lighten(#a9a9a9, 10%);
+    }
   }
 }
 
