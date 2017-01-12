@@ -26,6 +26,10 @@ h1{
   &.filled{
     background: $color-primary;
   }
+
+  .nav-mobile #nav-mobile-btn{
+    padding-top: 10px;
+  }
 }
 
 .flashes{
@@ -52,11 +56,12 @@ body.home{
     z-index: 99;
     background: rgba(255, 255, 255, 0.8);
     pointer-events:none;
-
+    min-width: 740px;
     right: 33%;
-    @media screen and (max-width: 500px) {
-      right: 0%;
-      height: 300px;
+    @media screen and (max-width: 720px) {
+      right: 0;
+      min-width: auto;
+      height: 165px;
     }
   }
   #banner{
@@ -79,7 +84,22 @@ body.home{
       font-size: 40px;
     }
     h2{
-      font-size: 30px;
+      font-size: 18px;
+    }
+
+    @media screen and (max-width: 720px) {
+      text-align: center;
+
+      .container{
+        padding: 25px 0 0 0;
+      }
+
+      h1{
+        font-size: 28px;
+      }
+      h2{
+        font-size: 11px;
+      }
     }
   }
 
@@ -101,22 +121,7 @@ body.home{
     color: #616161;
   }
 }
-@media screen and (max-width: 500px) {
-  .map-switchers {
-    display: none;
-  }
-}
-@media screen and (max-width: 900px) {
-  #phone {
-    display: none;
-  }
-}
-@media screen and (max-width: 1200px) {
-  .map-switchers {
-    left: 20px;
-    bottom: 20px;
-  }
-}
+
 .map-switch {
   position: relative;
   cursor: pointer;
@@ -183,6 +188,28 @@ body.home{
     span {
       color: $color-primary;
     }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .map-switch {
+    width: 60px;
+    height: 60px;
+
+    span{
+      display: none;
+    }
+  }
+}
+@media screen and (max-width: 900px) {
+  #phone {
+    display: none;
+  }
+}
+@media screen and (max-width: 1200px) {
+  .map-switchers {
+    left: 20px;
+    bottom: 20px;
   }
 }
 

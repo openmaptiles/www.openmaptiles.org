@@ -29,7 +29,7 @@ $font-icon: Menlo, Monaco, 'Courier New', monospace;
 $font-size: 16px;
 
 /* Line height*/
-$line-height: 1.8 !default; 
+$line-height: 1.8 !default;
 $line-height-computed: floor(($font-size * $line-height)) !default;
 
 
@@ -64,7 +64,7 @@ $container-padding-y: 0;
 /* Grid */
 //screen sizes
 $sc-small: 480px;
-$sc-medium: 768px;
+$sc-medium: 880px;
 $sc-large: 992px;
 
 $grid-sizes: (
