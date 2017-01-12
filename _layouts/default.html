@@ -30,7 +30,7 @@ function unlock() {
   if (location.search != '?unlock') {
     document.body.innerHTML = '<div class="center padt-6"><h1>OpenMapTiles</h1><h4>Under construction</h4></div>';
   } else {
-    document.body.querySelectorAll('a').forEach(function (a) {
+    document.body.querySelectorAll('a').forEach(function(a) {
       a.href += '?unlock';
     });
   }
@@ -75,29 +75,32 @@ function unlock() {
     <div class="foot">
       <div class="row container">
         <div class="col12 pad-0">
+
+
           <div class="foot-firstline">
             <a target="_blank" href="https://klokantech.com" class="icon">K</a>
-            <div class="social float-right padt-1">
-              <a target="_blank" href="https://plus.google.com/share?url={{ site.url }}">G</a>
-              <a target="_blank" href="https://twitter.com/home?status={{ site.url }}">T</a>
-              <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ site.url }}">F</a>
-            </div>
-          </div>
-          <p class="center">
-            <span class="small">OpenMapTiles.org is an open-source project from
+
+
+            <span class="small text-right float-right padt-1">OpenMapTiles.org is an open-source project from
               <a target="_blank" href="http://www.klokantech.com/">Klokan Technologies GmbH</a>
               and <a href="https://github.com/openmaptiles">OSM community</a>.<br>
-              Commercial <a href="http://openmaptiles.com/support/">support</a>
-              is available.</span>
-          </p>
+              <a href="http://openmaptiles.com/support/">Commercial support</a>
+              is available. Share&nbsp;on&nbsp;
+              <span class="social">
+                <a target="_blank" href="https://plus.google.com/share?url={{ site.url }}" onclick="popup(this.href, 400, 520);return false;" target="_blank">G</a>
+                <a target="_blank" href="https://twitter.com/home?status={{ site.url }}" onclick="popup(this.href, 450, 257);return false;" target="_blank">T</a>
+                <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ site.url }}" onclick="popup(this.href, 645, 353);return false;" target="_blank">F</a>
+              .</span>
+            </span>
+          </div>
         </div>
       </div>
     </div>
 
     <script>
-      (function (i, s, o, g, r, a, m) {
+      (function(i, s, o, g, r, a, m) {
         i['GoogleAnalyticsObject'] = r;
-        i[r] = i[r] || function () {
+        i[r] = i[r] || function() {
           (i[r].q = i[r].q || []).push(arguments)
         }, i[r].l = 1 * new Date();
         a = s.createElement(o),
