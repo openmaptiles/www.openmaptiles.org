@@ -6,8 +6,7 @@ var styleUrls = {
   'klokantech-3d': 'https://openmaptiles.github.io/klokantech-3d-gl-style/style-cdn.json',
   'klokantech-terrain': 'https://openmaptiles.github.io/klokantech-terrain-gl-style/style-cdn.json',
   'fiord-color': 'https://openmaptiles.github.io/fiord-color-gl-style/style-cdn.json',
-  'toner': 'https://openmaptiles.github.io/toner-gl-style/style-cdn.json',
-  'osm-liberty': 'https://rawgit.com/lukasmartinelli/osm-liberty/gh-pages/style.json'
+  'toner': 'https://openmaptiles.github.io/toner-gl-style/style-cdn.json'
 };
 var maps = {};
 var mapContainers = document.getElementsByClassName('map-style');
@@ -21,7 +20,11 @@ for (var i = 0; i < mapContainers.length; ++i) {
   var bearing = 0;
   var pitch = 0;
 
-  if(mapId == 'toner' || mapId == 'osm-liberty') {
+  if(mapId == 'osm-liberty') {
+    continue;
+  }
+
+  if(mapId == 'toner') {
     zoom = 2;
   }
   if(mapId == 'klokantech-3d') {
