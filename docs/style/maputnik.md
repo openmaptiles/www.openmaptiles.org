@@ -9,13 +9,13 @@ keywords: create, style
 
 [Maputnik](https://github.com/maputnik/editor) is a free and open visual editor for the [Mapbox GL style specification](https://www.mapbox.com/mapbox-gl-style-spec/).
 You can either use the publicly available version of Maputnik
-at [http://maputnik.com/editor](http://maputnik.com/editor)
+at [http://editor.openmaptiles.org](http://editor.openmaptiles.org)
  or [download the editor](https://github.com/maputnik/editor/releases) to use it locally.
 
 ## Choose a Style
 
 The easiest way to get started is choosing an existing style as a starting point.
-On [http://maputnik.com/editor](http://maputnik.com/editor) you can choose from many existing
+On [http://editor.openmaptiles.org](http://editor.openmaptiles.org) you can choose from many existing
 styles that work well with OpenMapTiles and directly edit them.
 
 Once you are done editing the style you can download the modified style JSON.
