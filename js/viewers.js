@@ -99,13 +99,13 @@ function switchMap(id) {
   var active = document.querySelector('.map.active');
   var activeSwitch = document.querySelector('.map-switch.active');
   if (active) {
-    active.className = 'map';
+    active.className = 'viewers map';
   }
   if (activeSwitch) {
     activeSwitch.className = 'map-switch';
   }
   var newActive = document.getElementById('map-' + id);
-  newActive.className = 'map active';
+  newActive.className = 'viewers map active';
   var newActiveSwitch = document.getElementById('map-switch-' + id);
   newActiveSwitch.className = 'map-switch active';
   activeId = id;
