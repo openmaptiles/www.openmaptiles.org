@@ -1,6 +1,7 @@
 ---
 layout: docs
 category: style
+order: 1
 title: Design a Style with Maputnik
 description: Edit Style with Mapbox Studio
 keywords: create, style

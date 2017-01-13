@@ -1,6 +1,7 @@
 ---
 layout: docs
 category: style
+order: 4
 title: Mapbox GL
 title: Mapbox GL Style Specification
 description: Mapbox GL Style Specification

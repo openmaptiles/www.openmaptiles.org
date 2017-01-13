@@ -1,9 +1,10 @@
 ---
 layout: docs
 category: style
+order: 2
 title: Upload Style to Mapbox Studio
 description: Create a Style with Mapbox Studio
-keywords: create, style, Mapbox Studio 
+keywords: create, style, Mapbox Studio
 ---
 
 You can upload the OpenMapTiles vector tiles to Mapbox studio to work on styles or host the tiles.

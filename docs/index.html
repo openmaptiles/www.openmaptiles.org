@@ -74,16 +74,17 @@ keywords: Documentation
       app or web viewer. You can also <a href="/docs/style/maputnik">create your own styles using Maputnik</a>.
     </p>
   </div>
+
+  
   <div class="col4">
     <h2 class="padb-1" >Tutorials</h2>
     {% for category in site.data.categories %}
     <div class="row doc-section">
       <h4>{{ category.title }}</h4>
       <ul>
-        {% for pg in site.pages %}
-        {% if pg.category == category.id and pg.main != true %}
+        {% assign aaaaa = site.pages | where:"category", category.id | sort: "order" %}
+        {% for pg in aaaaa %}
         <li><a href="{{ pg.url }}">{{ pg.title }}</a></li>
-        {% endif %}
         {% endfor %}
       </ul>
     </div>

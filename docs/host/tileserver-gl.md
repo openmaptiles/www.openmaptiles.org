@@ -3,6 +3,7 @@ layout: docs
 category: host
 title: Serve Raster and Vector Tiles with Tileserver GL
 description: TileServer GL
+order: 2
 ---
 
 Once you have generated or downloaded vector tiles from the [downloads](http://openmaptiles.org/downloads)

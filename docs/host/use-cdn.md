@@ -3,6 +3,7 @@ layout: docs
 category: host
 title: Use the OpenMapTiles.com CDN
 description: Use the public CDN
+order: 1
 ---
 
 **[OpenMapTiles.com](https://openmaptiles.com/hosting/)** provides a free CDN for non-commercial

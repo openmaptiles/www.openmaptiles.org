@@ -4,6 +4,7 @@ category: host
 title: TileServer PHP
 description: TileServer-php
 keywords: TileServer-php
+order: 3
 redirect_to:
 - https://github.com/klokantech/tileserver-php
 ---
