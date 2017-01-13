@@ -208,6 +208,12 @@ body.home{
       display: none;
     }
   }
+  .viewers .map-switch {
+    width: 100px;
+    span {
+      display: block;
+    }
+  }
 }
 @media screen and (max-width: 900px) {
   #phone {
