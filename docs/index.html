@@ -20,44 +20,50 @@ keywords: Documentation
       To serve the tiles to your mobile or web client you need to choose a tileserver
       for your platform and configure it to serve the previously downloaded vector tiles.
     </p>
-    <div class="tabs" style="min-height: 400px;">
+    <div class="tabs" style="min-height: 420px;">
       <ul>
-        <li class="tabs-btn active" id="btn-1">Node.js</li>
-        <li class="tabs-btn" id="btn-2">Docker</li>
+        <li class="tabs-btn active" id="btn-2">Docker</li>
+        <li class="tabs-btn" id="btn-1">Node.js</li>
         <li class="tabs-btn" id="btn-3">CDN</li>
       </ul>
       <div class="tabs-content">
-        <div class="tabs-tab active" id="tab-1">
-          <p>Using <a href="https://github.com/klokantech/tileserver-gl">tileserver-gl</a> you can immediately serve vector tiles and even have the capabilities to fall back to serve raster tiles for interoperability with other clients.<br/>
-            You can install <b>tileserver-gl</b> using npm.
-          </p>
-          <pre class="highlight"><code>npm install -g tileserver-gl</code></pre>
-          <p>Now run <b>tileserver-gl</b> together with the previously downloaded vector tiles</p>
-          <pre class="highlight"><code>tileserver-gl zurich_switzerland.mbtiles</code></pre>
-          <p>
-          Read the <a href="/docs/host/tileserver-gl">Tileserver GL</a> tutorial for more in-depth information.
-          </p>
-        </div>
-        <div class="tabs-tab" id="tab-2">
+        <div class="tabs-tab active" id="tab-2">
           If you don't have Node.js installed locally we recommend to use the offical Docker image of <b>tileserver-gl</b>.
           Mount the Docker container to the same directory
           where the previously downloaded vector tiles are and expose it to a local port.
           <pre class="highlight"><code>docker run -it -v $(pwd):/data -p 8080:80 klokantech/tileserver-gl</code></pre>
           <p>
-          Read the <a href="/docs/host/tileserver-gl">Tileserver GL</a> tutorial for more in-depth information.
+            Read the <a href="/docs/host/tileserver-gl">Tileserver GL</a> tutorial for more in-depth information.
           </p>
         </div>
+
+        <div class="tabs-tab" id="tab-1">
+          <p>Using <a href="https://github.com/klokantech/tileserver-gl">tileserver-gl</a>
+            you can immediately serve vector tiles.<br/>
+            You can install light version <b>tileserver-gl-light</b> using npm.
+          </p>
+          <pre class="highlight"><code>npm install -g tileserver-gl-light</code></pre>
+          <p>Now run <b>tileserver-gl-light</b> together with the previously downloaded vector tiles</p>
+          <pre class="highlight"><code>tileserver-gl-light zurich_switzerland.mbtiles</code></pre>
+          <p>
+            Read the <a href="/docs/host/tileserver-gl">Tileserver GL</a> tutorial
+            for more in-depth information. Full version tileserver-gl even have
+            the capabilities to fall back to serve raster tiles for interoperability
+            with other clients.
+          </p>
+        </div>
+
         <div class="tabs-tab" id="tab-3">
           <p>
-          <a href="https://openmaptiles.com/hosting/">OpenMapTiles.com</a> provides a free CDN for non-commercial
-          and demonstration purposes. Once you sign in, you can create an access key and can use the
-          TileJSON endpoint of the CDN in the rendering clients.
+            <a href="https://openmaptiles.com/hosting/">OpenMapTiles.com</a> provides a free CDN for non-commercial
+            and demonstration purposes. Once you sign in, you can create an access key and can use the
+            TileJSON endpoint of the CDN in the rendering clients.
           </p>
           <pre class="highlight"><code>https://free.tilehosting.com/data/v3.json?key={access_key}</code></pre>
           <p>
-          Read the <b><a href="/docs/host/use-cdn">CDN tutorial</a></b> for more in-depth information.
-          <br/>
-          If you need fast and reliable tile serving for your production applications <a href="https://openmaptiles.com/hosting/">OpenMapTiles.com</a> also provides a paid CDN service and other complimentary services.
+            Read the <b><a href="/docs/host/use-cdn">CDN tutorial</a></b> for more in-depth information.
+            <br/>
+            If you need fast and reliable tile serving for your production applications <a href="https://openmaptiles.com/hosting/">OpenMapTiles.com</a> also provides a paid CDN service and other complimentary services.
           </p>
         </div>
       </div>
@@ -75,7 +81,7 @@ keywords: Documentation
     </p>
   </div>
 
-  
+
   <div class="col4">
     <h2 class="padb-1" >Tutorials</h2>
     {% for category in site.data.categories %}
