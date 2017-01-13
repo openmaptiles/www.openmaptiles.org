@@ -3,7 +3,7 @@ var maps = {};
 var mbgljsMap = new mapboxgl.Map({
   attributionControl: false,
   container: 'map-mbgljs',
-  style: 'https://openmaptiles.github.io/fiord-color-gl-style/style-cdn.json',
+  style: 'https://openmaptiles.github.io/klokantech-basic-gl-style/style-cdn.json',
   zoom: 2
 });
 maps['mbgljs'] = {
@@ -17,7 +17,7 @@ maps['mbgljs'] = {
 };
 
 var leafletMap = L.map('map-leaflet', {zoomControl: false, attributionControl: false}).setView([0, 0], 2);
-L.tileLayer('https://klokantech-0.tilehosting.com/styles/streets/rendered/{z}/{x}/{y}.png?key=tXiQqN3lIgskyDErJCeY', {
+L.tileLayer('https://klokantech-0.tilehosting.com/styles/basic/rendered/{z}/{x}/{y}.png?key=tXiQqN3lIgskyDErJCeY', {
   maxZoom: 18
 }).addTo(leafletMap);
 
@@ -62,6 +62,13 @@ fetch('https://openmaptiles.github.io/klokantech-basic-gl-style/style-cdn.json')
     olms.applyStyle(layer, glStyle, 'openmaptiles').then(function () {
       mapOl3.addLayer(layer);
     });
+    var bglayer = glStyle.layers.find(function(l) {
+      return l.type === 'background';
+    });
+    if(bglayer && bglayer.paint && bglayer.paint['background-color']) {
+      var bgcolor = bglayer.paint['background-color'];
+      document.getElementById('map-ol3').style.backgroundColor = bgcolor;
+    }
   });
 });
 maps['ol3'] = {
