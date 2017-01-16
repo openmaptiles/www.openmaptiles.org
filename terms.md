@@ -1,11 +1,11 @@
 ---
 layout: page
-title: Terms of use for free pre-generated tiles
-description: Terms of use for free pre-generated tiles
+title: Terms of use for free pre-generated OpenStreetMap vector tiles
+description: Terms of use for free pre-generated OpenStreetMap vector tiles
 keywords: Terms of use, terms
 ---
 
-## Terms of use for free pre-generated tiles
+## Terms of use for the free pre-generated OpenStreetMap vector tiles
 
 We love the open-source and open-data community. Our OpenStreetMap vector tiles are free for:
 
@@ -14,17 +14,16 @@ We love the open-source and open-data community. Our OpenStreetMap vector tiles 
 - evaluation and education purposes
 
 <br>
-For any other use,  there are 2 ways, how to apply OpenMapTiles maps in your project: 
+For any other use, there are two ways how to apply OpenMapTiles maps in your project: 
 
-1) Generate your own tiles, just follow our [documentation]. Consider the time 
-necessary for the task and infrastructure costs (e.g. generating the planet 
+1) Generate the vector tiles yourself, just follow our [documentation](/docs/).
+Consider the time necessary for the task and the required infrastructure costs (e.g. generating the planet 
 on Amazon may get you a bill for up to a thousand dollars)
 
-2) Purchase "World package" or "Area extract" which includes:
+2) Purchase "World production package" or "Area extract" which includes:
 
- - curated ready-to-use map tiles for your products
- - legal rights for production use of the tiles
- - no need for visible "OpenMapTiles" attribution
- - extra hill shading
- - extra contour lines
+ - the right to use our prepared OpenStreetMap data packages in your products
  - always latest OpenStreetMap data
+ - curated ready-to-use map tiles for your products
+ - global hill shading tileset
+ - global contour lines tileset
