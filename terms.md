@@ -20,10 +20,9 @@ For any other use, there are two ways how to apply OpenMapTiles maps in your pro
 Consider the time necessary for the task and the required infrastructure costs (e.g. generating the planet 
 on Amazon may get you a bill for up to a thousand dollars)
 
-2) Purchase "World production package" or "Area extract" which includes:
+2) Purchase [World production package](https://openmaptiles.com/production-package/) or [Area extract](https://openmaptiles.com/extracts/) which includes:
 
  - the right to use our prepared OpenStreetMap data packages in your products
- - always latest OpenStreetMap data
- - curated ready-to-use map tiles for your products
- - global hill shading tileset
- - global contour lines tileset
+ - derived from latest OpenStreetMap data
+ - global hill shading raster tileset
+ - global contour lines vector tileset
