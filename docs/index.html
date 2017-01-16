@@ -88,9 +88,9 @@ keywords: Documentation
     <div class="row doc-section">
       <h4>{{ category.title }}</h4>
       <ul>
-        {% assign aaaaa = site.pages | where:"category", category.id | sort: "order" %}
-        {% for pg in aaaaa %}
-        <li><a href="{{ pg.url }}">{{ pg.title }}</a></li>
+        {% assign articles = site.pages | where:"category", category.id | sort: "order" %}
+        {% for article in articles %}
+        <li><a href="{{ article.url }}">{{ article.title }}</a></li>
         {% endfor %}
       </ul>
     </div>

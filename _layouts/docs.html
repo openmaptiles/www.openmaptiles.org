@@ -25,21 +25,21 @@ layout: default
         {{ content }}
       </article>
     </div>
-    <div class="col4 padb-4">
+
+  <div class="col4">
+    <h2 class="padb-1" >Tutorials</h2>
     {% for category in site.data.categories %}
     <div class="row doc-section">
       <h4>{{ category.title }}</h4>
       <ul>
-      {% for pg in site.pages %}
-      {% if pg.category == category.id and pg.main != true %}
-      <li><a href="{{ pg.url }}">{{ pg.title }}</a></li>
-      {% endif %}
-      {% endfor %}
+        {% assign articles = site.pages | where:"category", category.id | sort: "order" %}
+        {% for article in articles %}
+        <li><a href="{{ article.url }}">{{ article.title }}</a></li>
+        {% endfor %}
       </ul>
     </div>
     {% endfor %}
-
-    </div>
+  </div>
   </div>
 </div>
 
