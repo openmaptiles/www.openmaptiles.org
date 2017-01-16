@@ -7,7 +7,7 @@ description: Design a Raster Tile Style with Mapbox Studio Classic
 keywords: Mapbox Studio Classic
 ---
 
-You can also use [Mapbox Studio Classic](https://www.mapbox.com/help/define-mapbox-studio-classic/) in combination wit)
+You can also use [Mapbox Studio Classic](https://www.mapbox.com/help/define-mapbox-studio-classic/) in combination with
 OpenMapTiles to create Tilemill raster tile styles.
 
 
