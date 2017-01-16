@@ -23,6 +23,6 @@ on Amazon may get you a bill for up to a thousand dollars)
 2) Purchase [World production package](https://openmaptiles.com/production-package/) or [Area extract](https://openmaptiles.com/extracts/) which includes:
 
  - the right to use our prepared OpenStreetMap data packages in your products
- - derived from latest OpenStreetMap data
+ - always derived from the latest OpenStreetMap data
  - global hill shading raster tileset
  - global contour lines vector tileset
