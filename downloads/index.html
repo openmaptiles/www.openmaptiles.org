@@ -3,16 +3,17 @@ layout: page
 title: Downloads
 ---
 <div class="row">
-	<div class="row">
-		<div class="col10 offset1 padx-0 center">
-			<p>You can download the entire planet, country or even city
-				extracts.
-				All extracts also contain data on lower zoom levels to make your map look
-				good without having to download the entire planet.
-			</p>
-			<p class="b">The vector tiles contain OpenStreetMap data from <span class="primary">11/28/2016</span></p>
-		</div>
-	</div>
+  <div class="row">
+    <div class="col10 offset1 padx-0 center">
+      <p>You can download the entire planet, country or even city
+        extracts.
+        All extracts also contain data on lower zoom levels to make your map look
+        good without having to download the entire planet.
+      </p>
+      <p class="b">The free vector tiles contain OpenStreetMap data from <span class="primary">11/28/2016</span>.</p>
+      <p>Regularly updated tiles are available in the <a href="https://openmaptiles.com/production-package/">Production package</a>.</p>
+    </div>
+  </div>
 </div>
 
 <div class="row">
@@ -52,15 +53,17 @@ title: Downloads
       </div>
       <div id="downloads-loading">Loading...</div>
     </div>
-
+    <p>The global <a href="https://openmaptiles.com/contours/">Contour lines vector tiles</a>
+      and <a href="https://openmaptiles.com/contours/">Hill shading raster tiles</a>
+      are available in the commercial <a href="https://openmaptiles.com/downloads/">Downloads</a> section.</p>
   </div>
 </div>
 
 <div id="conditions-dialog-veil" style="display:none;" onclick="showDialog(false);"></div>
 <div id="conditions-dialog" style="display:none;">
   <p>
-    Free to use for open-source and open-data community projects, non-commercial 
-    personal projects, evaluation and education purposes.<br>Any other use is 
+    Free to use for open-source and open-data community projects, non-commercial
+    personal projects, evaluation and education purposes.<br>Any other use is
     possible under <a class="b" href="https://openmaptiles.org/terms/">these conditions</a>.
   </p>
   <ul>
@@ -71,7 +74,7 @@ title: Downloads
   <div class="center">
     <input type="button" class="btn mary-1" value="I agree" onclick="document.getElementById('conditions-dialog-download').className='padt-2';this.style.display='none';">
     <div id="conditions-dialog-download" class="gray pady-1">
-      <a href="#" id="conditions-dialog-download-link" class="btn">Download</a> 
+      <a href="#" id="conditions-dialog-download-link" class="btn">Download</a>
       <span class="marx-1">or copy link</span> <input id="conditions-dialog-download-input" type="text" value="" />
       <a class="btn copy-btn" data-clipboard-target="#conditions-dialog-download-input" onclick="return false;">Copy link</a>
     </div>
