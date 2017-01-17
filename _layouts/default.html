@@ -25,20 +25,8 @@
     <script src="https://klokantech.github.io/javascript/kt.js"></script>
     <link href="{{ site.baseurl }}base.css" rel="stylesheet" />
     <script type="text/javascript" src="{{ site.baseurl }}js/index.js"></script>
-    <script>
-function unlock() {
-  if (location.search != '?unlock') {
-    document.body.innerHTML = '<div class="center padt-6"><h1>OpenMapTiles</h1><h4>Under construction</h4></div>';
-  } else {
-    document.body.querySelectorAll('a').forEach(function(a) {
-      a.href += '?unlock';
-    });
-  }
-  document.body.style.visibility = '';
-}
-    </script>
   </head>
-  <body {% if page.url == "/" or page.url == "/viewers/" %}class="home"{% endif %} {% if site.url != 'http://localhost:4000' %}style="visibility:hidden;" onload="unlock()"{% endif %}>
+  <body{% if page.url == "/" or page.url == "/viewers/" %} class="home"{% endif %}>
     <div class="container">
       <div id="navbar-top" class="large">
         <div class="container">
