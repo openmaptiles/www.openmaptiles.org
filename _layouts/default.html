@@ -23,9 +23,9 @@
     <meta name="twitter:description" content="{% if page.description %}{{ page.description }}{% else %}Vector tiles from OpenStreetMap and OpenData to create world maps for web and mobile.{% endif %}">
     <meta name="twitter:site" content="@openmaptiles">
 
-    <script src="https://klokantech.github.io/javascript/kt.js"></script>
+    <script src="https://klokantech.github.io/javascript/kt.js" async></script>
     <link href="{{ site.baseurl }}base.css" rel="stylesheet" />
-    <script type="text/javascript" src="{{ site.baseurl }}js/index.js"></script>
+    <script type="text/javascript" src="{{ site.baseurl }}js/index.js" async></script>
   </head>
   <body{% if page.url == "/" or page.url == "/viewers/" %} class="home"{% endif %}>
     <div class="container">
