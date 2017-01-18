@@ -3,6 +3,8 @@ layout: docs
 category: style
 order: 1
 title: Design a Style with Maputnik
+titlehtml: Design a Style with Maputnik
+titlesidebar: Design a Style with Maputnik
 description: Edit Style with Mapbox Studio
 keywords: create, style
 ---

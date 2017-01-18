@@ -3,6 +3,8 @@ layout: docs
 category: style
 order: 3
 title: Raster Tiles with Mapbox Studio Classic
+titlehtml: Raster Tiles with Mapbox Studio Classic
+titlesidebar: Tiles with Mapbox Studio Classic
 description: Design a Raster Tile Style with Mapbox Studio Classic
 keywords: Mapbox Studio Classic
 ---

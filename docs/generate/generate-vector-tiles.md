@@ -3,6 +3,8 @@ layout: docs
 category: generate
 order: 1
 title: Generate your own vector tiles
+titlehtml: Generate your own vector tiles
+titlesidebar: Generate your own vector tiles
 description: Generate your own vector tiles
 keywords: Generate your own vector tiles
 ---
