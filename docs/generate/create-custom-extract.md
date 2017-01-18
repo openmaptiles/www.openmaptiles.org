@@ -3,6 +3,8 @@ layout: docs
 category: generate
 order: 2
 title: Create custom Extract
+titlehtml: Create custom Extract
+titlesidebar: Create custom Extract
 description: Create custom Extract of an Area of your Choice
 keywords: create, custom, extract
 ---

@@ -13,9 +13,9 @@ keywords: Documentation
 
     Head over to the <b><a href="/downloads">downloads page</a></b>
     and download the vector tiles for your region or the planet.<p>
-    
+
     <pre class="highlight"><code>wget https://.../zurich_switzerland.mbtiles</code></pre>
-    
+
     <h3>2. Run a Tileserver</h3>
     <p>
       To serve the tiles to your mobile or web client you need to choose a tileserver
@@ -93,7 +93,7 @@ keywords: Documentation
       <ul>
         {% assign articles = site.pages | where:"category", category.id | sort: "order" %}
         {% for article in articles %}
-        <li><a href="{{ article.url }}">{{ article.title }}</a></li>
+        <li><a href="{{ article.url }}">{% if titlesidebar %}{{ article.titlesidebar }}{% else %}{{ article.title }}{% endif %}</a></li>
         {% endfor %}
       </ul>
     </div>
