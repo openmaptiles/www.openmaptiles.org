@@ -7,20 +7,21 @@
     <title>{% if page.titlehtml %}{{ page.titlehtml }}{% else %}{% if page.title %}{{ page.title }} – {% endif %}{{ site.name }}{% endif %}</title>
 
     <meta name="author" content="Klokan Technologies GmbH" />
-    <meta name="description" content="{{ page.description }}" />
+    <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}Vector tiles from OpenStreetMap and OpenData to create world maps for web and mobile.{% endif %}" />
+    <meta name="keywords" content="{% if page.keywords %}{{ page.keywords }}, {% else %}maps, basemaps, web, mobile, {% endif %}openmaptiles, vector tiles, openstreetmap" />
     <meta name="theme-color" content="#95BF73">
 
     <meta property="og:image" content="http://openmaptiles.org/img/facebook-share-image.png"/>
     <meta property="og:title" content="{{ page.title }}"/>
-    <meta property="og:url" content="http://openmaptiles.org/"/>
+    <meta property="og:url" content="https://openmaptiles.org{{ page.url }}"/>
     <meta property="og:site_name" content="OpenMapTiles"/>
     <meta property="og:type" content="website"/>
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{{ page.title }}">
     <meta name="twitter:image" content="http://openmaptiles.org/img/twitter-share-image.jpg"/>
-    <meta name="twitter:description" content="Vector tiles from OpenStreetMap and OpenData to create world maps for web and mobile.">
-    <meta name="twitter:site" content="@klokantech">
+    <meta name="twitter:description" content="{% if page.description %}{{ page.description }}{% else %}Vector tiles from OpenStreetMap and OpenData to create world maps for web and mobile.{% endif %}">
+    <meta name="twitter:site" content="@openmaptiles">
 
     <script src="https://klokantech.github.io/javascript/kt.js"></script>
     <link href="{{ site.baseurl }}base.css" rel="stylesheet" />
