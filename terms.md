@@ -27,4 +27,5 @@ on Amazon may get you a bill for up to a thousand dollars)
  - global hill shading raster tileset
  - global contour lines vector tileset
 
+<br>
 Generating, hosting and updating the large map packages with vector tiles costs resources and time. We are keen to make this project sustainable and maintain it in the years to come. Therefore, we ask for a contribution from the end-users.
