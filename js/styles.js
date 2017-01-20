@@ -21,11 +21,7 @@ for (var i = 0; i < mapContainers.length; ++i) {
   var bearing = 0;
   var pitch = 0;
 
-  if (mapId == 'osm-liberty') {
-    zoom = 15.6;
-    center = [8.5405, 47.3672];
-  }
-  if(mapId == 'toner') {
+  if(mapId == 'toner' || mapId == 'osm-liberty') {
     zoom = 2;
   }
   if(mapId == 'klokantech-3d') {
