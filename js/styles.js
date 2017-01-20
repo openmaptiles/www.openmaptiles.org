@@ -24,6 +24,8 @@ for (var i = 0; i < mapContainers.length; ++i) {
 
   if (mapId == 'osm-liberty') {
     minZoom = 6; // Natural Earth tiles, which are used for z0-z5, aren't served over HTTPS, so zoom is limited to z6+
+    zoom = 6.2;
+    center = [8.380, 46.862];
   }
   if(mapId == 'toner') {
     zoom = 2;
