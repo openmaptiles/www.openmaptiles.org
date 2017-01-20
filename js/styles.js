@@ -2,6 +2,7 @@ var styleUrls = {
   'positron': 'https://openmaptiles.github.io/positron-gl-style/style-cdn.json',
   'dark-matter': 'https://openmaptiles.github.io/dark-matter-gl-style/style-cdn.json',
   'osm-bright': 'https://openmaptiles.github.io/osm-bright-gl-style/style-cdn.json',
+  'osm-liberty': 'http://osm-liberty.lukasmartinelli.ch/style.json',
   'klokantech-basic': 'https://openmaptiles.github.io/klokantech-basic-gl-style/style-cdn.json',
   'klokantech-3d': 'https://openmaptiles.github.io/klokantech-3d-gl-style/style-cdn.json',
   'klokantech-terrain': 'https://openmaptiles.github.io/klokantech-terrain-gl-style/style-cdn.json',
@@ -19,11 +20,11 @@ for (var i = 0; i < mapContainers.length; ++i) {
   var center = [8.5456, 47.3739];
   var bearing = 0;
   var pitch = 0;
+  var minZoom = 0;
 
-  if(mapId == 'osm-liberty') {
-    continue;
+  if (mapId == 'osm-liberty') {
+    minZoom = 6; // Natural Earth tiles, which are used for z0-z5, aren't served over HTTPS, so zoom is limited to z6+
   }
-
   if(mapId == 'toner') {
     zoom = 2;
   }
@@ -43,7 +44,8 @@ for (var i = 0; i < mapContainers.length; ++i) {
       center: center,
       zoom: zoom,
       pitch: pitch,
-      bearing: bearing
+      bearing: bearing,
+      minZoom: minZoom
   });
   maps[mapId].addControl(new mapboxgl.NavigationControl());
   maps[mapId].addControl(new MapboxInspect());
