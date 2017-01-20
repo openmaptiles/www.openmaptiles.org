@@ -2,7 +2,7 @@ var styleUrls = {
   'positron': 'https://openmaptiles.github.io/positron-gl-style/style-cdn.json',
   'dark-matter': 'https://openmaptiles.github.io/dark-matter-gl-style/style-cdn.json',
   'osm-bright': 'https://openmaptiles.github.io/osm-bright-gl-style/style-cdn.json',
-  'osm-liberty': 'http://osm-liberty.lukasmartinelli.ch/style.json',
+  'osm-liberty': 'https://rawgit.com/lukasmartinelli/osm-liberty/gh-pages/style.json',
   'klokantech-basic': 'https://openmaptiles.github.io/klokantech-basic-gl-style/style-cdn.json',
   'klokantech-3d': 'https://openmaptiles.github.io/klokantech-3d-gl-style/style-cdn.json',
   'klokantech-terrain': 'https://openmaptiles.github.io/klokantech-terrain-gl-style/style-cdn.json',
