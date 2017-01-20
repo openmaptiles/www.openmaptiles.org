@@ -20,10 +20,8 @@ for (var i = 0; i < mapContainers.length; ++i) {
   var center = [8.5456, 47.3739];
   var bearing = 0;
   var pitch = 0;
-  var minZoom = 0;
 
   if (mapId == 'osm-liberty') {
-    minZoom = 6; // Natural Earth tiles, which are used for z0-z5, aren't served over HTTPS, so zoom is limited to z6+
     zoom = 15.6;
     center = [8.5405, 47.3672];
   }
@@ -46,8 +44,7 @@ for (var i = 0; i < mapContainers.length; ++i) {
       center: center,
       zoom: zoom,
       pitch: pitch,
-      bearing: bearing,
-      minZoom: minZoom
+      bearing: bearing
   });
   maps[mapId].addControl(new mapboxgl.NavigationControl());
 
