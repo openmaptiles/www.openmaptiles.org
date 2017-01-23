@@ -29,3 +29,5 @@ on Amazon may get you a bill for up to a thousand dollars)
 
 <br>
 Generating, hosting and updating the large map packages with vector tiles costs resources and time. We are keen to make this project sustainable and maintain it in the years to come. Therefore, we ask for a contribution from the end-users.
+
+Our non-commercial and free vector tile download service shall not be used with third-party mobile apps or software. Always host extracts for your products on your own server!
