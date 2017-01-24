@@ -396,9 +396,29 @@ body.home{
   padding: 15px 20px;
   margin-bottom: 5px !important;
   border: 2px solid #f1f3f4;
+  height: 64px;
   &:hover {
     background-color: #f1f3f4;
     cursor: pointer;
+  }
+  a:first-child{
+    position: absolute;
+    max-width: 360px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+  span{
+    position: absolute;
+    margin-left: 360px;
+  }
+  @media (max-width: 841px){
+    a:first-child{
+      max-width: 160px;
+    }
+    span{
+      margin-left: 160px;
+    }
   }
 }
 #downloads-loading{
