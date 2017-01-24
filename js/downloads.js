@@ -28,12 +28,12 @@ ajax(url, function(data) {
 
   var countriesTab = document.getElementById('tab-2');
   data.country.forEach(function(dato) {
-    addItem(countriesTab, dato.name, dato.link);
+    addItem(countriesTab, dato.name, dato.link, dato.size);
   });
 
   var citiesTab = document.getElementById('tab-3');
   data.city.forEach(function(dato) {
-    addItem(citiesTab, dato.name, dato.link);
+    addItem(citiesTab, dato.name, dato.link, dato.size);
   });
 
   var countrySearch = document.getElementById('search-2');
