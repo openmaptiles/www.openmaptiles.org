@@ -2,15 +2,17 @@
 layout: docs
 category: style
 order: 3
-title: Raster Tiles with Mapbox Studio Classic
-titlehtml: Raster Tiles with Mapbox Studio Classic
-titlesidebar: Tiles with Mapbox Studio Classic
-description: Design a Raster Tile Style with Mapbox Studio Classic
+title: CartoCSS style with Mapbox Studio Classic
+titlehtml: CartoCSS style with Mapbox Studio Classic
+titlesidebar: CartoCSS with Mapbox Studio Classic
+description: Design a CartoCSS Style with Mapbox Studio Classic
 keywords: Mapbox Studio Classic
 ---
 
 You can also use [Mapbox Studio Classic](https://www.mapbox.com/help/define-mapbox-studio-classic/) in combination with
-OpenMapTiles to create Tilemill raster tile styles.
+OpenMapTiles to create Tilemill2 tile styles for Mapnik renderer.
+
+NOTE: If you need raster tiles it is highly recomended to use the TileServerGL project, which provides raster tiles rendered on server side from the vector tiles and the modern GL styles. See https://openmaptiles.org/docs/host/tileserver-gl/
 
 
 ## Change the Source
