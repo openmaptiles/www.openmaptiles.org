@@ -16,23 +16,21 @@ Based on free OpenStreetMap data, it is posisble to create beautiful, accurate a
 
 ## Native mobile apps
 
-Our OpenSteetMap vector tiles are encoded in the widely used and openly documented [vector tile format](https://github.com/mapbox/vector-tile-spec). This means the tiles are compatible with all software tools implementing this format specification. The style defintion for the design of the map may vary in different tools - our open styles are implemented in [GL Style]().
+Our OpenSteetMap vector tiles are encoded in the widely used and openly documented [vector tile format](https://github.com/mapbox/vector-tile-spec). This means the tiles are compatible with all software tools implementing this format specification. The style defintion for the design of the map may vary in different tools - our open styles are implemented in [GL Style](https://www.mapbox.com/mapbox-gl-js/style-spec/).
 
 The [open-source Mapbox SDK for iOS](https://www.mapbox.com/ios-sdk/) and [SDK for Android](https://www.mapbox.com/android-sdk/) provides the most natural way how to display the tiles and styles in a mobile app natively.
 
-The source code of the Mapbox SDKs is available at https://github.com/mapbox/mapbox-gl-native.
+The source code of the Mapbox SDKs is [available at GitHub](https://github.com/mapbox/mapbox-gl-native).
 
 There are alternative open-source SDKs for native mobile apps as well, for example TangramES or Carto/Nutiteq SDK.
 
 ### Sample app for Android and iOS
 
-To demostrate the capabilites of the SDK and show the performance of OpenMapTiles vector tiles made from OpenStreetMap we have developed a sample mobile app.
+To demostrate the capabilites of the SDK and show the performance of OpenMapTiles vector tiles made from OpenStreetMap we have developed a [sample mobile app](/mobile) for both Android and iOS.
 
-Get it for free for Android ([Google Play]()) or iOS ([App Store]()).
+This apps shows the vector map tiles displayed from a custom tile server, so you can choose a tile hosting service or implement your own. Map tiles can be also bundled with the mobile app or users can download a tileset for a region of their choice.
 
-This apps shows the vector map tiles displayed from a custom tile server - so you can choose a tile hosting service or implememnt your own. The map tiles can be also bundled with the mobile app or users can download MBTiles package of tiles for a region of their choice.
-
-Displaying of the tiles directly from MBTiles, running in offline environment, requires patching of Mapbox SDKs. We offer the [complete source code of the demo mobile app]() to the interested developers - to speed up the start of the development of their own commercial apps.
+Displaying of the tiles directly from MBTiles, running in offline environment, requires patching of Mapbox SDKs. We offer the [complete source code of the demo mobile app](https://openmaptiles.com/mobile-app/) to the interested developers to speed up the start of the development of their own commercial apps.
 
 ## Packed web applications
 
@@ -46,4 +44,4 @@ While developing the mobile apps in JavaScript users can also use native compone
 
 For the development of native desktop applications and software for hardware apliences with embeded mapping systems powered by Linux and running completely offline with our vector tiles one can use the open-source [QT SDK](https://github.com/mapbox/mapbox-gl-native/tree/master/platform/qt).
 
-Mapbox GL Native does not compile (yet) on Microsoft Windows - so for fully multiplatform desktop apps with vector tile maps inside, the embedded web window (possibly with [CEF - Chromium Embedded Framework](https://bitbucket.org/chromiumembedded/cef) and enabled WebGL support) is still the best option.
+Mapbox GL Native does not compile (yet) on Microsoft Windows. So for fully multiplatform desktop apps with vector tile maps inside, the embedded web window (possibly with [CEF - Chromium Embedded Framework](https://bitbucket.org/chromiumembedded/cef) and enabled WebGL support) is still the best option.
