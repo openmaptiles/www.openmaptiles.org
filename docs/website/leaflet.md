@@ -20,9 +20,9 @@ Put this in the `<head>` of your HTML page:
 
 ```html
 <head>
-	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
-	<script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
-	<script src="https://unpkg.com/leaflet.vectorgrid@1.2.0"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet.vectorgrid@1.2.0"></script>
 </head>
 ```
 
@@ -36,37 +36,37 @@ styling for all the data layers:
 
 ```js
 var vectorStyles = {
-	water: {	// Apply these options to the "water" layer...
-		fill: true,
-		weight: 1,
-		fillColor: '#06cccc',
-		color: '#06cccc',
-		fillOpacity: 0.2,
-		opacity: 0.4,
-	},
-	transportation: {	// Apply these options to the "transportation" layer...
-		weight: 0.5,
-		color: '#f2b648',
-		fillOpacity: 0.2,
-		opacity: 0.4,
-	},
+  water: {	// Apply these options to the "water" layer...
+    fill: true,
+    weight: 1,
+    fillColor: '#06cccc',
+    color: '#06cccc',
+    fillOpacity: 0.2,
+    opacity: 0.4,
+  },
+  transportation: {	// Apply these options to the "transportation" layer...
+    weight: 0.5,
+    color: '#f2b648',
+    fillOpacity: 0.2,
+    opacity: 0.4,
+  },
 
-	// And so on, until every layer in https://openmaptiles.org/schema/ has a style
+  // And so on, until every layer in https://openmaptiles.org/schema/ has a style
 
-	// aeroway:
-	// boundary:
-	// building:
-	// housenumber:
-	// landcover:
-	// landuse:
-	// park:
-	// place:
-	// poi:
-	// transportation:
-	// transportation_name:
-	// water:
-	// water_name:
-	// waterway:
+  // aeroway:
+  // boundary:
+  // building:
+  // housenumber:
+  // landcover:
+  // landuse:
+  // park:
+  // place:
+  // poi:
+  // transportation:
+  // transportation_name:
+  // water:
+  // water_name:
+  // waterway:
 };
 ```
 
@@ -84,10 +84,10 @@ Once you have your style, create an instance of `L.VectorGrid.Protobuf` like thi
 var openMapTilesUrl = "https://free-{s}.tilehosting.com/data/v3/{z}/{x}/{y}.pbf.pict?key={key}"
 
 var openMapTilesLayer = L.vectorGrid.protobuf(openMapTilesUrl, {
-	vectorTileLayerStyles: vectorStyles,
-	subdomains: '0123',
-	attribution: '© OpenStreetMap contributors, © OpenMapTiles',
-	key: 'abcdefghi01234567890' // Get yours at https://openmaptiles.com/hosting/
+  vectorTileLayerStyles: vectorStyles,
+  subdomains: '0123',
+  attribution: '© OpenStreetMap contributors, © OpenMapTiles',
+  key: 'abcdefghi01234567890' // Get yours at https://openmaptiles.com/hosting/
 });
 ```
 
