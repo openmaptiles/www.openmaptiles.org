@@ -16,13 +16,19 @@ original [ODbL license](http://wiki.openstreetmap.org/wiki/Open_Database_License
 
 <iframe src="https://ghbtns.com/github-btn.html?user=openmaptiles&repo=openmaptiles&type=star&count=true&size=large" frameborder="0" scrolling="0" width="160px" height="30px" style="margin: 0;"></iframe>
 
-### Requirements
+### Requirements & Recommendations
 
-To work on OpenMapTiles you need Docker.
+To work on OpenMapTiles, we recommend:
+- Linux on x86_64 CPU
+- &gt;15 GB of free disk space
+- &gt;3 GB RAM.
+
+More details available in [repo](https://github.com/openmaptiles/openmaptiles/blob/master/QUICKSTART.md#req).
+
+You need also Docker:
 
 - Install [Docker](https://docs.docker.com/engine/installation/). Minimum version is 1.10.0+.
 - Install [Docker Compose](https://docs.docker.com/compose/install/). Minimum version is 1.6.0+.
-
 
 Clone the [OpenMapTiles repo](https://github.com/openmaptiles/openmaptiles).
 
