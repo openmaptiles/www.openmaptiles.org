@@ -1,9 +1,9 @@
 ---
 layout: docs
 category: website
-title: OpenLayers 3
-description: OpenLayers 3
-keywords: Openlayers3
+title: OpenLayers
+description: OpenLayers
+keywords: Openlayers
 ---
 
 This is an example how to use for OpenLayers 3 using the [ol-mapbox-style](https://github.com/boundlessgeo/ol-mapbox-style) extension together with OpenMapTiles. Check out the code [here](https://github.com/openmaptiles/www.openmaptiles.org/tree/master/maps).
