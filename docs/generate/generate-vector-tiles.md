@@ -50,3 +50,5 @@ Now generate the vector tiles using the quickstart bash script.
 ```bash
 ./quickstart.sh
 ```
+
+By default, it will generate vector tileset of Albania for zoom levels 0 -- 7 into `data` directory.
