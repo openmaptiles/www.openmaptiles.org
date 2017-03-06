@@ -15,7 +15,7 @@ If you haven't worked with Leaflet before, have a look at its [tutorials](http:/
 
 Leaflet doesn't support vector tiles by default. For basemaps it is recommended to use it with traditional raster tiles (Mercator XYZ). Such tiles can be geneated on demand for any of the [GL styles](/styles/) with the open-source server software called [TileServer GL](/docs/host/tileserver-gl/).
 
-A preview of the Leaflet viewer showing the raster tiles is visible at [viewers](https://openmaptiles.org/viewers/) example:
+A preview of the Leaflet viewer showing the raster tiles is visible at [viewers](https://openmaptiles.org/viewers/) example.
 
 
 ### Vector tiles with a plugin
