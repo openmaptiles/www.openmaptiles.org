@@ -7,17 +7,26 @@ keywords: Openlayers
 order: 2
 ---
 
-This is an example how to use for OpenLayers 3 using the [ol-mapbox-style](https://github.com/boundlessgeo/ol-mapbox-style) extension together with OpenMapTiles. Check out the code [here](https://github.com/openmaptiles/www.openmaptiles.org/tree/master/maps).
+There are two ways how to display OpenMapTiles with [OpenLayers](http://openlayers.org/) library: using raster tiles or vector tiles.
+
+### Raster tiles from server
+
+OpenLayers doesn't support vector tiles by default. Raster tiles can be geneated on demand for any of the [GL styles](/styles/) with the open-source server software called [TileServer GL](/docs/host/tileserver-gl/). Such raster tiles can be displayed using [ol.source.XYZ](http://openlayers.org/en/latest/examples/xyz.html) source.
+
+
+### Vector tiles with a plugin
+
+Vector tiles can be displayed in OpenLayers using the [ol-mapbox-style](https://github.com/boundlessgeo/ol-mapbox-style) plugin together with OpenMapTiles. Read the following guideline or check out the code [here](https://github.com/openmaptiles/www.openmaptiles.org/tree/master/maps).
 
 <iframe src="/maps/ol3.html" frameborder="0" scrolling="0" width="100%" height="540px" style="margin-bottom:25px;"></iframe>
 
-### Convert Mapbox GL style to OpenLayers style functions
+#### Convert Mapbox GL style to OpenLayers style functions
 
 The [ol-mapbox-style](https://github.com/boundlessgeo/ol-mapbox-style) converts the original Mapbox GL style specification into OpenLayers style functions. Thanks to this extension you are able to design
 maps for vector tiles using the existing tools and then switch
 to a different renderer.
 
-### index.html
+#### index.html
 
 Create a HTML page and include OpenLayers 3 and the standalone build
 of [ol-mapbox-style](https://github.com/boundlessgeo/ol-mapbox-style) `omls.js`. Since OpenLayers 3 draws on the browser canvas you also need
@@ -51,7 +60,7 @@ to include the fonts used in the style in the page.
 </body>
 ```
 
-### ol3.js
+#### ol3.js
 
 Create a new MVT source (`url` of `ol.source.VectorTile`) which points
 to the CDN of OpenMapTiles or your own tileserver.
