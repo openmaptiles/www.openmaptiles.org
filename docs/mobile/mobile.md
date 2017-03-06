@@ -34,7 +34,7 @@ Displaying of the tiles directly from MBTiles, running in offline environment, r
 
 ## Packed web applications
 
-An alterantive way for development of multiplatform mobile apps is use of the existing [web viewers]() while using HTML, CSS and JavaScript - and packing of the web applications into native applications with something like Apache Cordova (https://cordova.apache.org/).
+An alterantive way for development of multiplatform mobile apps is use of the existing [web viewers](/viewers/) while using HTML, CSS and JavaScript - and packing of the web applications into native applications with something like Apache Cordova (https://cordova.apache.org/).
 
 The modern mobile phones supports WebGL and maps are acceptably performant - but native apps are still   faster and ensure better compatibility with various devices.
 
