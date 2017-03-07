@@ -14,7 +14,7 @@ You can either use the publicly available version of Maputnik
 at [http://editor.openmaptiles.org](http://editor.openmaptiles.org)
  or [download the editor](https://github.com/maputnik/editor/releases) to use it locally.
 
-## Choose a Style
+## Edit the Style online
 
 The easiest way to get started is choosing an existing style as a starting point.
 On [http://editor.openmaptiles.org](http://editor.openmaptiles.org) you can choose from many existing
