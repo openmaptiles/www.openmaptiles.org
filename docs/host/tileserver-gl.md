@@ -17,10 +17,10 @@ This tutorial will show you how to serve the downloaded vector tiles from OpenMa
 
 ### Install
 
-You can install the `tileserver-gl` package from npm.
+We recommend to install Tileserver GL using Docker:
 
 ```
-npm install -g tileserver-gl
+docker pull klokantech/tileserver-gl
 ```
 
 Now download the vector tiles from OpenMapTiles.
@@ -29,23 +29,10 @@ Now download the vector tiles from OpenMapTiles.
 curl -o zurich_switzerland.mbtiles https://openmaptiles.os.zhdk.cloud.switch.ch/v3.3/extracts/zurich_switzerland.mbtiles
 ```
 
-If the installation fails or you do not have Node.js installed locally we recommend to use
-Docker.
-
-```
-docker pull klokantech/tileserver-gl
-```
-
 ### Serve Map Tiles
 
-Start `tileserver-gl` with the downloaded vector tiles.
-
-```
-tileserver-gl zurich_switzerland.mbtiles
-```
-
-If you are using Docker you should mount the directory containing the vector tiles to the container
-and bind the port `80` to a local port.
+You should mount the directory containing the vector tiles to the container
+and bind the port `80` to a local port:
 
 ```
 docker run -it -v $(pwd):/data -p 8080:80 klokantech/tileserver-gl
