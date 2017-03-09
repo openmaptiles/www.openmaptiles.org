@@ -23,6 +23,11 @@
     "id": "mobile",
     "title": "Maps in a Mobile App",
     "desc": "Use the vector tiles in Android and iOS and even offline."
+  },
+  {
+    "id": "raster",
+    "title": "Generate Raster Tiles",
+    "desc": "Create raster tiles for use with OpenMapTiles."
   }
 ]
 
