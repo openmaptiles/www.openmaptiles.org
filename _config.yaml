@@ -10,5 +10,5 @@ sass:
 
 exclude:
 - "styles/lib/*"
-#gems:
-#- jekyll-redirect-from
+gems:
+- jekyll-redirect-from

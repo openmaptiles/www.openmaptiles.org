@@ -38,16 +38,16 @@ var layer = new ol.layer.VectorTile({
     url: 'https://free-{0-3}.tilehosting.com/data/v3/{z}/{x}/{y}.pbf?key=tXiQqN3lIgskyDErJCeY'
   })
 });
-var viewOl3 = new ol.View({
+var viewOl = new ol.View({
   center: [0, 0],
   zoom: 0,
   minZoom: 0,
   maxZoom: 15
 });
-var mapOl3 = new ol.Map({
-  target: 'map-ol3',
+var mapOl = new ol.Map({
+  target: 'map-ol',
   controls: [],
-  view: viewOl3
+  view: viewOl
 });
 
 fetch('https://openmaptiles.github.io/klokantech-basic-gl-style/style-cdn.json').then(function(response) {
@@ -60,26 +60,26 @@ fetch('https://openmaptiles.github.io/klokantech-basic-gl-style/style-cdn.json')
       }
     });
     olms.applyStyle(layer, glStyle, 'openmaptiles').then(function () {
-      mapOl3.addLayer(layer);
+      mapOl.addLayer(layer);
     });
     var bglayer = glStyle.layers.find(function(l) {
       return l.type === 'background';
     });
     if(bglayer && bglayer.paint && bglayer.paint['background-color']) {
       var bgcolor = bglayer.paint['background-color'];
-      document.getElementById('map-ol3').style.backgroundColor = bgcolor;
+      document.getElementById('map-ol').style.backgroundColor = bgcolor;
     }
   });
 });
-maps['ol3'] = {
+maps['ol'] = {
   getPos: function() {
-    var center = ol.proj.toLonLat(viewOl3.getCenter());
-    return [center[0], center[1], Math.log((Math.PI * 6378137 * 2 / 256) / viewOl3.getResolution()) / Math.LN2];
+    var center = ol.proj.toLonLat(viewOl.getCenter());
+    return [center[0], center[1], Math.log((Math.PI * 6378137 * 2 / 256) / viewOl.getResolution()) / Math.LN2];
   },
   setPos: function(pos) {
     var center = ol.proj.fromLonLat(pos);
-    viewOl3.setCenter(center);
-    viewOl3.setResolution((Math.PI * 6378137 * 2 / 256) / Math.pow(2, pos[2]));
+    viewOl.setCenter(center);
+    viewOl.setResolution((Math.PI * 6378137 * 2 / 256) / Math.pow(2, pos[2]));
   }
 };
 

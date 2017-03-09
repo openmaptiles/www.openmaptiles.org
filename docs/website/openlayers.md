@@ -5,6 +5,7 @@ title: OpenLayers
 description: OpenLayers
 keywords: Openlayers
 order: 2
+redirect_from: /docs/website/openlayers3/
 ---
 
 There are two ways how to display OpenMapTiles with [OpenLayers](http://openlayers.org/) library: using raster tiles or vector tiles.
@@ -18,7 +19,7 @@ OpenLayers doesn't support vector tiles by default. Raster tiles can be geneated
 
 Vector tiles can be displayed in OpenLayers using the [ol-mapbox-style](https://github.com/boundlessgeo/ol-mapbox-style) plugin together with OpenMapTiles. Read the following guideline or check out the code [here](https://github.com/openmaptiles/www.openmaptiles.org/tree/master/maps).
 
-<iframe src="/maps/ol3.html" frameborder="0" scrolling="0" width="100%" height="540px" style="margin-bottom:25px;"></iframe>
+<iframe src="/maps/ol.html" frameborder="0" scrolling="0" width="100%" height="540px" style="margin-bottom:25px;"></iframe>
 
 #### Convert Mapbox GL style to OpenLayers style functions
 
@@ -28,8 +29,8 @@ to a different renderer.
 
 #### index.html
 
-Create a HTML page and include OpenLayers 3 and the standalone build
-of [ol-mapbox-style](https://github.com/boundlessgeo/ol-mapbox-style) `omls.js`. Since OpenLayers 3 draws on the browser canvas you also need
+Create a HTML page and include OpenLayers and the standalone build
+of [ol-mapbox-style](https://github.com/boundlessgeo/ol-mapbox-style) `omls.js`. Since OpenLayers draws on the browser canvas you also need
 to include the fonts used in the style in the page.
 
 ```html
@@ -56,11 +57,11 @@ to include the fonts used in the style in the page.
   <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=fetch,Promise"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/ol3/3.19.1/ol.js"></script>
   <script src="olms.js"></script>
-  <script src="ol3.js"></script>
+  <script src="ol.js"></script>
 </body>
 ```
 
-#### ol3.js
+#### ol.js
 
 Create a new MVT source (`url` of `ol.source.VectorTile`) which points
 to the CDN of OpenMapTiles or your own tileserver.

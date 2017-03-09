@@ -12,7 +12,7 @@ keywords: Mapbox Studio Classic
 You can also use [Mapbox Studio Classic](https://www.mapbox.com/help/define-mapbox-studio-classic/) in combination with
 OpenMapTiles to create Tilemill2 tile styles for Mapnik renderer.
 
-NOTE: If you need raster tiles it is highly recomended to use the TileServerGL project, which provides raster tiles rendered on server side from the vector tiles and the modern GL styles. See https://openmaptiles.org/docs/host/tileserver-gl/
+NOTE: If you need raster tiles it is highly recomended to use the <a href="https://openmaptiles.org/docs/host/tileserver-gl/">TileServerGL project</a>, which provides raster tiles rendered on server side from the vector tiles and the modern GL styles.
 
 
 ## Change the Source

@@ -6,7 +6,7 @@ title: Mapbox GL
 titlehtml: Mapbox GL Style Specification
 titlesidebar: Mapbox GL Style Specification
 description: Mapbox GL Style Specification
-keywords: Openlayers3
+keywords: Openlayers
 ---
 
 ## Using OpenMapTiles with Mapbox GL
