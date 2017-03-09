@@ -1,6 +1,8 @@
 ---
 layout: docs
-category: host
+category:
+ - host
+ - raster
 title: Serve Raster and Vector Tiles with Tileserver GL
 description: TileServer GL
 order: 2
