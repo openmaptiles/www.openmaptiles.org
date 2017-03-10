@@ -17,14 +17,20 @@ NOTE: If you need raster tiles it is highly recomended to use the <a href="https
 
 ## Change the Source
 
-Change the source of your TM2 style to `http://openmaptiles.org/cdn.json` and save the style.
+Go to [Vector tile hosting](https://openmaptiles.com/hosting/) and get a free key. Then download tilejson from URL
+```
+https://free.tilehosting.com/data/v3.json?key={key}
+```
+and save it as a file with `.json` extension (the extension is necessary for Mapbox Studio Classic).
+Upload the JSON to the web, e.g. using [Gist](https://gist.github.com/).
+Finally change the source of your TM2 style to URL of your tilejson and save the style.
 
 ![Mapbox Studio Classic hange source](/media/mapbox_studio_classic_change_url.png)
 
 ## Write CartoCSS
 
-Change the [CartoCSS](https://www.mapbox.com/help/getting-started-cartocss/) selector to match the OpenMapTiles layers)
-Study the OpenMapTiles [vector tile schema](/schema) to find the layers and attributes you need to create your map.
+Change the [CartoCSS](https://www.mapbox.com/help/getting-started-cartocss/) selector to match the OpenMapTiles layers.
+Study the OpenMapTiles [vector tile schema](/schema) to find layers and attributes you need to create your map.
 
 Check out the video tutorial how to port an existing TM2 style to OpenMapTiles.
 
