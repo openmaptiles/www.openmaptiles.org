@@ -5,12 +5,10 @@ title: TileServer PHP
 description: TileServer-php
 keywords: TileServer-php
 order: 3
-redirect_to:
-- https://github.com/klokantech/tileserver-php
 ---
 
 In case you wish to publish vector tiles and already have a PHP stack running
-you can use TileServer-PHP for serving MVT vector tiles.
+you can use TileServer-PHP for serving vector or raster tiles.
 TileServer-PHP is implementing the OGC WMTS standard for pre-rendered
 raster tiles but it is fully prepared for fast serving of vector tiles.
 
@@ -20,11 +18,13 @@ raster tiles but it is fully prepared for fast serving of vector tiles.
 - Apache webserver (with mod_rewrite / .htaccess supported)
 - PHP 5.2+ with SQLite module (php5-sqlite)
 
-### Installation
+### Prepare TileServer
 TileServer-PHP is only one PHP file which you need to copy together with the MBTiles file.
-Download the project files as a zip archive from GitHub and unpack
-it into a web-hosting or LAMP/WAMP. It is distributed with built-in JavaScript
-client to debug your vector tiles.
+Download the project files as a zip archive from [GitHub page of the project](https://github.com/klokantech/tileserver-php)
+and unpack it into your web-hosting or local LAMP/WAMP. Then go to your browser
+and open http://localhost/<path-to-your-folder> and you will see TileServer's client.
+TileServer is distributed with built-in JavaScript client with X-Ray view designed
+to debug your vector tiles but you can youse your own. There is also examples of common used viewers.
 
 ![X-Ray](/docs/media/tileserver-php_1.png)
 
@@ -40,9 +40,9 @@ To test, open your tileserver.php page in web browser. You should see large icon
 
 ### Styling your tiles
 
-The screenshot above is a raw debug view of your map data. To get a pretty map out of it, you will need a browser tile renderer, such as [Mapbox GL JS](https://github.com/mapbox/mapbox-gl-js), and configure a style file for it that points at your tile server. You may also need to serve various supporting files that the renderer uses, such as fonts to render the labels. 
+The screenshot above is a raw debug view of your map data. To get a pretty map out of it, you will need a browser tile renderer, such as [Mapbox GL JS](https://github.com/mapbox/mapbox-gl-js), and configure a style file for it that points at your tile server. You may also need to serve various supporting files that the renderer uses, such as fonts to render the labels.
 
-You can start from an existing style, and adjust it as needed. [OSM Bright](https://github.com/openmaptiles/osm-bright-gl-style) is a good starting point. Note that you will need to clone the [gh-pages](https://github.com/openmaptiles/osm-bright-gl-style/tree/gh-pages) branch, rather than master, to get the files that you'll need for your website. 
+You can start from an existing style, and adjust it as needed. [OSM Bright](https://github.com/openmaptiles/osm-bright-gl-style) is a good starting point. Note that you will need to clone the [gh-pages](https://github.com/openmaptiles/osm-bright-gl-style/tree/gh-pages) branch, rather than master, to get the files that you'll need for your website.
 
 Once you have the files in place for your web server to serve, edit style-cdn.json and adjust the URLs inside to point at your tile server. Find the snippet that looks like this:
 
@@ -54,9 +54,9 @@ Once you have the files in place for your web server to serve, edit style-cdn.js
     }
   },
 ```
-  
+
 and change the value of `"url"` to point at TileJSON output from your TileServer-PHP. For example, if your server is installed at http://example.com/tileserver.php, and you're serving an .mbtiles file named `united_states_of_america.mbtiles`, then this snippet should read:
-  
+
 ```json
   "sources": {
     "openmaptiles": {
