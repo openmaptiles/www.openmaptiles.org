@@ -26,8 +26,6 @@ and open http://localhost/<path-to-your-folder> and you will see TileServer's cl
 TileServer is distributed with built-in JavaScript client with X-Ray view designed
 to debug your vector tiles but you can youse your own. There is also examples of common used viewers.
 
-![X-Ray](/docs/media/tileserver-php_1.png)
-
 ### Loading tiles from .mbtiles files
 
 Put all the .mbtiles files that you want to serve in a directory, and edit tileserver.php, such that `$config['dataRoot']` points at that directory. For example, if your tiles are in `/usr/local/share/mbtiles` directory, do:
@@ -37,6 +35,8 @@ $config['dataRoot'] = '/usr/local/share/mbtiles/';
 Note that the path must include the trailing slash!
 
 To test, open your tileserver.php page in web browser. You should see large icons corresponding to available maps; clicking on one will open that map in debug view.
+
+![X-Ray](/docs/media/tileserver-php_1.png)
 
 ### Styling your tiles
 
