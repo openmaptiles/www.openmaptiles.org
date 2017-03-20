@@ -117,7 +117,7 @@ body.home{
   }
 }
 
-.map {position:absolute;top:0;left:0;height:100%;width:100%;opacity:0;transition:opacity ease 1s;z-index:0;}
+.map {position:absolute;top:0;left:0;height:100%;width:100%;opacity:0;transition:opacity ease .5s;z-index:0;}
 .map.active {opacity:1;z-index:5;}
 
 .map-switchers {
