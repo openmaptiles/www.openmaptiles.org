@@ -37,7 +37,7 @@ if (mapboxgl.supported()) {
 } else {
   L.mapbox.map(
     'map',
-    'http://klokantech.tilehosting.com/styles/basic/rendered.json?key=tXme5cuqgrCqdPoZHqyn',
+    'https://klokantech.tilehosting.com/styles/basic/rendered.json?key=tXme5cuqgrCqdPoZHqyn',
     {
       attributionControl: false
     }).setView([center[1], center[0]], center[2] + 1);
