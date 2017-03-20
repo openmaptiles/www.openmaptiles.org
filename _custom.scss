@@ -17,11 +17,16 @@ h3{
   z-index: 110;
 
   .title{
-    .icon{
-      font-size: 40px;
-      vertical-align: top;
-      padding-right: 5px;
-    }
+    margin-left: 50px;
+  }
+
+  .title:before{
+    content: 'o';
+    font-family: 'icons';
+    font-size: 40px;
+    position: absolute;
+    margin-left: -50px;
+    vertical-align: middle;
   }
 
   .github{
