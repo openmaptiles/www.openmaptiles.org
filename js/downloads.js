@@ -6,10 +6,10 @@ ajax(url, function(data) {
     item._name = name;
     item.className = 'pad-2 downloads-item';
     var content = '<a href="' + url + '">' + name + '</a>';
+    content += '<a class="float-right" href="' + url + '">Download</a>';
     if (size) {
       content += ' <span>' + size + '</span>';
     }
-    content += '<a class="float-right" href="' + url + '">Download</a>';
     item.innerHTML = content;
     container.appendChild(item);
 

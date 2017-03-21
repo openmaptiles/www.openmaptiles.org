@@ -414,15 +414,12 @@ body.home{
     overflow: hidden;
   }
   span{
-    position: absolute;
-    margin-left: 360px;
+    float: right;
+    margin: 0 20px;
   }
   @media (max-width: 841px){
     a:first-child{
       max-width: 160px;
-    }
-    span{
-      margin-left: 160px;
     }
   }
 }
