@@ -45,6 +45,7 @@ function generate_docs() {
     generate_doc "waterway"
     generate_doc "boundary"
     generate_doc "landcover"
+    generate_doc "mountain_peak"
     generate_doc "park"
     generate_doc "poi"
     generate_doc "transportation_name"

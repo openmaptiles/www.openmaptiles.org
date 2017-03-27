@@ -26,9 +26,9 @@ Possible values:
 - `tunnel`
 - `ford`
 
-### oneway
+### ramp
 
-Mark with `1` whether way is a oneway (in the direction of the way)
+Mark with `1` whether way is a ramp (link or steps)
 or not with `0`.
 
 Possible values:
@@ -58,16 +58,6 @@ Possible values:
 - `rail`
 - `transit`
 
-### ramp
-
-Mark with `1` whether way is a ramp (link or steps)
-or not with `0`.
-
-Possible values:
-
-- `0`
-- `1`
-
 ### service
 
 Original value of the [`service`](http://wiki.openstreetmap.org/wiki/Key:service) tag.
@@ -81,6 +71,16 @@ Possible values:
 - `driveway`
 - `alley`
 - `parking_aisle`
+
+### oneway
+
+Mark with `1` whether way is a oneway (in the direction of the way)
+or not with `0`.
+
+Possible values:
+
+- `0`
+- `1`
 
 
 

@@ -4,16 +4,24 @@ category: layer
 title: poi
 etl_graph: media/etl_poi.png
 mapping_graph: media/mapping_poi.png
-sql_query: SELECT geometry, name, name_en, class, subclass, rank FROM layer_poi(ST_SetSRID('BOX3D(-20037508.34 -20037508.34, 20037508.34 20037508.34)'::box3d, 3857 ), 14, 1)
+sql_query: SELECT geometry, name, name_en, name_de, class, subclass, rank FROM layer_poi(ST_SetSRID('BOX3D(-20037508.34 -20037508.34, 20037508.34 20037508.34)'::box3d, 3857 ), 14, 1)
 ---
 [Points of interests](http://wiki.openstreetmap.org/wiki/Points_of_interest) containing
 a of a variety of OpenStreetMap tags. Mostly contains amenities, sport, shop and tourist POIs.
 
 ## Fields
 
+### name_de
+
+German name `name:de` if available, otherwise `name` or `name:en`.
+
+### name
+
+The OSM [`name`](http://wiki.openstreetmap.org/wiki/Key:name) value of the POI.
+
 ### name_en
 
-The english `name:en` value if available.
+English name `name:en` if available, otherwise `name`.
 
 ### class
 
@@ -39,10 +47,6 @@ Original value of either the
 [`tourism`](http://wiki.openstreetmap.org/wiki/Key:tourism)
 or [`shop`](http://wiki.openstreetmap.org/wiki/Key:shop)
 tag.  Use this to do more precise styling.
-### name
-
-The OSM [`name`](http://wiki.openstreetmap.org/wiki/Key:name) value of the POI.
-
 
 
 
