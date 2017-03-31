@@ -4,7 +4,7 @@ category: layer
 title: place
 etl_graph: media/etl_place.png
 mapping_graph: media/mapping_place.png
-sql_query: SELECT geometry, name, name_en, class, rank, capital FROM layer_place(ST_SetSRID('BOX3D(-20037508.34 -20037508.34, 20037508.34 20037508.34)'::box3d, 3857 ), 14, 1)
+sql_query: SELECT geometry, name, name_en, name_de, class, rank, capital FROM layer_place(ST_SetSRID('BOX3D(-20037508.34 -20037508.34, 20037508.34 20037508.34)'::box3d, 3857 ), 14, 1)
 ---
 The place layer consists out of [countries](http://wiki.openstreetmap.org/wiki/Tag:place%3Dcountry),
 [states](http://wiki.openstreetmap.org/wiki/Tag:place%3Dstate) and [cities](http://wiki.openstreetmap.org/wiki/Key:place).
@@ -13,9 +13,13 @@ We suggest you use different font styles and sizes to create a text hierarchy.
 
 ## Fields
 
-### name_en
+### name_de
 
-The English `name:en` value or local `name` if not available.
+German name `name:de` if available, otherwise `name` or `name:en`.
+
+### name
+
+The OSM [`name`](http://wiki.openstreetmap.org/wiki/Key:name) value of the POI.
 
 ### capital
 
@@ -28,9 +32,9 @@ Possible values:
 - `2`
 - `4`
 
-### name
+### name_en
 
-The OSM [`name`](http://wiki.openstreetmap.org/wiki/Key:name) value of the POI.
+English name `name:en` if available, otherwise `name`.
 
 ### class
 

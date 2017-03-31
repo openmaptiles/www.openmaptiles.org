@@ -12,6 +12,18 @@ from Natural Earth data for glaciers and ice shelves and at higher zoom levels t
 
 ## Fields
 
+### class
+
+Use the **class** to assign natural colors for **landcover**.
+
+Possible values:
+
+- `farmland`
+- `ice`
+- `wood`
+- `grass`
+- `wetland`
+
 ### subclass
 
 Use **subclass** to do more precise styling.
@@ -47,18 +59,6 @@ Possible values:
 - `tidalflat`
 - `saltmarsh`
 - `mangrove`
-
-### class
-
-Use the **class** to assign natural colors for **landcover**.
-
-Possible values:
-
-- `farmland`
-- `ice`
-- `wood`
-- `grass`
-- `wetland`
 
 
 
