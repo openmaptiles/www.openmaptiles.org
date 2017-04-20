@@ -2,15 +2,16 @@
 layout: docs
 category: generate
 order: 1
-title: Generate your own vector tiles
-titlehtml: Generate your own vector tiles
-titlesidebar: Generate your own vector tiles
-description: Generate your own vector tiles
-keywords: Generate your own vector tiles
+title: Generate your own OpenMapTiles
+titlehtml: Generate your own OpenMapTiles
+titlesidebar: Generate your own OpenMapTiles
+description: Generate your own OpenMapTiles
+keywords: Generate your own OpenMapTiles
+redirect_from: /docs/generate/generate-vector-tiles/
 ---
 
 The [OpenMapTiles vector tile schema](https://github.com/openmaptiles/openmaptiles)
-is open source and licensed under MIT. You are free to use it to generate your own vector tiles
+is open source and licensed under MIT. You are free to use it to generate your own OpenMapTiles
 and then use those vector tiles however you would like while respecting the
 original [ODbL license](http://wiki.openstreetmap.org/wiki/Open_Database_License) of OpenStreetMap.
 
