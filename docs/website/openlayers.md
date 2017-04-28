@@ -5,7 +5,6 @@ title: OpenLayers
 description: OpenLayers
 keywords: Openlayers
 order: 2
-redirect_from: docs/website/openlayers3/
 ---
 
 There are two ways how to display OpenMapTiles with [OpenLayers](http://openlayers.org/) library: using raster tiles or vector tiles.
