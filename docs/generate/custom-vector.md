@@ -9,7 +9,7 @@ description: Custom Vector Data with OpenMapTiles
 keywords: custom, vector, data, geojson, shapefile, postgis, openmaptiles
 ---
 
-You can combine OpenMapTiles with your custom vector data saved in ShapeFile, GeoJSON, or PostGIS. Easy way is to convert your data into vector tiles and then [combine it with standard OpenMapTiles source in a map style](http://localhost:4000/docs/raster/custom-raster/#prepare-map-style). Big advantage of this approach is that you don't need to generate the whole OpenMapTiles schema that is quite time-consuming.
+You can combine OpenMapTiles with your custom vector data saved in ShapeFile, GeoJSON, or PostGIS. Easy way is to convert your data into vector tiles and then [combine it with standard OpenMapTiles source in a map style](https://openmaptiles.org/docs/raster/custom-raster/#prepare-map-style). Big advantage of this approach is that you don't need to generate the whole OpenMapTiles schema that is quite time-consuming.
 
 
 # Create vector tiles from GeoJSON or ShapeFile
