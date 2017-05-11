@@ -28,7 +28,7 @@ More details available in [repo](https://github.com/openmaptiles/openmaptiles/bl
 
 You need also Docker:
 
-- Install [Docker](https://docs.docker.com/engine/installation/). Minimum version is 1.11.0+.
+- Install [Docker](https://docs.docker.com/engine/installation/). Minimum version is 1.12.3+.
 - Install [Docker Compose](https://docs.docker.com/compose/install/). Minimum version is 1.7.1+.
 
 Clone the [OpenMapTiles repo](https://github.com/openmaptiles/openmaptiles).
