@@ -23,17 +23,20 @@ ajax(url, function(data) {
 
   var worldTab = document.getElementById('tab-1');
   data.world.forEach(function(dato) {
-    addItem(worldTab, dato.name, dato.link, dato.size);
+    var title = dato.title ? dato.title : dato.name;
+    addItem(worldTab, title, dato.link, dato.size);
   });
 
   var countriesTab = document.getElementById('tab-2');
   data.country.forEach(function(dato) {
-    addItem(countriesTab, dato.name, dato.link, dato.size);
+    var title = dato.title ? dato.title : dato.name;
+    addItem(countriesTab, title, dato.link, dato.size);
   });
 
   var citiesTab = document.getElementById('tab-3');
   data.city.forEach(function(dato) {
-    addItem(citiesTab, dato.name, dato.link, dato.size);
+    var title = dato.title ? dato.title : dato.name;
+    addItem(citiesTab, title, dato.link, dato.size);
   });
 
   var countrySearch = document.getElementById('search-2');
