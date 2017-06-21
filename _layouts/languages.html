@@ -4,7 +4,6 @@ layout: default
 
 <link rel="stylesheet" type="text/css" href="https://api.mapbox.com/mapbox-gl-js/v0.38.0/mapbox-gl.css" />
 <script src="https://api.mapbox.com/mapbox-gl-js/v0.38.0/mapbox-gl.js"></script>
-
 <!--
 <div class="row">
   <div class="col12 banner-org center">
@@ -18,19 +17,23 @@ layout: default
 <div id="banner-bg"></div>
 <div id="banner">
   <div class="container">
-    <h1 id="page-title">{{ page.title }}</h1>
+    <h1 id="page-title">{% if page.titlelocalized %}{{ page.titlelocalized }}{% else %}{{ page.title }}{% endif %}</h1>
     <h2>OpenMapTiles are multi-lingual so you can display the map in your own language!</h2>
     <p>Try a different language:
       <select id="lang" onchange="setStyle()" style="pointer-events:auto;">
         <!--<option value="">Style default</option>-->
 
-        {% assign langs = site.pages | where: "layout","languages" | sort: "order" %}
-        {% for lang in langs %}
-        <option value="{{lang.code}}" data-nonlatin="{{ lang.nonlatin }}" data-bbox="{{ lang.bbox }}" data-title="{{ lang.title }}" {% if lang.url == page.url %}selected{% endif %}>{{ lang.languagename }}</option>
+        {% assign langs = site.pages | where: "layout","languages" | sort: "languagename" | sort: "order" %}
+        {% for lang in langs %}{% if lang.languagename %}<option value="{{lang.code}}" data-nonlatin="{{ lang.nonlatin }}" data-bbox="{{ lang.bbox }}" data-title="{% if lang.titlelocalized %}{{ lang.titlelocalized }}{% else %}{{ lang.title }}{% endif %}" {% if lang.url == page.url %}selected{% endif %}>{{ lang.languagename }}</option>{% endif %}
         {% endfor %}
       </select>
-      <span style="pointer-events:auto;">(<input class="fancy" type="checkbox" checked="checked" id="also-alternative" onchange="setStyle()" /><label for="also-alternative"><span></span>Also show alternative names</label>)</span>
+      <span style="pointer-events:auto;">(<input class="fancy" type="checkbox" checked="checked" id="also-alternative" onchange="setStyle()" /><label for="also-alternative"><span></span>Alternative names</label>)</span>
     </p>
   </div>
 </div>
 <script src="/js/languages.js"></script>
+<ul class="hidden">
+  {% assign langs = site.pages | where: "layout","languages" | sort: "languagename" | sort: "order" %}
+  {% for lang in langs %}<li><a href="{{lang.url}}">{% if lang.titlelocalized %}{{ lang.titlelocalized }} / {% endif %}{{ lang.title }}</a></li>
+  {% endfor %}
+</ul>

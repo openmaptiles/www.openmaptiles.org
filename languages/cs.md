@@ -1,8 +1,9 @@
 ---
 layout: languages
-title: OpenStreetMap v Češtině
+title: OpenStreetMap in Czech
+titlelocalized: OpenStreetMap v češtině
 code: cs
 languagename: Czech
-order: 3
+order: 100
 bbox: 12.08477,48.54292,18.86321,51.06426
 ---

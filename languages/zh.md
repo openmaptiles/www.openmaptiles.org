@@ -1,6 +1,7 @@
 ---
 layout: languages
-title: OpenStreetMap中文
+title: OpenStreetMap in Chinese
+titlelocalized: OpenStreetMap中文
 code: zh
 languagename: Chinese
 order: 1000

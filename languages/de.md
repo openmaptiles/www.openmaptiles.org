@@ -1,6 +1,7 @@
 ---
 layout: languages
-title: OpenStreetMap in Deutsch
+title: OpenStreetMap in German
+titlelocalized: OpenStreetMap in Deutsch
 code: de
 languagename: German
 order: 2

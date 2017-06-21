@@ -53,10 +53,10 @@ var langFallbackDecorate = function(style, cfg) {
 var positionAfterLoad = location.hash.length < 3;
 
 
-var STYLE_JSON_URL = "http://rawgit.com/openmaptiles/osm-bright-gl-style/c9d27597a211dc37eb98c544ff4dc1b4d770bdbe/style-cdn.json";
+var STYLE_JSON_URL = "https://rawgit.com/openmaptiles/osm-bright-gl-style/c9d27597a211dc37eb98c544ff4dc1b4d770bdbe/style-cdn.json";
 var STYLE_JSON;
 
-mapboxgl.setRTLTextPlugin('https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-rtl-text/v0.1.1/mapbox-gl-rtl-text.js');
+var rtlPluginLoaded = false;
 var map = new mapboxgl.Map({
   container: 'map',
   attributionControl: true,
@@ -68,6 +68,13 @@ var setStyle = function() {
   if (!STYLE_JSON) return;
   var style = STYLE_JSON;
   var language = langEl.value;
+  if (!language.length) {
+    language = navigator.language.split('-')[0];
+    langEl.value = language;
+    if (!langEl.value) {
+      langEl.value = 'en';
+    }
+  }
   var langOptionEl = langEl.options[langEl.selectedIndex];
   var isLatin = true;
   if (langOptionEl) {
@@ -75,55 +82,60 @@ var setStyle = function() {
     if (positionAfterLoad) {
       var bbox = langOptionEl.getAttribute('data-bbox') || '-180,-60,180,80';
       map.fitBounds(bbox.split(',').map(parseFloat), {animate: false, padding: 10});
+      map.once('moveend', function() {
+        map.zoomOut();
+      });
       positionAfterLoad = false;
     }
     if (langOptionEl.getAttribute('data-nonlatin')) {
       isLatin = false;
     }
   }
-  if (language.length) {
-    style = JSON.parse(JSON.stringify(style));
-    var alsoAlt = document.getElementById('also-alternative').checked;
-    var langCfg = {
-      "layer-filter": [
-        "in",
-        "layout.text-field",
-        "{name}",
-        "{name_de}",
-        "{name_en}"
-      ],
-      "decorators": [
-        {
-          "layout.text-field": "{name:latin}" + (alsoAlt ? "\n{name:nonlatin}" : ""),
-          "filter-all-part": [
-            "!has",
-            "name:" + language
-          ]
-        },
-        {
-          "layer-name-postfix": language,
-          "layout.text-field": "{name:" + language + "}" + (alsoAlt ? "\n{name:" + (isLatin ? 'nonlatin' : 'latin') + "}" : ""),
-          "filter-all-part": [
-            "has",
-            "name:" + language
-          ]
-        }
-      ]
-    };
-    langFallbackDecorate(style, langCfg);
-  }
+  style = JSON.parse(JSON.stringify(style));
+  var alsoAlt = document.getElementById('also-alternative').checked;
+  var langCfg = {
+    "layer-filter": [
+      "in",
+      "layout.text-field",
+      "{name}",
+      "{name_de}",
+      "{name_en}"
+    ],
+    "decorators": [
+      {
+        "layout.text-field": "{name:latin}" + (alsoAlt ? "\n{name:nonlatin}" : ""),
+        "filter-all-part": [
+          "!has",
+          "name:" + language
+        ]
+      },
+      {
+        "layer-name-postfix": language,
+        "layout.text-field": "{name:" + language + "}" + (alsoAlt ? "\n{name:" + (isLatin ? 'nonlatin' : 'latin') + "}" : ""),
+        "filter-all-part": [
+          "has",
+          "name:" + language
+        ]
+      }
+    ]
+  };
+  langFallbackDecorate(style, langCfg);
+
   if (history.replaceState) {
     var hash = location.hash;
     history.replaceState(undefined, undefined, '/languages/' + language + '/');
     location.hash = hash;
   }
   map.setStyle(style);
+  if (!rtlPluginLoaded) {
+    mapboxgl.setRTLTextPlugin('https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-rtl-text/v0.1.1/mapbox-gl-rtl-text.js');
+    rtlPluginLoaded = true;
+  }
 };
 
 fetch(STYLE_JSON_URL).then(function(response) {
   return response.text();
 }).then(function(data) {
   STYLE_JSON = JSON.parse(data);
-  STYLE_JSON.sources.openmaptiles.url = "http://test.openmaptiles.com:8036/data/v3.json"; // v3.6
   setStyle();
 });

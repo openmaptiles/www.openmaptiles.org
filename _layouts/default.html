@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>{% if page.titlehtml %}{{ page.titlehtml }}{% else %}{% if page.title %}{{ page.title }} – {% endif %}{{ site.name }}{% endif %}</title>
+    <title>{% if page.titlehtml %}{{ page.titlehtml }}{% else %}{% if page.title %}{% if page.titlelocalized %}{{ page.titlelocalized }} / {% endif %}{{ page.title }} – {% endif %}{{ site.name }}{% endif %}</title>
 
     <meta name="author" content="Klokan Technologies GmbH" />
     <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}Vector tiles from OpenStreetMap and OpenData to create world maps for web and mobile.{% endif %}" />
