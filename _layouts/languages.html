@@ -1,0 +1,36 @@
+---
+layout: default
+---
+
+<link rel="stylesheet" type="text/css" href="https://api.mapbox.com/mapbox-gl-js/v0.38.0/mapbox-gl.css" />
+<script src="https://api.mapbox.com/mapbox-gl-js/v0.38.0/mapbox-gl.js"></script>
+
+<!--
+<div class="row">
+  <div class="col12 banner-org center">
+    <h1 class="white">{{ page.title }}</h1>
+  </div>
+</div>
+-->
+
+<div class="map active" id="map"></div>
+
+<div id="banner-bg"></div>
+<div id="banner">
+  <div class="container">
+    <h1 id="page-title">{{ page.title }}</h1>
+    <h2>OpenMapTiles are multi-lingual so you can display the map in your own language!</h2>
+    <p>Try a different language:
+      <select id="lang" onchange="setStyle()" style="pointer-events:auto;">
+        <!--<option value="">Style default</option>-->
+
+        {% assign langs = site.pages | where: "layout","languages" | sort: "order" %}
+        {% for lang in langs %}
+        <option value="{{lang.code}}" data-nonlatin="{{ lang.nonlatin }}" data-bbox="{{ lang.bbox }}" data-title="{{ lang.title }}" {% if lang.url == page.url %}selected{% endif %}>{{ lang.languagename }}</option>
+        {% endfor %}
+      </select>
+      <span style="pointer-events:auto;">(<input class="fancy" type="checkbox" checked="checked" id="also-alternative" onchange="setStyle()" /><label for="also-alternative"><span></span>Also show alternative names</label>)</span>
+    </p>
+  </div>
+</div>
+<script src="/js/languages.js"></script>

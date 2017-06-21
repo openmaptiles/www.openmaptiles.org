@@ -30,7 +30,7 @@
     <link href="{{ site.baseurl }}base.css" rel="stylesheet" />
     <script type="text/javascript" src="{{ site.baseurl }}js/index.js" async></script>
   </head>
-  <body{% if page.url == "/" or page.url == "/viewers/" %} class="home"{% endif %}>
+  <body{% if page.url == "/" or page.url == "/viewers/" or page.url contains "/languages/" %} class="home"{% endif %}>
     <div class="container">
       <div id="navbar-top" class="large">
         <div class="container">
