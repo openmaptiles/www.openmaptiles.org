@@ -100,7 +100,8 @@ $radius-bottom-left: $radius-all;
 $btn-color-bg: $color-primary;
 $btn-color: #fff;
 $btn-height: 45px;
-$btn-padding: 10px;
+$btn-padding-x: 10px;
+$btn-padding-y: 10px;
 $btn-radius: 5px;
 $btn-font-size: 14px;
 $btn-letterspacing: initial;
@@ -170,11 +171,21 @@ $input-border-color-active: $color-primary;
 $input-box-shadow-active: none;
 $input-border-radius: 0;
 $input-padding: 8px 12px;
+$input-margin: 0 0 6px 0;
+$checkbox-color: $color-gray-dark;
+$checkbox-check-color: $color-gray-dark;
+$checkbox-size: 22px;
 
 $legend-color: $color-gray-dark;
 
+$label-color: $text-color;
+$label-font-size: $font-size * 0.9;
+$label-fontweight: bold;
+$label-margin: 12px 0 6px 0;
+
 /* Progressbar */
 $progress-width: 400px;
+$progress-height: 15px;
 $progress-bg: #fff;
 /* defines colors of segments from leftside */
 $progress-segments-colors: #da4d00, #41768a, #d4c5a9;
