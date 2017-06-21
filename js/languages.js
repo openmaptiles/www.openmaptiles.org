@@ -83,7 +83,10 @@ var setStyle = function() {
   var langOptionEl = langEl.options[langEl.selectedIndex];
   var isLatin = true;
   if (langOptionEl) {
-    document.getElementById('page-title').innerHTML = langOptionEl.getAttribute('data-title') || 'OpenStreetMap in your language';
+    var title = langOptionEl.getAttribute('data-title') || 'OpenStreetMap in your language';
+    document.getElementById('page-title').innerHTML = title;
+    document.title = title;
+
     if (positionAfterLoad) {
       var bbox = langOptionEl.getAttribute('data-bbox') || '-180,-60,180,80';
       if (map) {
