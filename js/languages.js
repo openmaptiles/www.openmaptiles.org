@@ -57,11 +57,16 @@ var STYLE_JSON_URL = "https://rawgit.com/openmaptiles/osm-bright-gl-style/c9d275
 var STYLE_JSON;
 
 var rtlPluginLoaded = false;
-var map = new mapboxgl.Map({
-  container: 'map',
-  attributionControl: true,
-  hash: true
-});
+var map;
+if (mapboxgl.supported()) {
+  map = new mapboxgl.Map({
+    container: 'map',
+    attributionControl: true,
+    hash: true
+  });
+} else {
+  document.getElementById('nowebgl').style.display = 'block';
+}
 
 var langEl = document.getElementById('lang');
 var setStyle = function() {
@@ -81,10 +86,12 @@ var setStyle = function() {
     document.getElementById('page-title').innerHTML = langOptionEl.getAttribute('data-title') || 'OpenStreetMap in your language';
     if (positionAfterLoad) {
       var bbox = langOptionEl.getAttribute('data-bbox') || '-180,-60,180,80';
-      map.fitBounds(bbox.split(',').map(parseFloat), {animate: false, padding: 10});
-      map.once('moveend', function() {
-        map.zoomOut();
-      });
+      if (map) {
+        map.fitBounds(bbox.split(',').map(parseFloat), {animate: false, padding: 10});
+        map.once('moveend', function() {
+          map.zoomOut();
+        });
+      }
       positionAfterLoad = false;
     }
     if (langOptionEl.getAttribute('data-nonlatin')) {
@@ -126,10 +133,12 @@ var setStyle = function() {
     history.replaceState(undefined, undefined, '/languages/' + language + '/');
     location.hash = hash;
   }
-  map.setStyle(style);
-  if (!rtlPluginLoaded) {
-    mapboxgl.setRTLTextPlugin('https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-rtl-text/v0.1.1/mapbox-gl-rtl-text.js');
-    rtlPluginLoaded = true;
+  if (map) {
+    map.setStyle(style);
+    if (!rtlPluginLoaded) {
+      mapboxgl.setRTLTextPlugin('https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-rtl-text/v0.1.1/mapbox-gl-rtl-text.js');
+      rtlPluginLoaded = true;
+    }
   }
 };
 
