@@ -13,7 +13,7 @@ layout: default
 -->
 
 <div class="map active" id="map">
-  <div id="nowebgl" style="top:15%;position:absolute;text-align:center;left:0;right:0;">
+  <div id="nowebgl" style="top:15%;position:absolute;text-align:center;left:0;right:0;display:none;">
     Your browser does not seem to support WebGL which is required for this dynamic preview.
   </div>
 </div>
@@ -31,7 +31,7 @@ layout: default
         {% for lang in langs %}{% if lang.languagename %}<option value="{{lang.code}}" data-nonlatin="{{ lang.nonlatin }}" data-bbox="{{ lang.bbox }}" data-title="{% if lang.titlelocalized %}{{ lang.titlelocalized }}{% else %}{{ lang.title }}{% endif %}" {% if lang.url == page.url %}selected{% endif %}>{{ lang.languagename }}</option>{% endif %}
         {% endfor %}
       </select>
-      <span style="pointer-events:auto;">(<input class="fancy" type="checkbox" checked="checked" id="also-alternative" onchange="setStyle()" /><label for="also-alternative"><span></span>Alternative names</label>)</span>
+      <span style="pointer-events:auto;" id="also-alternative-wrap">(<input class="fancy" type="checkbox" checked="checked" id="also-alternative" onchange="setStyle()" /><label for="also-alternative"><span></span>Alternative names</label>)</span>
     </p>
   </div>
 </div>

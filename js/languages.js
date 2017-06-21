@@ -126,6 +126,16 @@ var setStyle = function() {
       }
     ]
   };
+  if (language == 'native') {
+    langCfg['decorators'] = [
+      {
+        "layout.text-field": "{name}",
+        "filter-all-part": ["all"]
+      }
+    ];
+  }
+  document.getElementById('also-alternative-wrap').style.display =
+      language == 'native' ? 'none' : '';
   langFallbackDecorate(style, langCfg);
 
   if (history.replaceState) {
