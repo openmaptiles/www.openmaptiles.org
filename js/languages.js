@@ -133,9 +133,10 @@ var setStyle = function() {
   }
 };
 
-fetch(STYLE_JSON_URL).then(function(response) {
-  return response.text();
-}).then(function(data) {
-  STYLE_JSON = JSON.parse(data);
+var oReq = new XMLHttpRequest();
+oReq.onload = function() {
+  STYLE_JSON = JSON.parse(this.responseText);
   setStyle();
-});
+};
+oReq.open('get', STYLE_JSON_URL, true);
+oReq.send();
