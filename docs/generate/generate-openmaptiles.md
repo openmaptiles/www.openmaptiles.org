@@ -11,9 +11,8 @@ redirect_from: /docs/generate/generate-vector-tiles/
 ---
 
 The [OpenMapTiles vector tile schema](https://github.com/openmaptiles/openmaptiles)
-is open source and licensed under MIT. You are free to use it to generate your own OpenMapTiles
-and then use those vector tiles however you would like while respecting the
-original [ODbL license](http://wiki.openstreetmap.org/wiki/Open_Database_License) of OpenStreetMap.
+is open source and licensed under [BSD + CC-BY](https://github.com/openmaptiles/openmaptiles/blob/master/LICENSE.md). You are free to use it to generate your own OpenMapTiles and then use those vector tiles however you would like while respecting the
+original [ODbL license](http://wiki.openstreetmap.org/wiki/Open_Database_License) of OpenStreetMap data and [the conditions for attributtion](https://github.com/openmaptiles/openmaptiles#license) of the OpenMapTiles project itself.
 
 <iframe src="https://ghbtns.com/github-btn.html?user=openmaptiles&repo=openmaptiles&type=star&count=true&size=large" frameborder="0" scrolling="0" width="160px" height="30px" style="margin: 0;"></iframe>
 
@@ -53,3 +52,9 @@ Now generate the vector tiles using the quickstart bash script.
 ```
 
 By default, it will generate vector tileset of Albania for zoom levels 0 -- 7 into `data` directory.
+
+Your maps must provide a visible credit similar to:
+
+[© OpenMapTiles](http://openmaptiles.org/) [© OpenStreetMap contributors](http://www.openstreetmap.org/copyright)
+
+
