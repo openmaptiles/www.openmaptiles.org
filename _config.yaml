@@ -2,8 +2,6 @@ name: "OpenMapTiles"
 
 permalink: pretty
 
-baseurl: ""
-
 sass:
   style: :compressed
   sass_dir: styles/_sass
