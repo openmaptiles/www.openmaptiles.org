@@ -1,7 +1,7 @@
 ---
 layout: docs
 category: generate
-order: 2
+order: 4
 title: Create custom Extract
 titlehtml: Create custom Extract
 titlesidebar: Create custom Extract

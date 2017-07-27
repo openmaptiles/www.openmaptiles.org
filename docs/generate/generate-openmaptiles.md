@@ -1,7 +1,7 @@
 ---
 layout: docs
 category: generate
-order: 1
+order: 3
 title: Generate your own OpenMapTiles
 titlehtml: Generate your own OpenMapTiles
 titlesidebar: Generate your own OpenMapTiles
@@ -56,5 +56,3 @@ By default, it will generate vector tileset of Albania for zoom levels 0 -- 7 in
 Your maps must provide a visible credit similar to:
 
 [© OpenMapTiles](http://openmaptiles.org/) [© OpenStreetMap contributors](http://www.openstreetmap.org/copyright)
-
-
