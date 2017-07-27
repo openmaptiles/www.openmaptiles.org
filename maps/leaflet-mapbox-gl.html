@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>OpenMapTiles in Leaflet + Mapbox GL Leaflet</title>
+	<meta charset="utf-8" />
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+  <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v0.35.1/mapbox-gl.css" rel='stylesheet' />
+  <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v0.35.1/mapbox-gl.js"></script>
+  <script src="http://rawgit.com/mapbox/mapbox-gl-leaflet/master/leaflet-mapbox-gl.js"></script>
+</head>
+<body style='margin:0'>
+	<div id="map" style="width: 100vw; height: 100vh; background: white"></div>
+
+	<script>
+
+		var map = L.map('map');
+    map.options.minZoom = 2;
+    var gl = L.mapboxGL({
+        accessToken: '{token}',
+        style: 'https://openmaptiles.github.io/osm-bright-gl-style/style-cdn.json'
+    }).addTo(map);
+    map.fitWorld();
+
+
+	</script>
+</body>
+</html>
