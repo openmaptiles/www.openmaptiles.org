@@ -1,4 +1,4 @@
-var tilegrid = ol.tilegrid.createXYZ({tileSize: 512, maxZoom: 22});
+var tilegrid = ol.tilegrid.createXYZ({tileSize: 512, maxZoom: 14});
 
 var layer = new ol.layer.VectorTile({
   source: new ol.source.VectorTile({
@@ -23,7 +23,7 @@ var map = new ol.Map({
   view: view
 });
 
-fetch('https://openmaptiles.github.io/klokantech-basic-gl-style/style-cdn.json').then(function(response) {
+fetch('https://openmaptiles.github.io/klokantech-basic-gl-style/style-cdn-undecorated.json').then(function(response) {
   response.json().then(function(glStyle) {
     olms.applyStyle(layer, glStyle, 'openmaptiles').then(function() {
       map.addLayer(layer);
