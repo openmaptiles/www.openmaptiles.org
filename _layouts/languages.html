@@ -18,7 +18,7 @@ layout: default
   </div>
 </div>
 
-<div id="banner-bg"></div>
+<div id="banner-bg" class="banner-bg-bigger"></div>
 <div id="banner">
   <div class="container">
     <h1 id="page-title">{% if page.titlelocalized %}{{ page.titlelocalized }}{% else %}{{ page.title }}{% endif %}</h1>
@@ -35,6 +35,16 @@ layout: default
     </p>
   </div>
 </div>
+
+<div class="shorts">
+  <a class="btn-transparent" href="https://openmaptiles.com/server/">
+    <span class="icon">o</span>
+    Install map server</a>
+  <a class="btn-transparent" href="https://openmaptiles.com/hosting/">
+    <span class="icon">o</span>
+    Try tile hosting</a>
+</div>
+
 <script src="/js/languages.js"></script>
 <ul class="hidden">
   {% assign langs = site.pages | where: "layout","languages" | sort: "languagename" | sort: "order" %}

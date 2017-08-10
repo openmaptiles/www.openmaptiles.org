@@ -118,7 +118,8 @@ $btns: (
 ("-dark", #ffffff, darken($color-primary, 10%), #ffffff, $color-primary),
 ("-light", #ffffff, lighten($color-primary, 10%), #ffffff, darken($color-primary, 5%)),
 ("-gray-dark", $color-gray-light, $color-gray-dark, $color-gray-light, darken($color-gray-dark, 5%)),
-("-gray-light", $color-gray-dark, $color-gray-light, $color-gray-dark, darken($color-gray-light, 5%))
+("-gray-light", $color-gray-dark, $color-gray-light, $color-gray-dark, darken($color-gray-light, 5%)),
+("-transparent", $text-color, rgba(255, 255, 255, 0.8), $color-gray-dark, rgba(255, 255, 255, 0.9))
 );
 
 $btns-color: #fff;
