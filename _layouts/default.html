@@ -26,9 +26,9 @@
 
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
 
-    <script src="https://klokantech.github.io/javascript/kt.js" async></script>
-    <link href="/base.css" rel="stylesheet" />
-    <script type="text/javascript" src="/js/index.js" async></script>
+    <script src="https://klokantech.github.io/javascript/kt.js?t={{ site.time | date: '%s' }}" async></script>
+    <link href="/base.css?t={{ site.time | date: '%s' }}" rel="stylesheet" />
+    <script type="text/javascript" src="/js/index.js?t={{ site.time | date: '%s' }}" async></script>
   </head>
   <body{% if page.url == "/" or page.url == "/viewers/" or page.url contains "/languages/" %} class="home"{% endif %}>
     <div class="container">
