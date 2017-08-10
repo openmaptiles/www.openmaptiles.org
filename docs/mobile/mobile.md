@@ -8,7 +8,7 @@ keywords: Mobile, apps
 
 ## Overview
 
-Based on free OpenStreetMap data, it is posisble to create beautiful, accurate and fast maps - with native vector rendering, and live customizable styling - directly on a mobile device. The native mobile rendering is fast and response to user touch interaction immediatelly.
+Based on free OpenStreetMap data, it is possible to create beautiful, accurate and fast maps - with native vector rendering, and live customizable styling - directly on a mobile device. The native mobile rendering is fast and response to user touch interaction immediatelly.
 
 The map tiles can be easily displayed in custom native mobile applications on Android or iOS or other platforms. The developers can load the map tiles online from a tileserver of a choice or implement offline maps in the app - displaying the maps from downloaded or bundled tile extracts.
 
