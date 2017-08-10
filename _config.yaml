@@ -7,7 +7,7 @@ sass:
   sass_dir: styles/_sass
 
 exclude:
-- "styles/lib/*"
+- "styles/*"
 
 gems:
 - jekyll-redirect-from

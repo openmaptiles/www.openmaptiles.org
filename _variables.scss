@@ -6,9 +6,10 @@ $color-gray-dark: #393939;
 $color-gray: #606c71;
 $color-gray-light: #f3f5f7;
 
-$color-success: #00AA4A;
-$color-warning: #EF8A00;
-$color-danger: #EF3200;
+$color-info: #d5dbe1;
+$color-success: #90cb90;
+$color-warning: #ff905e;
+$color-error: #e25041;
 $color-code: #dd1144;
 
 /* Background color */
@@ -22,8 +23,8 @@ $link-color: $color-secondary;
 $link-hover-color: lighten($color-secondary, 8%);
 
 /* Fonts */
-$font-primary: 'OpenSans', sans-serif, Arial;
-$font-secondary: 'MuseoSans', 'OpenSans', sans-serif;
+$font-primary: 'Open Sans', sans-serif;
+$font-secondary: 'Cabin', 'Open Sans', sans-serif;
 $font-monospace: Menlo, Monaco, 'Courier New', monospace;
 $font-icon: Menlo, Monaco, 'Courier New', monospace;
 $font-size: 16px;
@@ -40,8 +41,8 @@ $headings-font-weight: normal;
 $headings-line-height: 100%;
 $headings-color: $color-primary;
 
-$font-size-h1: 24px !default;
-$font-size-h2: 32px !default;
+$font-size-h1: 40px !default;
+$font-size-h2: 34px !default;
 $font-size-h3: 24px !default;
 $font-size-h4: 18px !default;
 $font-size-h5: $font-size !default;
@@ -90,7 +91,7 @@ $grid-margin-y: 0;
 
 /* Helpers */
 /* Corners for rounding */
-$radius-all: 5px;
+$radius-all: 2px;
 $radius-top-left: $radius-all;
 $radius-top-right: $radius-all;
 $radius-bottom-right: $radius-all;
@@ -99,17 +100,16 @@ $radius-bottom-left: $radius-all;
 /* Buttons */
 $btn-color-bg: $color-primary;
 $btn-color: #fff;
-$btn-height: 45px;
-$btn-padding-x: 10px;
-$btn-padding-y: 10px;
-$btn-radius: 5px;
+$btn-padding-x: 9px;
+$btn-padding-y: 18px;
+$btn-radius: $radius-all;
 $btn-font-size: 14px;
 $btn-letterspacing: initial;
-$btn-lineheight: $line-height;
+$btn-lineheight: 1.2;
 $btn-fontweight: 600;
 
 $btn-border: 2px;
-$btn-small-scale: 0.8;
+$btn-small-scale: 0.6;
 
 /* butons colection */
 $btns: (
@@ -146,13 +146,14 @@ $border-radius-small: 3px !default;
 $hr-color: $text-color;
 
 /* Table */
-
 $table-color: #393939;
 $table-head-bg: $color-gray-light;
+$table-head-fontweight: 600;
 $table-color-border: mix($color-gray-dark, $color-gray-light);
 $table-fontsize: $font-size;
 $table-hover-color: $color-gray-light;
 $table-padding: 10px;
+$table-lineheight: 1;
 
 $even-bg-color: #eee5de;
 $odd-bg-color: #f6f2ef;
@@ -210,6 +211,18 @@ $tabs-btn-fontweight: bold;
 $tabs-tab-padding: 18px;
 $tabs-tab-border: none;
 
+$labels-font-size: 12px;
+$labels-font-weight: 600;
+$labels-border-radius: $radius-all;
+$labels-padding: 2px 4px;
+$labels-colors: (
+//('name', 'color', 'background')
+('info', #424242, $color-info)
+('success', #fff, $color-success)
+('warning', #fff, $color-warning)
+('error', #fff, $color-error)
+);
+
 /* Top navbar */
 $navbar-top-height: 72px;
 $navbar-top-small-height: 48px;
@@ -222,6 +235,7 @@ $navbar-top-menu-padding-bottom: 28px;
 
 $navbar-top-title-size: 24px;
 $navbar-top-title-color: #ffffff;
+$navbar-top-title-fontweight: bold;
 $navbar-top-title-bg: transparent;
 $navbar-top-title-padding-bottom: 24px;
 $navbar-top-title-width: auto;

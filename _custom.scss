@@ -1,11 +1,11 @@
 h1{
   color: #616161;
-  font-family: 'MuseoSans', 'OpenSans', sans-serif;
+  font-family: $font-secondary;
 }
 
 h3, h4, h5{
   color: $text-color;
-  font-family: "OpenSans",sans-serif,Arial;
+  font-family: $font-primary;
   font-weight: 600;
 }
 h3{
@@ -66,7 +66,7 @@ body.home{
     position: absolute;
     top: 33%;
     left: 0;
-    height: 200px;
+    height: 165px;
     z-index: 99;
     background: rgba(255, 255, 255, 0.8);
     pointer-events:none;
@@ -75,7 +75,7 @@ body.home{
     @media screen and (max-width: 720px) {
       right: 0;
       min-width: auto;
-      height: 165px;
+      height: 140px;
     }
   }
   #banner{
@@ -85,9 +85,10 @@ body.home{
     right: 0;
     z-index: 100;
     pointer-events:none;
+    padding: 25px;
 
     .container{
-      padding: 25px 0 0 30px;
+      padding: 0 0 0 30px;
     }
 
     h1, h2, h3, h4{
@@ -105,7 +106,7 @@ body.home{
       text-align: center;
 
       .container{
-        padding: 25px 0 0 0;
+        padding: 0;
       }
 
       h1{
