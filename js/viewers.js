@@ -32,6 +32,9 @@ maps['leaflet'] = {
 
 var layer = new ol.layer.VectorTile({
   source: new ol.source.VectorTile({
+    attributions: '© <a href="https://openmaptiles.org/">OpenMapTiles</a> ' +
+      '© <a href="http://www.openstreetmap.org/copyright">' +
+      'OpenStreetMap contributors</a>',
     format: new ol.format.MVT(),
     tileGrid: ol.tilegrid.createXYZ({tileSize: 512, maxZoom: 14}),
     tilePixelRatio: 8,
@@ -50,7 +53,7 @@ var mapOl = new ol.Map({
   view: viewOl
 });
 
-fetch('https://openmaptiles.github.io/klokantech-basic-gl-style/style-cdn.json').then(function(response) {
+fetch('https://openmaptiles.github.io/klokantech-basic-gl-style/style-cdn-undecorated.json').then(function(response) {
   response.json().then(function(glStyle) {
     glStyle.layers.forEach(function(layer) {
       if(layer.layout && layer.layout['text-font']) {
