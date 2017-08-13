@@ -45,7 +45,7 @@ var viewOl = new ol.View({
   center: [0, 0],
   zoom: 0,
   minZoom: 0,
-  maxZoom: 15
+  maxZoom: 18
 });
 var mapOl = new ol.Map({
   target: 'map-ol',
