@@ -38,7 +38,7 @@ to include the fonts used in the style in the page.
 <head>
   <title>Klokantech Basic GL Style using ol-mapbox-style preview</title>
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ol3/3.19.1/ol.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ol3/4.3.1/ol.css">
   <style>
     html, body {
       height: 100%;
@@ -54,7 +54,7 @@ to include the fonts used in the style in the page.
 <body>
   <div id="map"></div>
   <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=fetch,Promise"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/ol3/3.19.1/ol.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ol3/4.3.1/ol.js"></script>
   <script src="olms.js"></script>
   <script src="ol.js"></script>
 </body>
@@ -70,7 +70,7 @@ it into OpenLayers functions which we can apply to
 our vector tile layer.
 
 ```javascript
-var tilegrid = ol.tilegrid.createXYZ({tileSize: 512, maxZoom: 22});
+var tilegrid = ol.tilegrid.createXYZ({tileSize: 512, maxZoom: 14});
 
 var layer = new ol.layer.VectorTile({
   source: new ol.source.VectorTile({
@@ -80,7 +80,7 @@ var layer = new ol.layer.VectorTile({
     format: new ol.format.MVT(),
     tileGrid: tilegrid,
     tilePixelRatio: 8,
-    url: 'https://free-0.tilehosting.com/data/v3/{z}/{x}/{y}.pbf?key=tXiQqN3lIgskyDErJCeY'
+    url: 'https://free-0.tilehosting.com/data/v3/{z}/{x}/{y}.pbf?key=<insert your key here>'
   })
 });
 
@@ -95,7 +95,7 @@ var map = new ol.Map({
   view: view
 });
 
-fetch('https://openmaptiles.github.io/klokantech-basic-gl-style/style-cdn.json').then(function(response) {
+fetch('https://openmaptiles.github.io/klokantech-basic-gl-style/style-cdn-undecorated.json').then(function(response) {
   response.json().then(function(glStyle) {
     olms.applyStyle(layer, glStyle, 'openmaptiles').then(function() {
       map.addLayer(layer);

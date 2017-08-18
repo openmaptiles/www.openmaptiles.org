@@ -1,5 +1,5 @@
-// 2.5.1
-(function(_g){(function(f){var r=(typeof require==='function'?require:function(name){return {"_":null,"ol/observable":ol.Observable,"ol/proj":ol.proj,"ol/tilegrid":ol.tilegrid,"ol/map":ol.Map,"ol/format/geojson":ol.format.GeoJSON,"ol/format/mvt":ol.format.MVT,"ol/layer/tile":ol.layer.Tile,"ol/layer/vector":ol.layer.Vector,"ol/layer/vectortile":ol.layer.VectorTile,"ol/source/tilejson":ol.source.TileJSON,"ol/source/vector":ol.source.Vector,"ol/source/xyz":ol.source.XYZ,"ol/source/vectortile":ol.source.VectorTile,"ol/style/style":ol.style.Style,"ol/style/fill":ol.style.Fill,"ol/style/stroke":ol.style.Stroke,"ol/style/circle":ol.style.Circle,"ol/style/icon":ol.style.Icon,"ol/style/text":ol.style.Text}[name];});if (typeof exports==='object'&&typeof module!=='undefined'){module.exports=f(r)}else if(typeof define==='function'&&define.amd){define(["_","ol/observable","ol/proj","ol/tilegrid","ol/map","ol/format/geojson","ol/format/mvt","ol/layer/tile","ol/layer/vector","ol/layer/vectortile","ol/source/tilejson","ol/source/vector","ol/source/xyz","ol/source/vectortile","ol/style/style","ol/style/fill","ol/style/stroke","ol/style/circle","ol/style/icon","ol/style/text"],f.bind(_g,r))}else{f(r)}})(function(require,define,module,exports){var _m=(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+// 2.6.1
+(function(_g){(function(f){var r=(typeof require==='function'?require:function(name){return {"_":null,"ol/observable":ol.Observable,"ol/proj":ol.proj,"ol/tilegrid":ol.tilegrid,"ol/map":ol.Map,"ol/format/geojson":ol.format.GeoJSON,"ol/format/mvt":ol.format.MVT,"ol/layer/tile":ol.layer.Tile,"ol/layer/vector":ol.layer.Vector,"ol/layer/vectortile":ol.layer.VectorTile,"ol/source/tilejson":ol.source.TileJSON,"ol/source/vector":ol.source.Vector,"ol/source/xyz":ol.source.XYZ,"ol/source/vectortile":ol.source.VectorTile,"ol/style/style":ol.style.Style,"ol/style/fill":ol.style.Fill,"ol/style/stroke":ol.style.Stroke,"ol/style/circle":ol.style.Circle}[name];});if (typeof exports==='object'&&typeof module!=='undefined'){module.exports=f(r)}else if(typeof define==='function'&&define.amd){define(["_","ol/observable","ol/proj","ol/tilegrid","ol/map","ol/format/geojson","ol/format/mvt","ol/layer/tile","ol/layer/vector","ol/layer/vectortile","ol/source/tilejson","ol/source/vector","ol/source/xyz","ol/source/vectortile","ol/style/style","ol/style/fill","ol/style/stroke","ol/style/circle"],f.bind(_g,r))}else{f(r)}})(function(require,define,module,exports){var _m=(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -200,15 +200,10 @@ function applyStyle(layer, glStyle, source, path) {
       spriteImage.src = spriteImageUrl;
     }
 
-    var resolutions;
-    if (layer instanceof _vectortile2.default) {
-      resolutions = layer.getSource().getTileGrid().getResolutions();
-    }
     var style;
     function onChange() {
       if (!style && (!glStyle.sprite || spriteData) && (!availableFonts || availableFonts.length > 0)) {
-        style = (0, _mapboxToOlStyle2.default)(glStyle, source, resolutions, spriteData, spriteImageUrl, availableFonts);
-        layer.setStyle(style);
+        style = (0, _mapboxToOlStyle2.default)(layer, glStyle, source, undefined, spriteData, spriteImageUrl, availableFonts);
         resolve();
       } else if (style) {
         layer.setStyle(style);
@@ -353,7 +348,6 @@ function processStyle(glStyle, map, baseUrl, path, accessToken) {
                 maxZoom: 'maxzoom' in glSource ? glSource.maxzoom : 22,
                 minZoom: glSource.minzoom
               }),
-              tilePixelRatio: 8,
               urls: tiles
             }),
             visible: false,
@@ -368,11 +362,16 @@ function processStyle(glStyle, map, baseUrl, path, accessToken) {
             });
             var key = tilejson.on('change', function () {
               if (tilejson.getState() == 'ready') {
+                var tileJsonTileGrid = tilejson.getTileGrid();
                 layer.setSource(new _vectortile4.default({
                   attributions: tilejson.getAttributions(),
                   format: new _mvt2.default(),
-                  tileGrid: tilejson.getTileGrid(),
-                  tilePixelRatio: 16,
+                  tileGrid: _tilegrid2.default.createXYZ({
+                    extent: tilejson.getProjection().getExtent(),
+                    minZoom: tileJsonTileGrid.getMinZoom(),
+                    maxZoom: tileJsonTileGrid.getMaxZoom(),
+                    tileSize: 512
+                  }),
                   tileUrlFunction: tilejson.getTileUrlFunction()
                 }));
                 _observable2.default.unByKey(key);
@@ -408,7 +407,8 @@ function processStyle(glStyle, map, baseUrl, path, accessToken) {
             tile.getImage().src = src;
           });
           layer = new _tile2.default({
-            source: source
+            source: source,
+            visible: glLayer.layout ? glLayer.layout.visibility !== 'none' : true
           });
         } else if (glSource.type == 'geojson') {
           var data = glSource.data;
@@ -439,11 +439,11 @@ function processStyle(glStyle, map, baseUrl, path, accessToken) {
 
 /**
  * Loads and applies a Mapbox Style object to an OpenLayers Map.
- * @param {ol.Map|HTMLElement|stribng} map Either an existing OpenLayers Map
+ * @param {ol.Map|HTMLElement|string} map Either an existing OpenLayers Map
  * instance, or a HTML element, or the id of a HTML element that will be the
  * target of a new OpenLayers Map.
- * @param {string} style Url pointing to a Mapbox Style object. When using
- * Mapbox APIs, the url must contain an access token and look like
+ * @param {string|Object} JSON style object or style url pointing to a Mapbox Style object.
+ * When using Mapbox APIs, the url must contain an access token and look like
  * `https://api.mapbox.com/styles/v1/mapbox/bright-v9?access_token=[your_access_token_here]`.
  * @return {ol.Map} The OpenLayers Map instance that will be populated with the
  * contents described in the Mapbox Style object.
@@ -458,29 +458,32 @@ function apply(map, style) {
     });
   }
 
-  var parts = style.match(spriteRegEx);
-  if (parts) {
-    baseUrl = parts[1];
-    accessToken = parts.length > 2 ? parts[2] : '';
+  if (typeof style === 'string') {
+    var parts = style.match(spriteRegEx);
+    if (parts) {
+      baseUrl = parts[1];
+      accessToken = parts.length > 2 ? parts[2] : '';
+    }
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', style);
+    var a = document.createElement('A');
+    a.href = style;
+    path = a.pathname.split('/').slice(0, -1).join('/') + '/';
+    xhr.addEventListener('load', function () {
+      var glStyle = JSON.parse(xhr.responseText);
+      processStyle(glStyle, map, baseUrl, path, accessToken);
+    });
+    xhr.addEventListener('error', function () {
+      throw new Error('Could not load ' + style);
+    });
+    xhr.send();
+  } else {
+    processStyle(style, map);
   }
-  var xhr = new XMLHttpRequest();
-  xhr.open('GET', style);
-  var a = document.createElement('A');
-  a.href = style;
-  path = a.pathname.split('/').slice(0, -1).join('/') + '/';
-  xhr.addEventListener('load', function () {
-    var glStyle = JSON.parse(xhr.responseText);
-    processStyle(glStyle, map, baseUrl, path, accessToken);
-  });
-  xhr.addEventListener('error', function () {
-    throw new Error('Could not load ' + style);
-  });
-  xhr.send();
-
   return map;
 }
 
-},{"@mapbox/mapbox-gl-style-spec/function":4,"mapbox-to-css-font":9,"mapbox-to-ol-style":10,"ol/format/geojson":"ol/format/geojson","ol/format/mvt":"ol/format/mvt","ol/layer/tile":"ol/layer/tile","ol/layer/vector":"ol/layer/vector","ol/layer/vectortile":"ol/layer/vectortile","ol/map":"ol/map","ol/observable":"ol/observable","ol/proj":"ol/proj","ol/source/tilejson":"ol/source/tilejson","ol/source/vector":"ol/source/vector","ol/source/vectortile":"ol/source/vectortile","ol/source/xyz":"ol/source/xyz","ol/tilegrid":"ol/tilegrid","webfontloader":11}],2:[function(require,module,exports){
+},{"@mapbox/mapbox-gl-style-spec/function":4,"mapbox-to-css-font":10,"mapbox-to-ol-style":11,"ol/format/geojson":"ol/format/geojson","ol/format/mvt":"ol/format/mvt","ol/layer/tile":"ol/layer/tile","ol/layer/vector":"ol/layer/vector","ol/layer/vectortile":"ol/layer/vectortile","ol/map":"ol/map","ol/observable":"ol/observable","ol/proj":"ol/proj","ol/source/tilejson":"ol/source/tilejson","ol/source/vector":"ol/source/vector","ol/source/vectortile":"ol/source/vectortile","ol/source/xyz":"ol/source/xyz","ol/tilegrid":"ol/tilegrid","webfontloader":14}],2:[function(require,module,exports){
 'use strict';
 
 module.exports = createFilter;
@@ -1247,6 +1250,596 @@ try {
 },{}],9:[function(require,module,exports){
 'use strict';
 
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+(function webpackUniversalModuleDefinition(root, factory) {
+  if ((typeof exports === 'undefined' ? 'undefined' : _typeof(exports)) === 'object' && (typeof module === 'undefined' ? 'undefined' : _typeof(module)) === 'object') module.exports = factory(require("rbush"));else if (typeof define === 'function' && define.amd) define(["rbush"], factory);else if ((typeof exports === 'undefined' ? 'undefined' : _typeof(exports)) === 'object') exports["labelgun"] = factory(require("rbush"));else root["labelgun"] = factory(root["rbush"]);
+})(undefined, function (__WEBPACK_EXTERNAL_MODULE_0__) {
+  return (/******/function (modules) {
+      // webpackBootstrap
+      /******/ // The module cache
+      /******/var installedModules = {};
+
+      /******/ // The require function
+      /******/function __webpack_require__(moduleId) {
+
+        /******/ // Check if module is in cache
+        /******/if (installedModules[moduleId])
+          /******/return installedModules[moduleId].exports;
+
+        /******/ // Create a new module (and put it into the cache)
+        /******/var module = installedModules[moduleId] = {
+          /******/i: moduleId,
+          /******/l: false,
+          /******/exports: {}
+          /******/ };
+
+        /******/ // Execute the module function
+        /******/modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+
+        /******/ // Flag the module as loaded
+        /******/module.l = true;
+
+        /******/ // Return the exports of the module
+        /******/return module.exports;
+        /******/
+      }
+
+      /******/ // expose the modules object (__webpack_modules__)
+      /******/__webpack_require__.m = modules;
+
+      /******/ // expose the module cache
+      /******/__webpack_require__.c = installedModules;
+
+      /******/ // identity function for calling harmony imports with the correct context
+      /******/__webpack_require__.i = function (value) {
+        return value;
+      };
+
+      /******/ // define getter function for harmony exports
+      /******/__webpack_require__.d = function (exports, name, getter) {
+        /******/if (!__webpack_require__.o(exports, name)) {
+          /******/Object.defineProperty(exports, name, {
+            /******/configurable: false,
+            /******/enumerable: true,
+            /******/get: getter
+            /******/ });
+          /******/
+        }
+        /******/
+      };
+
+      /******/ // getDefaultExport function for compatibility with non-harmony modules
+      /******/__webpack_require__.n = function (module) {
+        /******/var getter = module && module.__esModule ?
+        /******/function getDefault() {
+          return module['default'];
+        } :
+        /******/function getModuleExports() {
+          return module;
+        };
+        /******/__webpack_require__.d(getter, 'a', getter);
+        /******/return getter;
+        /******/
+      };
+
+      /******/ // Object.prototype.hasOwnProperty.call
+      /******/__webpack_require__.o = function (object, property) {
+        return Object.prototype.hasOwnProperty.call(object, property);
+      };
+
+      /******/ // __webpack_public_path__
+      /******/__webpack_require__.p = "";
+
+      /******/ // Load entry module and return exports
+      /******/return __webpack_require__(__webpack_require__.s = 1);
+      /******/
+    }(
+    /************************************************************************/
+    /******/[
+    /* 0 */
+    /***/function (module, exports) {
+
+      module.exports = __WEBPACK_EXTERNAL_MODULE_0__;
+
+      /***/
+    },
+    /* 1 */
+    /***/function (module, exports, __webpack_require__) {
+
+      "use strict";
+      "use strict";
+
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+
+      var _createClass = function () {
+        function defineProperties(target, props) {
+          for (var i = 0; i < props.length; i++) {
+            var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+          }
+        }return function (Constructor, protoProps, staticProps) {
+          if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+        };
+      }();
+
+      var _rbush = __webpack_require__(0);
+
+      var _rbush2 = _interopRequireDefault(_rbush);
+
+      function _interopRequireDefault(obj) {
+        return obj && obj.__esModule ? obj : { default: obj };
+      }
+
+      function _toConsumableArray(arr) {
+        if (Array.isArray(arr)) {
+          for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) {
+            arr2[i] = arr[i];
+          }return arr2;
+        } else {
+          return Array.from(arr);
+        }
+      }
+
+      function _classCallCheck(instance, Constructor) {
+        if (!(instance instanceof Constructor)) {
+          throw new TypeError("Cannot call a class as a function");
+        }
+      }
+
+      var labelgun = function () {
+        function labelgun(hideLabel, showLabel) {
+          _classCallCheck(this, labelgun);
+
+          this.tree = (0, _rbush2.default)(6);
+          this.allLabels = {};
+          this._point = undefined;
+          this.hasChanged = new Set();
+          this.loaded = false;
+          this.allChanged = false;
+          this.hideLabel = hideLabel;
+          this.showLabel = showLabel;
+
+          var self = this;
+        }
+
+        /**
+        * @name _total
+        * @summary get the total hidden or shown labels in the tree
+        * @param {string} state whether to return 'hide' or 'show' state label totals
+        * @returns {number} total number of labels of taht state
+        */
+
+        _createClass(labelgun, [{
+          key: "_total",
+          value: function _total(state) {
+            var total = 0;
+            for (var keys in this.allLabels) {
+              if (this.allLabels[keys].state == state) {
+                total += 1;
+              }
+            }
+            return total;
+          }
+
+          /**
+           * @name totalShown
+           * @summary return the total number of shown labels
+           * @returns {number}
+           */
+
+        }, {
+          key: "totalShown",
+          value: function totalShown() {
+            return this._total("show");
+          }
+
+          /**
+           * @name totalHidden
+           * @summary return the total number of hidden labels
+           * @returns {number}
+           */
+
+        }, {
+          key: "totalHidden",
+          value: function totalHidden() {
+            return this._total("hide");
+          }
+
+          /**
+          * @name getLabelsByState
+          * @summary provided a state get all labels of that state
+          * @returns {array}
+          * @private
+          */
+
+        }, {
+          key: "_getLabelsByState",
+          value: function _getLabelsByState(state) {
+            var labels = [];
+            for (var keys in this.allLabels) {
+              if (this.allLabels[keys].state == state) {
+                labels.push(this.allLabels[keys]);
+              }
+            }
+            return labels;
+          }
+
+          /**
+          * @name getHidden
+          * @summary Return
+          * @returns {array}
+          */
+
+        }, {
+          key: "getHidden",
+          value: function getHidden() {
+            return this._getLabelsByState("hide");
+          }
+
+          /**
+           * @name getShown
+           * @summary Return an array of all shown labels
+           * @returns {array}
+           */
+
+        }, {
+          key: "getShown",
+          value: function getShown() {
+            return this._getLabelsByState("show");
+          }
+
+          /**
+           * @name getCollisions
+           * @summary Return a set of collisions (hidden and shown) for a given label
+           * @param {string} id the ID of the label to get
+           * @returns {array}
+           */
+
+        }, {
+          key: "getCollisions",
+          value: function getCollisions(id) {
+            var label = this.allLabels[id];
+            var collisions = this.tree.search(label);
+            var self = collisions.indexOf(label);
+            if (self !== undefined) collisions.splice(self, 1);
+            return collisions;
+          }
+
+          /**
+           * @name getLabel
+           * @summary Convience function to return a label by ID
+           * @param {string} id the ID of the label to get
+           * @returns {object}
+           */
+
+        }, {
+          key: "getLabel",
+          value: function getLabel(id) {
+            return this.allLabels[id];
+          }
+
+          /**
+           * @name destroy
+           */
+
+        }, {
+          key: "destroy",
+          value: function destroy() {
+            this._resetTree();
+            this.allLabels = {};
+          }
+
+          /**
+           * @name forceLabelStates
+           * @summary Allows you to set a state for all current labels
+           * @param {string} forceState the class of which to change the label to
+           * @returns {undefined}
+           */
+
+        }, {
+          key: "forceLabelStates",
+          value: function forceLabelStates(forceState) {
+            var _this = this;
+
+            this.tree.all().forEach(function (label) {
+              _this._labelHasChangedState(label, forceState);
+            });
+          }
+
+          /**
+           * @name _labelHasChangedState
+           * @summary Sets the class for a particular label
+           * @param {string} label the label to update
+           * @param {string} forceState the class of which to change the label to
+           * @returns {undefined}
+           * @private
+           */
+
+        }, {
+          key: "_labelHasChangedState",
+          value: function _labelHasChangedState(label, forceState) {
+            var state = forceState || label.state;
+            if (state === "show") this.showLabel(label);
+            if (state === "hide") this.hideLabel(label);
+          }
+
+          /**
+           * @name _setupLabelStates
+           * @summary Clears current tree and readds all stations
+           * @returns {undefined}
+           */
+
+        }, {
+          key: "setupLabelStates",
+          value: function setupLabelStates() {
+            var _this2 = this;
+
+            if (this.allChanged) {
+              this.allChanged = false;
+              this.hasChanged.clear();
+              this._resetTree();
+
+              for (var id in this.allLabels) {
+
+                var label = this.allLabels[id];
+
+                this.ingestLabel({
+                  bottomLeft: [label.minX, label.minY],
+                  topRight: [label.maxX, label.maxY]
+                }, label.id, label.weight, label.labelObject, label.name, label.isDragged);
+              }
+            } else if (this.hasChanged.size) {
+              var changed = [].concat(_toConsumableArray(this.hasChanged));
+              this.hasChanged.clear();
+              changed.forEach(function (id) {
+
+                var label = _this2.allLabels[id];
+
+                _this2.ingestLabel({
+                  bottomLeft: [label.minX, label.minY],
+                  topRight: [label.maxX, label.maxY]
+                }, label._id, label.weight, label.labelObject, label.name, label.isDragged);
+              });
+            }
+          }
+
+          /**
+           * @name _resetTree
+           * @summary Clears current tree and redraws projection overlay
+           * @returns {undefined}
+           */
+
+        }, {
+          key: "update",
+          value: function update() {
+
+            this.allChanged = true;
+            this.setupLabelStates();
+            this.handleExCollisions();
+            this._hideShownCollisions(); // HACK ALERT: why is this necessary ? :(
+            this.forceLabelStates();
+          }
+        }, {
+          key: "handleExCollisions",
+          value: function handleExCollisions() {
+            var _this3 = this;
+
+            this.getHidden().forEach(function (hidden) {
+              _this3._handleExCollisions(hidden);
+            });
+          }
+
+          /**
+           * @name _resetTree
+           * @summary Clears current tree and redraws projection overlay
+           * @returns {undefined}
+           * @private
+           */
+
+        }, {
+          key: "_resetTree",
+          value: function _resetTree() {
+            this.tree.clear();
+          }
+
+          /**
+           * @name _makeLabel
+           * @param {object} boundingBox
+           * @param {string} id
+           * @param {number} weight
+           * @param {string} labelName
+           * @param {boolean} isDragged
+           * @summary Creates a standard label object with a default state
+           * @returns {object}
+           * @private
+           */
+
+        }, {
+          key: "_makeLabel",
+          value: function _makeLabel(boundingBox, id, weight, labelObject, labelName, isDragged) {
+            return {
+              minX: boundingBox.bottomLeft[0],
+              minY: boundingBox.bottomLeft[1],
+              maxX: boundingBox.topRight[0],
+              maxY: boundingBox.topRight[1],
+              state: "hide",
+              id: id,
+              weight: weight || 1,
+              labelObject: labelObject,
+              labelName: labelName,
+              isDragged: isDragged
+            };
+          }
+
+          /**
+           * @name _removeFromTree
+           * @param {object} label
+           * @param {boolean} forceUpdate if true, triggers all labels to be updated
+           * @summary Removes label from tree
+           * @returns {undefined}
+           * @private
+           */
+
+        }, {
+          key: "removeFromTree",
+          value: function removeFromTree(label, forceUpdate) {
+            var id = label.id || label;
+            var removelLabel = this.allLabels[id];
+            this.tree.remove(removelLabel);
+            delete this.allLabels[id];
+            if (forceUpdate) this.forceLabelStates(true);
+          }
+
+          /**
+           * @name _addToTree
+           * @param {object} label
+           * @summary inserts label into tree
+           * @returns {undefined}
+           * @private
+           */
+
+        }, {
+          key: "_addToTree",
+          value: function _addToTree(label) {
+            this.allLabels[label.id] = label;
+            this.tree.insert(label);
+          }
+        }, {
+          key: "_hideShownCollisions",
+          value: function _hideShownCollisions() {
+            var _this4 = this;
+
+            // This method shouldn't have to exist...
+            this.getShown().forEach(function (label) {
+              _this4.getCollisions(label.id).forEach(function (collision) {
+                if (collision.state == "show") {
+                  collision.state = "hide";
+                }
+              });
+            });
+          }
+
+          /**
+           * @name _handleCollisions
+           * @param {array} collisions array of labels that have unresolved collisions
+           * @param {object} label label to handle collisions for
+           * @param {boolean} isDragged if label is currently being dragged
+           * @summary Weighted collisions resolution for labels
+           * @returns {undefined}
+           * @private
+           */
+
+        }, {
+          key: "_handleCollisions",
+          value: function _handleCollisions(collisions, label, isDragged) {
+            var originalWeight = void 0;
+            if (label.isDragged) label.weight = Infinity;
+            var highest = label;
+
+            collisions.forEach(function (collision) {
+
+              if (collision.isDragged) {
+                originalWeight = collision.weight;
+                highest = collision;
+                highest.weight = Infinity;
+              }
+
+              if (collision.weight > highest.weight) {
+                highest.state = "hide";
+                highest = collision;
+              } else {
+                collision.state = "hide";
+              }
+            });
+
+            highest.state = "show";
+            if (originalWeight) highest.weight = originalWeight;
+          }
+
+          /**
+           * @name _handleExCollisions
+           * @param {object} hidden hidden label
+           * @summary Checks to see if a previously hidden/collided label is now able to be shown and then shows
+           * @returns {undefined}
+           * @private
+           */
+
+        }, {
+          key: "_handleExCollisions",
+          value: function _handleExCollisions(hidden) {
+
+            if (hidden.state === "hide") {
+              var stillCollides = false;
+              var hiddenLabels = this.tree.search(hidden);
+              for (var i = 0; i < hiddenLabels.length; i++) {
+                if (hiddenLabels[i].state !== "hide") {
+                  stillCollides = true;
+                  break;
+                }
+              }
+              if (!stillCollides) {
+                hidden.state = "show";
+              }
+            }
+          }
+
+          /**
+           * @name _ingestLabel
+           * @param {object} boundingBox
+           * @param {string} id
+           * @param {number} weight
+           * @param {object} gmLabel
+           * @param {string} labelName
+           * @param {boolean} isDragged
+           * @summary Creates a label if it does not already exsist, then adds it to the tree, and renders it based on whether it can be shown
+           * @returns {object}
+           */
+
+        }, {
+          key: "ingestLabel",
+          value: function ingestLabel(boundingBox, id, weight, labelObject, labelName, isDragged) {
+            var label = this._makeLabel(boundingBox, id, weight, labelObject, labelName, isDragged);
+            var oldLabel = this.allLabels[id];
+            if (oldLabel) this.removeFromTree(oldLabel);
+            this._addToTree(label);
+            var collisions = this.getCollisions(id);
+            if (!collisions.length || isDragged) {
+              label.state = "show";
+              return;
+            }
+
+            this._handleCollisions(collisions, label, isDragged);
+          }
+
+          /**
+           * @name labelHasChanged
+           * @summary let labelgun know the label has changed
+           * @returns {undefined}
+           */
+
+        }, {
+          key: "labelHasChanged",
+          value: function labelHasChanged(id) {
+            this.hasChanged.add(id);
+          }
+        }]);
+
+        return labelgun;
+      }();
+
+      exports.default = labelgun;
+
+      /***/
+    }
+    /******/])
+  );
+});
+
+},{"rbush":13}],10:[function(require,module,exports){
+'use strict';
+
 var fontWeights = {
   thin: 100,
   hairline: 100,
@@ -1306,7 +1899,7 @@ module.exports = function (font, size) {
   return cssData[0] + sp + cssData[1] + sp + size + 'px' + sp + cssData[2];
 };
 
-},{}],10:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1319,7 +1912,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
                                                                                                                                                                                                                                                                               License: https://raw.githubusercontent.com/boundlessgeo/mapbox-to-ol-style/master/LICENSE.md
                                                                                                                                                                                                                                                                               */
 
-exports.default = function (glStyle, source, resolutions, spriteData, spriteImageUrl, fonts) {
+exports.default = function (olLayer, glStyle, source, resolutions, spriteData, spriteImageUrl, fonts) {
   if (!resolutions) {
     resolutions = [];
     for (var res = 156543.03392804097; resolutions.length < 22; res /= 2) {
@@ -1335,33 +1928,161 @@ exports.default = function (glStyle, source, resolutions, spriteData, spriteImag
     throw new Error('glStyle version 8 required.');
   }
 
+  var spriteImage;
+  if (spriteImageUrl) {
+    var img = new Image();
+    img.onload = function () {
+      spriteImage = img;
+      olLayer.changed();
+    };
+    img.src = spriteImageUrl;
+  }
+
   var ctx = document.createElement('CANVAS').getContext('2d');
   var measureCache = {};
   function wrapText(text, font, em) {
-    var key = em + font + text;
-    var wrappedText = measureCache[key];
-    if (!wrappedText) {
+    var key = [em, font, text].join();
+    var lines = measureCache[key];
+    if (!lines) {
       ctx.font = font;
       var oneEm = ctx.measureText('M').width;
       var width = oneEm * em;
       var words = text.split(' ');
       var line = '';
-      var lines = [];
+      lines = [];
       for (var i = 0, ii = words.length; i < ii; ++i) {
         var word = words[i];
         if (ctx.measureText(line + word).width <= width) {
           line += (line ? ' ' : '') + word;
         } else {
-          lines.push(line);
+          if (line) {
+            lines.push(line);
+          }
           line = word;
         }
       }
       if (line) {
         lines.push(line);
       }
-      wrappedText = measureCache[key] = lines.join('\n');
+      measureCache[key] = lines;
     }
-    return wrappedText;
+    return lines;
+  }
+
+  var textCache = {};
+  var gutter;
+  var labelEngine = new _labelgun2.default(voidFn, voidFn);
+  function createIconLabelCombo(iconStyle, textStyle, coord, state) {
+    var pixelRatio = state.pixelRatio;
+    var bottomLeft = [Infinity, Infinity];
+    var topRight = [-Infinity, -Infinity];
+    var bounds = {
+      bottomLeft: bottomLeft,
+      topRight: topRight
+    };
+    var instructions = [];
+    var iconX, iconY, img, imgData, scale, width, height;
+    if (iconStyle) {
+      img = iconStyle.img;
+      scale = iconStyle.scale * pixelRatio;
+      imgData = iconStyle.imgData;
+      width = imgData.width;
+      height = imgData.height;
+      iconX = coord[0] - width / 2 * scale;
+      iconY = coord[1] - height / 2 * scale;
+      bottomLeft[0] = iconX;
+      bottomLeft[1] = iconY;
+      topRight[0] = coord[0] + width / 2 * scale;
+      topRight[1] = coord[1] + height / 2 * scale;
+    }
+    var canvas, labelX, labelY;
+    if (textStyle) {
+      var key = [textStyle.font, textStyle.fill, textStyle.stroke, textStyle.lineWidth, textStyle.text].join();
+      canvas = textCache[key];
+      if (!canvas) {
+        // Render label to a separate canvas, to be reused with ctx.drawImage
+        ctx.font = textStyle.font;
+        var lines = textStyle.lines;
+        var lineHeight = ctx.measureText('M').width * 1.5;
+        var textWidth = 0;
+        var textHeight = 0;
+        var i = 0,
+            ii = lines.length;
+        for (; i < ii; ++i) {
+          textWidth = Math.max(textWidth, ctx.measureText(lines[i]).width);
+          textHeight += lineHeight;
+        }
+        var lineWidth = textStyle.lineWidth;
+        canvas = textCache[key] = document.createElement('CANVAS');
+        canvas.width = Math.ceil((2 * lineWidth + textWidth) * pixelRatio);
+        canvas.height = Math.ceil((2 * lineWidth + textHeight) * pixelRatio);
+        var context = canvas.getContext('2d');
+        context.font = textStyle.font;
+        context.textBaseline = 'top';
+        context.textAlign = 'center';
+        context.translate(canvas.width / 2, 0);
+        context.scale(pixelRatio, pixelRatio);
+        for (i = 0; i < ii; ++i) {
+          if (textStyle.stroke) {
+            context.strokeStyle = textStyle.stroke;
+            context.lineWidth = lineWidth;
+            context.strokeText(lines[i], 0, lineWidth + i * lineHeight);
+          }
+          if (textStyle.fill) {
+            context.fillStyle = textStyle.fill;
+            context.fillText(lines[i], 0, lineWidth + i * lineHeight);
+          }
+        }
+      }
+      var canvasWidth = canvas.width;
+      var canvasHeight = canvas.height;
+      var halfWidth = canvasWidth / 2;
+      var halfHeight = canvasHeight / 2;
+      var textSize = textStyle.textSize * pixelRatio;
+      var anchor = textStyle.anchor;
+      var offset = textStyle.offset;
+      labelX = coord[0] - halfWidth + offset[0] * textSize;
+      labelY = coord[1] - halfHeight + offset[1] * textSize;
+      if (anchor.indexOf('top') != -1) {
+        labelY += halfHeight;
+      } else if (anchor.indexOf('bottom') != -1) {
+        labelY -= halfHeight;
+      }
+      if (anchor.indexOf('left') != -1) {
+        labelX += halfWidth;
+      } else if (anchor.indexOf('right') != -1) {
+        labelX -= halfWidth;
+      }
+      bottomLeft[0] = Math.min(bottomLeft[0], labelX);
+      bottomLeft[1] = Math.min(bottomLeft[1], labelY);
+      topRight[0] = Math.max(topRight[0], labelX + canvasWidth);
+      topRight[1] = Math.max(topRight[1], labelY + canvasHeight);
+    }
+    var target = state.context.canvas;
+    if (0 <= topRight[0] && target.width >= bottomLeft[0] && 0 <= topRight[1] && target.height >= bottomLeft[1]) {
+      var id = [bottomLeft.map(Math.round), topRight.map(Math.round)].join();
+      if (!labelEngine.getLabel(id)) {
+        if (iconStyle) {
+          instructions.push({
+            translate: [iconX, iconY],
+            rotate: iconStyle.rotation,
+            alpha: iconStyle.opacity,
+            drawImage: [img, imgData.x, imgData.y, width, height, 0, 0, width * scale, height * scale]
+          });
+        }
+        if (textStyle) {
+          instructions.push({
+            translate: [labelX, labelY],
+            rotate: textStyle.rotation,
+            alpha: textStyle.opacity,
+            drawImage: [canvas, 0, 0]
+          });
+        }
+        gutter[0] = Math.max(gutter[0], (topRight[0] - bottomLeft[0]) / 2);
+        gutter[1] = Math.max(gutter[1], (topRight[1] - bottomLeft[1]) / 2);
+        labelEngine.ingestLabel(bounds, id, 1, instructions);
+      }
+    }
   }
 
   var allLayers = glStyle.layers;
@@ -1386,14 +2107,11 @@ exports.default = function (glStyle, source, resolutions, spriteData, spriteImag
     }
   }
 
-  var textHalo = new _stroke2.default();
-  var textColor = new _fill2.default();
-
   var iconImageCache = {};
 
   var styles = [];
 
-  return function (feature, resolution) {
+  var styleFunction = function styleFunction(feature, resolution) {
     var properties = feature.getProperties();
     var layers = layersBySourceLayer[properties.layer];
     if (!layers) {
@@ -1417,7 +2135,7 @@ exports.default = function (glStyle, source, resolutions, spriteData, spriteImag
         continue;
       }
       if (!layer.filter || layer.filter(f)) {
-        var color, opacity, fill, stroke, strokeColor, style, text;
+        var color, opacity, fill, stroke, strokeColor, style;
         var index = layerData.index;
         if (type == 3) {
           if (!('fill-pattern' in paint) && 'fill-color' in paint) {
@@ -1481,35 +2199,29 @@ exports.default = function (glStyle, source, resolutions, spriteData, spriteImag
           }
         }
 
-        var icon;
+        var iconStyle;
         if (type == 1 && 'icon-image' in paint) {
           var iconImage = paint['icon-image'](zoom, properties);
-          icon = fromTemplate(iconImage, properties);
-          style = iconImageCache[icon];
-          if (!style && spriteData && spriteImageUrl) {
-            var spriteImageData = spriteData[icon];
-            if (spriteImageData) {
-              style = iconImageCache[icon] = new _style2.default({
-                image: new _icon2.default({
-                  src: spriteImageUrl,
-                  size: [spriteImageData.width, spriteImageData.height],
-                  offset: [spriteImageData.x, spriteImageData.y],
-                  scale: paint['icon-size'](zoom, properties) / spriteImageData.pixelRatio
-                })
-              });
+          if (iconImage) {
+            var icon = fromTemplate(iconImage, properties);
+            style = iconImageCache[icon];
+            if (spriteData && spriteImage) {
+              var spriteImageData = spriteData[icon];
+              if (spriteImageData) {
+                iconStyle = {
+                  img: spriteImage,
+                  imgData: spriteImageData,
+                  scale: paint['icon-size'](zoom, properties) / spriteImageData.pixelRatio,
+                  rotation: deg2rad(paint['icon-rotate'](zoom, properties)),
+                  opacity: paint['icon-opacity'](zoom, properties)
+                };
+              }
             }
-          }
-          if (style) {
-            ++stylesLength;
-            var iconImg = style.getImage();
-            iconImg.setRotation(deg2rad(paint['icon-rotate'](zoom, properties)));
-            iconImg.setOpacity(paint['icon-opacity'](zoom, properties));
-            style.setZIndex(index);
-            styles[stylesLength] = style;
           }
         }
 
         if (type == 1 && 'circle-radius' in paint) {
+          // TODO Send circles through createIconLabelCombo
           ++stylesLength;
           var cache_key = paint['circle-radius'](zoom, properties) + '.' + paint['circle-stroke-color'](zoom, properties) + '.' + paint['circle-color'](zoom, properties);
           style = iconImageCache[cache_key];
@@ -1536,18 +2248,8 @@ exports.default = function (glStyle, source, resolutions, spriteData, spriteImag
           label = fromTemplate(textField, properties);
         }
         // TODO Add LineString handling as soon as it's supporte in OpenLayers
+        var textStyle;
         if (label && type !== 2) {
-          ++stylesLength;
-          style = styles[stylesLength];
-          if (!style || !style.getText() || style.getFill() || style.getStroke()) {
-            style = styles[stylesLength] = new _style2.default({
-              text: new _text2.default({
-                text: '',
-                fill: textColor
-              })
-            });
-          }
-          text = style.getText();
           var textSize = paint['text-size'](zoom, properties);
           var font = (0, _mapboxToCssFont2.default)(fontMap[paint['text-font'](zoom, properties)], textSize);
           var textTransform = paint['text-transform'];
@@ -1556,26 +2258,45 @@ exports.default = function (glStyle, source, resolutions, spriteData, spriteImag
           } else if (textTransform == 'lowercase') {
             label = label.toLowerCase();
           }
-          var wrappedLabel = wrapText(label, font, paint['text-max-width'](zoom, properties));
-          text.setText(wrappedLabel);
-          text.setFont(font);
-          var offset = paint['text-offset'](zoom, properties);
-          var yOffset = offset[1] * textSize + (wrappedLabel.split('\n').length - 1) * textSize;
-          var anchor = paint['text-anchor'](zoom, properties);
-          if (anchor.indexOf('top') == 0) {
-            yOffset += 0.5 * textSize;
-          } else if (anchor.indexOf('bottom') == 0) {
-            yOffset -= 0.5 * textSize;
-          }
-          text.setOffsetX(offset[0] * textSize);
-          text.setOffsetY(yOffset);
-          text.getFill().setColor(paint['text-color'](zoom, properties));
+          var lines = wrapText(label, font, paint['text-max-width'](zoom, properties));
+          textStyle = {
+            text: label,
+            lines: lines,
+            font: font,
+            textSize: textSize,
+            anchor: paint['text-anchor'](zoom, properties),
+            offset: paint['text-offset'](zoom, properties),
+            rotation: deg2rad(paint['text-rotate'](zoom, properties)),
+            opacity: paint['text-opacity'](zoom, properties)
+          };
+          textStyle.fill = paint['text-color'](zoom, properties);
           if (paint['text-halo-width']) {
-            textHalo.setWidth(paint['text-halo-width'](zoom, properties));
-            textHalo.setColor(paint['text-halo-color'](zoom, properties));
-            text.setStroke(textHalo);
-          } else {
-            text.setStroke(undefined);
+            textStyle.lineWidth = paint['text-halo-width'](zoom, properties);
+            textStyle.stroke = paint['text-halo-color'](zoom, properties);
+          }
+        }
+
+        if (iconStyle || textStyle) {
+          ++stylesLength;
+          style = styles[stylesLength];
+          if (!style || !style.getRenderer() || style.getFill() || style.getStroke()) {
+            style = styles[stylesLength] = new _style2.default();
+          }
+          style.setRenderer(function (coords, state) {
+            var canvas = state.context.canvas;
+            if (!gutter) {
+              var pixelRatio = state.pixelRatio;
+              gutter = [50 * pixelRatio, 20 * pixelRatio];
+            }
+            if (coords[0] > -gutter[0] && coords[1] > -gutter[1] && coords[0] < canvas.width + gutter[0] && coords[1] < canvas.height + gutter[1]) {
+              createIconLabelCombo(iconStyle, textStyle, coords, state);
+            }
+          });
+          var geometry = feature.getGeometry();
+          if (geometry.getType() == 'Polygon') {
+            style.setGeometry(geometry.getInteriorPoint());
+          } else if (geometry.getType() == 'MultiPolygon') {
+            style.setGeometry(geometry.getPolygons().sort(sortByWidth)[0].getInteriorPoint());
           }
           style.setZIndex(index);
         }
@@ -1587,6 +2308,43 @@ exports.default = function (glStyle, source, resolutions, spriteData, spriteImag
       return styles;
     }
   };
+  olLayer.on('change', function () {
+    textCache = {};
+  });
+  olLayer.on('precompose', function () {
+    labelEngine.destroy();
+  });
+  olLayer.on('postcompose', function (e) {
+    var context = e.context;
+    var items = labelEngine.getShown();
+    for (var i = 0, ii = items.length; i < ii; ++i) {
+      var item = items[i];
+      var instructions = item.labelObject;
+      for (var j = 0, jj = instructions.length; j < jj; ++j) {
+        var instruction = instructions[j];
+        var alpha = context.globalAlpha;
+        context.translate.apply(context, instruction.translate);
+        if (instruction.rotate) {
+          context.rotate(instruction.rotate);
+        }
+        if (instruction.alpha != 1) {
+          context.globalAlpha = alpha * instruction.alpha;
+        }
+        context.drawImage.apply(context, instruction.drawImage);
+        if (instruction.alpha != 1) {
+          context.globalAlpha = alpha;
+        }
+        if (instruction.rotate) {
+          context.rotate(-instruction.rotate);
+        }
+        context.translate.apply(context, instruction.translate.map(function (t) {
+          return -t;
+        }));
+      }
+    }
+  });
+  olLayer.setStyle(styleFunction);
+  return styleFunction;
 };
 
 var _style = require('ol/style/style');
@@ -1601,17 +2359,9 @@ var _stroke = require('ol/style/stroke');
 
 var _stroke2 = _interopRequireDefault(_stroke);
 
-var _icon = require('ol/style/icon');
-
-var _icon2 = _interopRequireDefault(_icon);
-
 var _circle = require('ol/style/circle');
 
 var _circle2 = _interopRequireDefault(_circle);
-
-var _text = require('ol/style/text');
-
-var _text2 = _interopRequireDefault(_text);
 
 var _function = require('@mapbox/mapbox-gl-style-spec/function');
 
@@ -1625,10 +2375,14 @@ var _mapboxToCssFont = require('mapbox-to-css-font');
 
 var _mapboxToCssFont2 = _interopRequireDefault(_mapboxToCssFont);
 
+var _labelgun = require('labelgun');
+
+var _labelgun2 = _interopRequireDefault(_labelgun);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var functions = {
-  interpolated: ['line-miter-limit', 'fill-opacity', 'line-opacity', 'line-width', 'text-halo-width', 'text-max-width', 'text-offset', 'text-size', 'icon-opacity', 'icon-rotate', 'icon-size', 'circle-radius'],
+  interpolated: ['line-miter-limit', 'fill-opacity', 'line-opacity', 'line-width', 'text-halo-width', 'text-max-width', 'text-offset', 'text-opacity', 'text-rotate', 'text-size', 'icon-opacity', 'icon-rotate', 'icon-size', 'circle-radius'],
   'piecewise-constant': ['fill-color', 'fill-outline-color', 'icon-image', 'line-cap', 'line-color', 'line-join', 'line-dasharray', 'text-anchor', 'text-color', 'text-field', 'text-font', 'text-halo-color', 'circle-color', 'circle-stroke-color']
 };
 
@@ -1646,6 +2400,8 @@ var defaults = {
   'text-halo-width': 0,
   'text-max-width': 10,
   'text-offset': [0, 0],
+  'text-opacity': 1,
+  'text-rotate': 0,
   'text-size': 16,
   'icon-opacity': 1,
   'icon-rotate': 0,
@@ -1662,6 +2418,8 @@ var types = {
   'Polygon': 3,
   'MultiPolygon': 3
 };
+
+function voidFn() {}
 
 function applyDefaults(properties) {
   for (var property in defaults) {
@@ -1816,11 +2574,18 @@ function fromTemplate(text, properties) {
   }
 }
 
+function sortByWidth(a, b) {
+  var extentA = a.getExtent();
+  var extentB = b.getExtent();
+  return extentB[2] - extentB[0] - (extentA[2] - extentA[0]);
+}
+
 /**
  * Creates a style function from the `glStyle` object for all layers that use
  * the specified `source`, which needs to be a `"type": "vector"` or
- * `"type": "geojson"` source.
+ * `"type": "geojson"` source and applies it to the specified OpenLayers layer.
  *
+ * @param {ol.layer.Vector|ol.layer.VectorTile} olLayer OpenLayers layer.
  * @param {string|Object} glStyle Mapbox Style object.
  * @param {string|Array<string>} source `source` key or an array of layer `id`s
  * from the Mapbox Style object. When a `source` key is provided, all layers for
@@ -1833,8 +2598,7 @@ function fromTemplate(text, properties) {
  * 19.109257071294063, 9.554628535647032, 4.777314267823516, 2.388657133911758,
  * 1.194328566955879, 0.5971642834779395, 0.29858214173896974,
  * 0.14929107086948487, 0.07464553543474244]]
- * Resolutions for mapping resolution to zoom level. For tile layers, this can
- * be `layer.getSource().getTileGrid().getResolutions()`.
+ * Resolutions for mapping resolution to zoom level.
  * @param {Object} [spriteData=undefined] Sprite data from the url specified in
  * the Mapbox Style object's `sprite` property. Only required if a `sprite`
  * property is specified in the Mapbox Style object.
@@ -1848,7 +2612,639 @@ function fromTemplate(text, properties) {
  * `ol.layer.Vector` or `ol.layer.VectorTile`.
  */
 
-},{"@mapbox/mapbox-gl-style-spec/feature_filter":2,"@mapbox/mapbox-gl-style-spec/function":4,"mapbox-to-css-font":9,"ol/style/circle":"ol/style/circle","ol/style/fill":"ol/style/fill","ol/style/icon":"ol/style/icon","ol/style/stroke":"ol/style/stroke","ol/style/style":"ol/style/style","ol/style/text":"ol/style/text"}],11:[function(require,module,exports){
+},{"@mapbox/mapbox-gl-style-spec/feature_filter":2,"@mapbox/mapbox-gl-style-spec/function":4,"labelgun":9,"mapbox-to-css-font":10,"ol/style/circle":"ol/style/circle","ol/style/fill":"ol/style/fill","ol/style/stroke":"ol/style/stroke","ol/style/style":"ol/style/style"}],12:[function(require,module,exports){
+'use strict';
+
+module.exports = partialSort;
+
+// Floyd-Rivest selection algorithm:
+// Rearrange items so that all items in the [left, k] range are smaller than all items in (k, right];
+// The k-th element will have the (k - left + 1)th smallest value in [left, right]
+
+function partialSort(arr, k, left, right, compare) {
+    left = left || 0;
+    right = right || arr.length - 1;
+    compare = compare || defaultCompare;
+
+    while (right > left) {
+        if (right - left > 600) {
+            var n = right - left + 1;
+            var m = k - left + 1;
+            var z = Math.log(n);
+            var s = 0.5 * Math.exp(2 * z / 3);
+            var sd = 0.5 * Math.sqrt(z * s * (n - s) / n) * (m - n / 2 < 0 ? -1 : 1);
+            var newLeft = Math.max(left, Math.floor(k - m * s / n + sd));
+            var newRight = Math.min(right, Math.floor(k + (n - m) * s / n + sd));
+            partialSort(arr, k, newLeft, newRight, compare);
+        }
+
+        var t = arr[k];
+        var i = left;
+        var j = right;
+
+        swap(arr, left, k);
+        if (compare(arr[right], t) > 0) swap(arr, left, right);
+
+        while (i < j) {
+            swap(arr, i, j);
+            i++;
+            j--;
+            while (compare(arr[i], t) < 0) {
+                i++;
+            }while (compare(arr[j], t) > 0) {
+                j--;
+            }
+        }
+
+        if (compare(arr[left], t) === 0) swap(arr, left, j);else {
+            j++;
+            swap(arr, j, right);
+        }
+
+        if (j <= k) left = j + 1;
+        if (k <= j) right = j - 1;
+    }
+}
+
+function swap(arr, i, j) {
+    var tmp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = tmp;
+}
+
+function defaultCompare(a, b) {
+    return a < b ? -1 : a > b ? 1 : 0;
+}
+
+},{}],13:[function(require,module,exports){
+'use strict';
+
+module.exports = rbush;
+
+var quickselect = require('quickselect');
+
+function rbush(maxEntries, format) {
+    if (!(this instanceof rbush)) return new rbush(maxEntries, format);
+
+    // max entries in a node is 9 by default; min node fill is 40% for best performance
+    this._maxEntries = Math.max(4, maxEntries || 9);
+    this._minEntries = Math.max(2, Math.ceil(this._maxEntries * 0.4));
+
+    if (format) {
+        this._initFormat(format);
+    }
+
+    this.clear();
+}
+
+rbush.prototype = {
+
+    all: function all() {
+        return this._all(this.data, []);
+    },
+
+    search: function search(bbox) {
+
+        var node = this.data,
+            result = [],
+            toBBox = this.toBBox;
+
+        if (!intersects(bbox, node)) return result;
+
+        var nodesToSearch = [],
+            i,
+            len,
+            child,
+            childBBox;
+
+        while (node) {
+            for (i = 0, len = node.children.length; i < len; i++) {
+
+                child = node.children[i];
+                childBBox = node.leaf ? toBBox(child) : child;
+
+                if (intersects(bbox, childBBox)) {
+                    if (node.leaf) result.push(child);else if (contains(bbox, childBBox)) this._all(child, result);else nodesToSearch.push(child);
+                }
+            }
+            node = nodesToSearch.pop();
+        }
+
+        return result;
+    },
+
+    collides: function collides(bbox) {
+
+        var node = this.data,
+            toBBox = this.toBBox;
+
+        if (!intersects(bbox, node)) return false;
+
+        var nodesToSearch = [],
+            i,
+            len,
+            child,
+            childBBox;
+
+        while (node) {
+            for (i = 0, len = node.children.length; i < len; i++) {
+
+                child = node.children[i];
+                childBBox = node.leaf ? toBBox(child) : child;
+
+                if (intersects(bbox, childBBox)) {
+                    if (node.leaf || contains(bbox, childBBox)) return true;
+                    nodesToSearch.push(child);
+                }
+            }
+            node = nodesToSearch.pop();
+        }
+
+        return false;
+    },
+
+    load: function load(data) {
+        if (!(data && data.length)) return this;
+
+        if (data.length < this._minEntries) {
+            for (var i = 0, len = data.length; i < len; i++) {
+                this.insert(data[i]);
+            }
+            return this;
+        }
+
+        // recursively build the tree with the given data from stratch using OMT algorithm
+        var node = this._build(data.slice(), 0, data.length - 1, 0);
+
+        if (!this.data.children.length) {
+            // save as is if tree is empty
+            this.data = node;
+        } else if (this.data.height === node.height) {
+            // split root if trees have the same height
+            this._splitRoot(this.data, node);
+        } else {
+            if (this.data.height < node.height) {
+                // swap trees if inserted one is bigger
+                var tmpNode = this.data;
+                this.data = node;
+                node = tmpNode;
+            }
+
+            // insert the small tree into the large tree at appropriate level
+            this._insert(node, this.data.height - node.height - 1, true);
+        }
+
+        return this;
+    },
+
+    insert: function insert(item) {
+        if (item) this._insert(item, this.data.height - 1);
+        return this;
+    },
+
+    clear: function clear() {
+        this.data = createNode([]);
+        return this;
+    },
+
+    remove: function remove(item, equalsFn) {
+        if (!item) return this;
+
+        var node = this.data,
+            bbox = this.toBBox(item),
+            path = [],
+            indexes = [],
+            i,
+            parent,
+            index,
+            goingUp;
+
+        // depth-first iterative tree traversal
+        while (node || path.length) {
+
+            if (!node) {
+                // go up
+                node = path.pop();
+                parent = path[path.length - 1];
+                i = indexes.pop();
+                goingUp = true;
+            }
+
+            if (node.leaf) {
+                // check current node
+                index = findItem(item, node.children, equalsFn);
+
+                if (index !== -1) {
+                    // item found, remove the item and condense tree upwards
+                    node.children.splice(index, 1);
+                    path.push(node);
+                    this._condense(path);
+                    return this;
+                }
+            }
+
+            if (!goingUp && !node.leaf && contains(node, bbox)) {
+                // go down
+                path.push(node);
+                indexes.push(i);
+                i = 0;
+                parent = node;
+                node = node.children[0];
+            } else if (parent) {
+                // go right
+                i++;
+                node = parent.children[i];
+                goingUp = false;
+            } else node = null; // nothing found
+        }
+
+        return this;
+    },
+
+    toBBox: function toBBox(item) {
+        return item;
+    },
+
+    compareMinX: compareNodeMinX,
+    compareMinY: compareNodeMinY,
+
+    toJSON: function toJSON() {
+        return this.data;
+    },
+
+    fromJSON: function fromJSON(data) {
+        this.data = data;
+        return this;
+    },
+
+    _all: function _all(node, result) {
+        var nodesToSearch = [];
+        while (node) {
+            if (node.leaf) result.push.apply(result, node.children);else nodesToSearch.push.apply(nodesToSearch, node.children);
+
+            node = nodesToSearch.pop();
+        }
+        return result;
+    },
+
+    _build: function _build(items, left, right, height) {
+
+        var N = right - left + 1,
+            M = this._maxEntries,
+            node;
+
+        if (N <= M) {
+            // reached leaf level; return leaf
+            node = createNode(items.slice(left, right + 1));
+            calcBBox(node, this.toBBox);
+            return node;
+        }
+
+        if (!height) {
+            // target height of the bulk-loaded tree
+            height = Math.ceil(Math.log(N) / Math.log(M));
+
+            // target number of root entries to maximize storage utilization
+            M = Math.ceil(N / Math.pow(M, height - 1));
+        }
+
+        node = createNode([]);
+        node.leaf = false;
+        node.height = height;
+
+        // split the items into M mostly square tiles
+
+        var N2 = Math.ceil(N / M),
+            N1 = N2 * Math.ceil(Math.sqrt(M)),
+            i,
+            j,
+            right2,
+            right3;
+
+        multiSelect(items, left, right, N1, this.compareMinX);
+
+        for (i = left; i <= right; i += N1) {
+
+            right2 = Math.min(i + N1 - 1, right);
+
+            multiSelect(items, i, right2, N2, this.compareMinY);
+
+            for (j = i; j <= right2; j += N2) {
+
+                right3 = Math.min(j + N2 - 1, right2);
+
+                // pack each entry recursively
+                node.children.push(this._build(items, j, right3, height - 1));
+            }
+        }
+
+        calcBBox(node, this.toBBox);
+
+        return node;
+    },
+
+    _chooseSubtree: function _chooseSubtree(bbox, node, level, path) {
+
+        var i, len, child, targetNode, area, enlargement, minArea, minEnlargement;
+
+        while (true) {
+            path.push(node);
+
+            if (node.leaf || path.length - 1 === level) break;
+
+            minArea = minEnlargement = Infinity;
+
+            for (i = 0, len = node.children.length; i < len; i++) {
+                child = node.children[i];
+                area = bboxArea(child);
+                enlargement = enlargedArea(bbox, child) - area;
+
+                // choose entry with the least area enlargement
+                if (enlargement < minEnlargement) {
+                    minEnlargement = enlargement;
+                    minArea = area < minArea ? area : minArea;
+                    targetNode = child;
+                } else if (enlargement === minEnlargement) {
+                    // otherwise choose one with the smallest area
+                    if (area < minArea) {
+                        minArea = area;
+                        targetNode = child;
+                    }
+                }
+            }
+
+            node = targetNode || node.children[0];
+        }
+
+        return node;
+    },
+
+    _insert: function _insert(item, level, isNode) {
+
+        var toBBox = this.toBBox,
+            bbox = isNode ? item : toBBox(item),
+            insertPath = [];
+
+        // find the best node for accommodating the item, saving all nodes along the path too
+        var node = this._chooseSubtree(bbox, this.data, level, insertPath);
+
+        // put the item into the node
+        node.children.push(item);
+        extend(node, bbox);
+
+        // split on node overflow; propagate upwards if necessary
+        while (level >= 0) {
+            if (insertPath[level].children.length > this._maxEntries) {
+                this._split(insertPath, level);
+                level--;
+            } else break;
+        }
+
+        // adjust bboxes along the insertion path
+        this._adjustParentBBoxes(bbox, insertPath, level);
+    },
+
+    // split overflowed node into two
+    _split: function _split(insertPath, level) {
+
+        var node = insertPath[level],
+            M = node.children.length,
+            m = this._minEntries;
+
+        this._chooseSplitAxis(node, m, M);
+
+        var splitIndex = this._chooseSplitIndex(node, m, M);
+
+        var newNode = createNode(node.children.splice(splitIndex, node.children.length - splitIndex));
+        newNode.height = node.height;
+        newNode.leaf = node.leaf;
+
+        calcBBox(node, this.toBBox);
+        calcBBox(newNode, this.toBBox);
+
+        if (level) insertPath[level - 1].children.push(newNode);else this._splitRoot(node, newNode);
+    },
+
+    _splitRoot: function _splitRoot(node, newNode) {
+        // split root node
+        this.data = createNode([node, newNode]);
+        this.data.height = node.height + 1;
+        this.data.leaf = false;
+        calcBBox(this.data, this.toBBox);
+    },
+
+    _chooseSplitIndex: function _chooseSplitIndex(node, m, M) {
+
+        var i, bbox1, bbox2, overlap, area, minOverlap, minArea, index;
+
+        minOverlap = minArea = Infinity;
+
+        for (i = m; i <= M - m; i++) {
+            bbox1 = distBBox(node, 0, i, this.toBBox);
+            bbox2 = distBBox(node, i, M, this.toBBox);
+
+            overlap = intersectionArea(bbox1, bbox2);
+            area = bboxArea(bbox1) + bboxArea(bbox2);
+
+            // choose distribution with minimum overlap
+            if (overlap < minOverlap) {
+                minOverlap = overlap;
+                index = i;
+
+                minArea = area < minArea ? area : minArea;
+            } else if (overlap === minOverlap) {
+                // otherwise choose distribution with minimum area
+                if (area < minArea) {
+                    minArea = area;
+                    index = i;
+                }
+            }
+        }
+
+        return index;
+    },
+
+    // sorts node children by the best axis for split
+    _chooseSplitAxis: function _chooseSplitAxis(node, m, M) {
+
+        var compareMinX = node.leaf ? this.compareMinX : compareNodeMinX,
+            compareMinY = node.leaf ? this.compareMinY : compareNodeMinY,
+            xMargin = this._allDistMargin(node, m, M, compareMinX),
+            yMargin = this._allDistMargin(node, m, M, compareMinY);
+
+        // if total distributions margin value is minimal for x, sort by minX,
+        // otherwise it's already sorted by minY
+        if (xMargin < yMargin) node.children.sort(compareMinX);
+    },
+
+    // total margin of all possible split distributions where each node is at least m full
+    _allDistMargin: function _allDistMargin(node, m, M, compare) {
+
+        node.children.sort(compare);
+
+        var toBBox = this.toBBox,
+            leftBBox = distBBox(node, 0, m, toBBox),
+            rightBBox = distBBox(node, M - m, M, toBBox),
+            margin = bboxMargin(leftBBox) + bboxMargin(rightBBox),
+            i,
+            child;
+
+        for (i = m; i < M - m; i++) {
+            child = node.children[i];
+            extend(leftBBox, node.leaf ? toBBox(child) : child);
+            margin += bboxMargin(leftBBox);
+        }
+
+        for (i = M - m - 1; i >= m; i--) {
+            child = node.children[i];
+            extend(rightBBox, node.leaf ? toBBox(child) : child);
+            margin += bboxMargin(rightBBox);
+        }
+
+        return margin;
+    },
+
+    _adjustParentBBoxes: function _adjustParentBBoxes(bbox, path, level) {
+        // adjust bboxes along the given tree path
+        for (var i = level; i >= 0; i--) {
+            extend(path[i], bbox);
+        }
+    },
+
+    _condense: function _condense(path) {
+        // go through the path, removing empty nodes and updating bboxes
+        for (var i = path.length - 1, siblings; i >= 0; i--) {
+            if (path[i].children.length === 0) {
+                if (i > 0) {
+                    siblings = path[i - 1].children;
+                    siblings.splice(siblings.indexOf(path[i]), 1);
+                } else this.clear();
+            } else calcBBox(path[i], this.toBBox);
+        }
+    },
+
+    _initFormat: function _initFormat(format) {
+        // data format (minX, minY, maxX, maxY accessors)
+
+        // uses eval-type function compilation instead of just accepting a toBBox function
+        // because the algorithms are very sensitive to sorting functions performance,
+        // so they should be dead simple and without inner calls
+
+        var compareArr = ['return a', ' - b', ';'];
+
+        this.compareMinX = new Function('a', 'b', compareArr.join(format[0]));
+        this.compareMinY = new Function('a', 'b', compareArr.join(format[1]));
+
+        this.toBBox = new Function('a', 'return {minX: a' + format[0] + ', minY: a' + format[1] + ', maxX: a' + format[2] + ', maxY: a' + format[3] + '};');
+    }
+};
+
+function findItem(item, items, equalsFn) {
+    if (!equalsFn) return items.indexOf(item);
+
+    for (var i = 0; i < items.length; i++) {
+        if (equalsFn(item, items[i])) return i;
+    }
+    return -1;
+}
+
+// calculate node's bbox from bboxes of its children
+function calcBBox(node, toBBox) {
+    distBBox(node, 0, node.children.length, toBBox, node);
+}
+
+// min bounding rectangle of node children from k to p-1
+function distBBox(node, k, p, toBBox, destNode) {
+    if (!destNode) destNode = createNode(null);
+    destNode.minX = Infinity;
+    destNode.minY = Infinity;
+    destNode.maxX = -Infinity;
+    destNode.maxY = -Infinity;
+
+    for (var i = k, child; i < p; i++) {
+        child = node.children[i];
+        extend(destNode, node.leaf ? toBBox(child) : child);
+    }
+
+    return destNode;
+}
+
+function extend(a, b) {
+    a.minX = Math.min(a.minX, b.minX);
+    a.minY = Math.min(a.minY, b.minY);
+    a.maxX = Math.max(a.maxX, b.maxX);
+    a.maxY = Math.max(a.maxY, b.maxY);
+    return a;
+}
+
+function compareNodeMinX(a, b) {
+    return a.minX - b.minX;
+}
+function compareNodeMinY(a, b) {
+    return a.minY - b.minY;
+}
+
+function bboxArea(a) {
+    return (a.maxX - a.minX) * (a.maxY - a.minY);
+}
+function bboxMargin(a) {
+    return a.maxX - a.minX + (a.maxY - a.minY);
+}
+
+function enlargedArea(a, b) {
+    return (Math.max(b.maxX, a.maxX) - Math.min(b.minX, a.minX)) * (Math.max(b.maxY, a.maxY) - Math.min(b.minY, a.minY));
+}
+
+function intersectionArea(a, b) {
+    var minX = Math.max(a.minX, b.minX),
+        minY = Math.max(a.minY, b.minY),
+        maxX = Math.min(a.maxX, b.maxX),
+        maxY = Math.min(a.maxY, b.maxY);
+
+    return Math.max(0, maxX - minX) * Math.max(0, maxY - minY);
+}
+
+function contains(a, b) {
+    return a.minX <= b.minX && a.minY <= b.minY && b.maxX <= a.maxX && b.maxY <= a.maxY;
+}
+
+function intersects(a, b) {
+    return b.minX <= a.maxX && b.minY <= a.maxY && b.maxX >= a.minX && b.maxY >= a.minY;
+}
+
+function createNode(children) {
+    return {
+        children: children,
+        height: 1,
+        leaf: true,
+        minX: Infinity,
+        minY: Infinity,
+        maxX: -Infinity,
+        maxY: -Infinity
+    };
+}
+
+// sort an array so that items come in groups of n unsorted items, with groups sorted between each other;
+// combines selection algorithm with binary divide & conquer approach
+
+function multiSelect(arr, left, right, n, compare) {
+    var stack = [left, right],
+        mid;
+
+    while (stack.length) {
+        right = stack.pop();
+        left = stack.pop();
+
+        if (right - left <= n) continue;
+
+        mid = left + Math.ceil((right - left) / n / 2) * n;
+        quickselect(arr, mid, left, right, compare);
+
+        stack.push(left, mid, mid, right);
+    }
+}
+
+},{"quickselect":12}],14:[function(require,module,exports){
 "use strict";
 
 /* Web Font Loader v1.6.28 - (c) Adobe Systems, Google. License: Apache 2.0 */(function () {
