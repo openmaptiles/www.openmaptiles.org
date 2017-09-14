@@ -7,7 +7,7 @@ keywords: Leaflet VectorGrid
 order: 4
 ---
 
-[Leaflet](http://www.leafletjs.org) is a lightweight web mapping library. If you haven't worked with Leaflet before, have a look at its [tutorials](http://leafletjs.com/examples.html).
+[Leaflet](http://www.leafletjs.com) is a lightweight web mapping library. If you haven't worked with Leaflet before, have a look at its [tutorials](http://leafletjs.com/examples.html).
 
 There are three ways how to use OpenMapTiles as a map layer in Leaflet:
 * raster tiles from server
