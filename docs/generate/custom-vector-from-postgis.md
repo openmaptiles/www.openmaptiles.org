@@ -162,4 +162,4 @@ docker run -it -v $(pwd):/data -p 8080:80 klokantech/tileserver-gl data/tiles.mb
 
 
 ## Combine your vector tiles with OpenMapTiles
-After creating vector tiles, you can combine it with standard OpenMapTiles layer in one map style. It can be done in the same way as in case of [raster tiles](http://localhost:4000/docs/raster/custom-raster/#prepare-map-style).
+After creating vector tiles, you can combine it with standard OpenMapTiles layer in one map style. It can be done in the same way as in case of [raster tiles](/docs/raster/custom-raster/#prepare-map-style).

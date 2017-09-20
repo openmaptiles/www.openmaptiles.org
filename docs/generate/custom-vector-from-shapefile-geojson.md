@@ -38,4 +38,4 @@ Data preview with TileServer-GL:
 <img src='/img/custom-vector-tileserver-gl.png' alt='Data preview with TileServer-GL' />
 
 ## Combine your vector tiles with OpenMapTiles
-After creating vector tiles, you can combine it with standard OpenMapTiles layer in one map style. It can be done in the same way as in case of [raster tiles](http://localhost:4000/docs/raster/custom-raster/#prepare-map-style).
+After creating vector tiles, you can combine it with standard OpenMapTiles layer in one map style. It can be done in the same way as in case of [raster tiles](/docs/raster/custom-raster/#prepare-map-style).
