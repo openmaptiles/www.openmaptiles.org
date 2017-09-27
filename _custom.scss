@@ -149,13 +149,25 @@ body.home {
     margin: 10px 0;
     font-family: $font-secondary;
     font-weight: 500;
-    font-size: 18px;
-    padding-bottom: 13px;
+    font-size: 14px;
+    line-height: 1.1;
+    padding: 14px 18px 14px 58px;
+    background: rgba(97, 97, 97, 0.9);
+    color: #fff;
+    border-radius: 2px;
+    box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.4);
+
+    &:hover{
+      text-decoration: none;
+      background: rgba(97, 97, 97, 0.98);
+    }
 
     span {
-      color: #60748D;
-      display: block;
-      font-size: 40px;
+      color: #fff;
+      position: absolute;
+      margin-left: -43px;
+      margin-top: -2px;
+      font-size: 32px;
     }
   }
 }
