@@ -9,5 +9,5 @@ sass:
 exclude:
 - "styles/*"
 
-gems:
+plugins:
 - jekyll-redirect-from
