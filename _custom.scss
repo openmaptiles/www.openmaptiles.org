@@ -605,3 +605,15 @@ article ul {
 .map-style > img {
   height: 450px;
 }
+
+.hashLink{
+  color: #eaeaea;
+  padding: 0 5px;
+  font-size: 0.8em;
+  font-family: 'icons';
+
+  &:hover{
+    color: #c7c7c7;
+    text-decoration: none;
+  }
+}

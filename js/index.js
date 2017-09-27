@@ -74,6 +74,17 @@ function init() {
       }
     });
   }
+
+  var hashes = document.getElementsByTagName('h2');
+  for(var i = 0; i < hashes.length; i++){
+    if(hashes[i].id){
+      var hash = document.createElement('a');
+      hash.className = 'hashLink';
+      hash.innerHTML = '8';
+      hash.href = '#' + hashes[i].id;
+      hashes[i].appendChild(hash);
+    }
+  }
 }
 
 window.onload = init;
