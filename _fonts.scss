@@ -1,0 +1,25 @@
+/* Fonts  */
+@import url('https://fonts.googleapis.com/css?family=Cabin:500,700|Open+Sans:400,400i,600,700&subset=latin-ext');
+
+@font-face {
+  font-family: 'icons';
+  src:
+    url('fonts/icons.woff2?u2srbp6') format('woff2'),
+    url('fonts/icons.ttf?u2srbp6') format('truetype'),
+    url('fonts/icons.woff?u2srbp6') format('woff'),
+    url('fonts/icons.svg?u2srbp6#icons') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.icon, [class^='icon-'], [class*=' icon-']{
+  font-family: 'icons';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 20px;
+}
