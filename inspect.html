@@ -1,0 +1,59 @@
+---
+layout: default
+title: Inspect
+description: Design and host maps with OpenStreetMap vector tiles and open-source tools. Maps are compatible with Leaflet, Mapbox GL SDKs, GIS, WMTS/WMS, XYZ map tiles, etc.
+---
+
+
+<link rel="stylesheet" type="text/css" href="/inspect/mapbox-gl.css" />
+<link rel="stylesheet" type="text/css" href="/inspect/mapbox-gl-inspect.css" />
+<script src="/inspect/mapbox-gl.js"></script>
+<script src="/inspect/mapbox-gl-inspect.min.js"></script>
+<style>
+  body {background:#fff;color:#333;font-family:Arial, sans-serif;}
+  #map {position:absolute;top: 72px;left:0;right:250px;bottom:0;}
+  #layerList {position:absolute;top:105px;right:0;bottom:0;width:240px;overflow:auto;}
+  #layerList div div {width:15px;height:15px;display:inline-block;}
+  #schema{position: absolute; bottom: 15px; left: 15px;}
+</style>
+
+<div id="map"></div>
+<div id="layerList"></div>
+<pre id="propertyList"></pre>
+<a id="schema" class="btn" href="/schema/">Vector Tile Schema</a>
+<script>
+var map = new mapboxgl.Map({
+  container: 'map',
+  hash: true,
+  style: {
+    version: 8,
+    sources: {
+      'vector_layer_': {
+        type: 'vector',
+        url: 'https://free.tilehosting.com/data/v3.json?key=0vlcigsU8gczVccsde3e'
+      }
+    },
+    layers: []
+  }
+});
+map.addControl(new mapboxgl.NavigationControl());
+var inspect = new MapboxInspect({
+  showInspectMap: true,
+  showInspectButton: false
+});
+map.addControl(inspect);
+map.on('styledata', function() {
+  var layerList = document.getElementById('layerList');
+  layerList.innerHTML = '';
+  Object.keys(inspect.sources).forEach(function(sourceId) {
+    var layerIds = inspect.sources[sourceId];
+    layerIds.forEach(function(layerId) {
+      var item = document.createElement('div');
+      item.innerHTML = '<div style="' +
+        'background:' + inspect.assignLayerColor(layerId) + ';' +
+      '"></div> ' + layerId;
+      layerList.appendChild(item);
+    });
+  })
+});
+</script>
