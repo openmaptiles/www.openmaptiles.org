@@ -70,9 +70,9 @@ body.home {
 
   #banner-bg {
     position: absolute;
-    top: 33%;
+    top: 25%;
     left: 0;
-    height: 165px;
+    height: 200px;
     z-index: 99;
     background: rgba(255, 255, 255, 0.8);
     pointer-events: none;
@@ -81,7 +81,6 @@ body.home {
     @media screen and (max-width: 720px) {
       right: 0;
       min-width: auto;
-      height: 140px;
     }
 
     &.banner-bg-bigger{
@@ -91,7 +90,7 @@ body.home {
 
   #banner {
     position: absolute;
-    top: 33%;
+    top: 25%;
     left: 0;
     right: 0;
     z-index: 100;
@@ -102,19 +101,17 @@ body.home {
       padding: 0 0 0 30px;
     }
 
-    h1,
-    h2,
-    h3,
-    h4 {
+    h1,h2{
       color: #616161;
-    }
-
-    h1 {
       font-size: 40px;
     }
 
     h2 {
       font-size: 18px;
+    }
+
+    a{
+      pointer-events: all;
     }
     @media screen and (max-width: 720px) {
       text-align: center;
@@ -143,6 +140,10 @@ body.home {
   top: 72px;
   right: 10px;
   z-index: 10;
+
+  @media screen and (max-width: 720px) {
+    display: none;
+  }
 
   a {
     display: block;
