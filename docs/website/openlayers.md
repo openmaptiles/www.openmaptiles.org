@@ -63,7 +63,7 @@ to include the fonts used in the style in the page.
 #### ol.js
 
 Create a new MVT source (`url` of `ol.source.VectorTile`) which points
-to the CDN of OpenMapTiles or your own tileserver.
+to the CDN of OpenMapTiles or your own TileServer.
 
 We fetch our GL style specification (`fetch` function) and turn
 it into OpenLayers functions which we can apply to

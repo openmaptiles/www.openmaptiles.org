@@ -8,8 +8,8 @@ order: 3
 ---
 
 In case you wish to publish vector tiles and already have a PHP stack running
-you can use TileServer-PHP for serving vector or raster tiles.
-TileServer-PHP is implementing the OGC WMTS standard for pre-rendered
+you can use TileServer PHP for serving vector or raster tiles.
+TileServer PHP is implementing the OGC WMTS standard for pre-rendered
 raster tiles but it is fully prepared for fast serving of vector tiles.
 
 [GitHub page of the project](https://github.com/klokantech/tileserver-php)
@@ -19,7 +19,7 @@ raster tiles but it is fully prepared for fast serving of vector tiles.
 - PHP 5.2+ with SQLite module (php5-sqlite)
 
 ### Prepare TileServer
-TileServer-PHP is only one PHP file which you need to copy together with the MBTiles file.
+TileServer PHP is only one PHP file which you need to copy together with the MBTiles file.
 Download the project files as a zip archive from [GitHub page of the project](https://github.com/klokantech/tileserver-php)
 and unpack it into your web-hosting or local LAMP/WAMP. Then go to your browser
 and open http://localhost/<path-to-your-folder> and you will see TileServer's client.
@@ -55,7 +55,7 @@ Once you have the files in place for your web server to serve, edit style-cdn.js
   },
 ```
 
-and change the value of `"url"` to point at TileJSON output from your TileServer-PHP. For example, if your server is installed at http://example.com/tileserver.php, and you're serving an .mbtiles file named `united_states_of_america.mbtiles`, then this snippet should read:
+and change the value of `"url"` to point at TileJSON output from your TileServer PHP. For example, if your server is installed at http://example.com/tileserver.php, and you're serving an .mbtiles file named `united_states_of_america.mbtiles`, then this snippet should read:
 
 ```json
   "sources": {
@@ -121,4 +121,4 @@ and edit *each one*, so that the list only has one font in it, e.g.:
 
 Now you can test your changes by reloading index.html. If everything was done right, you should see the rendered map again.
 
-With this setup, you can serve maps from a server running on the same machine as the browser without an Internet connection - effectively, the combination of TileServer-PHP and Mapbox GL JS becomes an offline vector .mbtiles map viewer.
+With this setup, you can serve maps from a server running on the same machine as the browser without an Internet connection - effectively, the combination of TileServer PHP and Mapbox GL JS becomes an offline vector .mbtiles map viewer.
