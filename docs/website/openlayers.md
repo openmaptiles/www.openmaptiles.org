@@ -69,9 +69,14 @@ We fetch our GL style specification (`fetch` function) and turn
 it into OpenLayers functions which we can apply to
 our vector tile layer.
 
-```javascript
-var tilegrid = ol.tilegrid.createXYZ({tileSize: 512, maxZoom: 14});
+In the following code, you have to replace “insert_your_key_here” with
+a key from hosting. You can get a free key
+from [www.tilehosting.com](www.tilehosting.com).
 
+```javascript
+var apiKey = 'insert_your_key_here';
+
+var tilegrid = ol.tilegrid.createXYZ({tileSize: 512, maxZoom: 14});
 var layer = new ol.layer.VectorTile({
   source: new ol.source.VectorTile({
     attributions: '© <a href="https://openmaptiles.org/">OpenMapTiles</a> ' +
@@ -80,7 +85,7 @@ var layer = new ol.layer.VectorTile({
     format: new ol.format.MVT(),
     tileGrid: tilegrid,
     tilePixelRatio: 8,
-    url: 'https://free-0.tilehosting.com/data/v3/{z}/{x}/{y}.pbf?key=<insert your key here>'
+    url: 'https://free-0.tilehosting.com/data/v3/{z}/{x}/{y}.pbf?key=' + apiKey
   })
 });
 
