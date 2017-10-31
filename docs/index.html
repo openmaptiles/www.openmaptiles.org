@@ -4,58 +4,63 @@ title: Documentation
 description: Learn how to work with OpenMapTiles. Section with guides and tutorials about creating, styling, hosting, serving of tiles and more.
 keywords: documentation, docs, help, how-to, tutorial, guide, quick start
 redirect_from:
- - /docs/host/
- - /docs/website/
- - /docs/generate/
- - /docs/style/
- - /docs/raster/
+  - /docs/host/
+  - /docs/website/
+  - /docs/generate/
+  - /docs/style/
+  - /docs/raster/
 ---
 
 <div class="row">
   <div class="col8 padx-0">
     <h2>Get started</h2>
-
-    <h3>1. Download Vector Tiles</h3>
-
-    Head over to the <b><a href="/downloads">downloads page</a></b>
-    and download the vector tiles for your region or the planet.<p>
-
-    <pre class="highlight"><code>wget https://.../zurich_switzerland.mbtiles</code></pre>
-
-    <h3>2. Run a Tileserver</h3>
-    <p>
-      To serve the tiles to your mobile or web client you need to choose a tileserver
-      for your platform and configure it to serve the previously downloaded vector tiles.
-    </p>
     <div class="tabs" style="min-height: 420px;">
       <ul>
-        <li class="tabs-btn active" id="btn-1">Node.js</li>
+        <li class="tabs-btn active" id="btn-1">OpenMapTiles Server</li>
         <li class="tabs-btn" id="btn-2">Docker</li>
-        <li class="tabs-btn" id="btn-3">CDN</li>
+        <li class="tabs-btn" id="btn-3">Node.js</li>
+        <li class="tabs-btn" id="btn-4">PHP</li>
+        <li class="tabs-btn" id="btn-5">Hosting</li>
       </ul>
+
       <div class="tabs-content">
         <div class="tabs-tab active" id="tab-1">
-          <p>Using <a href="https://github.com/klokantech/tileserver-gl">tileserver-gl</a>
-            you can immediately serve vector tiles including a web viewer and sample styles.<br/>
-            The light version <b>tileserver-gl-light</b> can be easily installed using npm.
-          </p>
-          <pre class="highlight"><code>npm install -g tileserver-gl-light</code></pre>
-          <p>Now run <b>tileserver-gl-light</b> together with the previously downloaded vector tiles</p>
-          <pre class="highlight"><code>tileserver-gl-light zurich_switzerland.mbtiles</code></pre>
+          <h2>OpenMapTiles Server</h2>
+          <p class="b">The easiest way how to deploy world basemap powered by OpenStreetMap and&nbsp;Docker.</p>
+
+          <h3 class="padt-2">1. Install free Docker on your computer</h3>
+          <p>Install the free Docker. It comes with graphical user interface:</p>
+
           <p>
-            Open in your web browser the local address http://localhost:8080.
-          <p>
-            Read the <a href="/docs/host/tileserver-gl">Tileserver GL</a> tutorial
-            for more in-depth information.
-            <p>
-            The full version of tileserver-gl has the capabilities to fall back to serve raster tiles for interoperability
-            with other clients. The raster tiles are rendered on demand. This makes it harder to install, so we recommend usage of docker.
+            <a class="btn" href="https://download.docker.com/win/stable/DockerToolbox.exe">Windows</a>
+            <a class="btn" href="https://download.docker.com/mac/stable/DockerToolbox.pkg">Mac</a>
+            <a class="btn" onclick="document.getElementById('server-linux').classList.toggle('hidden');document.getElementById('server-linux-2').classList.toggle('hidden');">Linux</a>
           </p>
+          <pre id="server-linux" class="mary-1 hidden">curl -sSL https://get.docker.com/ | sh</pre>
+
+          <h3 class="padt-2">2. Start Docker Kitematic</h3>
+
+          <p>Launch the installed Kitematic application. Search for “openmaptiles-server” and launch the container.</p>
+
+          <div id="server-linux-2" class="hidden">
+            <p>For linux use docker shell command:</p>
+            <pre>docker run --rm -it -v $(pwd):/data -p 8080:80 klokantech/openmaptiles-server</pre>
+          </div>
+
+          <h3 class="padt-2">3. Follow the step-by-step guide</h3>
+          <p>Visit the web interface at <b>http://localhost:8080/</b> and follow the
+            web wizard. You will set your server in few steps. Supports your own
+            data and style - additional data sources such as hillshading,
+            contour lines, satellite, etc. See more at
+            <a href="openmaptiles.com/server/">openmaptiles.com/server/</a></p>
         </div>
 
         <div class="tabs-tab" id="tab-2">
-          To install a tileserver serving both vector and raster tiles we recommend to use the offical Docker image of <b>tileserver-gl</b>.
-          By launching the docker with the command bellow, you mount the active directory with the previously downloaded MBTiles file with vector tiles and expose the tile server to a local port 8080.
+          <h2>Docker with TileServer GL</h2>
+          If you need Docker microservice and advanced configuration you can use the rendering core of our server directly.
+
+          To install a tileserver serving both vector and raster tiles we recommend to use the offical Docker image of <b>tileserver-gl</b>. By launching the docker with the command bellow, you mount the active directory with the previously downloaded
+          MBTiles file with vector tiles and expose the tile server to a local port 8080.
           <pre class="highlight"><code>docker run -it -v $(pwd):/data -p 8080:80 klokantech/tileserver-gl</code></pre>
           <p>
             Read the <a href="/docs/host/tileserver-gl">Tileserver GL</a> tutorial for more in-depth information.
@@ -63,42 +68,79 @@ redirect_from:
         </div>
 
         <div class="tabs-tab" id="tab-3">
+          <h2>Node.js - TileServer GL Light</h2>
+          <h3>1. Download Vector Tiles</h3> Head over to the <b><a href="/downloads">downloads page</a></b> and download the vector tiles for your region or the planet.
+          <p><pre class="highlight"><code>wget https://.../zurich_switzerland.mbtiles</code></pre></p>
+
+          <h3>2. Run a TileServer</h3>
           <p>
-            <a href="https://openmaptiles.com/hosting/">OpenMapTiles.com</a> provides a free CDN for non-commercial
-            and demonstration purposes. Once you sign in, you can create an access key and can use the
-            TileJSON endpoint of the CDN in the rendering clients.
+            To serve the tiles to your mobile or web client you need to choose a tileserver for your platform and configure it to serve the previously downloaded vector tiles.
           </p>
-          <pre class="highlight"><code>https://free.tilehosting.com/data/v3.json?key={access_key}</code></pre>
+
+          <p>Using <a href="https://github.com/klokantech/tileserver-gl">tileserver-gl</a> you can immediately serve vector tiles including a web viewer and sample styles.<br/> The light version <b>tileserver-gl-light</b> can be easily installed using npm.
+          </p>
+          <pre class="highlight"><code>npm install -g tileserver-gl-light</code></pre>
+          <p>Now run <b>tileserver-gl-light</b> together with the previously downloaded vector tiles</p>
+          <pre class="highlight"><code>tileserver-gl-light zurich_switzerland.mbtiles</code></pre>
           <p>
-            Read the <b><a href="/docs/host/use-cdn">CDN tutorial</a></b> for more in-depth information.
-            <br/>
-            If you need fast and reliable tile serving for your production applications <a href="https://openmaptiles.com/hosting/">OpenMapTiles.com</a> also provides a paid CDN service and other complimentary services.
+            Open in your web browser the local address <b>http://localhost:8080</b>.</p>
+          <p>
+            Read the <a href="/docs/host/tileserver-gl">Tileserver GL</a> tutorial for more in-depth information.</p>
+
+          <p>
+            The full version of tileserver-gl has the capabilities to fall back to serve raster tiles for interoperability with other clients. The raster tiles are rendered on demand. This makes it harder to install, so we recommend usage of docker.
+          </p>
+
+          <h3>3. Choose a Style</h3>
+          <p>
+            Once you have your own vector tile server running you can
+            <a href="/styles">choose one of the many styles</a> supporting the <a href="/schema">OpenMapTiles schema</a>.
+          </p>
+          <p>
+            After you downloaded the style, point the endpoint URL to your tileserver and embedd it in a mobile app or web viewer. You can also <a href="/docs/style/maputnik">create your own styles using Maputnik</a>.
           </p>
         </div>
-      </div>
-    </div>
 
-    <h3>3. Choose a Style</h3>
-    <p>
-      Once you have your own vector tile server running you can
-      <a href="/styles">choose one of the many styles</a> supporting
-      the <a href="/schema">OpenMapTiles schema</a>.
-    </p>
-    <p>
-      After you downloaded the style, point the endpoint URL to your tileserver and embedd it in a mobile
-      app or web viewer. You can also <a href="/docs/style/maputnik">create your own styles using Maputnik</a>.
-    </p>
+        <div class="tabs-tab" id="tab-4">
+          <h2>TileServer PHP</h2>
+          <h3>1. Download Vector Tiles</h3>
+          <p>Head over to the <a href="https://openmaptiles.com/downloads/">downloads page</a>
+           and download the vector tiles for your region or the planet.<p>
+
+          <h3 class="padt-1">2. Download TileServer PHP</h3>
+          <p>Source code is available on TileServer's
+            <a href="https://github.com/klokantech/tileserver-php">GitHub</a>. Download the
+            <a href="https://github.com/klokantech/tileserver-php/releases">latest release</a>
+            and unpack it to the same directory as is MBTiles on your LAMP/WAMP server.</p>
+
+          <h3 class="padt-1">3. Add static assets</h3>
+          <p>Create your own <a href="/docs/website/mapbox-gl-js/">HTML viewer with MapBox GL JS</a> and link TileJSON
+            from TileServer with links to PBF tiles. For more details see <a href="/docs/host/tileserver-php/">TileServer PHP tutorial</a>.</p>
+         </div>
+
+        <div class="tabs-tab" id="tab-5">
+          <h2>TileHosting</h2>
+          <p>We are providing a free reliable hosting for OpenMapTiles data.
+          This is the quickest way how to start and play with maps.
+          Visit <a href="https://www.tilehosting.com">TileHosting.com</a> for
+          more information and get free access.</a>
+
+          <p class="padt-2"><a href="https://www.tilehosting.com" class="btn">Visit TileHosting.com</a></p>
+        </div>
+      </div>
+
+      <p class="box">Lazy? Use <a href="https://www.tilehosting.com">hosting</a>.</p>
+
+    </div>
   </div>
 
 
   <div class="col4">
-    <h2 class="padb-1" >Tutorials</h2>
-    {% for category in site.data.categories %}
+    <h2 class="padb-1">Tutorials</h2> {% for category in site.data.categories %}
     <div class="row doc-section">
       <h4>{{ category.title }}</h4>
       <ul>
-        {% assign articles = site.pages | where:"category", category.id | sort: "order" %}
-        {% for article in articles %}
+        {% assign articles = site.pages | where:"category", category.id | sort: "order" %} {% for article in articles %}
         <li><a href="{{ article.url }}">{% if titlesidebar %}{{ article.titlesidebar }}{% else %}{{ article.title }}{% endif %}</a></li>
         {% endfor %}
       </ul>
