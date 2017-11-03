@@ -25,25 +25,26 @@ We recommend to install TileServer GL using Docker:
 docker pull klokantech/tileserver-gl
 ```
 
-Now download the vector tiles from OpenMapTiles.
+Now download the vector tiles MBTiles file from the [OpenMapTiles Downloads](https://openmaptiles.com/downloads/) and save it in the actual directory.
 
 ```
-curl -o zurich_switzerland.mbtiles https://openmaptiles.os.zhdk.cloud.switch.ch/v3.3/extracts/zurich_switzerland.mbtiles
+curl -o zurich_switzerland.mbtiles https://[ADDRESS-YOU-GET-IN-DOWNLOADS]
 ```
 
 ### Serve Map Tiles
 
-You should mount the directory containing the vector tiles to the container
-and bind the port `80` to a local port:
+You should mount the actual directory containing the vector tiles to the `/data` path inside of the container
+and bind the local port `8080` to port `80` inside container:
 
 ```
 docker run -it -v $(pwd):/data -p 8080:80 klokantech/tileserver-gl
 ```
 
 This will start a Node.js container with tileserver-gl on your computer.
+
 Visit `http://localhost:8080` to check the TileServer GL GUI.
 
-In the **Data** section of TileServer you will see your hosted vector tiles.
+In the **Data** section of TileServer you will see your hosted map tiles.
 You can use the provided `TileJSON` endpoint as source in your GL styles
 or explore the data using the X-Ray view.
 
