@@ -9,37 +9,29 @@ description: Edit Style with Mapbox Studio
 keywords: create, style
 ---
 
-[Maputnik](https://github.com/maputnik/editor) is a free and open visual editor for the [Mapbox GL style specification](https://www.mapbox.com/mapbox-gl-style-spec/).
-You can either use the publicly available version of Maputnik
-at [http://editor.openmaptiles.org](http://editor.openmaptiles.org)
- or [download the editor](https://github.com/maputnik/editor/releases) to use it locally.
+[Maputnik](https://github.com/maputnik/editor) is a free and open source visual editor for the [Mapbox GL style specification](https://www.mapbox.com/mapbox-gl-style-spec/). You can either use the online version of Maputnik at [http://editor.openmaptiles.org](http://editor.openmaptiles.org) or [download the editor](https://github.com/maputnik/editor/releases) to use it locally.
 
 ## Edit the Style online
 
-The easiest way to get started is choosing an existing style as a starting point.
-On [http://editor.openmaptiles.org](http://editor.openmaptiles.org) you can choose from many existing
-styles that work well with OpenMapTiles and directly edit them.
+The easiest way to get started is choosing an existing style as a starting point. On [http://editor.openmaptiles.org](http://editor.openmaptiles.org) you can choose from many existing styles that work well with OpenMapTiles and directly edit them.
 
-Once you are done editing the style you can download the modified style JSON.
+Once you are done editing the style you can download the modified style in JSON format.
 
 ![Choose style in Maputnik](/media/maputnik_choose_style.png)
 
 ## Edit the Style locally
 
-If you want to edit the style locally with the [Maputnik CLI](https://github.com/maputnik/editor/releases) you can clone the GitHub repository of one of the OpenMapTiles styles.  Under [Styles](http://openmaptiles.org/styles) you can find a list of styles.
+If you want to edit the style locally with the [Maputnik CLI](https://github.com/maputnik/editor/releases), clone one of the OpenMapTiles styles GitHub repository. On [Styles](http://openmaptiles.org/styles) page you can find a list of styles with a preview.
 
-In this example we will use the [Positron style](https://github.com/openmaptiles/positron-gl-style).
-Clone the repository containing the style JSON file.
+In our example, we will use the [Positron style](https://github.com/openmaptiles/positron-gl-style). Clone the repository containing the style JSON file using following command:
 
 ```bash
 git clone https://github.com/openmaptiles/positron-gl-style.git
 ```
 
-Now start Maputnik and tell it to watch the `style.json` file for changes. Any time you change
-something in Maputnik it will save back the changes to the `style.json` file.
-You can even edit the `style.json` file in your favorite text editor and it will reload Maputnik.
+Now start Maputnik and tell the programm to watch the `style.json` file for changes. Any time you change something in Maputnik, it will also save the changes to the `style.json` file. You can even manually edit the `style.json` file in your favorite text editor and then reload Maputnik to see the result.
 
-After Maputnik has started visit `http://localhost:8000` to access the editor.
+To start with edit, run Maputnik and visit `http://localhost:8000` in your browser to access the editor.
 
 ```
 maputnik --watch --file style.json
