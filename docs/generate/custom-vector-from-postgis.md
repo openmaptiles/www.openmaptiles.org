@@ -9,12 +9,12 @@ description: Custom Vector Tiles from PostGIS
 keywords: custom, vector, data, postgis, postgresql, openmaptiles
 ---
 
-You can combine OpenMapTiles with your custom vector data saved in **PostGIS** (there is separate article for [data stored in **ShapeFile or GeoJSON**](/docs/generate/custom-vector-from-shapefile-geojson/)). Easy way is to convert your data into vector tiles and then [combine it with standard OpenMapTiles source in a map style](https://openmaptiles.org/docs/raster/custom-raster/#prepare-map-style). Big advantage of this approach is that you don't need to generate the whole OpenMapTiles schema that is quite time-consuming.
+You can combine OpenMapTiles with your custom vector data saved in **PostGIS** database (there is the separate article for [data stored in **ShapeFile or GeoJSON**](/docs/generate/custom-vector-from-shapefile-geojson/)). The easiest way is to convert your data into vector tiles and then [combine it with standard OpenMapTiles source in a map style](https://openmaptiles.org/docs/raster/custom-raster/#prepare-map-style). The big advantage of this approach is that you don't need to generate the whole OpenMapTiles schema which is quite time-consuming.
 
 
 # Create vector tiles from PostGIS
 
-Setup of this solution is little bit harder then in case of [data stored in ShapeFile or GeoJSON](/docs/generate/custom-vector-from-shapefile-geojson/), but it gives you even better control over tiles generation plus you can use familiar SQL syntax.
+This approach is a bit more complicated to set up then in the case of [data stored in ShapeFile or GeoJSON](/docs/generate/custom-vector-from-shapefile-geojson/). On the other hand, it gives you even bigger control over tiles generation and you can use SQL syntax a lot of people is familiar with.
 
 ### Before importing the data into PostGIS
 First, you need to install Docker and Docker Compose and to clone OpenMapTiles repository as [described here](/docs/generate/generate-openmaptiles/) (space and memory requirements are not so high in this case).
@@ -36,7 +36,7 @@ docker-compose up -d postgres
 ```
 
 ### Import the data into PostGIS
-Move your data into `data/` directory and ensure it has EPSG:3857 projection. You can use ogr2ogr for transformation:
+Move your data into `data/` directory and ensure it was set to EPSG:3857 coordinate system. You can use ogr2ogr for transformation:
 ```bash
 ogr2ogr -f "ESRI ShapeFile" your_data_in_3857.shp -t_srs EPSG:3857 your_data.shp
 ```
@@ -46,7 +46,7 @@ Files inside `data/` directory are visible from Docker container. Get into the p
 docker-compose run --rm postgres bash
 ```
 
-And import your data into PostgreSQL database by [shp2pgsql utility](http://postgis.net/docs/manual-2.3/using_postgis_dbmanagement.html#shp2pgsql_usage):
+and import your data into PostgreSQL database by [shp2pgsql utility](http://postgis.net/docs/manual-2.3/using_postgis_dbmanagement.html#shp2pgsql_usage):
 ```
 shp2pgsql -s 3857 -I -g geometry /data/your_data_in_3857.shp your_table_name > /data/your_data.sql
 PGPASSWORD=openmaptiles psql --host=postgres --port=5432 --dbname=openmaptiles --username=openmaptiles -f /data/your_data.sql | grep -v "INSERT 0 1"
@@ -56,21 +56,21 @@ Inside the container, you can run
 ```bash
 psql postgresql://openmaptiles@postgres/openmaptiles
 ```
-to get into the database and check that the data was imported correctly.
+to get into the database and check if the data was imported correctly.
 
-Run `exit` to exit from container.
+Run `exit` to exit from a container.
 
 
 ### Configure OpenMapTiles
 
-The next step is to configure OpenMapTiles project so that it generates tiles from your data. Basically, you need to
+The next step is to configure OpenMapTiles project to generate tiles from your data. Basically, you need to
 - create layer definition of your data
 - change `openmaptiles.yaml` so that it contains only your layer(s)
-- create `data/docker-compose-config.yml` with zoom range and bounding box of generated tiles
+- create `data/docker-compose-config.yml` with zoom range and the bounding box of generated tiles
 
 
 #### Create custom layer definition
-The layer definition might be the most complicated step depending on how many logic you want to implement. Very simple example consists of two files:
+The layer definition might be the most complicated step depending on how many logic you want to implement. The very simple example consists of two files:
 
 **layers/pubtran/pubtran.yaml:**
 ```yml
@@ -101,11 +101,11 @@ RETURNS TABLE(geometry geometry, custom_attribute text) AS $$
     WHERE geometry && bbox;
 $$ LANGUAGE SQL IMMUTABLE;
 ```
-To better understand this example, check the [documentation](https://github.com/openmaptiles/openmaptiles-tools#define-your-own-layer) and inspire in definitions of [OpenMapTiles layers](https://github.com/openmaptiles/openmaptiles/tree/master/layers) used in production.
+For a better understanding of this example, check the [documentation](https://github.com/openmaptiles/openmaptiles-tools#define-your-own-layer) to get inspiration in defining your own [OpenMapTiles layers](https://github.com/openmaptiles/openmaptiles/tree/master/layers) used in production.
 
 #### Change openmaptiles.yaml
 
-Change `openmaptiles.yaml` so that it contains only your layer(s). It may look like:
+Change `openmaptiles.yaml` to contain only your layer(s). It may look like this:
 ```yml
 tileset:
   layers:
@@ -123,7 +123,7 @@ tileset:
     datasource:
       srid: 900913
 ```
-You should change also at least `attribution` and `center` properties.
+You should change at least `attribution` and `center` properties.
 
 #### Create data/docker-compose-config.yml
 Create `data/docker-compose-config.yml` with zoom range and bounding box of generated tiles:
@@ -154,7 +154,7 @@ Finally generate your tiles:
 docker-compose -f docker-compose.yml -f ./data/docker-compose-config.yml  run --rm generate-vectortiles
 ```
 
-Your MBTiles file is now at `data/tiles.mbtiles`. You can preview it using [TileServer-GL](/docs/host/tileserver-gl/):
+Your MBTiles file is now in `data/tiles.mbtiles`. You can preview it using [TileServer-GL](/docs/host/tileserver-gl/):
 ```bash
 docker run -it -v $(pwd):/data -p 8080:80 klokantech/tileserver-gl data/tiles.mbtiles
 ```
@@ -162,4 +162,4 @@ docker run -it -v $(pwd):/data -p 8080:80 klokantech/tileserver-gl data/tiles.mb
 
 
 ## Combine your vector tiles with OpenMapTiles
-After creating vector tiles, you can combine it with standard OpenMapTiles layer in one map style. It can be done in the same way as in case of [raster tiles](/docs/raster/custom-raster/#prepare-map-style).
+After creating vector tiles, you can combine them with the standard OpenMapTiles layer in one map style. It can be done in the same way as in case of [raster tiles](/docs/raster/custom-raster/#prepare-map-style).

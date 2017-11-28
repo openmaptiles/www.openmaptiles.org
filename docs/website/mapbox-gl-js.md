@@ -6,14 +6,13 @@ description: Mapbox GL JS
 order: 1
 ---
 
-[Mapbox GL JS](https://www.mapbox.com/mapbox-gl-js/api/) is a web mapping library based on WebGL. Using Mapbox GL JS to consume the OpenMapTiles is the most common use case.
+[Mapbox GL JS](https://www.mapbox.com/mapbox-gl-js/api/) is a web mapping library based on WebGL. Using Mapbox GL JS for serving OpenMapTiles tileset is the most common use case.
 
 <iframe src="/maps/mapboxgljs.html" frameborder="0" scrolling="0" width="100%" height="540px" style="margin-bottom:25px;"></iframe>
 
 ### Reference the Style
 
-Create a HTML page and include the Mapbox GL JS viewer. You need to point the `style` to a HTTP endpoint of
-your [Mapbox GL style specification JSON](/docs/style/mapbox-gl-style-spec).
+Create an HTML page and include the Mapbox GL JS viewer. You need to point the `style` to an HTTP endpoint of your [Mapbox GL style specification JSON](/docs/style/mapbox-gl-style-spec).
 
 ```html
 <!DOCTYPE html>
@@ -45,7 +44,7 @@ your [Mapbox GL style specification JSON](/docs/style/mapbox-gl-style-spec).
 
 ### Use the OpenMapTiles styles
 
-The [OpenMapTiles styles](/styles/) can all be referenced directly in a viewer.
+All [OpenMapTiles styles](/styles/) can be referenced directly in a viewer.
 
 - **OSM Bright**:
   `https://openmaptiles.github.io/osm-bright-gl-style/style-cdn.json`
@@ -58,6 +57,4 @@ The [OpenMapTiles styles](/styles/) can all be referenced directly in a viewer.
 
 ### Fonts and Sprites
 
-Mapbox GL JS requires fonts being packaged as PBFs and symbols packaged as sprites.
-Check the [Mapbox GL style specification documentation](/docs/style/mapbox-gl-style-spec) for OpenMapTiles
-to create your own fonts and sprites.
+Mapbox GL JS requires fonts being packaged as PBFs and symbols packaged as sprites. Check the [Mapbox GL style specification documentation](/docs/style/mapbox-gl-style-spec) for OpenMapTiles to create your own fonts and sprites packages.

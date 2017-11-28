@@ -7,15 +7,15 @@ keywords: tangram
 order: 5
 ---
 
-[Tangram](https://mapzen.com/products/tangram/) is an other open source WebGL based
-rendering client that supports the [Mapbox vector tiles specification](https://www.mapbox.com/vector-tiles/specification/)
+[Tangram](https://mapzen.com/products/tangram/) is another open source WebGL based
+rendering client which supports the [Mapbox vector tiles specification](https://www.mapbox.com/vector-tiles/specification/)
 and therefore can be used together with OpenMapTiles.
 
 <iframe src="/maps/tangram.html" frameborder="0" scrolling="0" width="100%" height="540px" style="margin-bottom:25px;"></iframe>
 
 ### Data Source
 
-Specify OpenMapTiles as data source of type `MVT` inside your Tangram scene file.
+Specify OpenMapTiles as the data source of `MVT` type inside your Tangram scene file.
 
 ```yaml
 sources:
@@ -26,7 +26,7 @@ sources:
 
 ```
 
-Create a HTML page and include the Tangram viewer and reference your scene file.
+Create an HTML page and include the Tangram viewer and reference your scene file.
 
 ```html
 <!DOCTYPE html>
