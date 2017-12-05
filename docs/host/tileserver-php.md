@@ -11,6 +11,8 @@ In case you wish to publish vector tiles and already have a PHP stack running
 you can use TileServer PHP for serving vector or raster tiles.
 TileServer PHP is implementing the OGC WMTS standard for pre-rendered
 raster tiles but it is fully prepared for fast serving of vector tiles.
+TileServer PHP is only one PHP file which you need to copy together with the
+MBTiles file. More information on [GitHub page of the project](https://github.com/klokantech/tileserver-php).
 
 [GitHub page of the project](https://github.com/klokantech/tileserver-php)
 
@@ -18,27 +20,27 @@ raster tiles but it is fully prepared for fast serving of vector tiles.
 - Apache webserver (with mod_rewrite / .htaccess supported)
 - PHP 5.2+ with SQLite module (php5-sqlite)
 
-### Prepare TileServer
-TileServer PHP is only one PHP file which you need to copy together with the MBTiles file.
-Download the project files as a zip archive from [GitHub page of the project](https://github.com/klokantech/tileserver-php)
-and unpack it into your web-hosting or local LAMP/WAMP. Then go to your browser
-and open http://localhost/<path-to-your-folder> and you will see TileServer's client.
-TileServer is distributed with built-in JavaScript client with X-Ray view designed
-to debug your vector tiles but you can youse your own. There is also examples of common used viewers.
+Note: If you don't have PHP stack already installed you can use WAMP or XAMPP package for quick installation.
 
-### Loading tiles from .mbtiles files
+## Quick start
+### 1. Download TileServer PHP
+Source code is available on TileServer's <a href="https://github.com/klokantech/tileserver-php">GitHub</a>. Download the latest release and
+unpack it to directory on your LAMP/WAMP server.
 
-Put all the .mbtiles files that you want to serve in a directory, and edit tileserver.php, such that `$config['dataRoot']` points at that directory. For example, if your tiles are in `/usr/local/share/mbtiles` directory, do:
-```php
-$config['dataRoot'] = '/usr/local/share/mbtiles/';
-```
-Note that the path must include the trailing slash!
+### 2. Download Vector Tiles
+Go to the <a href="https://openmaptiles.com/downloads/">Downloads page</a> and download the vector tiles for your region or the
+planet. You need to copy this file into a directory with TileServer-php.
 
-To test, open your tileserver.php page in web browser. You should see large icons corresponding to available maps; clicking on one will open that map in debug view.
+### 3. Open TileServer in your browser
+Tileserver is distributed with sample viewer for debugging. So you can view vector tiles directly without style.
+
+### 4. Own viewer with style
+TileServer doesn't serve styles so you need to host them with your apache in separate folder.
+Create your own <a href="/docs/website/mapbox-gl-js/">HTML viewer with MapBox GL JS</a> and link TileJSON from TileServer with links to PBF tiles.
 
 ![X-Ray](/docs/media/tileserver-php_1.png)
 
-### Styling your tiles
+## Styling your tiles
 
 The screenshot above is a raw debug view of your map data. To get a pretty map out of it, you will need a browser tile renderer, such as [Mapbox GL JS](https://github.com/mapbox/mapbox-gl-js), and configure a style file for it that points at your tile server. You may also need to serve various supporting files that the renderer uses, such as fonts to render the labels.
 
@@ -122,3 +124,18 @@ and edit *each one*, so that the list only has one font in it, e.g.:
 Now you can test your changes by reloading index.html. If everything was done right, you should see the rendered map again.
 
 With this setup, you can serve maps from a server running on the same machine as the browser without an Internet connection - effectively, the combination of TileServer PHP and Mapbox GL JS becomes an offline vector .mbtiles map viewer.
+
+## Server from folder structure
+This functionality is used to increase the performance of serving.
+The vector tiles can be unpacked from MBTiles (SQLite) container and hosted just
+a in direct folder structure - the same way as raster tiles are typically made
+with a software like MapTiler or GDAL2Tiles. The demonstration of such approach
+is visible at http://klokantech.github.io/mapbox-gl-js-offline-example/.
+
+To unpack and ungzip the tiles is useded mb-util than it is neccesery to unzip PBF files:
+
+```
+./mb-util --image_format=pbf countries.mbtiles countries
+gzip -d -r -S .pbf *
+find . -type f -exec mv '{}' '{}'.pbf \;
+```
