@@ -7,7 +7,7 @@ keywords: Leaflet VectorGrid
 order: 4
 ---
 
-[Leaflet](http://www.leafletjs.com) is a lightweight web mapping library. If you haven't worked with Leaflet before, have a look at its [tutorials](http://leafletjs.com/examples.html).
+[Leaflet](http://www.leafletjs.com) is a lightweight open-source library for online maps. If you haven't worked with Leaflet before, take a look at its [tutorials](http://leafletjs.com/examples.html).
 
 There are three ways how to use OpenMapTiles as a map layer in Leaflet:
 * raster tiles from server
@@ -16,23 +16,23 @@ There are three ways how to use OpenMapTiles as a map layer in Leaflet:
 
 ### Raster tiles from server
 
-Leaflet doesn't support vector tiles by default. For basemaps it is recommended to use it with traditional raster tiles (Mercator XYZ). Such tiles can be geneated on demand for any of the [GL styles](/styles/) with the open-source server software called [TileServer GL](/docs/host/tileserver-gl/).
+Leaflet doesn't support vector tiles by default. For basemaps, it is recommended to use it with traditional raster tiles (Mercator XYZ). Such tiles can be generated on demand for any of the [GL styles](/styles/) with the open-source server software called [TileServer GL](/docs/host/tileserver-gl/).
 
-A preview of the Leaflet viewer showing the raster tiles is visible at [viewers](https://openmaptiles.org/viewers/) example.
+A preview of the Leaflet viewer showing the raster tiles is available at [viewers](https://openmaptiles.org/viewers/) example page.
 
 
 ### Vector tiles with a mapbox-gl-leaflet plugin
 
-Leaflet can load and render the vector tiles also directly - with the help of the [mapbox-gl-leaflet](https://github.com/mapbox/mapbox-gl-leaflet) plugin.
+Leaflet can also load and render the vector tiles directly - with the help of the [mapbox-gl-leaflet](https://github.com/mapbox/mapbox-gl-leaflet) plugin.
 
-The plugin is experimental and is not actively supported by Mapbox.
+The plugin is experimental and it is not actively supported by Mapbox.
 
 <iframe src="/maps/leaflet-mapbox-gl.html" frameborder="0" scrolling="0" width="100%" height="540px" style="margin-bottom:25px;"></iframe>
 
 
 #### Load Leaflet and mapbox-gl-leaflet
 
-Put this in the `<head>` of your HTML page:
+Paste this code in the `<head>` section of your HTML page:
 
 ```html
 <head>
@@ -44,8 +44,7 @@ Put this in the `<head>` of your HTML page:
 </head>
 ```
 
-Also notice which versions of Leaflet, mapbox-gl and mapbox-gl-js you are loading, as there
-might be newer releases.
+Always check which versions of Leaflet, mapbox-gl and mapbox-gl-js you are using, because there might be a newer version.
 
 #### Create your VectorGrid
 
@@ -61,21 +60,19 @@ var gl = L.mapboxGL({
 map.fitWorld();
 ```
 
-Notice the `style` property that points to a [GL style](/styles/) that you have chosen for the map.
-The style contains path to OpanMapTiles data as well as its visualization.
-If you are not using data from Mapbox hosting, the `accessToken` property can be set to any string.
+Notice the `style` property that points to a [GL style](/styles/) that you have chosen for the map. The style contains path to OpanMapTiles data as well as its visualization. If you are not using data from Mapbox hosting, the `accessToken` property can be set to any string.
 
 ### Vector tiles with a VectorGrid plugin
 
-Leaflet can load and render the vector tiles also directly - with the help of the [VectorGrid](https://github.com/Leaflet/Leaflet.VectorGrid) plugin.
+Leaflet has also the ability to load and render the vector tiles directly - with the help of the [VectorGrid](https://github.com/Leaflet/Leaflet.VectorGrid) plugin.
 
-The plugin is not yet ready for drawing the basemaps with fonts etc, but is very practical for other applications.
+The plugin is not yet ready for drawing the basemaps with fonts etc but is very practical for other applications.
 
 <iframe src="/maps/leaflet-vectorgrid.html" frameborder="0" scrolling="0" width="100%" height="540px" style="margin-bottom:25px;"></iframe>
 
 #### Load Leaflet and VectorGrid
 
-Put this in the `<head>` of your HTML page:
+Paste this code in the `<head>` section of your HTML page:
 
 ```html
 <head>
@@ -85,13 +82,11 @@ Put this in the `<head>` of your HTML page:
 </head>
 ```
 
-Also notice which versions of Leaflet and VectorGrid you are loading, as there
-might be newer releases.
+Always check which versions of Leaflet and VectorGrid you are using, because there might be a newer version.
 
 #### Define a style
 
-VectorGrid cannot (yet) handle vector tile GL styles, so first you'll have to define the
-styling for all the data layers with the [Leaflet specific styling code](http://leafletjs.com/reference-1.0.3.html#path):
+VectorGrid cannot handle vector tile GL styles (yet), therefore first you have to define the styling for all the data layers with the [Leaflet specific styling code](http://leafletjs.com/reference-1.0.3.html#path):
 
 ```js
 var vectorStyles = {
@@ -129,15 +124,13 @@ var vectorStyles = {
 };
 ```
 
-If you have worked with Leaflet before, you'll notice that those options are the same
-that are used for `L.Polyline`s and `L.Polygon`s.
+If you have worked with Leaflet before, you'll notice that those options are the same as the ones used for `L.Polyline`s and `L.Polygon`s.
 
-That is a very basic styling for the data. Consult [VectorGrid](https://github.com/Leaflet/Leaflet.VectorGrid)'s
-documentation for how to apply more complex styles.
+That is a very basic styling for the data. Check [VectorGrid](https://github.com/Leaflet/Leaflet.VectorGrid)'s documentation for more info about how to apply more complex styles.
 
 #### Create your VectorGrid
 
-Once you have your style, create an instance of `L.VectorGrid.Protobuf` like this:
+Once your style is ready, create an instance of `L.VectorGrid.Protobuf` like this:
 
 ```js
 var openMapTilesUrl = "https://free-{s}.tilehosting.com/data/v3/{z}/{x}/{y}.pbf.pict?key={key}"

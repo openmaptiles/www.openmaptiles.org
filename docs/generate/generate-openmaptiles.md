@@ -11,10 +11,9 @@ redirect_from: /docs/generate/generate-vector-tiles/
 ---
 
 The [OpenMapTiles vector tile schema](https://github.com/openmaptiles/openmaptiles)
-is open source and licensed under [BSD + CC-BY](https://github.com/openmaptiles/openmaptiles/blob/master/LICENSE.md). You are free to use it to generate your own OpenMapTiles and then use those vector tiles however you would like while respecting the
-original [ODbL license](http://wiki.openstreetmap.org/wiki/Open_Database_License) of OpenStreetMap data and [the conditions for attributtion](https://github.com/openmaptiles/openmaptiles#license) of the OpenMapTiles project itself.
+is open source and licensed under [BSD + CC-BY](https://github.com/openmaptiles/openmaptiles/blob/master/LICENSE.md). You are free to use it to generate your own OpenMapTiles and use those vector tiles afterward. However, you are still obliged to follow original [ODbL license](http://wiki.openstreetmap.org/wiki/Open_Database_License) and attribute OpenStreetMap data properly as well as [attribute the OpenMapTiles project itself](https://github.com/openmaptiles/openmaptiles#license). The correct attribution looks similar to this:
 
-<iframe src="https://ghbtns.com/github-btn.html?user=openmaptiles&repo=openmaptiles&type=star&count=true&size=large" frameborder="0" scrolling="0" width="160px" height="30px" style="margin: 0;"></iframe>
+[© OpenMapTiles](http://openmaptiles.org/) [© OpenStreetMap contributors](http://www.openstreetmap.org/copyright)
 
 ### Requirements & Recommendations
 
@@ -23,12 +22,12 @@ To work on OpenMapTiles, we recommend:
 - &gt;15 GB of free disk space
 - &gt;3 GB RAM.
 
-More details available in [repo](https://github.com/openmaptiles/openmaptiles/blob/master/QUICKSTART.md#req).
+More details available in the [repo](https://github.com/openmaptiles/openmaptiles/blob/master/QUICKSTART.md#req).
 
-You need also Docker:
+You also need to install Docker:
 
-- Install [Docker](https://docs.docker.com/engine/installation/). Minimum version is 1.12.3+.
-- Install [Docker Compose](https://docs.docker.com/compose/install/). Minimum version is 1.7.1+.
+- [Docker](https://docs.docker.com/engine/installation/): minimal version 1.12.3+.
+- [Docker Compose](https://docs.docker.com/compose/install/): minimal version 1.7.1+.
 
 Clone the [OpenMapTiles repo](https://github.com/openmaptiles/openmaptiles).
 
@@ -52,7 +51,3 @@ Now generate the vector tiles using the quickstart bash script.
 ```
 
 By default, it will generate vector tileset of Albania for zoom levels 0 -- 7 into `data` directory.
-
-Your maps must provide a visible credit similar to:
-
-[© OpenMapTiles](http://openmaptiles.org/) [© OpenStreetMap contributors](http://www.openstreetmap.org/copyright)

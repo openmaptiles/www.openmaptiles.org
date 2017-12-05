@@ -7,11 +7,11 @@ keywords: Openlayers
 order: 2
 ---
 
-There are two ways how to display OpenMapTiles with [OpenLayers](http://openlayers.org/) library: using raster tiles or vector tiles.
+There are two ways how to display OpenMapTiles with [OpenLayers](http://openlayers.org/) library: using raster or vector tiles.
 
 ### Raster tiles from server
 
-OpenLayers doesn't support vector tiles by default. Raster tiles can be geneated on demand for any of the [GL styles](/styles/) with the open-source server software called [TileServer GL](/docs/host/tileserver-gl/). Such raster tiles can be displayed using [ol.source.XYZ](http://openlayers.org/en/latest/examples/xyz.html) source.
+OpenLayers doesn't support vector tiles by default. Raster tiles can be generated on demand for any of the [GL styles](/styles/) with the open-source server software called [TileServer GL](/docs/host/tileserver-gl/). Such raster tiles can be displayed using [ol.source.XYZ](http://openlayers.org/en/latest/examples/xyz.html) source.
 
 
 ### Vector tiles with a plugin
@@ -22,15 +22,11 @@ Vector tiles can be displayed in OpenLayers using the [ol-mapbox-style](https://
 
 #### Convert Mapbox GL style to OpenLayers style functions
 
-The [ol-mapbox-style](https://github.com/boundlessgeo/ol-mapbox-style) converts the original Mapbox GL style specification into OpenLayers style functions. Thanks to this extension you are able to design
-maps for vector tiles using the existing tools and then switch
-to a different renderer.
+The [ol-mapbox-style](https://github.com/boundlessgeo/ol-mapbox-style) converts the original Mapbox GL style specification into OpenLayers style functions. This extension enables you to design maps for vector tiles using the existing tools and then switch to a different renderer.
 
 #### index.html
 
-Create a HTML page and include OpenLayers and the standalone build
-of [ol-mapbox-style](https://github.com/boundlessgeo/ol-mapbox-style) `omls.js`. Since OpenLayers draws on the browser canvas you also need
-to include the fonts used in the style in the page.
+Create an HTML page and include OpenLayers with the standalone build of [ol-mapbox-style](https://github.com/boundlessgeo/ol-mapbox-style) `omls.js`. Since OpenLayers draws on the browser canvas, you also need to include the fonts used in the style in the page.
 
 ```html
 <!DOCTYPE html>
@@ -62,16 +58,11 @@ to include the fonts used in the style in the page.
 
 #### ol.js
 
-Create a new MVT source (`url` of `ol.source.VectorTile`) which points
-to the CDN of OpenMapTiles or your own TileServer.
+Create a new MVT source (`url` of `ol.source.VectorTile`) which points to the CDN of OpenMapTiles or to your own TileServer.
 
-We fetch our GL style specification (`fetch` function) and turn
-it into OpenLayers functions which we can apply to
-our vector tile layer.
+The code below fetches the GL style specification (`fetch` function) and turn it into OpenLayers functions which can be applied to the vector tile layer.
 
-In the following code, you have to replace “insert_your_key_here” with
-a key from hosting. You can get a free key
-from [www.tilehosting.com](www.tilehosting.com).
+In the following code, you have to replace “insert_your_key_here” with a key from hosting. You can get a free key at [www.tilehosting.com](www.tilehosting.com).
 
 ```javascript
 var apiKey = 'insert_your_key_here';
