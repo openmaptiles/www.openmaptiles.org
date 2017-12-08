@@ -55,7 +55,7 @@ var langFallbackDecorate = function(style, cfg) {
 var positionAfterLoad = location.hash.length < 3;
 
 
-var STYLE_JSON_URL = "{{ site.maps.domain }}/styles/bright/style.json?key={{ site.maps.key }}";
+var STYLE_JSON_URL = "{{ site.maps.domain }}/styles/streets/style.json?key={{ site.maps.key }}";
 var STYLE_JSON;
 
 var rtlPluginLoaded = false;
