@@ -1,16 +1,21 @@
+---
+---
+var maps = {};
+var domain = '{{ site.maps.domain }}';
+var key = '{{ site.maps.key }}';
 var styleUrls = {
-  'positron': 'https://openmaptiles.github.io/positron-gl-style/style-cdn.json',
-  'dark-matter': 'https://openmaptiles.github.io/dark-matter-gl-style/style-cdn.json',
-  'osm-bright': 'https://openmaptiles.github.io/osm-bright-gl-style/style-cdn.json',
+  'positron': domain + '/styles/positron/style.json?key=' + key,
+  'dark-matter': domain + '/styles/darkmatter/style.json?key=' + key,
+  'osm-bright': domain + '/styles/bright/style.json?key=' + key,
   'osm-liberty': 'https://rawgit.com/lukasmartinelli/osm-liberty/gh-pages/style.json',
-  'klokantech-basic': 'https://openmaptiles.github.io/klokantech-basic-gl-style/style-cdn.json',
+  'klokantech-basic': domain + '/styles/basic/style.json?key=' + key,
   'klokantech-3d': 'https://openmaptiles.github.io/klokantech-3d-gl-style/style-cdn.json',
   'klokantech-terrain': 'https://openmaptiles.github.io/klokantech-terrain-gl-style/style-cdn.json',
   'fiord-color': 'https://openmaptiles.github.io/fiord-color-gl-style/style-cdn.json',
   'toner': 'https://openmaptiles.github.io/toner-gl-style/style-cdn.json'
 };
-var maps = {};
 var mapContainers = document.getElementsByClassName('map-style');
+
 for (var i = 0; i < mapContainers.length; ++i) {
   var elem = mapContainers[i];
   var mapId = elem.id;

@@ -1,3 +1,5 @@
+---
+---
 // from https://raw.githubusercontent.com/klokantech/gl-style-package-spec/ddc93f7535b09365e25f529a4ea5dbf4bf16d7e2/task/lang-fallback.js
 var langFallbackDecorate = function(style, cfg) {
   var layers = style.layers;
@@ -53,7 +55,7 @@ var langFallbackDecorate = function(style, cfg) {
 var positionAfterLoad = location.hash.length < 3;
 
 
-var STYLE_JSON_URL = "https://rawgit.com/openmaptiles/osm-bright-gl-style/c9d27597a211dc37eb98c544ff4dc1b4d770bdbe/style-cdn.json";
+var STYLE_JSON_URL = "{{ site.maps.domain }}/styles/bright/style.json?key={{ site.maps.key }}";
 var STYLE_JSON;
 
 var rtlPluginLoaded = false;

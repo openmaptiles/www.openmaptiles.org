@@ -1,3 +1,5 @@
+---
+---
 var center = [
   [-122.445600, 37.789508, 13],
   [-73.997291, 40.725438, 13],
@@ -5,12 +7,15 @@ var center = [
   [8.541147, 47.376333, 12]
 ][Math.floor(Math.random() * 4)];
 
+var domain = '{{ site.maps.domain }}';
+var key = '{{ site.maps.key }}';
+
 if (mapboxgl.supported()) {
   var maps = {
-    'klokantech-basic': 'https://openmaptiles.github.io/klokantech-basic-gl-style/style-cdn.json',
-    'dark-matter': 'https://openmaptiles.github.io/dark-matter-gl-style/style-cdn.json',
-    'positron': 'https://openmaptiles.github.io/positron-gl-style/style-cdn.json',
-    'bright': 'https://openmaptiles.github.io/osm-bright-gl-style/style-cdn.json'
+    'klokantech-basic': domain + '/styles/basic/style.json?key=' + key,
+    'dark-matter': domain + '/styles/darkmatter/style.json?key=' + key,
+    'positron': domain + '/styles/positron/style.json?key=' + key,
+    'bright': domain + '/styles/bright/style.json?key=' + key
   };
 
   var activeId = 'klokantech-basic';
@@ -37,7 +42,7 @@ if (mapboxgl.supported()) {
 } else {
   L.mapbox.map(
     'map',
-    'https://klokantech.tilehosting.com/styles/basic/rendered.json?key=tXme5cuqgrCqdPoZHqyn',
+    domain + '/styles/basic.json?key=' + key,
     {
       attributionControl: false
     }).setView([center[1], center[0]], center[2] + 1);

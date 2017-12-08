@@ -1,5 +1,12 @@
 name: "OpenMapTiles"
 
+maps:
+  domain: "https://maps.tilehosting.com"
+  key: "alS7XjesrAd6uvek9nRE"
+geocoder:
+  domain: "https://geocoder.tilehosting.com"
+  key: "VLgB41RWNWtKTk5zLx94"
+
 permalink: pretty
 
 sass:
