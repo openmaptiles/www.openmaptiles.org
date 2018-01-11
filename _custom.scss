@@ -81,9 +81,10 @@ body.home {
     @media screen and (max-width: 720px) {
       right: 0;
       min-width: auto;
+      height: 175px;
     }
 
-    &.banner-bg-bigger{
+    &.banner-bg-bigger {
       height: 195px;
     }
   }
@@ -95,37 +96,39 @@ body.home {
     right: 0;
     z-index: 100;
     pointer-events: none;
-    padding: 25px;
+    padding: 15px 25px;
 
     .container {
       padding: 0 0 0 30px;
     }
 
-    h1,h2{
+    h1,
+    h2 {
       color: #616161;
-      font-size: 40px;
+      font-size: 34px;
     }
 
     h2 {
-      font-size: 18px;
+      font-size: 20px;
     }
 
-    a{
+    a {
       pointer-events: all;
     }
     @media screen and (max-width: 720px) {
       text-align: center;
+      padding: 10px 5px;
 
       .container {
         padding: 0;
       }
 
       h1 {
-        font-size: 28px;
+        font-size: 20px;
       }
 
       h2 {
-        font-size: 11px;
+        font-size: 16px;
       }
     }
   }
@@ -136,29 +139,23 @@ body.home {
 }
 
 .shorts {
-  position: absolute;
-  top: 72px;
-  right: 10px;
+  padding-top: 10px;
   z-index: 10;
 
-  @media screen and (max-width: 720px) {
-    display: none;
-  }
-
   a {
-    display: block;
-    margin: 10px 0;
+    display: inline-block;
     font-family: $font-secondary;
     font-weight: 500;
     font-size: 14px;
     line-height: 1.1;
-    padding: 14px 18px 14px 58px;
+    margin-right: 5px;
+    padding: 12px 10px 12px 40px;
     background: rgba(97, 97, 97, 0.9);
     color: #fff;
     border-radius: 2px;
-    box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.4);
+    box-shadow: 0 0 8px 0 rgba(0,0,0,0.4);
 
-    &:hover{
+    &:hover {
       text-decoration: none;
       background: rgba(97, 97, 97, 0.98);
     }
@@ -166,11 +163,35 @@ body.home {
     span {
       color: #fff;
       position: absolute;
-      margin-left: -44px;
-      margin-top: -2px;
-      font-size: 30px;
+      margin-left: -30px;
+      margin-top: -5px;
+      font-size: 22px;
     }
   }
+
+    @media screen and (max-width: 720px) {
+      a {
+        font-size: 12px;
+        padding: 10px 10px 10px 30px;
+        margin-right: 0;
+
+        span {
+          font-size: 16px;
+          margin-left: -24px;
+          margin-top: -1px;
+        }
+      }
+    }
+
+      @media screen and (max-width: 410px) {
+        a {
+          padding: 10px;
+
+          span {
+            display: none;
+          }
+        }
+      }
 }
 
 .map {
@@ -607,13 +628,13 @@ article ul {
   height: 450px;
 }
 
-.hashLink{
+.hashLink {
   color: #eaeaea;
   padding: 0 5px;
   font-size: 0.8em;
   font-family: 'icons';
 
-  &:hover{
+  &:hover {
     color: #c7c7c7;
     text-decoration: none;
   }
