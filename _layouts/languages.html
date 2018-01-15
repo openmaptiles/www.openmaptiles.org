@@ -2,8 +2,9 @@
 layout: default
 ---
 
-<link rel="stylesheet" type="text/css" href="https://api.mapbox.com/mapbox-gl-js/v0.38.0/mapbox-gl.css" />
-<script src="https://api.mapbox.com/mapbox-gl-js/v0.38.0/mapbox-gl.js"></script>
+<link rel="stylesheet" type="text/css" href="https://api.mapbox.com/mapbox-gl-js/v0.43.0/mapbox-gl.css" />
+<script src="https://api.mapbox.com/mapbox-gl-js/v0.43.0/mapbox-gl.js"></script>
+<script src="https://cdn.klokantech.com/openmaptiles-language/v1.0/openmaptiles-language.js"></script>
 <!--
 <div class="row">
   <div class="col12 banner-org center">
@@ -24,14 +25,14 @@ layout: default
     <h1 id="page-title">{% if page.titlelocalized %}{{ page.titlelocalized }}{% else %}{{ page.title }}{% endif %}</h1>
     <h2 class="mary-1">OpenMapTiles are multi-lingual so you can display the map in your own language!</h2>
     <p>Try a different language:
-      <select id="lang" onchange="setStyle()" style="pointer-events:auto;">
+      <select id="lang" onchange="updateLang()" style="pointer-events:auto;">
         <!--<option value="">Style default</option>-->
 
         {% assign langs = site.pages | where: "layout","languages" | sort: "languagename" | sort: "order" %}
         {% for lang in langs %}{% if lang.languagename %}<option value="{{lang.code}}" data-nonlatin="{{ lang.nonlatin }}" data-bbox="{{ lang.bbox }}" data-title="{% if lang.titlelocalized %}{{ lang.titlelocalized }}{% else %}{{ lang.title }}{% endif %}" {% if lang.url == page.url %}selected{% endif %}>{{ lang.languagename }}</option>{% endif %}
         {% endfor %}
       </select>
-      <span style="pointer-events:auto; display: none;" id="also-alternative-wrap"> <input class="fancy" type="checkbox" checked="checked" id="also-alternative" onchange="setStyle()" /><label for="also-alternative" class="marx-2"><span></span>Alternative names</label></span>
+      <span style="pointer-events:auto; display: none;" id="also-alternative-wrap"> <input class="fancy" type="checkbox" checked="checked" id="also-alternative" onchange="updateLang()" /><label for="also-alternative" class="marx-2"><span></span>Alternative names</label></span>
     </p>
   </div>
 </div>
