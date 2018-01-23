@@ -4,7 +4,7 @@ category: layer
 title: waterway
 etl_graph: media/etl_waterway.png
 mapping_graph: media/mapping_waterway.png
-sql_query: SELECT geometry, name, name_en, name_de, class FROM layer_waterway(ST_SetSRID('BOX3D(-20037508.34 -20037508.34, 20037508.34 20037508.34)'::box3d, 3857 ), 14)
+sql_query: SELECT geometry, name, name_en, name_de, NULLIF(tags->'name_int', '') AS "name_int", NULLIF(tags->'name:latin', '') AS "name:latin", NULLIF(tags->'name:nonlatin', '') AS "name:nonlatin", class FROM layer_waterway(ST_SetSRID('BOX3D(-20037508.34 -20037508.34, 20037508.34 20037508.34)'::box3d, 3857 ), 14)
 ---
 OpenStreetMap [waterways](http://wiki.openstreetmap.org/wiki/Waterways) for higher zoom levels
 and Natural Earth rivers and lake centerlines for low zoom levels.

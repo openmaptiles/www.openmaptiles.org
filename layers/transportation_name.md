@@ -4,7 +4,7 @@ category: layer
 title: transportation_name
 etl_graph: media/etl_transportation_name.png
 mapping_graph: media/mapping_transportation_name.png
-sql_query: SELECT geometry, name, name_en, name_de, ref, ref_length, network::text, class::text FROM layer_transportation_name(ST_SetSRID('BOX3D(-20037508.34 -20037508.34, 20037508.34 20037508.34)'::box3d, 3857 ), 14)
+sql_query: SELECT geometry, name, name_en, name_de, NULLIF(tags->'name_int', '') AS "name_int", NULLIF(tags->'name:latin', '') AS "name:latin", NULLIF(tags->'name:nonlatin', '') AS "name:nonlatin", ref, ref_length, network::text, class::text, subclass, layer, level, indoor FROM layer_transportation_name(ST_SetSRID('BOX3D(-20037508.34 -20037508.34, 20037508.34 20037508.34)'::box3d, 3857 ), 14)
 ---
 This is the layer for labelling the highways. Only highways that are named `name=*` and are long enough
 to place text upon appear. The OSM roads are stitched together if they contain the same name
@@ -13,25 +13,59 @@ For motorways you should use the `ref` field to label them while for other roads
 
 ## Fields
 
-### name_de
+### layer
 
-German name `name:de` if available, otherwise `name` or `name:en`.
-
+Experimental feature! Filled only for steps and footways. Original
+value of [`layer`](http://wiki.openstreetmap.org/wiki/Key:layer) tag.
 ### name
 
 The OSM [`name`](http://wiki.openstreetmap.org/wiki/Highways#Names_and_references) value of the highway.
 
-### ref
+### level
 
-The OSM [`ref`](http://wiki.openstreetmap.org/wiki/Key:ref) tag of the motorway or its network.
+Experimental feature! Filled only for steps and footways. Original
+value of [`level`](http://wiki.openstreetmap.org/wiki/Key:level) tag.
+### indoor
+
+Experimental feature! Filled only for steps and footways. Original
+value of [`indoor`](http://wiki.openstreetmap.org/wiki/Key:indoor) tag.
+
+Possible values:
+
+- `1`
+
+### ref_length
+
+Length of the `ref` field. Useful for having a shield icon as background for labeling motorways.
+
+### subclass
+
+Distinguish more specific classes of path:
+Subclass is value of the
+[`highway`](http://wiki.openstreetmap.org/wiki/Key:highway) (for paths).
+
+Possible values:
+
+- `pedestrian`
+- `path`
+- `footway`
+- `cycleway`
+- `steps`
+- `bridleway`
+- `corridor`
+- `platform`
+
+### name_de
+
+German name `name:de` if available, otherwise `name` or `name:en`.
 
 ### name_en
 
 English name `name:en` if available, otherwise `name`.
 
-### ref_length
+### ref
 
-Length of the `ref` field. Useful for having a shield icon as background for labeling motorways.
+The OSM [`ref`](http://wiki.openstreetmap.org/wiki/Key:ref) tag of the motorway or its network.
 
 ### class
 

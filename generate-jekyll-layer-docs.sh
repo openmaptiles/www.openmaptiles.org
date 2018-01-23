@@ -35,21 +35,22 @@ function generate_doc() {
 function generate_docs() {
     mkdir -p "$LAYER_DOCS_DIR"
     mkdir -p "$DIAGRAM_DIR"
+    generate_doc "aerodrome_label"
     generate_doc "aeroway"
+    generate_doc "boundary"
     generate_doc "building"
     generate_doc "housenumber"
-    generate_doc "landuse"
-    generate_doc "place"
-    generate_doc "transportation"
-    generate_doc "water"
-    generate_doc "waterway"
-    generate_doc "boundary"
     generate_doc "landcover"
+    generate_doc "landuse"
     generate_doc "mountain_peak"
     generate_doc "park"
+    generate_doc "place"
     generate_doc "poi"
+    generate_doc "transportation"
     generate_doc "transportation_name"
+    generate_doc "water"
     generate_doc "water_name"
+    generate_doc "waterway"
 }
 
 generate_docs

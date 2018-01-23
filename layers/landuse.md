@@ -35,6 +35,8 @@ Possible values:
 - `industrial`
 - `retail`
 - `stadium`
+- `pitch`
+- `playground`
 
 
 

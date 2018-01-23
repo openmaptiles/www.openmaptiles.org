@@ -43,11 +43,13 @@ Possible values:
 - `vineyard`
 - `grass`
 - `grassland`
+- `glacier`
 - `meadow`
 - `forest`
 - `village_green`
 - `recreation_ground`
 - `park`
+- `garden`
 - `wetland`
 - `grassland`
 - `bog`

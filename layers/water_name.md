@@ -4,7 +4,7 @@ category: layer
 title: water_name
 etl_graph: media/etl_water_name.png
 mapping_graph: media/mapping_water_name.png
-sql_query: SELECT geometry, name, name_en, name_de, class FROM layer_water_name(ST_SetSRID('BOX3D(-20037508.34 -20037508.34, 20037508.34 20037508.34)'::box3d, 3857 ), 14)
+sql_query: SELECT osm_id, geometry, name, name_en, name_de, NULLIF(tags->'name_int', '') AS "name_int", NULLIF(tags->'name:latin', '') AS "name:latin", NULLIF(tags->'name:nonlatin', '') AS "name:nonlatin", class FROM layer_water_name(ST_SetSRID('BOX3D(-20037508.34 -20037508.34, 20037508.34 20037508.34)'::box3d, 3857 ), 14)
 ---
 Lake center lines for labelling lake bodies.
 This is based of the [osm-lakelines](https://github.com/lukasmartinelli/osm-lakelines) project

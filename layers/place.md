@@ -4,7 +4,7 @@ category: layer
 title: place
 etl_graph: media/etl_place.png
 mapping_graph: media/mapping_place.png
-sql_query: SELECT geometry, name, name_en, name_de, class, rank, capital FROM layer_place(ST_SetSRID('BOX3D(-20037508.34 -20037508.34, 20037508.34 20037508.34)'::box3d, 3857 ), 14, 1)
+sql_query: SELECT osm_id, geometry, name, name_en, name_de, NULLIF(tags->'name_int', '') AS "name_int", NULLIF(tags->'name:latin', '') AS "name:latin", NULLIF(tags->'name:nonlatin', '') AS "name:nonlatin", class, rank, capital, iso_a2 FROM layer_place(ST_SetSRID('BOX3D(-20037508.34 -20037508.34, 20037508.34 20037508.34)'::box3d, 3857 ), 14, 1)
 ---
 The place layer consists out of [countries](http://wiki.openstreetmap.org/wiki/Tag:place%3Dcountry),
 [states](http://wiki.openstreetmap.org/wiki/Tag:place%3Dstate) and [cities](http://wiki.openstreetmap.org/wiki/Key:place).
@@ -32,6 +32,11 @@ Possible values:
 - `2`
 - `4`
 
+### iso_a2
+
+Two-letter country code [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
+Original value of the
+[`country_code_iso3166_1_alpha_2`](http://wiki.openstreetmap.org/wiki/Tag:place%3Dcountry) tag.
 ### name_en
 
 English name `name:en` if available, otherwise `name`.
