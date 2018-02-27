@@ -53,27 +53,8 @@ var mapOl = new ol.Map({
   view: viewOl
 });
 
-fetch('https://openmaptiles.github.io/klokantech-basic-gl-style/style-cdn.json').then(function(response) {
-  response.json().then(function(glStyle) {
-    glStyle.layers.forEach(function(layer) {
-      if(layer.layout && layer.layout['text-font']) {
-        var newFont = layer.layout['text-font'][0].split(' ');
-        newFont = 'Open Sans '+newFont[newFont.length-1];
-        layer.layout['text-font'] = [newFont];
-      }
-    });
-    olms.applyStyle(layer, glStyle, 'openmaptiles').then(function () {
-      mapOl.addLayer(layer);
-    });
-    var bglayer = glStyle.layers.find(function(l) {
-      return l.type === 'background';
-    });
-    if(bglayer && bglayer.paint && bglayer.paint['background-color']) {
-      var bgcolor = bglayer.paint['background-color'];
-      document.getElementById('map-ol').style.backgroundColor = bgcolor;
-    }
-  });
-});
+olms.apply(mapOl, 'https://openmaptiles.github.io/klokantech-basic-gl-style/style-cdn.json');
+
 maps['ol'] = {
   getPos: function() {
     var center = ol.proj.toLonLat(viewOl.getCenter());
