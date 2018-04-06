@@ -52,7 +52,7 @@ Once you have the files in place for your web server to serve, edit style-cdn.js
   "sources": {
     "openmaptiles": {
       "type": "vector",
-      "url": "https://free.tilehosting.com/data/v3.json?key=RiS4gsgZPZqeeMlIyxFo"
+      "url": "https://free.tilehosting.com/data/v3.json?key={key}"
     }
   },
 ```
