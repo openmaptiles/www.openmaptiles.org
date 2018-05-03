@@ -16,6 +16,7 @@ from Natural Earth data for residential (urban) areas and at higher zoom levels 
 Use the **class** to assign special colors to areas.
 Original value of either the
 [`amenity`](http://wiki.openstreetmap.org/wiki/Key:amenity),
+[`tourism`](http://wiki.openstreetmap.org/wiki/Key:tourism),
 [`landuse`](http://wiki.openstreetmap.org/wiki/Key:landuse),
 or [`leisure`](http://wiki.openstreetmap.org/wiki/Key:leisure) tag.
 
@@ -37,6 +38,9 @@ Possible values:
 - `stadium`
 - `pitch`
 - `playground`
+- `theme_park`
+- `bus_station`
+- `zoo`
 
 
 

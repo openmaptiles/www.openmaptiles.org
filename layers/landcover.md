@@ -23,6 +23,7 @@ Possible values:
 - `wood`
 - `grass`
 - `wetland`
+- `sand`
 
 ### subclass
 
@@ -61,6 +62,8 @@ Possible values:
 - `tidalflat`
 - `saltmarsh`
 - `mangrove`
+- `beach`
+- `sand`
 
 
 

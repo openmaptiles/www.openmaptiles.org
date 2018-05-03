@@ -19,8 +19,7 @@ The `transportation` layer also contains polygons for features like plazas.
 
 ### layer
 
-Experimental feature! Filled only for steps and footways. Original
-value of [`layer`](http://wiki.openstreetmap.org/wiki/Key:layer) tag.
+Original value of [`layer`](http://wiki.openstreetmap.org/wiki/Key:layer) tag.
 ### service
 
 Original value of the [`service`](http://wiki.openstreetmap.org/wiki/Key:service) tag.
@@ -97,13 +96,15 @@ Possible values:
 
 ### oneway
 
-Mark with `1` whether way is a oneway (in the direction of the way)
-or not with `0`.
+Mark with `1` whether way is a oneway in the direction of the way,
+with `-1` whether way is a oneway in the opposite direction of the way
+or not a oneway with `0`.
 
 Possible values:
 
 - `0`
 - `1`
+- `-1`
 
 ### class
 
