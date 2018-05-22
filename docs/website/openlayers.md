@@ -62,7 +62,7 @@ Create a new MVT source (`url` of `ol.source.VectorTile`) which points to the CD
 
 The code below fetches the GL style specification (`fetch` function) and turn it into OpenLayers functions which can be applied to the vector tile layer.
 
-In the following code, you have to replace “insert_your_key_here” with a key from hosting. You can get a free key at [www.tilehosting.com](www.tilehosting.com).
+In the following code, you have to replace “insert_your_key_here” with a key from hosting. You can get a free key at [www.maptiler.com/cloud/](https://www.maptiler.com/cloud/).
 
 ```javascript
 var apiKey = 'insert_your_key_here';

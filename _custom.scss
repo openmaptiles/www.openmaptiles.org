@@ -138,7 +138,7 @@ body.home {
   }
 }
 
-.shorts {
+.shorts, .shorts-lang {
   padding-top: 10px;
   z-index: 10;
 
@@ -192,6 +192,14 @@ body.home {
           }
         }
       }
+}
+
+.shorts-lang {
+  position: absolute;
+  top: 72px;
+  right: 10px;
+  padding-top: 10px;
+  z-index: 10;
 }
 
 .map {

@@ -16,7 +16,7 @@ NOTE: If you need raster tiles, it is highly recommended to use the [TileServerG
 
 ## Change the Source
 
-Go to [Vector tile hosting](https://tilehosting.com/) and get a free key. Then download TileJSON from URL
+Go to [Vector tile hosting](https://maptiler.com/cloud/) and get a free key. Then download TileJSON from URL
 ```
 https://free.tilehosting.com/data/v3.json?key={key}
 ```
