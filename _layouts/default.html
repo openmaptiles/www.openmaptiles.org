@@ -30,7 +30,7 @@
     <link href="/base.css?t={{ site.time | date: '%s' }}" rel="stylesheet" />
     <script type="text/javascript" src="/js/index.js?t={{ site.time | date: '%s' }}" async></script>
   </head>
-  <body{% if page.url == "/" or page.url == "/viewers/" or page.url == "/inspect/" or page.url contains "/languages/" %} class="home"{% endif %}>
+  <body{% if page.url == "/" %} class="home"{% endif %}{% if page.url == "/inspect/" or page.url == "/viewers/" or page.url contains "/languages/" %} class="maps"{% endif %}>
     <div class="container">
       <div id="navbar-top" class="large">
         <div class="container">
