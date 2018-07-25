@@ -54,3 +54,5 @@ layout: default
   {% for lang in langs %}<li><a href="{{lang.url}}">{% if lang.titlelocalized %}{{ lang.titlelocalized }} / {% endif %}{{ lang.title }}</a></li>
   {% endfor %}
 </ul>
+
+{% include maptilerbanner.html %}
