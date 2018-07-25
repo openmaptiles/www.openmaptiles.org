@@ -59,9 +59,10 @@ h3 {
 }
 
 body.home {
-  background:#95BF73 url("/img/org-banner-bg.jpg");
+  background: url("/img/org-banner-bg.jpg");
   background-repeat: no-repeat;
   width: 100%;
+  height: initial;
 }
 .shorts, .shorts-lang {
   padding-top: 10px;
@@ -282,6 +283,17 @@ body.home {
     color: #616161;
   }
 }
+
+.home-h1{
+  font-size: 44px;
+  line-height: 1.4;
+}
+
+.banner-img{
+  margin-bottom: -170px;
+  box-shadow: 0px 15px 60px 0px rgba(0,0,0,0.3);
+}
+
 #maptiler-banner {
   position: absolute;
   bottom: 10px;
@@ -612,20 +624,36 @@ article ul {
 .radius-50 {
   border-radius: 50%;
 }
-#circles {
+
+.circle {
+  height: 175px;
+  width: 175px;
+  border-radius: 50%;
+  background: $color-gray-light;
+  display: inline-block;
+  padding-top: 15px;
+  margin-bottom: 30px;
+
   img {
-    height: 175px;
-    width: 175px;
-    border-radius: 50%;
-    background: $color-gray-light;
+    width: 75%;
   }
 }
-#contributors{
-  img
-  {
-    max-height: 110px;
-    max-width: 20%;
-    padding: 15px
 
+#trusted {
+  img {
+    margin: 10px 25px 10px 20px;
+    opacity: 0.6;
+    width: 130px;
+  }
+}
+
+#contributors {
+  img {
+    margin: 20px;
+    width: 160px;
+
+    &:first-child, &:nth-child(2), &:nth-child(3){
+      margin: 45px 20px;
+    }
   }
 }
