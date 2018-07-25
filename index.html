@@ -3,68 +3,95 @@ layout: default
 title: World maps you can self-host - powered by free OpenStreetMap vector tiles and open-source software.
 description: Design and host maps with OpenStreetMap vector tiles and open-source tools. Maps are compatible with Leaflet, Mapbox GL SDKs, GIS, WMTS/WMS, XYZ map tiles, etc.
 ---
+<div class="container padt-10">
 
-<link rel="stylesheet" type="text/css" href="https://api.mapbox.com/mapbox-gl-js/v0.34.0/mapbox-gl.css" />
-<script src="https://api.mapbox.com/mapbox-gl-js/v0.34.0/mapbox-gl.js"></script>
-<link rel="stylesheet" type="text/css" href='https://api.mapbox.com/mapbox.js/v3.0.1/mapbox.css' />
-<script src='https://api.mapbox.com/mapbox.js/v3.0.1/mapbox.js'></script>
-
-<div class="map active" id="map"></div>
-
-<div class="map-switchers"><h4>Try different styles</h4><!--
-  --><div class="map-switch" id="map-switch-mbgljs" onclick="javascript:switchMap('klokantech-basic')">
-    <img src="img/home/klokantech-basic.png" />
-    <span>KT Basic</span>
-  </div><!--
-  --><div class="map-switch" id="map-switch-bright" onclick="javascript:switchMap('bright')">
-    <img src="img/home/osm-bright.png" />
-    <span>OSM Bright</span>
-  </div><!--
-  --><div class="map-switch" id="map-switch-positron" onclick="javascript:switchMap('positron')">
-    <img src="img/home/positron.png" />
-    <span>Positron</span>
-  </div><!--
-  --><div class="map-switch" id="map-switch-dark-matter" onclick="javascript:switchMap('dark-matter')">
-    <img src="img/home/dark-matter.png" />
-    <span>Dark Matter</span>
-  </div><!--
-  --></div>
-
-<div class="attribution">© <a href="https://openmaptiles.org">OpenMapTiles</a> © <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors</div>
-
-<div id="phone">
-  <h3><a href="/mobile/">Mobile App</a></h3>
-  <h5><a href="/mobile/">Download on</a></h5>
-  <a href="https://play.google.com/store/apps/details?id=com.klokantech.osm2vectortiles"
-  onclick="gtag('event', '/play.google.com', {'event_category': 'leave','event_label': 'home-mobile'});">
-    <img src="/img/mobile/google-play-badge.png" alt="Play store">
-  </a>
-  <a href="https://itunes.apple.com/us/app/osm2vectortiles/id1089255502"
-  onclick="gtag('event', 'itunes.apple.com', {'event_category': 'leave','event_label': 'home-mobile'});">
-    <img src="/img/mobile/apple-appstore-badge.png" alt="Play store">
-  </a>
+  <div class="row">
+    <div class="col6 pady-10">
+      <h1 class="pady-2 white">Open-source maps <br> made for self-hosting</h1>
+      <h3 class="white">Free OpenStreetMap vector tiles</h3>
+    </div>
+    <div class="col6 pady-10">
+      <img class="width-100" src="/img/twitter-share-image.jpg" alt="map ought to be here">
+    </div>
+  </div>
 </div>
-
-<script src="js/home.js"></script>
-
-<div id="banner-bg"></div>
-<div id="banner">
+<div class="row bg-gray-light padt-6 padb-2">
   <div class="container">
-    <h1>Open-source maps made for self-hosting</h1>
-    <h2>Powered by OpenStreetMap vector tiles. Available on
-      <a href="https://github.com/openmaptiles/"
-      onclick="gtag('event', 'github.com/openmaptiles', {'event_category': 'leave','event_label': 'home-btn'});">
-      GitHub</a>.</h2>
-    <div class="shorts">
-      <a href="https://www.maptiler.com/cloud/" onclick="gtag('event', 'maptiler.com/cloud/', {'event_category': 'leave','event_label': 'home-btn'});">
-        <span class="icon">m</span>
-        Try our free map hosting</a>
-      <a href="https://openmaptiles.com/server/" onclick="gtag('event', 'openmaptiles.com/server/', {'event_category': 'leave','event_label': 'home-btn'});">
-        <span class="icon">o</span>
-        Install map server</a>
-      <a href="https://openmaptiles.com/downloads/" onclick="gtag('event', 'openmaptiles.com/downloads/', {'event_category': 'leave','event_label': 'home-btn'});">
-        <span class="icon">d</span>
-        Download map tiles</a>
+    <div id="contributors" class="row">
+      <p class="mary-0 padx-2">Trusted by</p>
+    <img src="/img/home/amazon.png" alt="amazon">
+    <img src="/img/home/bosch.png" alt="bosch">
+    <img src="/img/home/carto.png" alt="carto">
+    <img src="/img/home/ibm.png" alt="ibm">
+    <img src="/img/home/planet.png" alt="planet">
+    <img src="/img/home/siemens.png" alt="siemens">
+  </div>
+
+  </div>
+</div>
+<div class="row bg-white center pady-8 borderbottom-gray-light">
+  <div id="circles" class="container">
+    <div class="col6">
+      <img class="mary-2" src="/img/press/logo.png" alt="openmaptiles">
+      <h3>Open-source maps and schema</h3>
+      <p class="padt-2">Host the world maps on your own server or private cloud. <br> Generate your
+         own vector tiles from selected <br> OpenStreetMap tags or your own geospatial data.
+      </p>
+      <p class="pady-2">Business friendly BSD + CC-BY license. Attribution required.
+      </p>
+      <a class="btn" href="https://openmaptiles.com/server/">Install your server</a>
+      <a class="btn" href="https://openmaptiles.com/downloads/">Download map tiles </a>
+    </div>
+    <div class="col6">
+      <img class="pad-3  mary-2" src="/img/maptiler-logo-icon.png" alt="maptiler">
+      <h3>Powerful map hosting from authors</h3>
+      <p class="padt-2">Map hosting from authors of this open-source project <br> with both raster and
+         vector tiles and possibility <br> to design your own map style.
+      </p>
+      <p class="pady-2">FREE plan and commercial use from 20 USD / month.
+      </p>
+      <a class="btn" href="https://www.maptiler.com/cloud/">Try free map hosting</a>
+    </div>
+  </div>
+</div>
+<div class="row center bg-white">
+<div class="container">
+  <div class="col12 pady-8">
+    <h2 class="gray">Explore our map styles</h2>
+      <img src="" alt="lots of maps">
+  </div>
+</div>
+</div>
+<div class="row center bg-gray-light padt-6 padb-8 borderbottom-gray-light bordertop-gray-light">
+<div class="container">
+  <div class="col6">
+    <h2 class="gray padb-2">Open Map Styles</h2>
+    <p>We have prepared a set of beautiful Open Map Styles <br> for our vector tiles. The styles are free and open-source, <br> and you can adapt the design and code for your project <br> or commercial product however you like.</p>
+    <p class="pady-2">Either use one of our map styles directly as your base map <br> or as a starting point for your own map design.</p>
+    <a class="btn" href="/styles/">Browse open styles</a>
+  </div>
+  <div class="col6">
+    <h2 class="gray padb-2">Open Tile Schema</h2>
+    <p>Our new Vector Tile Schema is encoding the <br> cartography decisions made on top of OpenStreetMap, <br> Natural Earth and other OpenData sources and is 100% open <br> and free to use, extend or build upon.</p>
+    <p class="pady-2">We hope people will adapt, copy and reimplement our schema <br> and data model in their projects while providing attribution.</p>
+    <a class="btn" href="/schema/">See the schema</a>
+  </div>
+</div>
+</div>
+<div class="row center pady-8">
+  <div class="container">
+    <div class="col12">
+      <h2 class="gray">Open-source project contributors</h2>
+      <div id="contributors" class="row pady-6">
+
+  <img src="/img/maptiler-logo.svg" alt="maptilerlogo">
+  <img src="/img/klokantech-h.png" alt="klokan">
+  <img src="/img/hsr_logo.png" alt="hsr">
+  <img class="padb-0" src="/img/Qwant_Logo.svg" alt="qwant">
+  <img class="padb-0" src="/img/Wikimedia_Foundation_logo.svg" alt="wikimedia">
+
+        </div>
+  <p> … and many individual contributors on <a href="https://github.com/openmaptiles/openmaptiles">GitHub</a></p>
     </div>
   </div>
 </div>
