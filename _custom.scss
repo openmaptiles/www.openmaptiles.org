@@ -59,85 +59,11 @@ h3 {
 }
 
 body.home {
-  overflow: hidden !important;
-  background: #f2f3f0;
-
-  #navbar-top {
-    background: url('/img/org-banner-bg.jpg');
-    background-position: top center;
-    background-repeat: repeat-x;
-  }
-
-  #banner-bg {
-    position: absolute;
-    top: 25%;
-    left: 0;
-    height: 200px;
-    z-index: 99;
-    background: rgba(255, 255, 255, 0.8);
-    pointer-events: none;
-    min-width: 740px;
-    right: 33%;
-    @media screen and (max-width: 720px) {
-      right: 0;
-      min-width: auto;
-      height: 175px;
-    }
-
-    &.banner-bg-bigger {
-      height: 195px;
-    }
-  }
-
-  #banner {
-    position: absolute;
-    top: 25%;
-    left: 0;
-    right: 0;
-    z-index: 100;
-    pointer-events: none;
-    padding: 15px 25px;
-
-    .container {
-      padding: 0 0 0 30px;
-    }
-
-    h1,
-    h2 {
-      color: #616161;
-      font-size: 34px;
-    }
-
-    h2 {
-      font-size: 20px;
-    }
-
-    a {
-      pointer-events: all;
-    }
-    @media screen and (max-width: 720px) {
-      text-align: center;
-      padding: 10px 5px;
-
-      .container {
-        padding: 0;
-      }
-
-      h1 {
-        font-size: 20px;
-      }
-
-      h2 {
-        font-size: 16px;
-      }
-    }
-  }
-
-  .foot {
-    display: none;
-  }
+  background: url("/img/org-banner-bg.jpg");
+  background-repeat: no-repeat;
+  width: 100%;
+  height: initial;
 }
-
 .shorts, .shorts-lang {
   padding-top: 10px;
   z-index: 10;
@@ -357,6 +283,17 @@ body.home {
     color: #616161;
   }
 }
+
+.home-h1{
+  font-size: 44px;
+  line-height: 1.4;
+}
+
+.banner-img{
+  margin-bottom: -170px;
+  box-shadow: 0px 15px 60px 0px rgba(0,0,0,0.3);
+}
+
 #maptiler-banner {
   position: absolute;
   bottom: 10px;
@@ -682,5 +619,41 @@ article ul {
   &:hover {
     color: #c7c7c7;
     text-decoration: none;
+  }
+}
+.radius-50 {
+  border-radius: 50%;
+}
+
+.circle {
+  height: 175px;
+  width: 175px;
+  border-radius: 50%;
+  background: $color-gray-light;
+  display: inline-block;
+  padding-top: 15px;
+  margin-bottom: 30px;
+
+  img {
+    width: 75%;
+  }
+}
+
+#trusted {
+  img {
+    margin: 10px 25px 10px 20px;
+    opacity: 0.6;
+    width: 130px;
+  }
+}
+
+#contributors {
+  img {
+    margin: 20px;
+    width: 160px;
+
+    &:first-child, &:nth-child(2), &:nth-child(3){
+      margin: 45px 20px;
+    }
   }
 }
