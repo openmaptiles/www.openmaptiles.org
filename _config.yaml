@@ -2,10 +2,10 @@ name: "OpenMapTiles"
 
 maps:
   domain: "https://maps.tilehosting.com"
-  key: "alS7XjesrAd6uvek9nRE"
+  key: "egrA25FNSYcFuvl6Lb8Y" 
 geocoder:
   domain: "https://geocoder.tilehosting.com"
-  key: "VLgB41RWNWtKTk5zLx94"
+  key: "Sgjm5zLf2oXMIinmnTsd"
 
 permalink: pretty
 
