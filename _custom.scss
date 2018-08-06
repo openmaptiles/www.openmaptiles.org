@@ -738,3 +738,32 @@ article ul {
     }
   }
 }
+.map-cards {
+  text-align: center;
+
+  a {
+    position: relative;
+    display: inline-block;
+    width: 15%;
+    height: auto;
+    background: #fff;
+    border-radius: 2px;
+    box-shadow: 0 0 10px 1px rgba(0,0,0,0.13);
+    font-size: 14px;
+    color: #606c71;
+    text-decoration: none;
+    margin-right: -60px;
+    padding-bottom: 8px;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+
+    &:hover {
+      z-index: 10;
+      box-shadow: 0 5px 30px rgba(0,0,0,0.2);
+      width: 15.5%;
+    }
+  }
+}
