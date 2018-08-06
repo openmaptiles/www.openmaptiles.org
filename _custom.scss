@@ -752,7 +752,7 @@ article ul {
     font-size: 14px;
     color: #606c71;
     text-decoration: none;
-    margin-right: -60px;
+    margin-right: -5%;
     padding-bottom: 8px;
 
     img {
@@ -764,6 +764,16 @@ article ul {
       z-index: 10;
       box-shadow: 0 5px 30px rgba(0,0,0,0.2);
       width: 15.5%;
+      margin-top: -10px;
     }
+  }
+
+  @media screen and (max-width: 900px) {
+  a{   width:25%;
+     margin-top: 10px;
+     &:hover {
+       width: 25.5%;
+     }
+  }
   }
 }
