@@ -43,8 +43,13 @@ keywords:
   </div>
   --></div>
 
-<div class="attribution">© <a href="https://openmaptiles.org">OpenMapTiles</a> © <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors</div>
+{% include maptilerbanner.html %}
 
+<div class="attribution"><a href="https://www.maptiler.com/license/maps/" target="_blank">© MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">© OpenStreetMap contributors</a></div>
+
+<script>
+var api = '{{ site.maps.key }}';
+</script>
 <script src="/js/viewers.js"></script>
 
 <!--

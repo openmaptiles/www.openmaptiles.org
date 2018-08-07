@@ -351,14 +351,15 @@ body.maps {
 
 .attribution {
   position: absolute;
-  bottom: 5px;
-  left: 0;
+  bottom: 0;
   right: 0;
+  width: 240px;
   text-align: center;
   z-index: 10000;
   font-size: 10px;
   color: #616161;
   text-shadow: 0 0 1px rgba(255, 255, 255, 1);
+  background: rgba(255, 255, 255, 0.8);
 
   a {
     color: #616161;

@@ -8,7 +8,7 @@ var layer = new ol.layer.VectorTile({
     format: new ol.format.MVT(),
     tileGrid: tilegrid,
     tilePixelRatio: 8,
-    url: 'https://free-0.tilehosting.com/data/v3/{z}/{x}/{y}.pbf?key=tXiQqN3lIgskyDErJCeY'
+    url: 'https://maps.tilehosting.com/data/v3/{z}/{x}/{y}.pbf?key=' + apiKey
   })
 });
 
@@ -22,8 +22,8 @@ var map = new ol.Map({
   target: 'map',
   view: view
 });
-
-fetch('https://openmaptiles.github.io/klokantech-basic-gl-style/style-cdn.json').then(function(response) {
+var style = 'https://maps.tilehosting.com/styles/basic/style.json?key=' + apiKey;
+fetch(style).then(function(response) {
   response.json().then(function(glStyle) {
     olms.applyStyle(layer, glStyle, 'openmaptiles').then(function() {
       map.addLayer(layer);

@@ -70,13 +70,13 @@ var apiKey = 'insert_your_key_here';
 var tilegrid = ol.tilegrid.createXYZ({tileSize: 512, maxZoom: 14});
 var layer = new ol.layer.VectorTile({
   source: new ol.source.VectorTile({
-    attributions: '© <a href="https://openmaptiles.org/">OpenMapTiles</a> ' +
+    attributions: '© <a href="https://www.maptiler.org/">MapTiler</a> ' +
       '© <a href="http://www.openstreetmap.org/copyright">' +
       'OpenStreetMap contributors</a>',
     format: new ol.format.MVT(),
     tileGrid: tilegrid,
     tilePixelRatio: 8,
-    url: 'https://free-0.tilehosting.com/data/v3/{z}/{x}/{y}.pbf?key=' + apiKey
+    url: '{{ site.maps.domain }}/data/v3/{z}/{x}/{y}.pbf?key=' + apiKey
   })
 });
 
@@ -91,7 +91,7 @@ var map = new ol.Map({
   view: view
 });
 
-fetch('https://openmaptiles.github.io/klokantech-basic-gl-style/style-cdn.json').then(function(response) {
+fetch('{{ site.maps.domain }}/styles/basic/style.json?key=' + apiKey).then(function(response) {
   response.json().then(function(glStyle) {
     olms.applyStyle(layer, glStyle, 'openmaptiles').then(function() {
       map.addLayer(layer);

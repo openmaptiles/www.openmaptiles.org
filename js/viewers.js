@@ -1,9 +1,12 @@
 var maps = {};
+var style = 'https://maps.tilehosting.com/styles/basic/style.json?key=' + api;
+var xyz = 'https://maps.tilehosting.com/styles/basic/{z}/{x}/{y}.png?key=' + api;
+var xyzpbf = 'https://maps.tilehosting.com/data/v3/%7Bz%7D/%7Bx%7D/%7By%7D.pbf?key=' + api;
 
 var mbgljsMap = new mapboxgl.Map({
   attributionControl: false,
   container: 'map-mbgljs',
-  style: 'https://openmaptiles.github.io/klokantech-basic-gl-style/style-cdn.json',
+  style: style,
   zoom: 2
 });
 maps['mbgljs'] = {
@@ -17,7 +20,7 @@ maps['mbgljs'] = {
 };
 
 var leafletMap = L.map('map-leaflet', {zoomControl: false, attributionControl: false}).setView([0, 0], 2);
-L.tileLayer('https://klokantech-0.tilehosting.com/styles/basic/rendered/{z}/{x}/{y}.png?key=tXiQqN3lIgskyDErJCeY', {
+L.tileLayer(xyz, {
   maxZoom: 18
 }).addTo(leafletMap);
 
@@ -38,7 +41,7 @@ var layer = new ol.layer.VectorTile({
     format: new ol.format.MVT(),
     tileGrid: ol.tilegrid.createXYZ({tileSize: 512, maxZoom: 14}),
     tilePixelRatio: 8,
-    url: 'https://free-{0-3}.tilehosting.com/data/v3/{z}/{x}/{y}.pbf?key=tXiQqN3lIgskyDErJCeY'
+    url: xyzpbf
   })
 });
 var viewOl = new ol.View({
@@ -53,7 +56,7 @@ var mapOl = new ol.Map({
   view: viewOl
 });
 
-olms.apply(mapOl, 'https://openmaptiles.github.io/klokantech-basic-gl-style/style-cdn.json');
+olms.apply(mapOl, style);
 
 maps['ol'] = {
   getPos: function() {
@@ -64,22 +67,6 @@ maps['ol'] = {
     var center = ol.proj.fromLonLat(pos);
     viewOl.setCenter(center);
     viewOl.setResolution((Math.PI * 6378137 * 2 / 256) / Math.pow(2, pos[2]));
-  }
-};
-
-var mapTangram = L.Mapzen.map('map-tangram', {
-  zoomControl: false,
-  attributionControl: false,
-  scene: '/js/tangram-style.yaml'
-});
-mapTangram.setView([0, 0], 0);
-
-maps['tangram'] = {
-  getPos: function() {
-    return [mapTangram.getCenter().lng, mapTangram.getCenter().lat, mapTangram.getZoom()];
-  },
-  setPos: function(pos) {
-    mapTangram.setView([pos[1], pos[0]], pos[2], {animate: false});
   }
 };
 

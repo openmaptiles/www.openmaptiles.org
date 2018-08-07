@@ -1,4 +1,7 @@
-
+---
+layout: null
+permalink: /maps/ol.html
+---
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,6 +22,7 @@
 </head>
 <body>
   <div id="map"></div>
+  <script>var apiKey = '{{ site.maps.key }}'</script>
   <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=fetch,Promise"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/openlayers/4.6.2/ol.js"></script>
   <script src="olms.js"></script>
