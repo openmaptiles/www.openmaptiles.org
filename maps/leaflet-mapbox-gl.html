@@ -1,3 +1,7 @@
+---
+layout: none
+permalink: /maps/leaflet-mapbox-gl.html
+---
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +14,7 @@
   <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
   <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v0.35.1/mapbox-gl.css" rel='stylesheet' />
   <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v0.35.1/mapbox-gl.js"></script>
-  <script src="http://rawgit.com/mapbox/mapbox-gl-leaflet/master/leaflet-mapbox-gl.js"></script>
+  <script src="/js/leaflet-mapbox-gl.js"></script>
 </head>
 <body style='margin:0'>
 	<div id="map" style="width: 100vw; height: 100vh; background: white"></div>
@@ -21,7 +25,7 @@
     map.options.minZoom = 2;
     var gl = L.mapboxGL({
         accessToken: '{token}',
-        style: 'https://openmaptiles.github.io/osm-bright-gl-style/style-cdn.json'
+        style: '{{ site.maps.domain }}/styles/bright/style.json?key={{ site.maps.key }}'
     }).addTo(map);
     map.fitWorld();
 

@@ -5,11 +5,7 @@ titlehtml: Open styles, map gallery, cartography
 description: Free and open-source stlyes for your maps. Use public styles with precision cartography.
 keywords: Open styles, map templates, cartography, Mapbox GL, map gallery
 ---
-<link rel="stylesheet" type="text/css" href="https://api.mapbox.com/mapbox-gl-js/v0.31.0/mapbox-gl.css" />
-<script src="https://api.mapbox.com/mapbox-gl-js/v0.31.0/mapbox-gl.js"></script>
-<script src='/js/mapbox-gl-inspect.min.js'></script>
-<link href='/css/mapbox-gl-inspect.css' rel='stylesheet' />
-<script async defer src="https://buttons.github.io/buttons.js"></script>
+
 <style>
   .map-style {min-height: 450px;}
   .style-title h2 {
@@ -80,7 +76,7 @@ keywords: Open styles, map templates, cartography, Mapbox GL, map gallery
       <p>
         {{ style.description }}
       </p>
-      <img class="width-100" src="/img/styles/{{ style.img }}">
+      <img class="width-100" src="/img/styles/{{ style.img }}" alt="{{ style.title }} map style">
       {% endfor %}
 
     </div>
@@ -109,69 +105,59 @@ keywords: Open styles, map templates, cartography, Mapbox GL, map gallery
       <div class="style-title clearfix">
         <h2 id="pencil">
           <span>Pencil</span>
-          <a class="github-button" href="https://github.com/openmaptiles/mapbox-studio-pencil.tm2" data-icon="octicon-star" data-style="mega" data-count-href="/openmaptiles/mapbox-studio-pencil.tm2/stargazers" data-count-api="/repos/openmaptiles/mapbox-studio-pencil.tm2#stargazers_count">Star</a>
         </h2>
         <a class="btn style-btn style-github-btn" href="https://github.com/openmaptiles/mapbox-studio-pencil.tm2">View on GitHub</a>
       </div>
-      <img class="style-thumb" src="https://cdn.rawgit.com/openmaptiles/mapbox-studio-pencil.tm2/master/.thumb.png" />
+      <img class="style-thumb" src="/img/styles/css-pencil.png" alt="pencil map style">
 
       <div class="style-title clearfix">
         <h2 id="dark">
           <span>Dark</span>
-          <a class="github-button" href="https://github.com/openmaptiles/mapbox-studio-dark.tm2" data-icon="octicon-star" data-style="mega" data-count-href="/openmaptiles/mapbox-studio-dark.tm2/stargazers" data-count-api="/repos/openmaptiles/mapbox-studio-dark.tm2#stargazers_count">Star</a>
         </h2>
         <a class="btn style-btn style-github-btn" href="https://github.com/openmaptiles/mapbox-studio-dark.tm2">View on GitHub</a>
       </div>
-      <img class="style-thumb" src="https://cdn.rawgit.com/openmaptiles/mapbox-studio-dark.tm2/master/.thumb.png" />
+      <img class="style-thumb" src="/img/styles/css-dark.png" alt="dark map style">
 
       <div class="style-title clearfix">
         <h2 id="light">
           <span>Light</span>
-          <a class="github-button" href="https://github.com/openmaptiles/mapbox-studio-light.tm2" data-icon="octicon-star" data-style="mega" data-count-href="/openmaptiles/mapbox-studio-light.tm2/stargazers" data-count-api="/repos/openmaptiles/mapbox-studio-light.tm2#stargazers_count">Star</a>
         </h2>
         <a class="btn style-btn style-github-btn" href="https://github.com/openmaptiles/mapbox-studio-light.tm2">View on GitHub</a>
       </div>
-      <img class="style-thumb" src="https://cdn.rawgit.com/openmaptiles/mapbox-studio-light.tm2/master/.thumb.png" />
+      <img class="style-thumb" src="/img/styles/css-light.png" alt="light map style">
 
       <div class="style-title clearfix">
         <h2 id="pirates">
           <span>Pirates</span>
-          <a class="github-button" href="https://github.com/openmaptiles/mapbox-studio-pirates.tm2" data-icon="octicon-star" data-style="mega" data-count-href="/openmaptiles/mapbox-studio-pirates.tm2/stargazers" data-count-api="/repos/openmaptiles/mapbox-studio-pirates.tm2#stargazers_count">Star</a>
         </h2>
         <a class="btn style-btn style-github-btn" href="https://github.com/openmaptiles/mapbox-studio-pirates.tm2">View on GitHub</a>
       </div>
-      <img class="style-thumb" src="https://cdn.rawgit.com/openmaptiles/mapbox-studio-pirates.tm2/master/.thumb.png" />
+      <img class="style-thumb" src="/img/styles/css-pirates.png" alt="pirates map style">
 
       <div class="style-title clearfix">
         <h2 id="woodcut">
           <span>Woodcut</span>
-          <a class="github-button" href="https://github.com/openmaptiles/mapbox-studio-woodcut.tm2" data-icon="octicon-star" data-style="mega" data-count-href="/openmaptiles/mapbox-studio-woodcut.tm2/stargazers" data-count-api="/repos/openmaptiles/mapbox-studio-woodcut.tm2#stargazers_count">Star</a>
         </h2>
         <a class="btn style-btn style-github-btn" href="https://github.com/openmaptiles/mapbox-studio-woodcut.tm2">View on GitHub</a>
       </div>
-      <img class="style-thumb" src="https://cdn.rawgit.com/openmaptiles/mapbox-studio-woodcut.tm2/master/.thumb.png" />
+      <img class="style-thumb" src="/img/styles/css-woodcut.png" alt="woodcut map style">
 
       <div class="style-title clearfix">
         <h2 id="wheatpaste">
           <span>Wheatpaste</span>
-          <a class="github-button" href="https://github.com/openmaptiles/mapbox-studio-wheatpaste.tm2" data-icon="octicon-star" data-style="mega" data-count-href="/openmaptiles/mapbox-studio-wheatpaste.tm2/stargazers" data-count-api="/repos/openmaptiles/mapbox-studio-wheatpaste.tm2#stargazers_count">Star</a>
         </h2>
         <a class="btn style-btn style-github-btn" href="https://github.com/openmaptiles/mapbox-studio-wheatpaste.tm2">View on GitHub</a>
       </div>
-      <img class="style-thumb" src="https://cdn.rawgit.com/openmaptiles/mapbox-studio-wheatpaste.tm2/master/.thumb.png" />
+      <img class="style-thumb" src="/img/styles/css-wheatpaste.png" alt="Wheatpaste map style">
 
       <div class="style-title clearfix">
         <h2 id="osm-bright-tm2">
           <span>OSM Bright TM2</span>
-          <a class="github-button" href="https://github.com/openmaptiles/mapbox-studio-osm-bright.tm2" data-icon="octicon-star" data-style="mega" data-count-href="/openmaptiles/mapbox-studio-osm-bright.tm2/stargazers" data-count-api="/repos/openmaptiles/mapbox-studio-osm-bright.tm2#stargazers_count">Star</a>
         </h2>
         <a class="btn style-btn style-github-btn" href="https://github.com/openmaptiles/mapbox-studio-osm-bright.tm2">View on GitHub</a>
       </div>
-      <img class="style-thumb" src="https://cdn.rawgit.com/openmaptiles/mapbox-studio-osm-bright.tm2/master/.thumb.png" />
+      <img class="style-thumb" src="/img/styles/css-bright.png" alt="bright map style">
     </div>
   </div>
 
 </div>
-
-
-<script src="/js/styles.js"></script>

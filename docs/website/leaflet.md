@@ -40,7 +40,7 @@ Paste this code in the `<head>` section of your HTML page:
   <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
   <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v0.35.1/mapbox-gl.css" rel='stylesheet' />
   <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v0.35.1/mapbox-gl.js"></script>
-  <script src="http://rawgit.com/mapbox/mapbox-gl-leaflet/master/leaflet-mapbox-gl.js"></script>
+  <script src="/js/leaflet-mapbox-gl.js"></script>
 </head>
 ```
 
