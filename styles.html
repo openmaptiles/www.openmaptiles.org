@@ -65,127 +65,25 @@ keywords: Open styles, map templates, cartography, Mapbox GL, map gallery
       <h4><a href="#osm-liberty">OSM Liberty</a></h4>
     </div>
     <div class="col9 pady-2">
-      <div class="style-title clearfix">
-        <h2>
-          <span>Positron</span>
-          <a class="github-button" href="https://github.com/openmaptiles/positron-gl-style" data-icon="octicon-star" data-style="mega" data-count-href="/openmaptiles/positron-gl-style/stargazers" data-count-api="/repos/openmaptiles/positron-gl-style#stargazers_count">Star</a>
-        </h2>
-        <a class="btn style-btn" href="http://editor.openmaptiles.org?style=https://rawgit.com/openmaptiles/positron-gl-style/master/style.json">Edit in Maputnik</a>
-        <a class="btn style-btn style-github-btn" href="https://github.com/openmaptiles/positron-gl-style">View on GitHub</a>
-      </div>
-      <p>
-        Positron is beautiful light base map which is ideal for a non obtrusive basemap for your data visualizations.
-        The cartography by Stamen Design is licensed under CC0.
-        <a href="https://github.com/openmaptiles/positron-gl-style">View on GitHub</a>
-      </p>
-      <div class="map-style" id="positron"></div>
 
+      {% for style in site.data.styles %}
       <div class="style-title clearfix">
         <h2>
-          <span>Dark Matter</span>
-          <a class="github-button" href="https://github.com/openmaptiles/dark-matter-gl-style" data-icon="octicon-star" data-style="mega" data-count-href="/openmaptiles/dark-matter-gl-style/stargazers" data-count-api="/repos/openmaptiles/dark-matter-gl-style#stargazers_count">Star</a>
+          <span>{{ style.title }}</span>
         </h2>
-        <a class="btn style-btn" href="http://editor.openmaptiles.org?style=https://rawgit.com/openmaptiles/dark-matter-gl-style/master/style.json">Edit in Maputnik</a>
-        <a class="btn style-btn style-github-btn" href="https://github.com/openmaptiles/dark-matter-gl-style">View on GitHub</a>
+        {% if style.url-cloud %}
+          <a class="btn style-btn" href="{{ style.url-cloud }}">View in Cloud</a>
+        {% endif %}
+        <a class="btn style-btn style-github-btn" target="_blank"
+        href="{{ style.url-github }}">Code on GitHub</a>
       </div>
       <p>
-        Dark Matter is a dark base map and a good starting point for other darker designs.
-        The cartography by Stamen Design is licensed under CC0.
+        {{ style.description }}
       </p>
-      <div class="map-style" id="dark-matter"></div>
+      <img class="width-100" src="/img/styles/{{ style.img }}">
+      {% endfor %}
 
-      <div class="style-title clearfix">
-        <h2>
-          <span>OSM Bright</span>
-          <a class="github-button" href="https://github.com/openmaptiles/osm-bright-gl-style" data-icon="octicon-star" data-style="mega" data-count-href="/openmaptiles/osm-bright-gl-style/stargazers" data-count-api="/repos/openmaptiles/osm-bright-gl-style#stargazers_count">Star</a>
-        </h2>
-        <a class="btn style-btn" href="http://editor.openmaptiles.org?style=https://rawgit.com/openmaptiles/osm-bright-gl-style/master/style.json">Edit in Maputnik</a>
-        <a class="btn style-btn style-github-btn" href="https://github.com/openmaptiles/osm-bright-gl-style">View on GitHub</a>
-      </div>
-      <p>
-        OSM Bright is a general purpose base map showcasing the great detail of OpenStreetMap data.
-        It is a good starting point for your own complex base maps.
-      </p>
-      <div class="map-style" id="osm-bright"></div>
-
-      <div class="style-title clearfix">
-        <h2>
-          <span>Klokantech Basic</span>
-          <a class="github-button" href="https://github.com/openmaptiles/klokantech-basic-gl-style" data-icon="octicon-star" data-style="mega" data-count-href="/openmaptiles/klokantech-basic-gl-style/stargazers" data-count-api="/repos/openmaptiles/klokantech-basic-gl-style#stargazers_count">Star</a>
-        </h2>
-        <a class="btn style-btn" href="http://editor.openmaptiles.org?style=https://rawgit.com/openmaptiles/klokantech-basic-gl-style/master/style.json">Edit in Maputnik</a>
-        <a class="btn style-btn style-github-btn" href="https://github.com/openmaptiles/klokantech-basic-gl-style">View on GitHub</a>
-      </div>
-      <p>
-        Klokantech Basic is basemap which tries to stay in the background and only give the most relevant information.
-      </p>
-      <div class="map-style" id="klokantech-basic"></div>
-
-      <div class="style-title clearfix">
-        <h2>
-          <span>Klokantech 3D</span>
-          <a class="github-button" href="https://github.com/openmaptiles/klokantech-3d-gl-style" data-icon="octicon-star" data-style="mega" data-count-href="/openmaptiles/klokantech-3d-gl-style/stargazers" data-count-api="/repos/openmaptiles/klokantech-3d-gl-style#stargazers_count">Star</a>
-        </h2>
-        <a class="btn style-btn" href="http://editor.openmaptiles.org?style=https://rawgit.com/openmaptiles/klokantech-3d-gl-style/master/style.json">Edit in Maputnik</a>
-        <a class="btn style-btn style-github-btn" href="https://github.com/openmaptiles/klokantech-3d-gl-style">View on GitHub</a>
-      </div>
-      <p>
-        A Map showcasing 3D buildings.
-      </p>
-      <div class="map-style" id="klokantech-3d"></div>
-
-      <div class="style-title clearfix">
-        <h2>
-          <span>Klokantech Terrain</span>
-          <a class="github-button" href="https://github.com/openmaptiles/klokantech-terrain-gl-style" data-icon="octicon-star" data-style="mega" data-count-href="/openmaptiles/klokantech-terrain-gl-style/stargazers" data-count-api="/repos/openmaptiles/klokantech-terrain-gl-style#stargazers_count">Star</a>
-        </h2>
-        <a class="btn style-btn" href="http://editor.openmaptiles.org?style=https://rawgit.com/openmaptiles/klokantech-terrain-gl-style/master/style.json">Edit in Maputnik</a>
-        <a class="btn style-btn style-github-btn" href="https://github.com/openmaptiles/klokantech-terrain-gl-style">View on GitHub</a>
-      </div>
-      <p>
-        A basic map style showing the contour lines and hillshading from <a href="http://openmaptiles.com/">OpenMapTiles.com</a>.
-      </p>
-      <div class="map-style" id="klokantech-terrain"></div>
-
-      <div class="style-title clearfix">
-        <h2>
-          <span>Fiord Color</span>
-          <a class="github-button" href="https://github.com/openmaptiles/fiord-color-gl-style" data-icon="octicon-star" data-style="mega" data-count-href="/openmaptiles/fiord-color-gl-style/stargazers" data-count-api="/repos/openmaptiles/fiord-color-gl-style#stargazers_count">Star</a>
-        </h2>
-        <a class="btn style-btn" href="http://editor.openmaptiles.org?style=https://rawgit.com/openmaptiles/fiord-color-gl-style/master/style.json">Edit in Maputnik</a>
-        <a class="btn style-btn style-github-btn" href="https://github.com/openmaptiles/fiord-color-gl-style">View on GitHub</a>
-      </div>
-      <p>
-        A blue basemap for visualizations.
-      </p>
-      <div class="map-style" id="fiord-color"></div>
-
-      <div class="style-title clearfix">
-        <h2>
-          <span>Toner</span>
-          <a class="github-button" href="https://github.com/openmaptiles/toner-gl-style" data-icon="octicon-star" data-style="mega" data-count-href="/openmaptiles/toner-gl-style/stargazers" data-count-api="/repos/openmaptiles/toner-gl-style#stargazers_count">Star</a>
-        </h2>
-        <a class="btn style-btn" href="http://editor.openmaptiles.org?style=https://rawgit.com/openmaptiles/toner-gl-style/master/style.json">Edit in Maputnik</a>
-        <a class="btn style-btn style-github-btn" href="https://github.com/openmaptiles/toner-gl-style">View on GitHub</a>
-      </div>
-      <p>
-        Port of the Stamen Maps Toner style.
-      </p>
-      <div class="map-style" id="toner"></div>
-
-      <div class="style-title clearfix">
-        <h2>
-          <span>OSM Liberty</span>
-          <a class="github-button" href="https://github.com/maputnik/osm-liberty" data-icon="octicon-star" data-style="mega" data-count-href="/maputnik/osm-liberty/stargazers" data-count-api="/repos/maputnik/osm-liberty#stargazers_count">Star</a>
-        </h2>
-        <a class="btn style-btn" href="http://editor.openmaptiles.org?style=https://rawgit.com/maputnik/osm-liberty/gh-pages/style.json">Edit in Maputnik</a>
-        <a class="btn style-btn style-github-btn" href="https://github.com/maputnik/osm-liberty">View on GitHub</a>
-      </div>
-      <p>
-        A free Mapbox GL basemap style for everyone with complete liberty to use and self host. OSM Liberty is a fork of OSM Bright based on free data sources with a mission for a clear good looking design for the everyday user.
-      </p>
-      <div class="map-style" id="osm-liberty"></div>
-   </div>
+    </div>
   </div>
 
   <div class="row">
