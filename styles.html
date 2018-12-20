@@ -50,10 +50,10 @@ keywords: Open styles, map templates, cartography, Mapbox GL, map gallery
 
   <div class="row">
     <div class="col3 pady-2 padx-0">
+      <h4><a href="#klokantech-basic">Klokantech Basic</a></h4>
+      <h4><a href="#osm-bright">OSM Bright</a></h4>
       <h4><a href="#positron">Positron</a></h4>
       <h4><a href="#dark-matter">Dark Matter</a></h4>
-      <h4><a href="#osm-bright">OSM Bright</a></h4>
-      <h4><a href="#klokantech-basic">Klokantech Basic</a></h4>
       <h4><a href="#klokantech-3d">Klokantech 3D</a></h4>
       <h4><a href="#klokantech-terrain">Klokantech Terrain</a></h4>
       <h4><a href="#fiord-color">Fiord Color</a></h4>
@@ -64,7 +64,7 @@ keywords: Open styles, map templates, cartography, Mapbox GL, map gallery
 
       {% for style in site.data.styles %}
       <div class="style-title clearfix">
-        <h2>
+        <h2 id="{{ style.id }}">
           <span>{{ style.title }}</span>
         </h2>
         {% if style.url-cloud %}
