@@ -15,19 +15,15 @@ from Natural Earth data for residential (urban) areas and at higher zoom levels 
 
 Use the **class** to assign special colors to areas.
 Original value of either the
-[`amenity`](http://wiki.openstreetmap.org/wiki/Key:amenity),
-[`tourism`](http://wiki.openstreetmap.org/wiki/Key:tourism),
 [`landuse`](http://wiki.openstreetmap.org/wiki/Key:landuse),
-or [`leisure`](http://wiki.openstreetmap.org/wiki/Key:leisure) tag.
+[`amenity`](http://wiki.openstreetmap.org/wiki/Key:amenity),
+[`leisure`](http://wiki.openstreetmap.org/wiki/Key:leisure),
+[`tourism`](http://wiki.openstreetmap.org/wiki/Key:tourism),
+[`place`](http://wiki.openstreetmap.org/wiki/Key:place)
+or [`waterway`](http://wiki.openstreetmap.org/wiki/Key:waterway) tag.
 
 Possible values:
 
-- `school`
-- `university`
-- `kindergarten`
-- `college`
-- `library`
-- `hospital`
 - `railway`
 - `cemetery`
 - `military`
@@ -35,12 +31,22 @@ Possible values:
 - `commercial`
 - `industrial`
 - `retail`
+- `bus_station`
+- `school`
+- `university`
+- `kindergarten`
+- `college`
+- `library`
+- `hospital`
 - `stadium`
 - `pitch`
 - `playground`
+- `track`
 - `theme_park`
-- `bus_station`
 - `zoo`
+- `suburb`
+- `neighbourhood`
+- `dam`
 
 
 

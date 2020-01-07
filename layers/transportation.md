@@ -4,7 +4,7 @@ category: layer
 title: transportation
 etl_graph: media/etl_transportation.png
 mapping_graph: media/mapping_transportation.png
-sql_query: SELECT geometry, class, subclass, oneway, ramp, brunnel, service, layer, level, indoor FROM layer_transportation(ST_SetSRID('BOX3D(-20037508.34 -20037508.34, 20037508.34 20037508.34)'::box3d, 3857 ), 14)
+sql_query: SELECT geometry, class, subclass, oneway, ramp, brunnel, service, layer, level, indoor, bicycle, foot, horse, mtb_scale, surface FROM layer_transportation(ST_SetSRID('BOX3D(-20037508.34 -20037508.34, 20037508.34 20037508.34)'::box3d, 3857 ), 14)
 ---
 **transportation** contains roads, railways, aerial ways, and shipping
  lines.
@@ -19,7 +19,10 @@ The `transportation` layer also contains polygons for features like plazas.
 
 ### layer
 
-Original value of [`layer`](http://wiki.openstreetmap.org/wiki/Key:layer) tag.
+Original value of the [`layer`](http://wiki.openstreetmap.org/wiki/Key:layer) tag.
+### bicycle
+
+Original value of the [`bicycle`](http://wiki.openstreetmap.org/wiki/Key:bicycle) tag (highways only).
 ### service
 
 Original value of the [`service`](http://wiki.openstreetmap.org/wiki/Key:service) tag.
@@ -37,7 +40,7 @@ Possible values:
 ### level
 
 Experimental feature! Filled only for steps and footways. Original
-value of [`level`](http://wiki.openstreetmap.org/wiki/Key:level) tag.
+value of the [`level`](http://wiki.openstreetmap.org/wiki/Key:level) tag.
 ### brunnel
 
 Mark whether way is a tunnel or bridge.
@@ -51,7 +54,7 @@ Possible values:
 ### indoor
 
 Experimental feature! Filled only for steps and footways. Original
-value of [`indoor`](http://wiki.openstreetmap.org/wiki/Key:indoor) tag.
+value of the [`indoor`](http://wiki.openstreetmap.org/wiki/Key:indoor) tag.
 
 Possible values:
 
@@ -67,6 +70,9 @@ Possible values:
 - `0`
 - `1`
 
+### horse
+
+Original value of the [`horse`](http://wiki.openstreetmap.org/wiki/Key:horse) tag (highways only).
 ### subclass
 
 Distinguish more specific classes of railway and path:
@@ -94,6 +100,15 @@ Possible values:
 - `corridor`
 - `platform`
 
+### surface
+
+Values of [`surface`](https://wiki.openstreetmap.org/wiki/Key:surface) tag devided into 2 groups `paved` (paved, asphalt, cobblestone, concrete, concrete:lanes, concrete:plates, metal, paving_stones, sett, unhewn_cobblestone, wood) and `unpaved` (unpaved, compacted, dirt, earth, fine_gravel, grass, grass_paver, gravel, gravel_turf, ground, ice, mud, pebblestone, salt, sand, snow, woodchips).
+
+Possible values:
+
+- `paved`
+- `unpaved`
+
 ### oneway
 
 Mark with `1` whether way is a oneway in the direction of the way,
@@ -106,15 +121,23 @@ Possible values:
 - `1`
 - `-1`
 
+### foot
+
+Original value of the [`foot`](http://wiki.openstreetmap.org/wiki/Key:foot) tag (highways only).
+### mtb_scale
+
+Original value of the [`mtb:scale`](http://wiki.openstreetmap.org/wiki/Key:mtb:scale) tag (highways only).
 ### class
 
-Distinguish between more and less important roads or railways.
+Distinguish between more and less important roads or railways and roads under construction.
 Class is derived from the value of the
 [`highway`](http://wiki.openstreetmap.org/wiki/Key:highway),
+[`construction`](http://wiki.openstreetmap.org/wiki/Key:construction),
 [`railway`](http://wiki.openstreetmap.org/wiki/Key:railway),
-[`aerialway`](http://wiki.openstreetmap.org/wiki/Key:aerialway), or
+[`aerialway`](http://wiki.openstreetmap.org/wiki/Key:aerialway),
 [`route`](http://wiki.openstreetmap.org/wiki/Key:route) tag (for
-shipping ways).
+shipping ways), or
+[`man_made`](http://wiki.openstreetmap.org/wiki/Key:route).
 
 Possible values:
 
@@ -128,10 +151,23 @@ Possible values:
 - `track`
 - `path`
 - `raceway`
+- `motorway_construction`
+- `trunk_construction`
+- `primary_construction`
+- `secondary_construction`
+- `tertiary_construction`
+- `minor_construction`
+- `service_construction`
+- `track_construction`
+- `path_construction`
+- `raceway_construction`
 - `rail`
 - `transit`
 - `cable_car`
+- `gondola`
 - `ferry`
+- `bridge`
+- `pier`
 
 
 
