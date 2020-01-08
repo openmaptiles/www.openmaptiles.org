@@ -4,13 +4,21 @@ category: layer
 title: water_name
 etl_graph: media/etl_water_name.png
 mapping_graph: media/mapping_water_name.png
-sql_query: SELECT osm_id, geometry, name, name_en, name_de, NULLIF(tags->'name_int', '') AS "name_int", NULLIF(tags->'name:latin', '') AS "name:latin", NULLIF(tags->'name:nonlatin', '') AS "name:nonlatin", class FROM layer_water_name(ST_SetSRID('BOX3D(-20037508.34 -20037508.34, 20037508.34 20037508.34)'::box3d, 3857 ), 14)
+sql_query: SELECT osm_id, geometry, name, name_en, name_de, NULLIF(tags->'name_int', '') AS "name_int", NULLIF(tags->'name:latin', '') AS "name:latin", NULLIF(tags->'name:nonlatin', '') AS "name:nonlatin", class, intermittent FROM layer_water_name(ST_SetSRID('BOX3D(-20037508.34 -20037508.34, 20037508.34 20037508.34)'::box3d, 3857 ), 14)
 ---
 Lake center lines for labelling lake bodies.
 This is based of the [osm-lakelines](https://github.com/lukasmartinelli/osm-lakelines) project
 which derives nice centerlines from OSM water bodies. Only the most important lakes contain labels.
 
 ## Fields
+
+### class
+
+At the moment only `lake` since no ocean parts are labelled. *Reserved for future use*.
+
+Possible values:
+
+- `lake`
 
 ### name_en
 
@@ -24,13 +32,14 @@ The OSM [`name`](http://wiki.openstreetmap.org/wiki/Key:name) value of the water
 
 German name `name:de` if available, otherwise `name` or `name:en`.
 
-### class
+### intermittent
 
-At the moment only `lake` since no ocean parts are labelled. *Reserved for future use*.
+Mark with `1` if it is an [intermittent](http://wiki.openstreetmap.org/wiki/Key:intermittent) lake.
 
 Possible values:
 
-- `lake`
+- `0`
+- `1`
 
 
 

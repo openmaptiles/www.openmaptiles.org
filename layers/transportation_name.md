@@ -69,7 +69,7 @@ The OSM [`ref`](http://wiki.openstreetmap.org/wiki/Key:ref) tag of the motorway 
 
 ### class
 
-Distinguish between more and less important roads.
+Distinguish between more and less important roads and roads under construction.
 
 Possible values:
 
@@ -83,6 +83,16 @@ Possible values:
 - `track`
 - `path`
 - `raceway`
+- `motorway_construction`
+- `trunk_construction`
+- `primary_construction`
+- `secondary_construction`
+- `tertiary_construction`
+- `minor_construction`
+- `service_construction`
+- `track_construction`
+- `path_construction`
+- `raceway_construction`
 - `rail`
 - `transit`
 
