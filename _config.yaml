@@ -1,7 +1,7 @@
 name: "OpenMapTiles"
 
 maps:
-  domain: "https://maps.tilehosting.com"
+  domain: "https://api.maptiler.com"
   key: "egrA25FNSYcFuvl6Lb8Y" 
 geocoder:
   domain: "https://geocoder.tilehosting.com"
