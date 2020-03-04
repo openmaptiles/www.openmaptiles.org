@@ -2,10 +2,7 @@ name: "OpenMapTiles"
 
 maps:
   domain: "https://api.maptiler.com"
-  key: "egrA25FNSYcFuvl6Lb8Y" 
-geocoder:
-  domain: "https://geocoder.tilehosting.com"
-  key: "Sgjm5zLf2oXMIinmnTsd"
+  key: "egrA25FNSYcFuvl6Lb8Y"
 
 permalink: pretty
 

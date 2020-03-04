@@ -33,7 +33,7 @@ var map = new mapboxgl.Map({
     sources: {
       'vector_layer_': {
         type: 'vector',
-        url: '{{ site.maps.domain }}/data/v3.json?key={{ site.maps.key }}'
+        url: '{{ site.maps.domain }}/tiles/v3/tiles.json?key={{ site.maps.key }}'
       }
     },
     layers: []

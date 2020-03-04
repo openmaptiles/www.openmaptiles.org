@@ -23,7 +23,7 @@ After you clone the style repository and before you start editing in Maputnik, y
   "sources": {
     "openmaptiles": {
       "type": "vector",
-      "url": "https://free.tilehosting.com/data/v3.json?key={key}"
+      "url": "https://api.maptiler.com/tiles/v3/tiles.json?key={key}"
     }
   },
 ```
@@ -32,7 +32,7 @@ Add new source with reference to your map tiles:
   "sources": {
     "openmaptiles": {
       "type": "vector",
-      "url": "https://free.tilehosting.com/data/v3.json?key={key}"
+      "url": "https://api.maptiler.com/tiles/v3/tiles.json?key={key}"
     },
     "mymaptiles": {
       "type": "raster",
