@@ -1,1 +1,1 @@
-olms('map', 'https://maps.tilehosting.com/styles/basic/style.json?key=' + apiKey);
+olms('map', 'https://api.maptiler.com/maps/basic/style.json?key=' + apiKey);

@@ -1,7 +1,7 @@
 var maps = {};
-var style = 'https://maps.tilehosting.com/styles/basic/style.json?key=' + api;
-var xyz = 'https://maps.tilehosting.com/styles/basic/{z}/{x}/{y}.png?key=' + api;
-var xyzpbf = 'https://maps.tilehosting.com/data/v3/%7Bz%7D/%7Bx%7D/%7By%7D.pbf?key=' + api;
+var style = 'https://api.maptiler.com/maps/basic/style.json?key=' + api;
+var xyz = 'https://api.maptiler.com/maps/basic/{z}/{x}/{y}.png?key=' + api;
+var xyzpbf = 'https://api.maptiler.com/tiles/v3/%7Bz%7D/%7Bx%7D/%7By%7D.pbf?key=' + api;
 
 var mbgljsMap = new mapboxgl.Map({
   attributionControl: false,

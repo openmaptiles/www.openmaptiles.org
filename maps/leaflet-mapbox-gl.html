@@ -25,7 +25,7 @@ permalink: /maps/leaflet-mapbox-gl.html
     map.options.minZoom = 2;
     var gl = L.mapboxGL({
         accessToken: '{token}',
-        style: '{{ site.maps.domain }}/styles/bright/style.json?key={{ site.maps.key }}'
+        style: '{{ site.maps.domain }}/maps/bright/style.json?key={{ site.maps.key }}'
     }).addTo(map);
     map.fitWorld();
 

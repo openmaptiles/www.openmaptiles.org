@@ -142,14 +142,13 @@
 			housenum_name: [],
 		};
 
-		var openmaptilesUrl = "https://free-{s}.tilehosting.com/data/v3/{z}/{x}/{y}.pbf.pict?key={key}";
+		var openmaptilesUrl = "https://api.maptiler.com/tiles/v3/{z}/{x}/{y}.pbf?key={key}";
 
 		var openmaptilesVectorTileOptions = {
 			rendererFactory: L.canvas.tile,
-			attribution: '<a href="https://openmaptiles.org/">&copy; OpenMapTiles</a>, <a href="http://www.openstreetmap.org/copyright">&copy; OpenStreetMap</a> contributors',
+			attribution: '<a href="https://maptiler.com/copyright/">&copy; MapTiler</a>, <a href="http://www.openstreetmap.org/copyright">&copy; OpenStreetMap</a> contributors',
 			vectorTileLayerStyles: vectorTileStyling,
-			subdomains: '0123',
-			key: 'UmmATPUongHdDmIicgs7',
+			key: 'egrA25FNSYcFuvl6Lb8Y',
 			maxZoom: 14
 		};
 

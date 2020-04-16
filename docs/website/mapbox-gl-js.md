@@ -33,7 +33,7 @@ Create an HTML page and include the Mapbox GL JS viewer. You need to point the `
     <script>
         var map = new mapboxgl.Map({
             container: 'map',
-            style: 'https://openmaptiles.github.io/osm-bright-gl-style/style-cdn.json',
+            style: '{{ site.maps.domain }}/maps/bright/style.json?key=<key>',
             center: [8.5456, 47.3739],
             zoom: 11
         });

@@ -133,13 +133,13 @@ That is a very basic styling for the data. Check [VectorGrid](https://github.com
 Once your style is ready, create an instance of `L.VectorGrid.Protobuf` like this:
 
 ```js
-var openMapTilesUrl = "https://free-{s}.tilehosting.com/data/v3/{z}/{x}/{y}.pbf.pict?key={key}"
+var openmaptilesUrl = "https://api.maptiler.com/tiles/v3/{z}/{x}/{y}.pbf?key={key}";
 
 var openMapTilesLayer = L.vectorGrid.protobuf(openMapTilesUrl, {
   vectorTileLayerStyles: vectorStyles,
   subdomains: '0123',
-  attribution: '© OpenStreetMap contributors, © OpenMapTiles',
-  key: 'abcdefghi01234567890' // Get yours at https://openmaptiles.com/hosting/
+  attribution: '© OpenStreetMap contributors, © MapTiler',
+  key: 'abcdefghi01234567890' // Get yours at https://maptiler.com/cloud/
 });
 ```
 

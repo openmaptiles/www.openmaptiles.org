@@ -8,7 +8,7 @@ if (mapboxgl.supported()) {
   mapboxgl.setRTLTextPlugin('https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-rtl-text/v0.1.1/mapbox-gl-rtl-text.js');
   map = new mapboxgl.Map({
     container: 'map',
-    style: "{{ site.maps.domain }}/styles/bright/style.json?key={{ site.maps.key }}",
+    style: "{{ site.maps.domain }}/maps/bright/style.json?key={{ site.maps.key }}",
     attributionControl: true,
     hash: true
   });

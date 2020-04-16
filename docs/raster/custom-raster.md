@@ -53,11 +53,7 @@ Then you can start editing your style in Maputnik and adjust it as you want. Edi
 }
 ```
 
-After you adjust the style, your map is ready. Example of [hillshading raster layer](https://openmaptiles.com/hillshades/) combined with OpenMapTiles:
-<iframe
-    src="https://openmaptiles.github.io/klokantech-terrain-gl-style/#12.24/47.3416/8.5006"
-    style="min-height: 450px; width: 100%"
-></iframe>
+After you adjust the style, your map is ready.
 
 
 # Viewing the map
