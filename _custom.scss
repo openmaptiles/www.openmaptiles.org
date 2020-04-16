@@ -33,6 +33,14 @@ h3 {
     font-weight: normal;
   }
 
+  .title:after, .title:after {
+    content: 'developed by MapTiler team';
+    position: absolute;
+    font-size: 14px;
+    margin-left: -187px;
+    margin-top: 21px;
+}
+
   .github {
     font-family: 'icons' !important;
     font-size: 36px !important;
@@ -496,12 +504,12 @@ body.maps {
     font-size: 19px;
   }
 
-  .icon {
-    font-size: 44px;
-    line-height: 44px;
-    vertical-align: middle;
-    color: #a9a9a9;
-    margin-top: 10px;
+  .icon img {
+    width: 168px;
+    filter: gray;
+    -webkit-filter: grayscale(1);
+    filter: grayscale(1);
+    margin: 10px;
 
     &:active,
     &:focus,
