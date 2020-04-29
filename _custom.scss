@@ -21,6 +21,7 @@ h3 {
 
   .title {
     margin-left: 50px;
+    margin-top: -10px;
   }
 
   .title:before {
@@ -29,15 +30,16 @@ h3 {
     font-size: 40px;
     position: absolute;
     margin-left: -50px;
+    margin-top: 8px;
     vertical-align: middle;
     font-weight: normal;
   }
 
   .title:after, .title:after {
-    content: 'developed by MapTiler team';
+    content: 'powered by MapTiler';
     position: absolute;
     font-size: 14px;
-    margin-left: -187px;
+    margin-left: -147px;
     margin-top: 21px;
 }
 

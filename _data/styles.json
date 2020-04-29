@@ -1,11 +1,11 @@
 [
   {
-    "title": "Klokantech Basic",
-    "description": "Klokantech Basic is basemap which tries to stay in the background and only give the most relevant information.",
-    "url-github": "https://github.com/openmaptiles/klokantech-basic-gl-style",
+    "title": "MapTiler Basic",
+    "description": "MapTiler Basic is basemap which tries to stay in the background and only give the most relevant information.",
+    "url-github": "https://github.com/openmaptiles/maptiler-basic-gl-style",
     "url-cloud":"https://www.maptiler.com/maps/#basic//vector/1/0/0",
     "img": "basic.jpg",
-    "id": "klokantech-basic"
+    "id": "maptiler-basic"
   },{
     "title": "OSM Bright",
     "description": "OSM Bright is a general purpose base map showcasing the great detail of OpenStreetMap data. It is a good starting point for your own complex base maps.",
@@ -28,18 +28,18 @@
     "img": "darkmatter.jpg",
     "id": "dark-matter"
   },{
-    "title": "Klokantech 3D",
+    "title": "MapTiler 3D",
     "description": "A Map showcasing 3D buildings.",
-    "url-github": "https://github.com/openmaptiles/klokantech-3d-gl-style",
+    "url-github": "https://github.com/openmaptiles/maptiler-3d-gl-style",
     "img": "3d.jpg",
-    "id": "klokantech-3d"
+    "id": "maptiler-3d"
   },{
-    "title": "Klokantech Terrain",
+    "title": "MapTiler Terrain",
     "description": "A basic map style showing the contour lines and hillshading from OpenMapTiles.com.",
-    "url-github": "https://github.com/openmaptiles/klokantech-terrain-gl-style",
+    "url-github": "https://github.com/openmaptiles/maptiler-terrain-gl-style",
     "url-cloud":"https://www.maptiler.com/maps/#topo//vector/1/0/0",
     "img": "terrain.jpg",
-    "id": "klokantech-terrain"
+    "id": "maptiler-terrain"
   },{
     "title": "Fiord Color",
     "description": "A blue basemap for visualizations.",
