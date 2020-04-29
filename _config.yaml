@@ -12,6 +12,3 @@ sass:
 
 exclude:
 - "styles/*"
-
-plugins:
-- jekyll-redirect-from
