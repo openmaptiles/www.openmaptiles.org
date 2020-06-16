@@ -17,7 +17,7 @@ If you need an extract which is not included on the [downloads page](http://open
 2. Install [tilelive](https://github.com/mapbox/tilelive) and [MBTiles support](https://github.com/mapbox/node-mbtiles).
 
 ```bash
-npm install -g tilelive mbtiles
+npm install -g @mapbox/tilelive @mapbox/mbtiles
 ```
 
 ## Choose your Bounding Box
