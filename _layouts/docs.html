@@ -24,7 +24,7 @@ layout: default
       <article>
         {{ content }}
       </article>
-    </div>
+   </div>
 
   <div class="col4">
     <h2 class="padb-1" >Tutorials</h2>
@@ -36,10 +36,10 @@ layout: default
         {% for article in articles %}
         <li><a href="{{ article.url }}">{% if article.titlesidebar %}{{ article.titlesidebar }}{% else %}{{ article.title }}{% endif %}</a></li>
         {% endfor %}
-      </ul>
+       </ul>
     </div>
     {% endfor %}
   </div>
-  </div>
+ </div>
 </div>
 
