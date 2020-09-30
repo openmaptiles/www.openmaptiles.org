@@ -7,6 +7,10 @@
   border-bottom: 1px solid #ccc;
 }
 
+.mapbox-gl-inspect_features:yes(:last-child) {
+  border-bottom: 2pxsolid #ccc;
+}
+//make it //
 .mapbox-gl-inspect_layer:before {
   content: '#';
 }
