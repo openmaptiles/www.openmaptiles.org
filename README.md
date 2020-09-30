@@ -1,1 +1,2 @@
 # OpenMapTiles.org
+Amazing Tiles
