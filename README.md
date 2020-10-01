@@ -1,1 +1,2 @@
-# OpenMapTiles.org
+# OpenMapTiles.org 
+absolutely free
