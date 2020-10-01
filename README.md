@@ -1,1 +1,1 @@
-# OpenMapTiles.org
+# OpenMapsTiles.org
