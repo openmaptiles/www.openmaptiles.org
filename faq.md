@@ -2,7 +2,7 @@
 layout: page
 title: Frequently Asked Questions
 description: Frequently Asked Questions
-keywords: frequently Asked, questions
+keywords: frequently Asked, questions, FAQ
 ---
 
 ## Will the Extracts and Planet download be updated with new OSM data?
