@@ -16,7 +16,7 @@ redirect_from:
     <h2>Get started</h2>
     <div class="tabs" style="min-height: 420px;">
       <ul>
-        <li class="tabs-btn active" id="btn-1">OpenMapTiles Server</li>
+        <li class="tabs-btn active" id="btn-1">MapTiler Server</li>
         <li class="tabs-btn" id="btn-2">Docker</li>
         <li class="tabs-btn" id="btn-3">Node.js</li>
         <li class="tabs-btn" id="btn-4">PHP</li>
@@ -25,39 +25,49 @@ redirect_from:
 
       <div class="tabs-content">
         <div class="tabs-tab active" id="tab-1">
-          <h2>OpenMapTiles Server</h2>
+          <h2>MapTiler Server</h2>
           <p class="b">
-            The easiest way how to deploy world basemap powered by OpenStreetMap and&nbsp;Docker.
+            The easiest way how to deploy world basemap powered by OpenStreetMap.
           </p>
 
-          <h3 class="padt-2">1. Install Docker on your computer</h3>
+          <h3 class="padt-2">1. Download and install</h3>
           <p>
-            Install Docker. It is for free and comes with the graphical user interface:
+            Download an installer for your system:
           </p>
 
+          <p class="pady-2"><a class="btn" href="https://www.maptiler.com/server/download/">Server Download</a></p>
+
+            <p>On Window open installer and follow the installation wizard.</p>
+
+            <p>On Linux Install with <code>sudo dpkg -i maptiler-server-x.x.x.deb</code> <br>or <code>sudo rpm -i maptiler-server-x.x.x.rpm</code></p>
+
+          <h3 class="padt-2">2. Start server</h3>
+
           <p>
-            <a class="btn" href="https://download.docker.com/win/stable/DockerToolbox.exe">Windows</a>
-            <a class="btn" href="https://download.docker.com/mac/stable/DockerToolbox.pkg">Mac</a>
-            <a class="btn" onclick="document.getElementById('server-linux').classList.toggle('hidden');document.getElementById('server-linux-2').classList.toggle('hidden');">Linux</a>
+            Windows: Just launch installed aplication<br>
+            Linux: Run directly with <code>maptiler-server</code> or as system service <code>maptiler-server-servicify</code>.
           </p>
-          <pre id="server-linux" class="mary-1 hidden">curl -sSL https://get.docker.com/ | sh</pre>
 
-          <h3 class="padt-2">2. Start Docker Kitematic</h3>
-
+          <h3 class="padt-2">3. Add data and run administration</h3>
           <p>
-            Launch the installed Kitematic application. Search for “openmaptiles-server” and launch the container.
+            Put MBTiles into servers work directory and visit the web
+            administration at <b>http://localhost:3560/</b> in your browser.
           </p>
-
-          <div id="server-linux-2" class="hidden">
-            <p>
-              For Linux use Docker shell command:
-            </p>
-            <pre>docker run --rm -it -v $(pwd):/data -p 8080:80 klokantech/openmaptiles-server</pre>
-          </div>
-
-          <h3 class="padt-2">3. Follow the step-by-step guide</h3>
+          <h4 class="padt-4">More articles</h4>
           <p>
-            Visit the web interface at <b>http://localhost:8080/</b> or click in the Preview window and follow the web wizard. You will set your server in few steps. Supports adding your own data and styles. There are more data sources such as hillshading, contour lines, satellite, etc. See more at <a href="https://www.maptiler.com/server/">openmaptiles.com/server/</a>
+            <a href="https://support.maptiler.com/i733-how-to-run-maptiler-server-on-linux">
+              How to run MapTiler Server on Linux
+            </a>
+          </p>
+          <p>
+            <a href="https://support.maptiler.com/i758-how-to-run-maptiler-server-on-windows">
+              How to run MapTiler Server on Windows
+            </a>
+          </p>
+          <p>
+            <a href="https://support.maptiler.com/i757-how-to-run-maptiler-server-on-macos">
+              How to run MapTiler Server on macOS
+            </a>
           </p>
         </div>
 
