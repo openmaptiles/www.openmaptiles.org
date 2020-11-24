@@ -1,4 +1,4 @@
-var url = 'https://openmaptiles.com/downloads/list.json';
+var url = 'https://data.maptiler.com/downloads/list.json';
 
 ajax(url, function(data) {
   var addItem = function(container, name, url, size) {

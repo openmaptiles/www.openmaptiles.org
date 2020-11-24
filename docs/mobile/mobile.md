@@ -30,7 +30,7 @@ To demonstrate the capabilities of the SDK and show the performance of OpenMapTi
 
 These apps shows the vector map tiles displayed from a custom tile server, so you can choose a tile hosting service or implement your own. Map tiles can be also bundled with the mobile app or users can download a tileset for a region of their choice.
 
-Displaying of the tiles directly from MBTiles, running in an offline environment, requires patching of Mapbox SDKs. We offer the [complete source code of the demo mobile app](https://openmaptiles.com/mobile-app/) to the interested developers to speed up the start of the development of their own commercial apps.
+Displaying of the tiles directly from MBTiles, running in an offline environment, requires patching of Mapbox SDKs. We offer the [complete source code of the demo mobile app](https://openmaptiles.org/mobile-app/) to the interested developers to speed up the start of the development of their own commercial apps.
 
 ## Packed web applications
 

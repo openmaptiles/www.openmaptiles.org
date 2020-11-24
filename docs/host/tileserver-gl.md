@@ -22,7 +22,7 @@ We recommend to install TileServer GL using Docker:
 docker pull klokantech/tileserver-gl
 ```
 
-Now download the vector tiles in form of MBTiles file from the [OpenMapTiles Downloads](https://openmaptiles.com/downloads/) and save it in your current directory.
+Now download the vector tiles in form of MBTiles file from the [OpenMapTiles Downloads](https://data.maptiler.com/downloads/) and save it in your current directory.
 
 ```
 curl -o zurich_switzerland.mbtiles https://[ADDRESS-YOU-GET-IN-DOWNLOADS]

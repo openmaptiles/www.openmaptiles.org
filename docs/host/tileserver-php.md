@@ -28,7 +28,7 @@ Source code is available on TileServer's <a href="https://github.com/klokantech/
 unpack it to directory on your LAMP/WAMP server.
 
 ### 2. Download Vector Tiles
-Go to the <a href="https://openmaptiles.com/downloads/">Downloads page</a> and download the vector tiles for your region or the
+Go to the <a href="https://data.maptiler.com/downloads/">Downloads page</a> and download the vector tiles for your region or the
 planet. You need to copy this file into a directory with TileServer-php.
 
 ### 3. Open TileServer in your browser
