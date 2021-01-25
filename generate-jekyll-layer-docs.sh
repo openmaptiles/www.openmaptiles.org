@@ -2,9 +2,10 @@
 set -o errexit
 set -o nounset
 
-LAYER_DOCS_DIR="${LAYER_DOCS_DIR:-layers}"
-LAYER_DIR="${LAYER_DIR:-../openmaptiles/layers}"
-DIAGRAM_DIR="${DIAGRAM_DIR:-media}"
+# Run from root of OpenMapTiles project.
+LAYER_DOCS_DIR="${LAYER_DOCS_DIR:-./docs/layers}"
+LAYER_DIR="${LAYER_DIR:-./layers}"
+DIAGRAM_DIR="${DIAGRAM_DIR:-./docs/media}"
 
 
 function generate_doc() {
@@ -12,9 +13,9 @@ function generate_doc() {
     local tileset="$LAYER_DIR/$layer_name/$layer_name.yaml"
     local target="$LAYER_DOCS_DIR/$layer_name.md"
 
-    generate-etlgraph "$tileset" "$DIAGRAM_DIR"
-    generate-mapping-graph "$tileset" "$DIAGRAM_DIR/mapping_$layer_name"
-
+    docker-compose run --rm openmaptiles-tools sh -c \
+			"generate-etlgraph $tileset $DIAGRAM_DIR && \
+			 generate-mapping-graph $tileset $DIAGRAM_DIR/mapping_$layer_name"
     echo '---' > $target
     echo 'layout: page' >> $target
     echo 'category: layer' >> $target
@@ -23,11 +24,11 @@ function generate_doc() {
     echo "mapping_graph: $DIAGRAM_DIR/mapping_$layer_name.png" >> $target
 
     local zoom='14'
-    sql=$(generate-sqlquery "$tileset" "$zoom")
+    sql=$(docker-compose run --rm openmaptiles-tools sh -c "generate-sqlquery $tileset $zoom")
     echo "sql_query: $sql" >> $target
     echo '---' >> $target
 
-    generate-doc "$tileset" >> $target
+    docker-compose run --rm openmaptiles-tools sh -c "generate-doc $tileset" >> $target
     find $DIAGRAM_DIR -type f ! -iname "*.png" -delete
 }
 
