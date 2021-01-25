@@ -17,62 +17,42 @@ The `transportation` layer also contains polygons for features like plazas.
 
 ## Fields
 
-### layer
+### class
 
-Original value of the [`layer`](http://wiki.openstreetmap.org/wiki/Key:layer) tag.
-### bicycle
-
-Original value of the [`bicycle`](http://wiki.openstreetmap.org/wiki/Key:bicycle) tag (highways only).
-### service
-
-Original value of the [`service`](http://wiki.openstreetmap.org/wiki/Key:service) tag.
-
-Possible values:
-
-- `spur`
-- `yard`
-- `siding`
-- `crossover`
-- `driveway`
-- `alley`
-- `parking_aisle`
-
-### level
-
-Experimental feature! Filled only for steps and footways. Original
-value of the [`level`](http://wiki.openstreetmap.org/wiki/Key:level) tag.
-### brunnel
-
-Mark whether way is a tunnel or bridge.
+Distinguish between more and less important roads or railways and roads under construction.
+Class is derived from the value of the
+[`highway`](http://wiki.openstreetmap.org/wiki/Key:highway),
+[`construction`](http://wiki.openstreetmap.org/wiki/Key:construction),
+[`railway`](http://wiki.openstreetmap.org/wiki/Key:railway),
+[`aerialway`](http://wiki.openstreetmap.org/wiki/Key:aerialway),
+[`route`](http://wiki.openstreetmap.org/wiki/Key:route) tag (for
+shipping ways), or
+[`man_made`](http://wiki.openstreetmap.org/wiki/Key:route).
 
 Possible values:
 
-- `bridge`
-- `tunnel`
-- `ford`
+- `motorway`
+- `trunk`
+- `primary`
+- `secondary`
+- `tertiary`
+- `minor`
+- `path`
+- `service`
+- `track`
+- `raceway`
+- `motorway_construction`
+- `trunk_construction`
+- `primary_construction`
+- `secondary_construction`
+- `tertiary_construction`
+- `minor_construction`
+- `path_construction`
+- `service_construction`
+- `track_construction`
+- `raceway_construction`
 
-### indoor
 
-Experimental feature! Filled only for steps and footways. Original
-value of the [`indoor`](http://wiki.openstreetmap.org/wiki/Key:indoor) tag.
-
-Possible values:
-
-- `1`
-
-### ramp
-
-Mark with `1` whether way is a ramp (link or steps)
-or not with `0`.
-
-Possible values:
-
-- `0`
-- `1`
-
-### horse
-
-Original value of the [`horse`](http://wiki.openstreetmap.org/wiki/Key:horse) tag (highways only).
 ### subclass
 
 Distinguish more specific classes of railway and path:
@@ -100,14 +80,17 @@ Possible values:
 - `corridor`
 - `platform`
 
-### surface
 
-Values of [`surface`](https://wiki.openstreetmap.org/wiki/Key:surface) tag devided into 2 groups `paved` (paved, asphalt, cobblestone, concrete, concrete:lanes, concrete:plates, metal, paving_stones, sett, unhewn_cobblestone, wood) and `unpaved` (unpaved, compacted, dirt, earth, fine_gravel, grass, grass_paver, gravel, gravel_turf, ground, ice, mud, pebblestone, salt, sand, snow, woodchips).
+### brunnel
+
+Mark whether way is a tunnel or bridge.
 
 Possible values:
 
-- `paved`
-- `unpaved`
+- `bridge`
+- `tunnel`
+- `ford`
+
 
 ### oneway
 
@@ -121,53 +104,77 @@ Possible values:
 - `1`
 - `-1`
 
-### foot
 
-Original value of the [`foot`](http://wiki.openstreetmap.org/wiki/Key:foot) tag (highways only).
-### mtb_scale
+### ramp
 
-Original value of the [`mtb:scale`](http://wiki.openstreetmap.org/wiki/Key:mtb:scale) tag (highways only).
-### class
-
-Distinguish between more and less important roads or railways and roads under construction.
-Class is derived from the value of the
-[`highway`](http://wiki.openstreetmap.org/wiki/Key:highway),
-[`construction`](http://wiki.openstreetmap.org/wiki/Key:construction),
-[`railway`](http://wiki.openstreetmap.org/wiki/Key:railway),
-[`aerialway`](http://wiki.openstreetmap.org/wiki/Key:aerialway),
-[`route`](http://wiki.openstreetmap.org/wiki/Key:route) tag (for
-shipping ways), or
-[`man_made`](http://wiki.openstreetmap.org/wiki/Key:route).
+Mark with `1` whether way is a ramp (link or steps)
+or not with `0`.
 
 Possible values:
 
-- `motorway`
-- `trunk`
-- `primary`
-- `secondary`
-- `tertiary`
-- `minor`
-- `service`
-- `track`
-- `path`
-- `raceway`
-- `motorway_construction`
-- `trunk_construction`
-- `primary_construction`
-- `secondary_construction`
-- `tertiary_construction`
-- `minor_construction`
-- `service_construction`
-- `track_construction`
-- `path_construction`
-- `raceway_construction`
-- `rail`
-- `transit`
-- `cable_car`
-- `gondola`
-- `ferry`
-- `bridge`
-- `pier`
+- `0`
+- `1`
+
+
+### service
+
+Original value of the [`service`](http://wiki.openstreetmap.org/wiki/Key:service) tag.
+
+Possible values:
+
+- `spur`
+- `yard`
+- `siding`
+- `crossover`
+- `driveway`
+- `alley`
+- `parking_aisle`
+
+
+### layer
+
+Original value of the [`layer`](http://wiki.openstreetmap.org/wiki/Key:layer) tag.
+
+### level
+
+Experimental feature! Filled only for steps and footways. Original
+value of the [`level`](http://wiki.openstreetmap.org/wiki/Key:level) tag.
+
+### indoor
+
+Experimental feature! Filled only for steps and footways. Original
+value of the [`indoor`](http://wiki.openstreetmap.org/wiki/Key:indoor) tag.
+
+Possible values:
+
+- `1`
+
+
+### bicycle
+
+Original value of the [`bicycle`](http://wiki.openstreetmap.org/wiki/Key:bicycle) tag (highways only).
+
+### foot
+
+Original value of the [`foot`](http://wiki.openstreetmap.org/wiki/Key:foot) tag (highways only).
+
+### horse
+
+Original value of the [`horse`](http://wiki.openstreetmap.org/wiki/Key:horse) tag (highways only).
+
+### mtb_scale
+
+Original value of the [`mtb:scale`](http://wiki.openstreetmap.org/wiki/Key:mtb:scale) tag (highways only).
+
+### surface
+
+Values of [`surface`](https://wiki.openstreetmap.org/wiki/Key:surface) tag devided into 2 groups `paved` (paved, asphalt, cobblestone, concrete, concrete:lanes, concrete:plates, metal, paving_stones, sett, unhewn_cobblestone, wood) and `unpaved` (unpaved, compacted, dirt, earth, fine_gravel, grass, grass_paver, gravel, gravel_turf, ground, ice, mud, pebblestone, salt, sand, snow, woodchips).
+
+Possible values:
+
+- `paved`
+- `unpaved`
+
 
 
 

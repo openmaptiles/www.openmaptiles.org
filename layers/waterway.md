@@ -16,36 +16,18 @@ Waterways do not have a `subclass` field.
 
 ## Fields
 
-### name_de
-
-German name `name:de` if available, otherwise `name` or `name:en`.
-
 ### name
 
 The OSM [`name`](http://wiki.openstreetmap.org/wiki/Key:name) value of the waterway.
 The `name` field may be empty for NaturalEarth data or at lower zoom levels.
 
-### intermittent
-
-Mark with `1` if it is an [intermittent](http://wiki.openstreetmap.org/wiki/Key:intermittent) waterway.
-
-Possible values:
-
-- `0`
-- `1`
-
-### brunnel
-
-Mark whether way is a tunnel or bridge.
-
-Possible values:
-
-- `bridge`
-- `tunnel`
-
 ### name_en
 
 English name `name:en` if available, otherwise `name`.
+
+### name_de
+
+German name `name:de` if available, otherwise `name` or `name:en`.
 
 ### class
 
@@ -58,6 +40,27 @@ Possible values:
 - `canal`
 - `drain`
 - `ditch`
+
+
+### brunnel
+
+Mark whether way is a tunnel or bridge.
+
+Possible values:
+
+- `bridge`
+- `tunnel`
+
+
+### intermittent
+
+Mark with `1` if it is an [intermittent](http://wiki.openstreetmap.org/wiki/Key:intermittent) waterway.
+
+Possible values:
+
+- `0`
+- `1`
+
 
 
 

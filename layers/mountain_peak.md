@@ -10,21 +10,17 @@ sql_query: SELECT osm_id, geometry, name, name_en, name_de, NULLIF(tags->'name_i
 
 ## Fields
 
-### name_de
-
-German name `name:de` if available, otherwise `name` or `name:en`.
-
 ### name
 
 The OSM [`name`](http://wiki.openstreetmap.org/wiki/Key:name) value of the peak.
 
-### ele_ft
-
-Elevation (`ele`) in feets.
-
 ### name_en
 
 English name `name:en` if available, otherwise `name`.
+
+### name_de
+
+German name `name:de` if available, otherwise `name` or `name:en`.
 
 ### class
 
@@ -35,13 +31,18 @@ Possible values:
 - `peak`
 - `volcano`
 
-### rank
-
-Rank of the peak within one tile (starting at 1 that is the most important peak).
 
 ### ele
 
 Elevation (`ele`) in meters.
+
+### ele_ft
+
+Elevation (`ele`) in feets.
+
+### rank
+
+Rank of the peak within one tile (starting at 1 that is the most important peak).
 
 
 
