@@ -19,7 +19,7 @@ This tutorial shows how to serve the vector tiles downloaded from OpenMapTiles.
 We recommend to install TileServer GL using Docker:
 
 ```
-docker pull klokantech/tileserver-gl
+docker pull maptiler/tileserver-gl
 ```
 
 Now download the vector tiles in form of MBTiles file from the [OpenMapTiles Downloads](https://data.maptiler.com/downloads/) and save it in your current directory.
@@ -33,7 +33,7 @@ curl -o zurich_switzerland.mbtiles https://[ADDRESS-YOU-GET-IN-DOWNLOADS]
 You should mount the current directory containing the vector tiles to the `/data` path inside of the container and bind the local port `8080` to port `80` inside of the container:
 
 ```
-docker run -it -v $(pwd):/data -p 8080:80 klokantech/tileserver-gl
+docker run -it -v $(pwd):/data -p 8080:80 maptiler/tileserver-gl
 ```
 
 This will start a Node.js container with tileserver-gl on your computer.
