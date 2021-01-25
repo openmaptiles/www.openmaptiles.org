@@ -30,6 +30,8 @@ Possible values:
 - `helipad`
 - `taxiway`
 - `apron`
+- `gate`
+
 
 
 

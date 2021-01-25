@@ -13,13 +13,17 @@ We suggest you use different font styles and sizes to create a text hierarchy.
 
 ## Fields
 
-### name_de
-
-German name `name:de` if available, otherwise `name` or `name:en`.
-
 ### name
 
 The OSM [`name`](http://wiki.openstreetmap.org/wiki/Key:name) value of the POI.
+
+### name_en
+
+English name `name:en` if available, otherwise `name`.
+
+### name_de
+
+German name `name:de` if available, otherwise `name` or `name:en`.
 
 ### capital
 
@@ -32,14 +36,6 @@ Possible values:
 - `2`
 - `4`
 
-### iso_a2
-
-Two-letter country code [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
-Original value of the
-[`country_code_iso3166_1_alpha_2`](http://wiki.openstreetmap.org/wiki/Tag:place%3Dcountry) tag.
-### name_en
-
-English name `name:en` if available, otherwise `name`.
 
 ### class
 
@@ -63,6 +59,13 @@ Possible values:
 - `neighbourhood`
 - `isolated_dwelling`
 
+
+### iso_a2
+
+Two-letter country code [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
+Original value of the
+[`country_code_iso3166_1_alpha_2`](http://wiki.openstreetmap.org/wiki/Tag:place%3Dcountry) tag.
+
 ### rank
 
 Countries, states and the most important cities all have a
@@ -79,6 +82,7 @@ The rank value is a combination of the Natural Earth
 and states and for cities consists out of a shifted
 Natural Earth `scalerank` combined with a local rank
 within a grid for cities that do not have a Natural Earth `scalerank`.
+
 
 
 

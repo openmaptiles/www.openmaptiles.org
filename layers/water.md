@@ -16,15 +16,6 @@ able to use border styling for ocean water features.
 
 ## Fields
 
-### brunnel
-
-Identifies the type of crossing as either a bridge or a tunnel.
-
-Possible values:
-
-- `bridge`
-- `tunnel`
-
 ### class
 
 All water polygons from [OpenStreetMapData](http://osmdata.openstreetmap.de/) have the class `ocean`.
@@ -32,9 +23,11 @@ Water bodies are classified as `lake` or `river` for water bodies with the [`wat
 
 Possible values:
 
-- `ocean`
 - `lake`
+- `dock`
 - `river`
+- `ocean`
+
 
 ### intermittent
 
@@ -44,6 +37,17 @@ Possible values:
 
 - `0`
 - `1`
+
+
+### brunnel
+
+Identifies the type of crossing as either a bridge or a tunnel.
+
+Possible values:
+
+- `bridge`
+- `tunnel`
+
 
 
 

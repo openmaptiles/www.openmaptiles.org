@@ -21,9 +21,11 @@ Possible values:
 - `farmland`
 - `ice`
 - `wood`
+- `rock`
 - `grass`
 - `wetland`
 - `sand`
+
 
 ### subclass
 
@@ -72,6 +74,7 @@ Possible values:
 - `wet_meadow`
 - `wetland`
 - `wood`
+
 
 
 

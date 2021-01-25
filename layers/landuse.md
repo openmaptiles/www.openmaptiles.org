@@ -30,6 +30,7 @@ Possible values:
 - `residential`
 - `commercial`
 - `industrial`
+- `garages`
 - `retail`
 - `bus_station`
 - `school`
@@ -47,6 +48,7 @@ Possible values:
 - `suburb`
 - `neighbourhood`
 - `dam`
+
 
 
 
