@@ -23,11 +23,10 @@ keywords: android, ios, maps, mobile, offline, offline maps, source code, skelet
       any other projects. The code is provided "as is" for the Android and iOS in
       a form of access to a private repository on GitHub (own account needed). It
       is not possible to share the code itself or its parts to third parties.</p>
-    <p>The source code of the mapping component is derived from the open-source
-      Mapbox SDKs for <a href="https://www.mapbox.com/android-sdk/">Android</a>
-      and <a href="https://www.mapbox.com/ios-sdk/">iOS</a>. The app itself is
-      written in the native platform programming language (Java on Android, Swift on iOS).</p>
-    <p>We have extended the Mapbox SDKs (C++) with the ability to load the map
+    <p>The source code of the mapping component is based on
+      <a href="https://github.com/maplibre/maplibre-gl-native">MapLibre</a> - the open-source fork of Mapbox SDKs.
+      The app itself is written in the native platform programming language (Java on Android, Swift on iOS).</p>
+    <p>We have contributed to the MapLibre SDKs (C++) and added code that allows to load the map
       tiles from local MBTiles files that are either bundled with the app or
       downloaded by the user. The map assets (styles, fonts, icons) can be distributed
       together with the app or loaded online.</p>
@@ -37,6 +36,13 @@ keywords: android, ios, maps, mobile, offline, offline maps, source code, skelet
       <a href="https://www.maptiler.com/server/">MapTiler Server</a> installation.
       There is no restriction or monthly payment depending on the number of users of the mobile app.</p>
     <p>Support and customization of this application are not part of this package.</p>
+    <p>The source code contains workflows for Github Actions which will save your time
+      and increase productivity in your team. Included workflows implement continuous integration
+      as wel as automated release management (both App Store and Google Play store).</p>
+    <p>The project also comes with the solution for protecting your sensitive files such as certificates or
+      provision profiles using git-secret.</p>
+    <p>To get clear, actionable insight into app issues the application uses powerful crash reporting
+      which you can just reconfigure so that it uses your account.</p>
   </div>
 
   <div class="col4">
