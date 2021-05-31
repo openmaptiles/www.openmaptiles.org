@@ -43,6 +43,7 @@ function generate_docs() {
     generate_doc "housenumber"
     generate_doc "landcover"
     generate_doc "landuse"
+    generate_doc "motorway_junction"
     generate_doc "mountain_peak"
     generate_doc "park"
     generate_doc "place"
