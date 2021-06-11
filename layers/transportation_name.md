@@ -52,7 +52,7 @@ Possible values:
 
 ### class
 
-Distinguish between more and less important roads and roads under construction.
+Distinguish between more and less important roads and roads under construction.  For a `motorway_junction`, the class will be the highest class of road that the junction intersects.
 
 Possible values:
 
