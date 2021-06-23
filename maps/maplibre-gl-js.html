@@ -1,6 +1,6 @@
 ---
 layout: none
-permalink: /maps/mapboxgljs.html
+permalink: /maps/maplibre-gl-js.html
 ---
 <!DOCTYPE html>
 <html>
@@ -8,8 +8,8 @@ permalink: /maps/mapboxgljs.html
     <meta charset='utf-8' />
     <title>OpenMapTiles OSM Bright style</title>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.29.0/mapbox-gl.js'></script>
-    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.29.0/mapbox-gl.css' rel='stylesheet' />
+    <script src="https://unpkg.com/maplibre-gl@1.14.0-rc.1/dist/maplibre-gl.js"></script>
+    <link href="https://unpkg.com/maplibre-gl@1.14.0-rc.1/dist/maplibre-gl.css" rel="stylesheet" />
     <style>
         body { margin:0; padding:0; }
         #map { position:absolute; top:0; bottom:0; width:100%; }
@@ -18,7 +18,7 @@ permalink: /maps/mapboxgljs.html
 <body>
     <div id='map'></div>
     <script>
-        var map = new mapboxgl.Map({
+        var map = new maplibregl.Map({
             container: 'map',
             style: '{{ site.maps.domain }}/maps/bright/style.json?key={{ site.maps.key }}',
             center: [8.5456, 47.3739],
