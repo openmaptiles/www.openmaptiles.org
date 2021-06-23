@@ -14,7 +14,7 @@ Using MapLibre GL JS for serving OpenMapTiles tileset is the most common use cas
 
 ### Reference the Style
 
-Create an HTML page and include the Mapbox GL JS viewer. You need to point the `style` to an HTTP endpoint of your [Mapbox GL style specification JSON](/docs/style/mapbox-gl-style-spec).
+Create an HTML page and include the MapLibre GL JS viewer. You need to point the `style` to an HTTP endpoint of your [Mapbox GL style specification JSON](/docs/style/mapbox-gl-style-spec).
 
 ```html
 <!DOCTYPE html>
