@@ -3,19 +3,19 @@ var style = 'https://api.maptiler.com/maps/basic/style.json?key=' + api;
 var xyz = 'https://api.maptiler.com/maps/basic/{z}/{x}/{y}.png?key=' + api;
 var xyzpbf = 'https://api.maptiler.com/tiles/v3/%7Bz%7D/%7Bx%7D/%7By%7D.pbf?key=' + api;
 
-var mbgljsMap = new mapboxgl.Map({
+var mlgljsMap = new maplibregl.Map({
   attributionControl: false,
-  container: 'map-mbgljs',
+  container: 'map-mlgljs',
   style: style,
   zoom: 2
 });
-maps['mbgljs'] = {
+maps['mlgljs'] = {
   getPos: function() {
-    return [mbgljsMap.getCenter().lng, mbgljsMap.getCenter().lat, mbgljsMap.getZoom() + 1];
+    return [mlgljsMap.getCenter().lng, mlgljsMap.getCenter().lat, mlgljsMap.getZoom() + 1];
   },
   setPos: function(pos) {
-    mbgljsMap.setCenter([pos[0], pos[1]]);
-    mbgljsMap.setZoom(pos[2] - 1);
+    mlgljsMap.setCenter([pos[0], pos[1]]);
+    mlgljsMap.setZoom(pos[2] - 1);
   }
 };
 
@@ -71,7 +71,7 @@ maps['ol'] = {
 };
 
 
-var activeId = 'mbgljs';
+var activeId = 'mlgljs';
 function switchMap(id) {
   var oldPos = maps[activeId].getPos();
   var active = document.querySelector('.map.active');
