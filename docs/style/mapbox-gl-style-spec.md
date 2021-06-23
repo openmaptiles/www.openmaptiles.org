@@ -9,18 +9,21 @@ description: Mapbox GL Style Specification
 keywords: Openlayers
 ---
 
-## Using OpenMapTiles with Mapbox GL
+## Styles
 
-To display maps with Mapbox GL you need
+Styles are written in a JSON format called the [Mapbox GL Style Spec](https://www.mapbox.com/mapbox-gl-style-spec/).
+
+## Using OpenMapTiles with MapLibre GL
+
+MapBox GL also offers a Javascript library to display vector maps on a website. However, with the release of version 2.x
+it is no longer free to use. We recommend using the open-source fork [MapLibre GL](https://www.maplibre.org).
+
+To display maps with MapLibre GL you need:
 
 1. Style: A JSON style specification which describes how your map looks like
 2. Data: Vector Tiles as data source for your style
 
-OpenMapTiles provides both vector tiles you can download and ready-made styles to use together with them. Check out how to [display a map with Mapbox GL JS](/docs/website/mapbox-gl-js).
-
-## Styles
-
-Styles are written in a JSON format called the [Mapbox GL Style Spec](https://www.mapbox.com/mapbox-gl-style-spec/).
+OpenMapTiles provides both vector tiles you can download and ready-made styles to use together with them. Check out how to [display a map with MapLibre GL JS](/docs/website/maplibre-gl-js).
 
 
 ### Data Source
