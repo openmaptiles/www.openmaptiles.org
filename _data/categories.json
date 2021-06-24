@@ -7,7 +7,7 @@
   {
     "id": "website",
     "title": "Display Map",
-    "desc": "Display vector tiles in a web client using either MapboxGL, Leaflet, Tangram or OpenLayers."
+    "desc": "Display vector tiles in a web client using either MapLibre GL, Leaflet, Tangram or OpenLayers."
   },
   {
     "id": "host",

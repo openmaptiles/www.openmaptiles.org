@@ -8,8 +8,8 @@ keywords:
 
 <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans" />
 
-<link rel="stylesheet" type="text/css" href="https://api.mapbox.com/mapbox-gl-js/v0.30.0/mapbox-gl.css" />
-<script src="https://api.mapbox.com/mapbox-gl-js/v0.30.0/mapbox-gl.js"></script>
+<script src="https://unpkg.com/maplibre-gl@1.14.0-rc.1/dist/maplibre-gl.js"></script>
+<link href="https://unpkg.com/maplibre-gl@1.14.0-rc.1/dist/maplibre-gl.css" rel="stylesheet" />
 
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css" />
 <script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
@@ -23,14 +23,14 @@ keywords:
 <script src="https://mapzen.com/js/mapzen.min.js"></script>
 -->
 
-<div class="viewers map active" id="map-mbgljs"></div>
+<div class="viewers map active" id="map-mlgljs"></div>
 <div class="viewers map" id="map-leaflet"></div>
 <div class="viewers map" id="map-ol"></div>
 <!-- <div class="viewers map" id="map-tangram"></div> -->
 
 <div class="viewers map-switchers"><!--
---><div class="active map-switch" id="map-switch-mbgljs" onclick="javascript:switchMap('mbgljs')">
-    <span>MB GL JS</span>
+--><div class="active map-switch" id="map-switch-mlgljs" onclick="javascript:switchMap('mlgljs')">
+    <span>MapLibre GL JS</span>
   </div><!--
   --><div class="map-switch" id="map-switch-leaflet" onclick="javascript:switchMap('leaflet')">
     <span>Leaflet</span>
