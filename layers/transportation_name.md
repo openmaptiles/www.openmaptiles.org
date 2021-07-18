@@ -50,6 +50,21 @@ Possible values:
 - `gb-trunk`
 - `road (default)`
 
+### route_*
+
+The routes that this road is a part of.  If this road is a part of multiple routes
+([a route concurrency](https://en.wikipedia.org/wiki/Concurrency_(road))), the most important route will be
+listed under `route_1`, the next most important route will be listed under `route_2`, and so forth.  Up to
+six concurrencies will be set.
+
+Each route will be in the form `network=ref`, using the `network` and `ref` tags present in the route relation
+that the road is a member of.
+
+Example values:
+
+- `CA:transcanada=105` - Trans-Canada 105
+- `US:I=95` - US Interstate 95
+- `e-road:E 13` - European route E13
 
 ### class
 
