@@ -35,10 +35,12 @@ Length of the `ref` field. Useful for having a shield icon as background for lab
 
 ### network
 
-The network type derived mainly from [`network`](http://wiki.openstreetmap.org/wiki/Key:network) tag of the road.
+The network type derived mainly from [`network`](http://wiki.openstreetmap.org/wiki/Key:network) tag of the road or trail.
 See more info about [`us-*`](http://wiki.openstreetmap.org/wiki/Road_signs_in_the_United_States),
 [`ca-transcanada`](https://en.wikipedia.org/wiki/Trans-Canada_Highway),
-or [`gb-*`](http://wiki.openstreetmap.org/wiki/United_Kingdom_Tagging_Guidelines#UK_roads).
+or [`gb-*`](http://wiki.openstreetmap.org/wiki/United_Kingdom_Tagging_Guidelines#UK_roads).  
+Hiking network values are derived from the `iwn`/`nwn`/`rwn`/`lwn` network values tagged on 
+[hiking route relations](https://wiki.openstreetmap.org/wiki/Tag:route=hiking).
 
 Possible values:
 
@@ -48,6 +50,10 @@ Possible values:
 - `ca-transcanada`
 - `gb-motorway`
 - `gb-trunk`
+- `hike-international`
+- `hike-national`
+- `hike-regional`
+- `hike-local`
 - `road (default)`
 
 
