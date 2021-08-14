@@ -130,6 +130,15 @@ Possible values:
 - `alley`
 - `parking_aisle`
 
+### access
+
+If set, indicates that there is an access restriction on this road.  For
+[`access`](http://wiki.openstreetmap.org/wiki/Key:access) tag values of `no` or `private`, this
+value will be `no`..
+
+Possible values:
+
+- `no`
 
 ### layer
 
