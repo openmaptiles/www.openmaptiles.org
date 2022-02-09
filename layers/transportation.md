@@ -4,7 +4,7 @@ category: layer
 title: transportation
 etl_graph: media/etl_transportation.png
 mapping_graph: media/mapping_transportation.png
-sql_query: SELECT geometry, class, subclass, oneway, ramp, brunnel, service, layer, level, indoor, bicycle, foot, horse, mtb_scale, surface FROM layer_transportation(ST_SetSRID('BOX3D(-20037508.34 -20037508.34, 20037508.34 20037508.34)'::box3d, 3857 ), 14)
+sql_query: SELECT geometry, class, subclass, network, oneway, ramp, brunnel, service, access, toll, expressway, layer, level, indoor, bicycle, foot, horse, mtb_scale, surface FROM layer_transportation(ST_SetSRID('BOX3D(-20037508.34 -20037508.34, 20037508.34 20037508.34)'::box3d, 3857), 14)
 ---
 **transportation** contains roads, railways, aerial ways, and shipping
  lines.
@@ -26,8 +26,9 @@ Class is derived from the value of the
 [`railway`](http://wiki.openstreetmap.org/wiki/Key:railway),
 [`aerialway`](http://wiki.openstreetmap.org/wiki/Key:aerialway),
 [`route`](http://wiki.openstreetmap.org/wiki/Key:route) tag (for
-shipping ways), or
-[`man_made`](http://wiki.openstreetmap.org/wiki/Key:route).
+shipping ways),
+[`busway`](https://wiki.openstreetmap.org/wiki/Key:busway), or
+[`man_made`](http://wiki.openstreetmap.org/wiki/Key:man_made).
 
 Possible values:
 
@@ -41,6 +42,7 @@ Possible values:
 - `service`
 - `track`
 - `raceway`
+- `busway`
 - `motorway_construction`
 - `trunk_construction`
 - `primary_construction`
@@ -81,6 +83,13 @@ Possible values:
 - `platform`
 
 
+### network
+
+The network type derived mainly from [`network`](http://wiki.openstreetmap.org/wiki/Key:network) tag of the road.
+See more info about [`us-*`](http://wiki.openstreetmap.org/wiki/Road_signs_in_the_United_States),
+[`ca-transcanada`](https://en.wikipedia.org/wiki/Trans-Canada_Highway),
+or [`gb-*`](http://wiki.openstreetmap.org/wiki/United_Kingdom_Tagging_Guidelines#UK_roads).
+
 ### brunnel
 
 Mark whether way is a tunnel or bridge.
@@ -100,7 +109,6 @@ or not a oneway with `0`.
 
 Possible values:
 
-- `0`
 - `1`
 - `-1`
 
@@ -112,7 +120,6 @@ or not with `0`.
 
 Possible values:
 
-- `0`
 - `1`
 
 
@@ -129,6 +136,36 @@ Possible values:
 - `driveway`
 - `alley`
 - `parking_aisle`
+
+
+### access
+
+Access restrictions on this road.  Supported values of the
+[`access`](http://wiki.openstreetmap.org/wiki/Key:access) tag are `no` and `private`,
+which resolve to `no`.
+
+Possible values:
+
+- `False`
+
+
+### toll
+
+Whether this is a toll road, based on the [`toll`](http://wiki.openstreetmap.org/wiki/Key:toll) tag.
+
+Possible values:
+
+- `0`
+- `1`
+
+
+### expressway
+
+Whether this is an expressway, based on the [`expressway`](http://wiki.openstreetmap.org/wiki/Key:expressway) tag.
+
+Possible values:
+
+- `1`
 
 
 ### layer

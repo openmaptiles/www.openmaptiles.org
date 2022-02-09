@@ -4,7 +4,7 @@ category: layer
 title: poi
 etl_graph: media/etl_poi.png
 mapping_graph: media/mapping_poi.png
-sql_query: SELECT osm_id, geometry, name, name_en, name_de, NULLIF(tags->'name_int', '') AS "name_int", NULLIF(tags->'name:latin', '') AS "name:latin", NULLIF(tags->'name:nonlatin', '') AS "name:nonlatin", class, subclass, agg_stop, layer, level, indoor, rank FROM layer_poi(ST_SetSRID('BOX3D(-20037508.34 -20037508.34, 20037508.34 20037508.34)'::box3d, 3857 ), 14, 1)
+sql_query: SELECT osm_id, geometry, name, name_en, name_de, NULLIF(tags->'name_int', '') AS "name_int", NULLIF(tags->'name:latin', '') AS "name:latin", NULLIF(tags->'name:nonlatin', '') AS "name:nonlatin", class, subclass, agg_stop, layer, level, indoor, rank FROM layer_poi(ST_SetSRID('BOX3D(-20037508.34 -20037508.34, 20037508.34 20037508.34)'::box3d, 3857), 14, 1)
 ---
 [Points of interests](http://wiki.openstreetmap.org/wiki/Points_of_interest) containing
 a of a variety of OpenStreetMap tags. Mostly contains amenities, sport, shop and tourist POIs.
@@ -84,7 +84,8 @@ Original value of either the
 [`tourism`](http://wiki.openstreetmap.org/wiki/Key:tourism),
 [`aerialway`](http://wiki.openstreetmap.org/wiki/Key:aerialway),
 [`building`](http://wiki.openstreetmap.org/wiki/Key:building),
-[`highway`](http://wiki.openstreetmap.org/wiki/Key:highway)
+[`highway`](http://wiki.openstreetmap.org/wiki/Key:highway),
+[`office`](https://wiki.openstreetmap.org/wiki/Key:office)
 or [`waterway`](http://wiki.openstreetmap.org/wiki/Key:waterway)
 tag.  Use this to do more precise styling.
 

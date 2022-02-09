@@ -4,7 +4,7 @@ category: layer
 title: transportation_name
 etl_graph: media/etl_transportation_name.png
 mapping_graph: media/mapping_transportation_name.png
-sql_query: SELECT geometry, name, name_en, name_de, NULLIF(tags->'name_int', '') AS "name_int", NULLIF(tags->'name:latin', '') AS "name:latin", NULLIF(tags->'name:nonlatin', '') AS "name:nonlatin", ref, ref_length, network::text, class::text, subclass, brunnel, layer, level, indoor FROM layer_transportation_name(ST_SetSRID('BOX3D(-20037508.34 -20037508.34, 20037508.34 20037508.34)'::box3d, 3857 ), 14)
+sql_query: SELECT geometry, name, name_en, name_de, NULLIF(tags->'name_int', '') AS "name_int", NULLIF(tags->'name:latin', '') AS "name:latin", NULLIF(tags->'name:nonlatin', '') AS "name:nonlatin", ref, ref_length, network::text, class::text, subclass, brunnel, layer, level, indoor, route_1, route_2, route_3, route_4, route_5, route_6 FROM layer_transportation_name(ST_SetSRID('BOX3D(-20037508.34 -20037508.34, 20037508.34 20037508.34)'::box3d, 3857), 14)
 ---
 This is the layer for labelling the highways. Only highways that are named `name=*` and are long enough
 to place text upon appear. The OSM roads are stitched together if they contain the same name
@@ -79,13 +79,15 @@ Possible values:
 - `raceway_construction`
 - `rail`
 - `transit`
+- `motorway_junction`
 
 
 ### subclass
 
 Distinguish more specific classes of path:
 Subclass is value of the
-[`highway`](http://wiki.openstreetmap.org/wiki/Key:highway) (for paths).
+[`highway`](http://wiki.openstreetmap.org/wiki/Key:highway) (for paths),
+and "junction" for [`motorway junctions`](http://wiki.openstreetmap.org/wiki/Tag:highway=motorway_junction).
 
 Possible values:
 
@@ -97,6 +99,7 @@ Possible values:
 - `bridleway`
 - `corridor`
 - `platform`
+- `junction`
 
 
 ### brunnel
@@ -129,6 +132,30 @@ Possible values:
 
 - `1`
 
+
+### route_1
+
+1st route concurrency.
+
+### route_2
+
+2nd route concurrency.
+
+### route_3
+
+3rd route concurrency.
+
+### route_4
+
+4th route concurrency.
+
+### route_5
+
+5th route concurrency.
+
+### route_6
+
+6th route concurrency.
 
 
 
