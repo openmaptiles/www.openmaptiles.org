@@ -4,7 +4,7 @@ category: layer
 title: boundary
 etl_graph: media/etl_boundary.png
 mapping_graph: media/mapping_boundary.png
-sql_query: SELECT geometry, admin_level, adm0_l, adm0_r, disputed, disputed_name, claimed_by, maritime FROM layer_boundary(ST_SetSRID('BOX3D(-20037508.34 -20037508.34, 20037508.34 20037508.34)'::box3d, 3857 ), 14)
+sql_query: SELECT geometry, admin_level, adm0_l, adm0_r, disputed, disputed_name, claimed_by, maritime FROM layer_boundary(ST_SetSRID('BOX3D(-20037508.34 -20037508.34, 20037508.34 20037508.34)'::box3d, 3857), 14)
 ---
 Contains administrative boundaries as linestrings.
 Until z4 [Natural Earth data](http://www.naturalearthdata.com/downloads/) is used after which
