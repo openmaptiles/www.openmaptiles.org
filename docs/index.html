@@ -74,7 +74,7 @@ redirect_from:
         <div class="tabs-tab" id="tab-2">
           <h2>Docker with TileServer GL</h2>
           If you need Docker microservice and advanced configuration, you can use the rendering core of our server directly. To install a tileserver serving both vector and raster tiles, we recommend using the official Docker image <b>tileserver-gl</b>. By launching the Docker with the command below, you mount the active directory with the previously downloaded MBTiles file with vector tiles and run the tile server at a local port 8080.
-          <pre class="highlight"><code>docker run -it -v $(pwd):/data -p 8080:80 klokantech/tileserver-gl</code></pre>
+          <pre class="highlight"><code>docker run -it -v $(pwd):/data -p 8080:80 maptiler/tileserver-gl</code></pre>
           <p>
             Read the <a href="/docs/host/tileserver-gl">Tileserver GL</a> tutorial for more in-depth information.
           </p>
