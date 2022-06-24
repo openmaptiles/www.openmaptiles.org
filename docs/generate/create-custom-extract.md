@@ -2,18 +2,15 @@
 layout: docs
 category: generate
 order: 4
-title: Create custom Extract
-titlehtml: Create custom Extract
-titlesidebar: Create custom Extract
-description: Create custom Extract of an Area of your Choice
-keywords: create, custom, extract
+title: Create custom map extract
+description: Create custom map extract of an area of your choice
 ---
 
 If you need an extract which is not included on the [downloads page](http://openmaptiles.org/downloads), you need to download the planet file and create your own extract.
 
 ## Preparation
 
-1. [Download the planet file](http://openmaptiles.org/downloads)
+1. [Download map tiles of the entire world](https://data.maptiler.com/downloads/planet/).
 2. Install [tilelive](https://github.com/mapbox/tilelive) and [MBTiles support](https://github.com/mapbox/node-mbtiles).
 
 ```bash

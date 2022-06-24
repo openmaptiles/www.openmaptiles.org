@@ -2,8 +2,7 @@
 layout: docs
 category: website
 title: OpenLayers
-description: OpenLayers
-keywords: Openlayers
+description: Display maps on a web using the OpenLayers JavaScript library.
 order: 2
 ---
 

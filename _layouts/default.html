@@ -6,9 +6,8 @@
 
     <title>{% if page.titlehtml %}{{ page.titlehtml }}{% else %}{% if page.title %}{% if page.titlelocalized %}{{ page.titlelocalized }} / {% endif %}{{ page.title }} – {% endif %}{{ site.name }}{% endif %}</title>
 
-    <meta name="author" content="Klokan Technologies GmbH" />
+    <meta name="author" content="MapTiler AG" />
     <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}Vector tiles from OpenStreetMap and OpenData to create world maps for web and mobile.{% endif %}" />
-    <meta name="keywords" content="{% if page.keywords %}{{ page.keywords }}, {% else %}maps, basemaps, web, mobile, {% endif %}openmaptiles, vector tiles, openstreetmap" />
     <meta name="theme-color" content="#95BF73">
     <meta name="robots" content="index, follow">
 
@@ -73,12 +72,9 @@
         </div>
         <div class="col8 text-right">
 
-          <p class="small">OpenMapTiles.org is an open-source project from
-            <a target="_blank" href="https://www.maptiler.com/">MapTiler team</a>
-            and <a href="https://github.com/openmaptiles">OSM community</a><br>
+          <p class="small">OpenMapTiles.org is an open-source project from <a href="https://github.com/openmaptiles">OMT community</a> and MapTiler who provides <a href="https://www.maptiler.com/cloud/">Maps API</a>.<br>
             Share this page on&nbsp;
             <span class="social">
-              <a href="https://plus.google.com/share?url=https://openmaptiles.org{{ page.url }}" onclick="popup(this.href, 400, 520);return false;" target="_blank">G</a>
               <a href="https://twitter.com/home?status=https://openmaptiles.org{{ page.url }}" onclick="popup(this.href, 450, 257);return false;" target="_blank">T</a>
               <a href="https://www.facebook.com/sharer/sharer.php?u=https://openmaptiles.org{{ page.url }}" onclick="popup(this.href, 645, 353);return false;" target="_blank">F</a>
             </span>

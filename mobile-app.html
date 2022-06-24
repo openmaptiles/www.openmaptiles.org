@@ -3,7 +3,6 @@ layout: page
 title: OpenMapTiles Mobile App Source Code
 titlehtml: OpenMapTiles Mobile App Source Code
 description: Source code of mobile app for Android and iOS that is able to display OpenStreetMap vector tiles saved in MBTiles format.
-keywords: android, ios, maps, mobile, offline, offline maps, source code, skeleton, openamptiles, vector tiles
 ---
 
 <div class="container">
@@ -24,16 +23,16 @@ keywords: android, ios, maps, mobile, offline, offline maps, source code, skelet
       a form of access to a private repository on GitHub (own account needed). It
       is not possible to share the code itself or its parts to third parties.</p>
     <p>The source code of the mapping component is based on
-      <a href="https://github.com/maplibre/maplibre-gl-native">MapLibre</a> - the open-source fork of Mapbox SDKs.
-      The app itself is written in the native platform programming language (Java on Android, Swift on iOS).</p>
+      <a href="https://maplibre.org">MapLibre</a> - the open-source fork of Mapbox SDKs.
+      The app itself is written in the native platform programming language (Java on Android, Swift on iOS). For more information, read the <a href="https://docs.maptiler.com/maplibre-gl-native-android/">MapLibre GL Native for Android Documentation</a> and <a href="https://docs.maptiler.com/maplibre-gl-native-ios/">MapLibre GL Native for iOS Documentation</a>.</p>
     <p>We have contributed to the MapLibre SDKs (C++) and added code that allows to load the map
       tiles from local MBTiles files that are either bundled with the app or
       downloaded by the user. The map assets (styles, fonts, icons) can be distributed
       together with the app or loaded online.</p>
     <p>The map tiles can come from a server you specify without dependency on
       any single hosting provider. We recommend using the app with
-      <a href="https://www.maptiler.com/cloud/">MapTiler Cloud</a> or your own
-      <a href="https://www.maptiler.com/server/">MapTiler Server</a> installation.
+      <a href="https://www.maptiler.com/cloud/">maps API for developers</a> or your own
+      <a href="https://www.maptiler.com/server/">map server on-premises</a> installation.
       There is no restriction or monthly payment depending on the number of users of the mobile app.</p>
     <p>Support and customization of this application are not part of this package.</p>
     <p>The source code contains workflows for Github Actions which will save your time

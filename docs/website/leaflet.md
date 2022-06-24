@@ -2,8 +2,7 @@
 layout: docs
 category: website
 title: Leaflet
-description: Leaflet
-keywords: Leaflet VectorGrid
+description: Display maps on a web using the Leaflet JavaScript library.
 order: 4
 ---
 

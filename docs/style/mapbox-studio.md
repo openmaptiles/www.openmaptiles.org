@@ -2,11 +2,8 @@
 layout: docs
 category: style
 order: 2
-title: Upload Style to Mapbox Studio
-titlehtml: Upload Style to Mapbox Studio
-titlesidebar: Upload Style to Mapbox Studio
-description: Create a Style with Mapbox Studio
-keywords: create, style, Mapbox Studio
+title: Upload style to Mapbox Studio
+description: Create a style with Mapbox Studio.
 ---
 
 MapBox Studio can be used for styling your tiles or as a OpenMapTiles tile hosting.

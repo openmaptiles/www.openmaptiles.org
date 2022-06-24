@@ -2,8 +2,7 @@
 layout: docs
 category: mobile
 title: Create a mobile app
-description: Create a mobile app
-keywords: Mobile, apps
+description: Create a native mobile app for Android and iOS using the MapLibre SDK.
 ---
 
 ## Overview

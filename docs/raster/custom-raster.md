@@ -1,8 +1,8 @@
 ---
 layout: docs
 category: raster
-title: Custom Raster Layer with OpenMapTiles
-description: MapTiler, TileServer GL
+title: Custom Raster Layer
+description: Create custom raster layer and combine it with any existing raster map.
 order: 2
 ---
 

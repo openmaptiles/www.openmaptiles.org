@@ -2,11 +2,8 @@
 layout: docs
 category: style
 order: 4
-title: Mapbox GL
-titlehtml: Mapbox GL Style Specification
-titlesidebar: Mapbox GL Style Specification
-description: Mapbox GL Style Specification
-keywords: Openlayers
+title: Style map with Mapbox GL
+description: Style vector tiles map in browser using the Mapbox GL.
 ---
 
 ## Styles

@@ -2,11 +2,8 @@
 layout: docs
 category: generate
 order: 3
-title: Generate your own OpenMapTiles
-titlehtml: Generate your own OpenMapTiles
-titlesidebar: Generate your own OpenMapTiles
-description: Generate your own OpenMapTiles
-keywords: Generate your own OpenMapTiles
+title: Generate own map
+description: Generate your own map using open-source tools
 redirect_from: /docs/generate/generate-vector-tiles/
 ---
 

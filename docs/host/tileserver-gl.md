@@ -3,8 +3,8 @@ layout: docs
 category:
  - host
  - raster
-title: Serve Raster and Vector Tiles with Tileserver GL
-description: TileServer GL
+title: Serve maps with TileServer GL
+description: Serve raster and vector tiles with open-source TileServer GL
 order: 2
 ---
 

@@ -2,11 +2,8 @@
 layout: docs
 category: generate
 order: 2
-title: Custom Vector Tiles from PostGIS
-titlehtml: Custom Vector Tiles from PostGIS
-titlesidebar: Custom Vector Tiles from PostGIS
+title: Custom vector tiles from PostGIS
 description: Custom Vector Tiles from PostGIS
-keywords: custom, vector, data, postgis, postgresql, openmaptiles
 ---
 
 You can combine OpenMapTiles with your custom vector data saved in **PostGIS** database (there is the separate article for [data stored in **ShapeFile or GeoJSON**](/docs/generate/custom-vector-from-shapefile-geojson/)). The easiest way is to convert your data into vector tiles and then [combine it with standard OpenMapTiles source in a map style](https://openmaptiles.org/docs/raster/custom-raster/#prepare-map-style). The big advantage of this approach is that you don't need to generate the whole OpenMapTiles schema which is quite time-consuming.

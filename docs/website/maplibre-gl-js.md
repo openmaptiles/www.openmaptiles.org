@@ -2,8 +2,9 @@
 layout: docs
 category: website
 title: MapLibre GL JS
-description: MapLibre GL JS
+description: Display maps on a web using the modern MapLibre GL JavaScript library.
 order: 1
+redirect_from: /docs/website/mapbox-gl-js/
 ---
 
 [MapLibre GL JS](https://www.maplibre.org/) is a community led fork derived from mapbox-gl-js prior to their switch to a non-OSS license. It's a web mapping library based on WebGL.

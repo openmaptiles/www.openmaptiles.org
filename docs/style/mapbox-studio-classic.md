@@ -3,10 +3,7 @@ layout: docs
 category: style
 order: 3
 title: CartoCSS style with Mapbox Studio Classic
-titlehtml: CartoCSS style with Mapbox Studio Classic
-titlesidebar: CartoCSS with Mapbox Studio Classic
 description: Design a CartoCSS Style with Mapbox Studio Classic
-keywords: Mapbox Studio Classic
 ---
 
 Another way of designing a map style is to use [Mapbox Studio Classic](https://www.mapbox.com/help/define-mapbox-studio-classic/) desktop application in combination with OpenMapTiles to create Tilemill2 tile styles for Mapnik renderer. Even though this workflow is still functional, it is recommended to switch to the [MapBox Studio](/docs/style/mapbox-studio/).

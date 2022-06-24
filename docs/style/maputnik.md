@@ -2,11 +2,8 @@
 layout: docs
 category: style
 order: 1
-title: Design a Style with Maputnik
-titlehtml: Design a Style with Maputnik
-titlesidebar: Design a Style with Maputnik
-description: Edit Style with Mapbox Studio
-keywords: create, style
+title: Design a style with Maputnik
+description: Edit map style with open-source Maputnik map design tool.
 ---
 
 [Maputnik](https://github.com/maputnik/editor) is a free and open source visual editor for the [Mapbox GL style specification](https://www.mapbox.com/mapbox-gl-style-spec/). You can either use the online version of Maputnik at [https://maputnik.github.io/editor](https://maputnik.github.io/editor) or [download the editor](https://github.com/maputnik/editor/releases) to use it locally.

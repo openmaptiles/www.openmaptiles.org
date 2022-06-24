@@ -1,9 +1,8 @@
 ---
 layout: docs
 category: host
-title: TileServer PHP
-description: TileServer-php
-keywords: TileServer-php
+title: Serve maps with TileServer PHP
+description: Serve map tiles with open-source TileServer PHP
 order: 3
 ---
 
