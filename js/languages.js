@@ -5,7 +5,7 @@ var positionAfterLoad = location.hash.length < 3;
 
 var map;
 if (mapboxgl.supported()) {
-  mapboxgl.setRTLTextPlugin('https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-rtl-text/v0.1.1/mapbox-gl-rtl-text.js');
+  mapboxgl.setRTLTextPlugin('https://cdn.maptiler.com/mapbox-gl-js/plugins/mapbox-gl-rtl-text/v0.2.3/mapbox-gl-rtl-text.js');
   map = new mapboxgl.Map({
     container: 'map',
     style: "{{ site.maps.domain }}/maps/bright/style.json?key={{ site.maps.key }}",
