@@ -43,6 +43,8 @@ Possible values:
 - `track`
 - `raceway`
 - `busway`
+- `bus_guideway`
+- `ferry`
 - `motorway_construction`
 - `trunk_construction`
 - `primary_construction`
@@ -81,6 +83,7 @@ Possible values:
 - `bridleway`
 - `corridor`
 - `platform`
+- `ferry (DEPRECATED - use class)`
 
 
 ### network

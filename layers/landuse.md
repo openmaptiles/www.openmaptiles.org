@@ -49,6 +49,7 @@ Possible values:
 - `quarter`
 - `neighbourhood`
 - `dam`
+- `quarry`
 
 
 
