@@ -44,6 +44,7 @@ Possible values:
 - `bog`
 - `dune`
 - `scrub`
+- `shrubbery`
 - `farm`
 - `farmland`
 - `fell`

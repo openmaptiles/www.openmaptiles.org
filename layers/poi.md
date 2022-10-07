@@ -65,6 +65,7 @@ Possible values:
 - `clothing_store`
 - `swimming`
 - `castle`
+- `atm`
 
 
 ### subclass

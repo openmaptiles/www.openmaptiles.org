@@ -7,7 +7,8 @@ mapping_graph: media/mapping_place.png
 sql_query: SELECT osm_id, geometry, name, name_en, name_de, NULLIF(tags->'name_int', '') AS "name_int", NULLIF(tags->'name:latin', '') AS "name:latin", NULLIF(tags->'name:nonlatin', '') AS "name:nonlatin", class, rank, capital, iso_a2 FROM layer_place(ST_SetSRID('BOX3D(-20037508.34 -20037508.34, 20037508.34 20037508.34)'::box3d, 3857), 14, 1)
 ---
 The place layer consists out of [countries](http://wiki.openstreetmap.org/wiki/Tag:place%3Dcountry),
-[states](http://wiki.openstreetmap.org/wiki/Tag:place%3Dstate) and [cities](http://wiki.openstreetmap.org/wiki/Key:place).
+[states](http://wiki.openstreetmap.org/wiki/Tag:place%3Dstate), [cities](http://wiki.openstreetmap.org/wiki/Key:place)
+and [islands](https://wiki.openstreetmap.org/wiki/Tag:place%3Disland).
 Apart from the roads this is also one of the more important layers to create a beautiful map.
 We suggest you use different font styles and sizes to create a text hierarchy.
 
@@ -34,14 +35,17 @@ of the boundary the place is a capital of.
 Possible values:
 
 - `2`
+- `3`
 - `4`
+- `5`
+- `6`
 
 
 ### class
 
 Original value of the
 [`place`](http://wiki.openstreetmap.org/wiki/Key:place) tag.
-Distinguish between continents, countries, states and
+Distinguish between continents, countries, states, islands and
 places like settlements or smaller entities.
 Use **class** to separately style the different places and build
 a text hierarchy according to their importance.
@@ -60,6 +64,7 @@ Possible values:
 - `quarter`
 - `neighbourhood`
 - `isolated_dwelling`
+- `island`
 
 
 ### iso_a2
@@ -72,7 +77,7 @@ Original value of the
 
 Countries, states and the most important cities all have a
 **rank** to boost their importance on the map.
-The **rank** field for counries and states ranges from
+The **rank** field for countries and states ranges from
 `1` to `6` while the **rank** field for cities ranges from
 `1` to `10` for the most important cities
 and continues from `10` serially based on the
