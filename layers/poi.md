@@ -66,6 +66,7 @@ Possible values:
 - `swimming`
 - `castle`
 - `atm`
+- - `bench`
 
 
 ### subclass
