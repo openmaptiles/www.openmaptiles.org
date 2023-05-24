@@ -132,7 +132,7 @@ That is a very basic styling for the data. Check [VectorGrid](https://github.com
 Once your style is ready, create an instance of `L.VectorGrid.Protobuf` like this:
 
 ```js
-var openmaptilesUrl = "https://api.maptiler.com/tiles/v3/{z}/{x}/{y}.pbf?key={key}";
+var openmaptilesUrl = "https://api.maptiler.com/tiles/v3-openmaptiles/{z}/{x}/{y}.pbf?key={key}";
 
 var openMapTilesLayer = L.vectorGrid.protobuf(openMapTilesUrl, {
   vectorTileLayerStyles: vectorStyles,

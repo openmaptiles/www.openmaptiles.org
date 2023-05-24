@@ -1,7 +1,7 @@
 var maps = {};
 var style = 'https://api.maptiler.com/maps/basic/style.json?key=' + api;
 var xyz = 'https://api.maptiler.com/maps/basic/{z}/{x}/{y}.png?key=' + api;
-var xyzpbf = 'https://api.maptiler.com/tiles/v3/%7Bz%7D/%7Bx%7D/%7By%7D.pbf?key=' + api;
+var xyzpbf = 'https://api.maptiler.com/tiles/v3-openmaptiles/%7Bz%7D/%7Bx%7D/%7By%7D.pbf?key=' + api;
 
 var mlgljsMap = new maplibregl.Map({
   attributionControl: false,

@@ -51,7 +51,7 @@ Once you have the files in place for your web server to serve, edit style-cdn.js
   "sources": {
     "openmaptiles": {
       "type": "vector",
-      "url": "https://api.maptiler.com/tiles/v3/tiles.json?key={key}"
+      "url": "https://api.maptiler.com/tiles/v3-openmaptiles/tiles.json?key={key}"
     }
   },
 ```
