@@ -15,7 +15,7 @@ NOTE: If you need raster tiles, it is highly recommended to use the [TileServerG
 
 Go to [Vector tile hosting](https://maptiler.com/cloud/) and get a free key. Then download TileJSON from URL
 ```
-https://api.maptiler.com/tiles/v3/tiles.json?key={key}
+https://api.maptiler.com/tiles/v3-openmaptiles/tiles.json?key={key}
 ```
 and save it as a file with `.json` extension (the extension is necessary for Mapbox Studio Classic). Upload the JSON to the web, e.g. using [Gist](https://gist.github.com/). Finally change the source of your TM2 style to URL of your TileJSON and save the style.
 
