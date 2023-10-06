@@ -3,7 +3,7 @@ layout: docs
 category: website
 title: MapLibre GL JS
 description: Display maps on a web using the modern MapLibre GL JavaScript library.
-order: 1
+order: 2
 redirect_from: /docs/website/mapbox-gl-js/
 ---
 
@@ -15,7 +15,7 @@ Using MapLibre GL JS for serving OpenMapTiles tileset is the most common use cas
 
 ### Reference the Style
 
-Create an HTML page and include the MapLibre GL JS viewer. You need to point the `style` to an HTTP endpoint of your [Mapbox GL style specification JSON](/docs/style/mapbox-gl-style-spec).
+Create an HTML page and include the MapLibre GL JS viewer. You need to point the `style` to an HTTP endpoint of your [GL style specification JSON](/docs/style/mapbox-gl-style-spec).
 
 ```html
 <!DOCTYPE html>
@@ -24,8 +24,8 @@ Create an HTML page and include the MapLibre GL JS viewer. You need to point the
     <meta charset='utf-8' />
     <title>OpenMapTiles OSM Bright style</title>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-    <script src="https://unpkg.com/maplibre-gl@1.14.0-rc.1/dist/maplibre-gl.js"></script>
-    <link href="https://unpkg.com/maplibre-gl@1.14.0-rc.1/dist/maplibre-gl.css" rel="stylesheet" />
+    <script src="https://unpkg.com/maplibre-gl/dist/maplibre-gl.js"></script>
+    <link href="https://unpkg.com/maplibre-gl/dist/maplibre-gl.css" rel="stylesheet" />
     <style>
         body { margin:0; padding:0; }
         #map { position:absolute; top:0; bottom:0; width:100%; }
@@ -36,7 +36,7 @@ Create an HTML page and include the MapLibre GL JS viewer. You need to point the
     <script>
         var map = new maplibregl.Map({
             container: 'map',
-            style: '{{ site.maps.domain }}/maps/bright/style.json?key=<key>',
+            style: '{{ site.maps.domain }}/maps/bright/style.json?key=insert_your_key_here',
             center: [8.5456, 47.3739],
             zoom: 11
         });
@@ -60,4 +60,4 @@ All [OpenMapTiles styles](/styles/) can be referenced directly in a viewer.
 
 ### Fonts and Sprites
 
-MapLibre GL JS requires fonts being packaged as PBFs and symbols packaged as sprites. Check the [Mapbox GL style specification documentation](/docs/style/mapbox-gl-style-spec) for OpenMapTiles to create your own fonts and sprites packages.
+MapLibre GL JS requires fonts being packaged as PBFs and symbols packaged as sprites. Check the [GL style specification documentation](/docs/style/mapbox-gl-style-spec) for OpenMapTiles to create your own fonts and sprites packages.

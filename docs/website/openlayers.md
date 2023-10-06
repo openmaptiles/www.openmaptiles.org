@@ -3,7 +3,7 @@ layout: docs
 category: website
 title: OpenLayers
 description: Display maps on a web using the OpenLayers JavaScript library.
-order: 2
+order: 4
 ---
 
 There are two ways how to display OpenMapTiles with [OpenLayers](http://openlayers.org/) library: using raster or vector tiles.
@@ -33,7 +33,7 @@ Create an HTML page and include OpenLayers with the standalone build of [ol-mapb
 <head>
   <title>Klokantech Basic GL Style using ol-mapbox-style preview</title>
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v5.3.0/css/ol.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@v7.2.2/ol.css">
   <style>
     html, body {
       height: 100%;
@@ -48,10 +48,10 @@ Create an HTML page and include OpenLayers with the standalone build of [ol-mapb
 </head>
 <body>
   <div id="map"></div>
-  <script>var apiKey = '{{ site.maps.key }}'</script>
+  <script>var apiKey = 'insert_your_key_here'</script>
   <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=fetch,Promise"></script>
-  <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v5.3.0/build/ol.js"></script>
-  <script src="https://unpkg.com/ol-mapbox-style@3.6.2/dist/olms.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/ol@v7.2.2/dist/ol.js"></script>
+  <script src="https://unpkg.com/ol-mapbox-style@9.4.0/dist/olms.js"></script>
   <script src="ol.js"></script>
 </body>
 ```
@@ -63,10 +63,7 @@ The code below uses [ol-mapbox-style](https://npmjs.com/package/ol-mapbox-style)
 In the following code, you have to replace “insert_your_key_here” with a key from hosting. You can get a free key at [www.maptiler.com/cloud/](https://www.maptiler.com/cloud/).
 
 ```javascript
-var apiKey = 'insert_your_key_here';
-
-olms('map', '{{ site.maps.domain }}/maps/basic/style.json?key=' + apiKey).then(function(map) {
+olms.apply('map', '{{ site.maps.domain }}/maps/basic/style.json?key=' + apiKey).then(function(map) {
   // do anything with the passed `ol.Map` instance here.
 });
-
 ```
