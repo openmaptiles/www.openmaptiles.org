@@ -67,3 +67,7 @@ olms.apply('map', '{{ site.maps.domain }}/maps/basic/style.json?key=' + apiKey).
   // do anything with the passed `ol.Map` instance here.
 });
 ```
+
+### More examples
+
+Take a look at the compilation of [OpenLayers examples](https://docs.maptiler.com/openlayers/examples/) to explore the potential of incorporating OpenMapTiles maps into your OpenLayers projects. Discover techniques for displaying data from GeoJSON on the map, generating a Choropleth map, showcasing a marker, and much more. Check out these examples to unlock the full capabilities of OpenLayers regarding map visualization and data representation.
