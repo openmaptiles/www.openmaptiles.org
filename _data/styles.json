@@ -1,7 +1,7 @@
 [
   {
     "title": "OSM OpenMapTiles",
-    "description": "OSM OpenMapTiles is a rich and familiar map based on the OpenStreetMap default style rendered by Mapnik. The style showcases the power of OpenMapTiles by displaying the majority of its features.",
+    "description": "OSM OpenMapTiles is a rich and familiar map based on the default OpenStreetMap Carto style rendered by Mapnik. The style showcases the power of OpenMapTiles by displaying all of its features.",
     "url-github": "https://github.com/openmaptiles/openmaptiles/tree/master/style",
     "url-cloud":"https://www.maptiler.com/maps/#style=openstreetmap&mode=2d&position=1/0/0",
     "img": "openmaptiles.png",
