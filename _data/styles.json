@@ -5,7 +5,7 @@
     "url-github": "https://github.com/openmaptiles/openmaptiles/tree/master/style",
     "url-cloud":"https://www.maptiler.com/maps/#style=openstreetmap&mode=2d&position=1/0/0",
     "img": "openmaptiles.png",
-    "id": "openmaptiles"
+    "id": "osm-openmaptiles"
   },{    
     "title": "MapTiler Basic",
     "description": "MapTiler Basic is basemap which tries to stay in the background and only give the most relevant information.",
