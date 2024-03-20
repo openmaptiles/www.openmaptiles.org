@@ -1,5 +1,12 @@
 [
   {
+    "title": "OSM OpenMapTiles",
+    "description": "OSM OpenMapTiles is a rich and familiar map based on the default OpenStreetMap Carto style rendered by Mapnik. The style showcases the power of OpenMapTiles by displaying all of its features.",
+    "url-github": "https://github.com/openmaptiles/openmaptiles/tree/master/style",
+    "url-cloud":"https://www.maptiler.com/maps/#style=openstreetmap&mode=2d&position=1/0/0",
+    "img": "openmaptiles.png",
+    "id": "openmaptiles"
+  },{    
     "title": "MapTiler Basic",
     "description": "MapTiler Basic is basemap which tries to stay in the background and only give the most relevant information.",
     "url-github": "https://github.com/openmaptiles/maptiler-basic-gl-style",
@@ -50,6 +57,7 @@
     "title": "Toner",
     "description": "Port of the Stamen Maps Toner style.",
     "url-github": "https://github.com/openmaptiles/toner-gl-style",
+    "url-cloud":"https://www.maptiler.com/maps/#style=toner&mode=2d&position=1/0/0",
     "img": "toner.jpg",
     "id": "toner"
   },{
