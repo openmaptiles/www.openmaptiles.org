@@ -6,11 +6,11 @@ title: Design a style with Maputnik
 description: Edit map style with open-source Maputnik map design tool.
 ---
 
-[Maputnik](https://github.com/maputnik/editor) is a free and open source visual editor for the [Mapbox GL style specification](https://www.mapbox.com/mapbox-gl-style-spec/). You can either use the online version of Maputnik at [https://maputnik.github.io/editor](https://maputnik.github.io/editor) or [download the editor](https://github.com/maputnik/editor/releases) to use it locally.
+[Maputnik](https://maputnik.github.io/) is a free and open source visual editor for the [GL style specification](https://docs.maptiler.com/gl-style-specification/). You can either use the online version of Maputnik at [https://maplibre.org/maputnik/](https://maplibre.org/maputnik/) or [download the editor](https://github.com/maplibre/maputnik/releases) to use it locally.
 
 ## Edit the Style online
 
-The easiest way to get started is choosing an existing style as a starting point. On [https://maputnik.github.io/editor](https://maputnik.github.io/editor) you can choose from many existing styles that work well with OpenMapTiles and directly edit them.
+The easiest way to get started is choosing an existing style as a starting point. On [https://maplibre.org/maputnik/](https://maplibre.org/maputnik/) you can choose from many existing styles that work well with OpenMapTiles and directly edit them.
 
 Once you are done editing the style you can download the modified style in JSON format.
 
@@ -18,7 +18,7 @@ Once you are done editing the style you can download the modified style in JSON 
 
 ## Edit the Style locally
 
-If you want to edit the style locally with the [Maputnik CLI](https://github.com/maputnik/editor/releases), clone one of the OpenMapTiles styles GitHub repository. On [Styles](http://openmaptiles.org/styles) page you can find a list of styles with a preview.
+If you want to edit the style locally with the [Maputnik CLI](https://github.com/maplibre/maputnik/releases), clone one of the OpenMapTiles styles GitHub repository. On [Styles](http://openmaptiles.org/styles) page you can find a list of styles with a preview.
 
 In our example, we will use the [Positron style](https://github.com/openmaptiles/positron-gl-style). Clone the repository containing the style JSON file using following command:
 
