@@ -17,8 +17,6 @@ Our OpenStreetMap vector tiles are encoded in the widely used and openly documen
 
 The [open-source MapLibre SDK for iOS](https://docs.maptiler.com/maplibre-gl-native-ios/tutorials/) and [SDK for Android](https://docs.maptiler.com/maplibre-gl-native-android/) provide the most natural way of displaying the tiles and styles in a mobile app natively.
 
-There are alternative open-source SDKs for native mobile apps, such as TangramES or Carto/Nutiteq SDK.
-
 ### Sample app for Android and iOS
 
 To demonstrate the capabilities of the SDK and show the performance of OpenMapTiles vector tiles made from OpenStreetMap, we have developed a [sample mobile app](/mobile) for both Android and iOS.
@@ -27,16 +25,12 @@ To demonstrate the capabilities of the SDK and show the performance of OpenMapTi
 
 These apps show the vector map tiles displayed from a custom tile server, so you can choose a tile hosting service or implement your own. Map tiles can also be bundled with the mobile app or users can download a tileset for a region of their choice.
 
-Displaying the tiles directly from MBTiles and running in an offline environment requires patching of MapLibre SDKs. 
-
 ## Packed web applications
 
 The fastest way to develop mobile apps with high performance and access to native features is by using [Flutter](https://docs.maptiler.com/flutter/).
 
-An alternative way to develop multiplatform mobile apps is to use the existing [web viewers](/viewers/) while using HTML, CSS, and JavaScript and packaging the web applications into native applications with a framework like [Reat Native](https://docs.maptiler.com/react-native/).
+An alternative way to develop multiplatform mobile apps is to use the existing [web viewers](/viewers/) while using HTML, CSS, and JavaScript and packaging the web applications into native applications with a framework like [React Native](https://docs.maptiler.com/react-native/).
 
 ## Desktop and embedded apps
 
-To develop native desktop applications and software for hardware appliances with embedded mapping systems powered by Linux and running completely offline with our vector tiles, one can use the open-source [QT SDK](https://github.com/mapbox/mapbox-gl-native/tree/master/platform/qt).
-
-Mapbox GL Native does not compile (yet) on Microsoft Windows. For fully multiplatform desktop apps with vector tile maps inside, the embedded web window (possibly with [CEF - Chromium Embedded Framework](https://bitbucket.org/chromiumembedded/cef) and enabled WebGL support) is still the best option.
+To develop cross-platform map applications with vector tiles, you can use MapLibre or select an alternative such as [CEF - Chromium Embedded Framework](https://bitbucket.org/chromiumembedded/cef) or [MapLibre Native QT](https://github.com/maplibre/maplibre-native-qt).
