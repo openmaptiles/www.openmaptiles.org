@@ -16,15 +16,15 @@ We suggest you use different font styles and sizes to create a text hierarchy.
 
 ### name
 
-The OSM [`name`](http://wiki.openstreetmap.org/wiki/Key:name) value of the POI.
+The OSM [`name`](http://wiki.openstreetmap.org/wiki/Key:name) value of the place. Language-specific values are in `name:xx`.
 
 ### name_en
 
-English name `name:en` if available, otherwise `name`.
+English name `name:en` if available, otherwise `name`. This is deprecated and will be removed in a future release in favor of `name:en`.
 
 ### name_de
 
-German name `name:de` if available, otherwise `name` or `name:en`.
+German name `name:de` if available, otherwise `name` or `name:en`. This is deprecated and will be removed in a future release in favor of `name:de`.
 
 ### capital
 
@@ -48,7 +48,9 @@ Original value of the
 Distinguish between continents, countries, states, islands and
 places like settlements or smaller entities.
 Use **class** to separately style the different places and build
-a text hierarchy according to their importance.
+a text hierarchy according to their importance. For places derived 
+from boundaries, the original value of the 
+[`boundary`](http://wiki.openstreetmap.org/wiki/Key:boundary) tag.
 
 Possible values:
 
@@ -60,11 +62,13 @@ Possible values:
 - `town`
 - `village`
 - `hamlet`
+- `borough`
 - `suburb`
 - `quarter`
 - `neighbourhood`
 - `isolated_dwelling`
 - `island`
+- `aboriginal_lands`
 
 
 ### iso_a2

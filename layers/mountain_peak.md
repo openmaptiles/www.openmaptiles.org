@@ -12,11 +12,11 @@ sql_query: SELECT osm_id, geometry, name, name_en, name_de, NULLIF(tags->'name_i
 
 ### name
 
-The OSM [`name`](http://wiki.openstreetmap.org/wiki/Key:name) value of the peak.
+The OSM [`name`](http://wiki.openstreetmap.org/wiki/Key:name) value of the peak. Language-specific values are in `name:xx`.
 
 ### name_en
 
-English name `name:en` if available, otherwise `name`.
+English name `name:en` if available, otherwise `name`. This is deprecated and will be removed in a future release in favor of `name:en`.
 
 ### name_de
 

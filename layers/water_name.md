@@ -14,23 +14,25 @@ which derives nice centerlines from OSM water bodies. Only the most important la
 
 ### name
 
-The OSM [`name`](http://wiki.openstreetmap.org/wiki/Key:name) value of the water body.
+The OSM [`name`](http://wiki.openstreetmap.org/wiki/Key:name) value of the water body. Language-specific values are in `name:xx`.
 
 ### name_en
 
-English name `name:en` if available, otherwise `name`.
+English name `name:en` if available, otherwise `name`. This is deprecated and will be removed in a future release in favor of `name:en`.
 
 ### name_de
 
-German name `name:de` if available, otherwise `name` or `name:en`.
+German name `name:de` if available, otherwise `name` or `name:en`. This is deprecated and will be removed in a future release in favor of `name:de`.
 
 ### class
 
-Distinguish between `lake`, `ocean` and `sea`.
+Distinguish between `lake`, `ocean`, `bay`, `strait`, and `sea`.
 
 Possible values:
 
 - `lake`
+- `bay`
+- `strait`
 - `sea`
 - `ocean`
 
