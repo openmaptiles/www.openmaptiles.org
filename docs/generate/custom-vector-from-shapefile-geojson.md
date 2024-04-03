@@ -27,7 +27,7 @@ It will convert your data into MBTiles for zoom levels 0 to 14. Tippecanoe enabl
 
 You can visually check the generated MBTiles file using [TileServer-GL](/docs/host/tileserver-gl/):
 ```bash
-docker run -it -v $(pwd):/data -p 8080:80 klokantech/tileserver-gl your_data.mbtiles
+docker run -it -v $(pwd):/data -p 8080:80 maptiler/tileserver-gl your_data.mbtiles
 ```
 
 Data preview with TileServer-GL:

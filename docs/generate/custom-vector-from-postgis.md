@@ -153,7 +153,7 @@ docker-compose -f docker-compose.yml -f ./data/docker-compose-config.yml  run --
 
 Your MBTiles file is now in `data/tiles.mbtiles`. You can preview it using [TileServer-GL](/docs/host/tileserver-gl/):
 ```bash
-docker run -it -v $(pwd):/data -p 8080:80 klokantech/tileserver-gl data/tiles.mbtiles
+docker run -it -v $(pwd):/data -p 8080:80 maptiler/tileserver-gl data/tiles.mbtiles
 ```
 <img src='/img/custom-vector-tileserver-gl2.png' alt='Data preview with TileServer-GL' />
 
