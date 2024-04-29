@@ -24,8 +24,13 @@ For smaller area then planet, NE lakes keep their Natural Earth IDs.
 ### class
 
 All water polygons from [OpenStreetMapData](http://osmdata.openstreetmap.de/) have the class `ocean`.
-Water bodies with the [`water=river`](http://wiki.openstreetmap.org/wiki/Tag:water=river) tag are classified as river.  Wet and dry docks
-tagged [`waterway=dock`](http://wiki.openstreetmap.org/wiki/Tag:waterway=dock) are classified as a `dock`. 
+The water-covered areas of flowing water bodies with the [`water=river`](http://wiki.openstreetmap.org/wiki/Tag:water=river), 
+[`water=canal`](http://wiki.openstreetmap.org/wiki/Tag:water=canal),
+[`water=stream`](http://wiki.openstreetmap.org/wiki/Tag:water=stream),
+[`water=ditch`](http://wiki.openstreetmap.org/wiki/Tag:water=ditch), or
+[`water=drain`](http://wiki.openstreetmap.org/wiki/Tag:water=drain) tags are classified as river.  Wet and dry docks
+tagged [`waterway=dock`](http://wiki.openstreetmap.org/wiki/Tag:waterway=dock) are classified as a `dock`.
+Various minor waterbodies are classified as a `pond`.
 Swimming pools tagged [`leisure=swimming_pool`](https://wiki.openstreetmap.org/wiki/Tag:leisure=swimming_pool) are classified as a `swimming_pool`
 All other water bodies are classified as `lake`.
 
@@ -33,6 +38,7 @@ Possible values:
 
 - `dock`
 - `river`
+- `pond`
 - `lake`
 - `ocean`
 - `swimming_pool`

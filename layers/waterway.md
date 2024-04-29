@@ -18,16 +18,16 @@ Waterways do not have a `subclass` field.
 
 ### name
 
-The OSM [`name`](http://wiki.openstreetmap.org/wiki/Key:name) value of the waterway.
+The OSM [`name`](http://wiki.openstreetmap.org/wiki/Key:name) value of the waterway. Language-specific values are in `name:xx`.
 The `name` field may be empty for NaturalEarth data or at lower zoom levels.
 
 ### name_en
 
-English name `name:en` if available, otherwise `name`.
+English name `name:en` if available, otherwise `name`. This is deprecated and will be removed in a future release in favor of `name:en`.
 
 ### name_de
 
-German name `name:de` if available, otherwise `name` or `name:en`.
+German name `name:de` if available, otherwise `name` or `name:en`. This is deprecated and will be removed in a future release in favor of `name:de`.
 
 ### class
 

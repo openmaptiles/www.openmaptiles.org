@@ -91,7 +91,8 @@ Possible values:
 The network type derived mainly from [`network`](http://wiki.openstreetmap.org/wiki/Key:network) tag of the road.
 See more info about [`us-*`](http://wiki.openstreetmap.org/wiki/Road_signs_in_the_United_States),
 [`ca-transcanada`](https://en.wikipedia.org/wiki/Trans-Canada_Highway),
-or [`gb-*`](http://wiki.openstreetmap.org/wiki/United_Kingdom_Tagging_Guidelines#UK_roads).
+[`gb-*`](http://wiki.openstreetmap.org/wiki/United_Kingdom_Tagging_Guidelines#UK_roads),
+or [`ie-*`](http://wiki.openstreetmap.org/wiki/Ireland/Roads).
 
 ### brunnel
 

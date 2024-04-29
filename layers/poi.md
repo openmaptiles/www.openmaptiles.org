@@ -13,15 +13,15 @@ a of a variety of OpenStreetMap tags. Mostly contains amenities, sport, shop and
 
 ### name
 
-The OSM [`name`](http://wiki.openstreetmap.org/wiki/Key:name) value of the POI.
+The OSM [`name`](http://wiki.openstreetmap.org/wiki/Key:name) value of the POI. Language-specific values are in `name:xx`.
 
 ### name_en
 
-English name `name:en` if available, otherwise `name`.
+English name `name:en` if available, otherwise `name`. This is deprecated and will be removed in a future release in favor of `name:en`.
 
 ### name_de
 
-German name `name:de` if available, otherwise `name` or `name:en`.
+German name `name:de` if available, otherwise `name` or `name:en`. This is deprecated and will be removed in a future release in favor of `name:de`.
 
 ### class
 
@@ -33,6 +33,7 @@ and `kindergarten`. Or use the class `shop` to style all shops.
 Possible values:
 
 - `shop`
+- `office`
 - `town_hall`
 - `golf`
 - `fast_food`
@@ -66,6 +67,7 @@ Possible values:
 - `swimming`
 - `castle`
 - `atm`
+- `fuel`
 
 
 ### subclass

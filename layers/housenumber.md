@@ -8,12 +8,13 @@ sql_query: SELECT geometry, housenumber FROM layer_housenumber(ST_SetSRID('BOX3D
 ---
 Everything in OpenStreetMap which contains a `addr:housenumber` tag useful for labelling housenumbers on a map.
 This adds significant size to *z14*. For buildings the centroid of the building is used as housenumber.
+Duplicates within a tile are dropped if they have the same street/block_number (records without name tag are prioritized for preservation).
 
 ## Fields
 
 ### housenumber
 
-Value of the [`addr:housenumber`](http://wiki.openstreetmap.org/wiki/Key:addr) tag.
+Value of the [`addr:housenumber`](http://wiki.openstreetmap.org/wiki/Key:addr) tag. If there are multiple values separated by semi-colons, the first and last value separated by a dash.
 
 
 
