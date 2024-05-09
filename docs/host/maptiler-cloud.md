@@ -7,7 +7,7 @@ order: 1
 ---
 ## MapTiler Cloud
 
-We are providing a **free reliable maps API** with maps based on **OpenMapTiles schema** with **OpenStreetMap data**. Whole planet is **updated weekly** with **vector** and **raster** tiles available for everyone. 
+We are providing a **free reliable maps API** with maps based on **OpenMapTiles schema** with **OpenStreetMap data**. The whole planet is **updated weekly** with **vector** and **raster** tiles available for everyone. 
 
 This is the quickest way how to start and play with maps ([MapTiler Customize tool](https://www.maptiler.com/cloud/customize/)). 
 
