@@ -42,7 +42,7 @@ mbtiles-tools copy ./data/tiles.mbtiles ./data/smaller_tiles.mbtiles \
 
 ## Create OSM.PBF Extract
 
-Creating extract from OSM.PBF, use the `osmconvert` tool included in [openmaptiles-tools](https://github.com/openmaptiles/openmaptiles-tools/) docker. It takes a bounding box and a OSM.PBF file as input and creates an extract clipped to the bounding box.
+Creating extract from OSM.PBF, use the `osmconvert` tool included in [openmaptiles-tools](https://github.com/openmaptiles/openmaptiles-tools/) docker. It takes a bounding box and an OSM.PBF file as input and creates an extract clipped to the bounding box.
 
 ```bash
 make bash
