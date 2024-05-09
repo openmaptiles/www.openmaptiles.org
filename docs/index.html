@@ -13,144 +13,49 @@ redirect_from:
 <div class="row">
   <div class="col8 padx-0">
     <h2>Get started</h2>
-    <div class="tabs" style="min-height: 420px;">
-      <ul>
-        <li class="tabs-btn active" id="btn-1">MapTiler Server</li>
-        <li class="tabs-btn" id="btn-2">Docker</li>
-        <li class="tabs-btn" id="btn-3">Node.js</li>
-        <li class="tabs-btn" id="btn-4">PHP</li>
-        <li class="tabs-btn" id="btn-5">API</li>
-      </ul>
+    <div class="col12 padb-4">
+      <article>
+        <p>The <a href="https://github.com/openmaptiles/openmaptiles">OpenMapTiles vector tile schema</a>
+is open source and licensed under <a href="https://github.com/openmaptiles/openmaptiles/blob/master/LICENSE.md">BSD + CC-BY</a>. You are free to use it to generate your own OpenMapTiles and use those vector tiles afterward. However, you are still obliged to follow original <a href="http://wiki.openstreetmap.org/wiki/Open_Database_License">ODbL license</a> and attribute OpenStreetMap data properly as well as <a href="https://github.com/openmaptiles/openmaptiles#license">attribute the OpenMapTiles project itself</a>. The correct attribution looks similar to this:</p>
 
-      <div class="tabs-content">
-        <div class="tabs-tab active" id="tab-1">
-          <h2>MapTiler Server</h2>
-          <p class="b">
-            The easiest way how to deploy world basemap powered by OpenStreetMap.
-          </p>
+        <p><a href="http://openmaptiles.org/">© OpenMapTiles</a> <a href="http://www.openstreetmap.org/copyright">© OpenStreetMap contributors</a></p>
 
-          <h3 class="padt-2">1. Download and install</h3>
-          <p>
-            Download an installer for your system:
-          </p>
+        <h3 id="requirements--recommendations">Requirements &amp; Recommendations</h3>
 
-          <p class="pady-2"><a class="btn" href="https://www.maptiler.com/server/download/">Server Download</a></p>
+        <p>To work on OpenMapTiles, we recommend:</p>
+        <ul>
+          <li>Linux on x86_64 CPU</li>
+          <li>&gt;15 GB of free disk space</li>
+          <li>&gt;3 GB RAM.</li>
+        </ul>
 
-            <p>On Window open installer and follow the installation wizard.</p>
+        <p>More details available in the <a href="https://github.com/openmaptiles/openmaptiles/blob/master/QUICKSTART.md#req">repo</a>.</p>
 
-            <p>On Linux Install with <code>sudo dpkg -i maptiler-server-x.x.x.deb</code> <br>or <code>sudo rpm -i maptiler-server-x.x.x.rpm</code></p>
+        <p>You also need to install Docker:</p>
 
-          <h3 class="padt-2">2. Start server</h3>
+        <ul>
+          <li><a href="https://docs.docker.com/engine/installation/">Docker</a>: minimal version 1.12.3+.</li>
+          <li><a href="https://docs.docker.com/compose/install/">Docker Compose</a>: minimal version 1.7.1+.</li>
+        </ul>
 
-          <p>
-            Windows: Just launch installed aplication<br>
-            Linux: Run directly with <code>maptiler-server</code> or as system service <code>maptiler-server-servicify</code>.
-          </p>
+        <p>Clone the <a href="https://github.com/openmaptiles/openmaptiles">OpenMapTiles repo</a>.</p>
 
-          <h3 class="padt-2">3. Add data and run administration</h3>
-          <p>
-            Put MBTiles into servers work directory and visit the web
-            administration at <b>http://localhost:3560/</b> in your browser.
-          </p>
-          <h4 class="padt-4">More articles</h4>
-          <p>
-            <a href="https://documentation.maptiler.com/hc/en-us/articles/4404723578897-How-to-run-MapTiler-Server-on-Linux">
-              How to run MapTiler Server on Linux
-            </a>
-          </p>
-          <p>
-            <a href="https://documentation.maptiler.com/hc/en-us/articles/360020806497-How-to-run-MapTiler-Server-on-Windows">
-              How to run MapTiler Server on Windows
-            </a>
-          </p>
-          <p>
-            <a href="https://documentation.maptiler.com/hc/en-us/articles/360020949778-How-to-run-MapTiler-Server-on-macOS">
-              How to run MapTiler Server on macOS
-            </a>
-          </p>
-        </div>
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/openmaptiles/openmaptiles.git
+ <span class="nb">cd</span> ./openmaptiles</code></pre></div></div>
 
-        <div class="tabs-tab" id="tab-2">
-          <h2>Docker with TileServer GL</h2>
-          If you need Docker microservice and advanced configuration, you can use the rendering core of our server directly. To install a tileserver serving both vector and raster tiles, we recommend using the official Docker image <b>tileserver-gl</b>. By launching the Docker with the command below, you mount the active directory with the previously downloaded MBTiles file with vector tiles and run the tile server at a local port 8080.
-          <pre class="highlight"><code>docker run -it -v $(pwd):/data -p 8080:80 maptiler/tileserver-gl</code></pre>
-          <p>
-            Read the <a href="/docs/host/tileserver-gl">Tileserver GL</a> tutorial for more in-depth information.
-          </p>
-        </div>
+        <h3 id="generate-the-vector-tiles">Generate the Vector Tiles</h3>
 
-        <div class="tabs-tab" id="tab-3">
-          <h2>Node.js - TileServer GL Light</h2>
-          <h3>1. Download Vector Tiles</h3>
-          Head over to the <b><a href="/downloads">downloads page</a></b> where you can get the vector tiles for your region or the whole planet.
-          <p>
-            <pre class="highlight"><code>wget https://.../zurich_switzerland.mbtiles</code></pre>
-          </p>
+        <p>Download the latest Docker images.</p>
 
-          <h3>2. Run a TileServer</h3>
-          <p>
-            To serve the tiles to your mobile or web client, you need to choose a tileserver for your platform and configure it to serve the previously downloaded vector tiles.
-          </p>
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker-compose pull</code></pre></div></div>
 
-          <p>
-            Using <a href="https://github.com/maptiler/tileserver-gl">tileserver-gl</a> you can immediately serve vector tiles including a web viewer and sample styles.<br/>
-            The light version <b>tileserver-gl-light</b> can be easily installed using npm.
-          </p>
-          <pre class="highlight"><code>npm install -g tileserver-gl-light</code></pre>
-          <p>
-            Now run <b>tileserver-gl-light</b> together with the previously downloaded vector tiles
-          </p>
-          <pre class="highlight"><code>tileserver-gl-light zurich_switzerland.mbtiles</code></pre>
-          <p>
-            Open in your web browser the local address <b>http://localhost:8080</b>.
-          </p>
-          <p>
-            Read the <a href="/docs/host/tileserver-gl">Tileserver GL</a> tutorial for more in-depth information.
-          </p>
+        <p>Now generate the vector tiles using the quickstart bash script.</p>
 
-          <p>
-            The full version of tileserver-gl has the capabilities to fall back to serve raster tiles for interoperability with other clients. The raster tiles are then rendered on demand. This makes it harder to install, so we recommend using it via Docker.
-          </p>
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./quickstart.sh</code></pre></div></div>
 
-          <h3>3. Choose a Style</h3>
-          <p>
-            Once you have your own vector tile server running, you can <a href="/styles">choose one of the many styles</a> supporting the <a href="/schema">OpenMapTiles schema</a>.
-          </p>
-          <p>
-            After you downloaded the style, point the endpoint URL to your tileserver and embedd it in a mobile app or web viewer. You can also <a href="/docs/style/maputnik">create your own styles using Maputnik</a>.
-          </p>
-        </div>
+        <p>By default, it will generate vector tileset of Albania for zoom levels 0 – 7 into <code class="language-plaintext highlighter-rouge">data</code> directory.</p>
 
-        <div class="tabs-tab" id="tab-4">
-          <h2>TileServer PHP</h2>
-
-          <h3>1. Download TileServer PHP</h3>
-          <p>Source code is available on TileServer's <a href="https://github.com/klokantech/tileserver-php">GitHub</a>. Download the latest code and
-          unpack it to directory on your LAMP/WAMP server.</p>
-
-          <h3 class="padt-1">2. Download Vector Tiles</h3>
-          <p>Go to the <a href="https://data.maptiler.com/downloads/">Downloads page</a> and download the vector tiles for your region or the
-          planet. You need to copy this file into a directory with TileServer-PHP.</p>
-
-          <h3 class="padt-1">3. Add static assets</h3>
-          <p>
-            Create your own <a href="/docs/website/mapbox-gl-js/">HTML viewer with MapBox GL JS</a> and link TileJSON
-            from TileServer with links to PBF tiles. For more details see <a href="/docs/host/tileserver-php/">TileServer PHP tutorial</a>.
-          </p>
-         </div>
-
-        <div class="tabs-tab" id="tab-5">
-          <h2>MapTiler Cloud</h2>
-          <p>
-            We are providing a free reliable maps API with maps based on OpenMapTiles data. This is the quickest way how to start and play with maps. Visit <a href="https://www.maptiler.com/cloud/">maptiler.com/cloud</a> for more information and start with a <b>free account</b>.</a>
-          </p>
-
-          <p class="padt-2"><a href="https://www.maptiler.com/cloud/" class="btn">Use maps from API for developers</a></p>
-        </div>
-      </div>
-
-      <p class="bg-gray-light pad-2">Lazy? Use our <a href="https://www.maptiler.com/cloud/">Maps API for developers with OpenMapTiles data</a>.</p>
-
+      </article>
     </div>
   </div>
 
