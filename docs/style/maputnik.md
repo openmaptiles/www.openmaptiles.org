@@ -1,7 +1,7 @@
 ---
 layout: docs
 category: style
-order: 1
+order: 2
 title: Design a style with Maputnik
 description: Edit map style with open-source Maputnik map design tool.
 ---
@@ -30,7 +30,7 @@ Now start Maputnik and tell the programm to watch the `style.json` file for chan
 
 To start with edit, run Maputnik and visit `http://localhost:8000` in your browser to access the editor.
 
-```
+```bash
 maputnik --watch --file style.json
 ```
 
