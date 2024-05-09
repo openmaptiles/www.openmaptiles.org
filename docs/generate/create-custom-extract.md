@@ -3,10 +3,10 @@ layout: docs
 category: generate
 order: 4
 title: Create custom map extract
-description: Create custom map extract of an area of your choice
+description: Create a custom map extract of an area of your choice
 ---
 
-If you need an extract which is not included on the [downloads page](http://openmaptiles.org/downloads), you need to download the planet file and create your own MBTiles extract. Or you need smaller area than it is available as OSM.PBF extract on e.g. [Geofabrik](https://geofabrik.de/) the extract could be done before importing into database
+If you need an extract that is not included on the [downloads page](http://openmaptiles.org/downloads), you need to download the planet file and create your own MBTiles extract. If you need a smaller area, then it is available as OSM.PBF extract, e.g., on [Geofabrik](https://geofabrik.de/). Extracting could be done before importing into a database.
 
 ## Preparation
 
