@@ -1,5 +1,15 @@
 [
   {
+    "id": "generate",
+    "title": "Generate Vector Tiles",
+    "desc": "Use the open process and tools to create the vector tiles yourself."
+  },
+  {
+    "id": "host",
+    "title": "Hosting Map Tiles",
+    "desc": "Tutorials how to set up different tileservers and hosting the vector tiles yourself."
+  },
+  {
     "id": "style",
     "title": "Style your Map",
     "desc": "Learn about styling the vector tiles with the GL style specification and how to reuse existing styles for OpenMapTiles."
@@ -8,16 +18,6 @@
     "id": "website",
     "title": "Display Map",
     "desc": "Display vector tiles in a web client using either MapTiler SDK JS, MapLibre GL, Leaflet, Tangram or OpenLayers."
-  },
-  {
-    "id": "host",
-    "title": "Hosting Map Tiles",
-    "desc": "Tutorials how to set up different tileservers and hosting the vector tiles yourself."
-  },
-  {
-    "id": "generate",
-    "title": "Generate Vector Tiles",
-    "desc": "Use the open process and tools to create the vector tiles yourself."
   },
   {
     "id": "mobile",
