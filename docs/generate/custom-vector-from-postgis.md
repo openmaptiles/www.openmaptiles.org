@@ -6,13 +6,13 @@ title: Custom vector tiles from PostGIS
 description: Custom Vector Tiles from PostGIS
 ---
 
-You can combine OpenMapTiles with your custom vector data saved in **PostGIS** database (there is the separate article for [data stored in **Shapefile or GeoJSON**](/docs/generate/custom-vector-from-shapefile-geojson/)). The easiest way is to convert your data into vector tiles and then [combine it with standard OpenMapTiles source in a map style](https://openmaptiles.org/docs/raster/custom-raster/#prepare-map-style). The big advantage of this approach is that you don't need to generate the whole OpenMapTiles schema which is quite time-consuming.
+You can combine OpenMapTiles with your custom vector data saved in **PostGIS** database (there is a separate article for [data stored in **Shapefile or GeoJSON**](/docs/generate/custom-vector-from-shapefile-geojson/)). The easiest way is to convert your data into vector tiles and then [combine it with a standard OpenMapTiles source in a map style](https://openmaptiles.org/docs/raster/custom-raster/#prepare-map-style). The big advantage of this approach is that you don't need to generate the whole OpenMapTiles schema, which is quite time-consuming.
 
-This approach is a bit more complicated to set up then in the case of [data stored in Shapefile or GeoJSON](/docs/generate/custom-vector-from-shapefile-geojson/). On the other hand, it gives you even bigger control over tiles generation and you can use SQL syntax a lot of people is familiar with.
+This approach is a bit more complicated to set up than in the case of [data stored in Shapefile or GeoJSON](/docs/generate/custom-vector-from-shapefile-geojson/). On the other hand, it gives you even bigger control over tiles generation and you can use SQL syntax a lot of people are familiar with.
 
 ## Before importing the data into PostGIS
 
-First, you need to install Docker and Docker Compose and to clone OpenMapTiles repository as [described here](/docs/generate/generate-openmaptiles/) (space and memory requirements are not so high in this case).
+First, you need to install Docker and Docker Compose and clone the OpenMapTiles repository as [described here](/docs/generate/generate-openmaptiles/) (space and memory requirements are not so high in this case).
 
 Run the database container:
 
@@ -28,7 +28,7 @@ make start-db
 
 ## Import the data into PostGIS
 
-Move your data into `data/` directory. Modify command where `"./data/name.shp"` replace with the name of the Shapefile and `"name"` is a name of the table in PostgreSQL
+Move your data into `data/` directory. Modify command where `"./data/name.shp"` replace with the name of the Shapefile and `"name"` is the name of the table in PostgreSQL
 
 ```bash
 docker-compose run --rm openmaptiles-tools sh -c \
@@ -46,13 +46,13 @@ docker-compose run --rm openmaptiles-tools sh -c \
     --config PG_USE_COPY YES'
 ```
 
-To check if the data was imported correctly you can run:
+To check if the data was imported correctly, you can run:
 
 ```bash
 make list-tables
 ```
 
-or connect into PostgreSQL container and check it from inside:
+or connect to the PostgreSQL container and check it from inside:
 
 ```bash
 make psql
@@ -64,7 +64,7 @@ Run `exit` to exit from a container.
 
 ## Configure OpenMapTiles
 
-The next step is to configure OpenMapTiles project to generate tiles from your data. Basically, you need to
+The next step is to configure the OpenMapTiles project to generate tiles from your data. Basically, you need to
 
 - create layer definition of your data
 - change `openmaptiles.yaml` so that it contains only your layer(s)
@@ -72,7 +72,7 @@ The next step is to configure OpenMapTiles project to generate tiles from your d
 
 ### Create custom layer definition
 
-The layer definition might be the most complicated step depending on how many logic you want to implement. The very simple example consists of two files:
+The layer definition might be the most complicated step, depending on how much logic you want to implement. The very simple example consists of two files:
 
 **layers/pubtran/pubtran.yaml:**
 
@@ -156,7 +156,7 @@ make
 make import-sql
 ```
 
-Finally generate your tiles:
+Finally, generate your tiles:
 
 ```bash
 make generate-tiles-pg
@@ -172,4 +172,4 @@ make start-tileserver
 
 ## Combine your vector tiles with OpenMapTiles
 
-After creating vector tiles, you can combine them with the standard OpenMapTiles layer in one map style. It can be done in the same way as in case of [raster tiles](/docs/raster/custom-raster/#prepare-map-style).
+After creating vector tiles, you can combine them with the standard OpenMapTiles layer in one map style. It can be done in the same way as in the case of [raster tiles](/docs/raster/custom-raster/#prepare-map-style).
