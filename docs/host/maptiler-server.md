@@ -2,7 +2,7 @@
 layout: docs
 category: host
 title: Serve maps with MapTiler Server
-description: Serve raster and vector tiles with open-source MapTiler Server
+description: Serve raster and vector tiles with an open-source MapTiler Server
 order: 2
 ---
 ## MapTiler Server
@@ -15,22 +15,22 @@ Download an installer for your system:
 
 <a class="btn" href="https://www.maptiler.com/server/download/">Server Download</a>
 
-On Window open installer and follow the installation wizard.
+On Windows, open the installer and follow the installation wizard.
 
-On Linux install with:
+On Linux, install with:
 
 - (DEB) `sudo dpkg -i maptiler-server-x.x.x.deb`
 - (RPM) `sudo rpm -i maptiler-server-x.x.x.rpm`
 
 ### 2. Start server
 
-Windows: Just launch installed aplication
+Windows: Launch the installed application
 
 Linux: Run directly with `maptiler-server` or as system service `maptiler-server-servicify`.
 
 ### 3. Add data and run administration
 
-Put MBTiles into servers work directory and visit the web administration at **`http://localhost:3560/admin`** in your browser.
+Put MBTiles into the server's work directory and visit the web administration at **`http://localhost:3560/admin`** in your browser.
 
 #### More articles
 
