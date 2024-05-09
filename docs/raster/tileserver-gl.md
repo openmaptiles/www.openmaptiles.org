@@ -34,7 +34,7 @@ You should mount the current directory containing the vector tiles to the `/data
 docker run -it -v $(pwd):/data -p 8080:80 maptiler/tileserver-gl
 ```
 
-or from OpenMapTiles repository
+or from the OpenMapTiles repository
 
 ```bash
 make start-tileserver
