@@ -19,9 +19,9 @@ The [open-source MapLibre SDK for iOS](https://docs.maptiler.com/maplibre-gl-nat
 
 ### Sample app for Android and iOS
 
-To demonstrate the capabilities of the SDK and show the performance of OpenMapTiles vector tiles made from OpenStreetMap, we have developed a [sample mobile app](/mobile) for both Android and iOS.
+To demonstrate the capabilities of the SDK and show the performance of OpenMapTiles vector tiles made from OpenStreetMap, we have developed a [sample mobile app](/mobile-app) for both Android and iOS.
 
-[<img src='/img/mobile/banner_1.png' style="width:40%;"/>](/mobile)
+[<img src='/img/mobile/banner_1.png' style="width:40%;"/>](/mobile-app)
 
 These apps show the vector map tiles displayed from a custom tile server, so you can choose a tile hosting service or implement your own. Map tiles can also be bundled with the mobile app or users can download a tileset for a region of their choice.
 

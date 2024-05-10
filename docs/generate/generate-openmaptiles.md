@@ -1,7 +1,7 @@
 ---
 layout: docs
 category: generate
-order: 3
+order: 1
 title: Generate own map
 description: Generate your own map using open-source tools
 redirect_from: /docs/generate/generate-vector-tiles/
@@ -12,9 +12,10 @@ is open source and licensed under [BSD + CC-BY](https://github.com/openmaptiles/
 
 [© OpenMapTiles](http://openmaptiles.org/) [© OpenStreetMap contributors](http://www.openstreetmap.org/copyright)
 
-### Requirements & Recommendations
+## Requirements & Recommendations
 
 To work on OpenMapTiles, we recommend:
+
 - Linux on x86_64 CPU
 - &gt;15 GB of free disk space
 - &gt;3 GB RAM.
@@ -33,7 +34,7 @@ git clone https://github.com/openmaptiles/openmaptiles.git
 cd ./openmaptiles
 ```
 
-### Generate the Vector Tiles
+## Generate the Vector Tiles
 
 Download the latest Docker images.
 

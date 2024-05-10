@@ -13,7 +13,7 @@ Using MapLibre GL JS for serving OpenMapTiles tileset is the most common use cas
 
 <iframe src="/maps/maplibre-gl-js.html" frameborder="0" scrolling="0" width="100%" height="540px" style="margin-bottom:25px;"></iframe>
 
-### Reference the Style
+## Reference the Style
 
 Create an HTML page and include the MapLibre GL JS viewer. You need to point the `style` to an HTTP endpoint of your [GL style specification JSON](/docs/style/mapbox-gl-style-spec).
 
@@ -45,7 +45,7 @@ Create an HTML page and include the MapLibre GL JS viewer. You need to point the
 </html>
 ```
 
-### Use the OpenMapTiles styles
+## Use the OpenMapTiles styles
 
 All [OpenMapTiles styles](/styles/) can be referenced directly in a viewer.
 
@@ -55,9 +55,9 @@ All [OpenMapTiles styles](/styles/) can be referenced directly in a viewer.
   `https://openmaptiles.github.io/positron-gl-style/style-cdn.json`
 - **Dark Matter**:
   `https://openmaptiles.github.io/dark-matter-gl-style/style-cdn.json`
-- **Klokantech Basic**:
-  `https://openmaptiles.github.io/klokantech-basic-gl-style/style-cdn.json`
+- **MapTiler Basic**:
+  `https://openmaptiles.github.io/maptiler-basic-gl-style/style-cdn.json`
 
-### Fonts and Sprites
+## Fonts and Sprites
 
 MapLibre GL JS requires fonts being packaged as PBFs and symbols packaged as sprites. Check the [GL style specification documentation](/docs/style/mapbox-gl-style-spec) for OpenMapTiles to create your own fonts and sprites packages.
