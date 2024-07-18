@@ -25,11 +25,19 @@
 
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
 
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-PQHNBT6B');</script>
+
     <script src="https://klokantech.github.io/javascript/kt.js?t={{ site.time | date: '%s' }}" async></script>
     <link href="/base.css?t={{ site.time | date: '%s' }}" rel="stylesheet" />
     <script type="text/javascript" src="/js/index.js?t={{ site.time | date: '%s' }}" async></script>
   </head>
   <body{% if page.url == "/" %} class="home"{% endif %}{% if page.url == "/inspect/" or page.url == "/viewers/" or page.url contains "/languages/" %} class="maps"{% endif %}>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PQHNBT6B"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="container">
       <div id="navbar-top" class="large">
         <div class="container">
@@ -41,8 +49,7 @@
             <a href="/styles/">Styles</a>
             <a href="/schema/">Schema</a>
             <a href="/mobile-app/">Mobile</a>
-            <a class="github" href="https://github.com/openmaptiles"
-            onclick="gtag('event', 'github.com/openmaptiles', {'event_category': 'leave','event_label': 'navbar'});">e</a>
+            <a class="github" href="https://github.com/openmaptiles">e</a>
           </div>
           <div class="nav-mobile">
             <div id="nav-mobile-btn">H</div>
@@ -53,8 +60,7 @@
               <a href="/styles/">Styles</a>
               <a href="/schema/">Schema</a>
               <a href="/mobile-app/">Mobile</a>
-              <a href="https://github.com/openmaptiles"
-              onclick="gtag('event', 'github.com/openmaptiles', {'event_category': 'leave','event_label': 'navbar'});">Github</a>
+              <a href="https://github.com/openmaptiles">Github</a>
             </div>
           </div>
         </div>
@@ -83,12 +89,5 @@
         </div>
       </div>
     </div>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-8073932-18"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'UA-8073932-18');
-    </script>
   </body>
 </html>
