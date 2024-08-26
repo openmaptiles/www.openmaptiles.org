@@ -28,10 +28,10 @@ curl -o zurich_switzerland.mbtiles https://[ADDRESS-YOU-GET-IN-DOWNLOADS]
 
 ## Serve Map Tiles
 
-You should mount the current directory containing the vector tiles to the `/data` path inside of the container and bind the local port `8080` to port `80` inside of the container:
+You should mount the current directory containing the vector tiles to the `/data` path inside of the container and bind the local port `8080` to port `8080` inside of the container:
 
 ```bash
-docker run -it -v $(pwd):/data -p 8080:80 maptiler/tileserver-gl
+docker run -it -v $(pwd):/data -p 8080:8080 maptiler/tileserver-gl
 ```
 
 or from the OpenMapTiles repository
