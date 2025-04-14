@@ -17,7 +17,7 @@ First, you need to install Docker and Docker Compose and clone the OpenMapTiles 
 Run the database container:
 
 ```bash
-docker-compose up -d postgres
+docker compose up -d postgres
 ```
 
 or
@@ -31,7 +31,7 @@ make start-db
 Move your data into `data/` directory. Modify command where `"./data/name.shp"` replace with the name of the Shapefile and `"name"` is the name of the table in PostgreSQL
 
 ```bash
-docker-compose run --rm openmaptiles-tools sh -c \
+docker compose run --rm openmaptiles-tools sh -c \
   'ogr2ogr \
     -f "PostgreSQL" \
     PG:"dbname=openmaptiles user=openmaptiles password=openmaptiles host=postgres port=5435" \
