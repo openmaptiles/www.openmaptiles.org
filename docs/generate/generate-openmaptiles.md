@@ -39,7 +39,7 @@ cd ./openmaptiles
 Download the latest Docker images.
 
 ```bash
-docker-compose pull
+docker compose pull
 ```
 
 Now generate the vector tiles using the quickstart bash script.
