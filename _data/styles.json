@@ -3,50 +3,37 @@
     "title": "OSM OpenMapTiles",
     "description": "OSM OpenMapTiles is a rich and familiar map based on the default OpenStreetMap Carto style rendered by Mapnik. The style showcases the power of OpenMapTiles by displaying all of its features.",
     "url-github": "https://github.com/openmaptiles/openmaptiles/tree/master/style",
-    "url-cloud":"https://www.maptiler.com/maps/#style=openstreetmap&mode=2d&position=1/0/0",
+    "url-cloud":"openstreetmap",
     "img": "openmaptiles.png",
     "id": "osm-openmaptiles"
   },{    
     "title": "MapTiler Basic",
     "description": "MapTiler Basic is basemap which tries to stay in the background and only give the most relevant information.",
     "url-github": "https://github.com/openmaptiles/maptiler-basic-gl-style",
-    "url-cloud":"https://www.maptiler.com/maps/#basic//vector/1/0/0",
+    "url-cloud":"basic-v2",
     "img": "basic.jpg",
     "id": "maptiler-basic"
   },{
     "title": "OSM Bright",
     "description": "OSM Bright is a general purpose base map showcasing the great detail of OpenStreetMap data. It is a good starting point for your own complex base maps.",
     "url-github": "https://github.com/openmaptiles/osm-bright-gl-style",
-    "url-cloud":"https://www.maptiler.com/maps/#bright//vector/1/0/0",
+    "url-cloud":"bright-v2",
     "img": "bright.jpg",
     "id": "osm-bright"
   },{
     "title": "Positron",
     "description": "Positron is beautiful light base map which is ideal for a non obtrusive basemap for your data visualizations. The cartography by Stamen Design is licensed under CC0.",
     "url-github": "https://github.com/openmaptiles/positron-gl-style",
-    "url-cloud":"https://www.maptiler.com/maps/#positron//vector/1/0/0",
+    "url-cloud":"positron",
     "img": "positron.jpg",
     "id": "positron"
   },{
     "title": "Dark Matter",
     "description": "Dark Matter is a dark base map and a good starting point for other darker designs. The cartography by Stamen Design is licensed under CC0.",
     "url-github": "https://github.com/openmaptiles/dark-matter-gl-style",
-    "url-cloud":"https://www.maptiler.com/maps/#darkmatter//vector/1/0/0",
+    "url-cloud":"darkmatter",
     "img": "darkmatter.jpg",
     "id": "dark-matter"
-  },{
-    "title": "MapTiler 3D",
-    "description": "A Map showcasing 3D buildings.",
-    "url-github": "https://github.com/openmaptiles/maptiler-3d-gl-style",
-    "img": "3d.jpg",
-    "id": "maptiler-3d"
-  },{
-    "title": "MapTiler Terrain",
-    "description": "A basic map style showing the contour lines and hillshading from OpenMapTiles.com.",
-    "url-github": "https://github.com/openmaptiles/maptiler-terrain-gl-style",
-    "url-cloud":"https://www.maptiler.com/maps/#topo//vector/1/0/0",
-    "img": "terrain.jpg",
-    "id": "maptiler-terrain"
   },{
     "title": "Fiord Color",
     "description": "A blue basemap for visualizations.",
@@ -57,14 +44,8 @@
     "title": "Toner",
     "description": "Port of the Stamen Maps Toner style.",
     "url-github": "https://github.com/openmaptiles/toner-gl-style",
-    "url-cloud":"https://www.maptiler.com/maps/#style=toner&mode=2d&position=1/0/0",
+    "url-cloud":"toner-v2",
     "img": "toner.jpg",
     "id": "toner"
-  },{
-    "title": "OSM Liberty",
-    "description": "A free Mapbox GL basemap style for everyone with complete liberty to use and self host. OSM Liberty is a fork of OSM Bright based on free data sources with a mission for a clear good looking design for the everyday user.",
-    "url-github": "https://github.com/maputnik/osm-liberty",
-    "img": "liberty.jpg",
-    "id": "osm-liberty"
-  },
+  }
 ]

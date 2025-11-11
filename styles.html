@@ -31,35 +31,15 @@ description: Free and open-source styles for your maps. Use public styles with p
 
 <div class="container">
   <div class="row">
-    <div class="col12 padx-0">
+    <div class="col8 offset2 padx-0">
       <p>OpenMapTiles comes with a variety of different styles optimized for the <a href="/schema">OpenMapTiles vector tile schema</a>. The styles and schema are free and open-source and you can adapt the design and code for your project or commercial product however you like, if you keep the copyright attributtion.
       You can either use the styles directly as basemap or as starting point for your own map style.
-      </p>
-    </div>
-    <div class="col12 padx-0">
-      <h1>GL Styles</h1>
-      <p>Our map styles are written in the <a href="/docs/style/mapbox-gl-style-spec">Mapbox GL style specification</a> and you can <a href="/docs/style/maputnik">edit them using Maputnik</a>.
-      </p>
-      <p>
-        The same style can be used in client based maps with <a href="/docs/website/maplibre-gl-js/">MapLibre GL JS</a> or <a href="/docs/website/openlayers/">OpenLayers</a>, on native <a href="/mobile-app/">Android/iOS mobile apps</a>, and in raster maps for print and older clients like Leaflet thanks to <a href="/docs/host/tileserver-gl/">Tileserver GL</a>.
       </p>
     </div>
   </div>
 
   <div class="row">
-    <div class="col3 pady-2 padx-0">
-      <h4><a href="#osm-openmaptiles">OSM OpenMapTiles</a></h4>
-      <h4><a href="#maptiler-basic">MapTiler Basic</a></h4>
-      <h4><a href="#osm-bright">OSM Bright</a></h4>
-      <h4><a href="#positron">Positron</a></h4>
-      <h4><a href="#dark-matter">Dark Matter</a></h4>
-      <h4><a href="#maptiler-3d">MapTiler 3D</a></h4>
-      <h4><a href="#maptiler-terrain">MapTiler Terrain</a></h4>
-      <h4><a href="#fiord-color">Fiord Color</a></h4>
-      <h4><a href="#toner">Toner</a></h4>
-      <h4><a href="#osm-liberty">OSM Liberty</a></h4>
-    </div>
-    <div class="col9 pady-2">
+    <div class="col8 offset2 pady-2">
 
       {% for style in site.data.styles %}
       <div class="style-title clearfix">
@@ -67,7 +47,8 @@ description: Free and open-source styles for your maps. Use public styles with p
           <span>{{ style.title }}</span>
         </h2>
         {% if style.url-cloud %}
-          <a class="btn style-btn" href="{{ style.url-cloud }}">View in Cloud</a>
+          <a class="btn style-btn" 
+          href="https://www.maptiler.com/maps/#style={{ style.url-cloud }}">View in MapTiler</a>
         {% endif %}
         <a class="btn style-btn style-github-btn" target="_blank"
         href="{{ style.url-github }}">Code on GitHub</a>
@@ -75,7 +56,9 @@ description: Free and open-source styles for your maps. Use public styles with p
       <p>
         {{ style.description }}
       </p>
-      <img class="width-100" src="/img/styles/{{ style.img }}" alt="{{ style.title }} map style">
+      <a href="https://www.maptiler.com/maps/#style={{ style.url-cloud }}">
+        <img class="width-100" src="/img/styles/{{ style.img }}" alt="{{ style.title }} map style">
+      </a>
       {% endfor %}
 
     </div>
