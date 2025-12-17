@@ -48,6 +48,7 @@ Possible values:
 - `farm`
 - `farmland`
 - `fell`
+- `flowerbed`
 - `forest`
 - `garden`
 - `glacier`
