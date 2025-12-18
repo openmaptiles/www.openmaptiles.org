@@ -4,7 +4,7 @@ category: layer
 title: transportation
 etl_graph: media/etl_transportation.png
 mapping_graph: media/mapping_transportation.png
-sql_query: SELECT geometry, class, subclass, network, oneway, ramp, brunnel, service, access, toll, expressway, layer, level, indoor, bicycle, foot, horse, mtb_scale, surface FROM layer_transportation(ST_SetSRID('BOX3D(-20037508.34 -20037508.34, 20037508.34 20037508.34)'::box3d, 3857), 14)
+sql_query: SELECT geometry, class, subclass, network, oneway, ramp, brunnel, service, access, toll, expressway, layer, level, indoor, bicycle, foot, horse, mtb_scale, official, surface FROM layer_transportation(ST_SetSRID('BOX3D(-20037508.34 -20037508.34, 20037508.34 20037508.34)'::box3d, 3857), 14)
 ---
 **transportation** contains roads, railways, aerial ways, and shipping
  lines.
@@ -206,6 +206,16 @@ Original value of the [`horse`](http://wiki.openstreetmap.org/wiki/Key:horse) ta
 ### mtb_scale
 
 Original value of the [`mtb:scale`](http://wiki.openstreetmap.org/wiki/Key:mtb:scale) tag (highways only).
+
+### official
+
+Whether or not a path or trail is official according to the land manager.
+
+Possible values:
+
+- `0`
+- `1`
+
 
 ### surface
 

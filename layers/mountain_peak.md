@@ -20,7 +20,7 @@ English name `name:en` if available, otherwise `name`. This is deprecated and wi
 
 ### name_de
 
-German name `name:de` if available, otherwise `name` or `name:en`.
+German name `name:de` if available, otherwise `name` or `name:en`.  This is deprecated and will be removed in a future release in favor of `name:de`.
 
 ### class
 
