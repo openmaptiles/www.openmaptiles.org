@@ -10,14 +10,14 @@
     "title": "MapTiler Basic",
     "description": "MapTiler Basic is basemap which tries to stay in the background and only give the most relevant information.",
     "url-github": "https://github.com/openmaptiles/maptiler-basic-gl-style",
-    "url-cloud":"basic-v2",
+    "url-cloud":"basic",
     "img": "basic.jpg",
     "id": "maptiler-basic"
   },{
     "title": "OSM Bright",
     "description": "OSM Bright is a general purpose base map showcasing the great detail of OpenStreetMap data. It is a good starting point for your own complex base maps.",
     "url-github": "https://github.com/openmaptiles/osm-bright-gl-style",
-    "url-cloud":"bright-v2",
+    "url-cloud":"bright",
     "img": "bright.jpg",
     "id": "osm-bright"
   },{
