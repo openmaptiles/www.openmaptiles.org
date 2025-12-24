@@ -22,14 +22,14 @@
     "id": "osm-bright"
   },{
     "title": "Positron",
-    "description": "Positron is beautiful light base map which is ideal for a non obtrusive basemap for your data visualizations. The cartography by Stamen Design is licensed under CC0.",
+    "description": "Positron is beautiful light base map which is ideal for a non obtrusive basemap for your data visualizations. The cartography by Stamen Design is licensed under CC-BY.",
     "url-github": "https://github.com/openmaptiles/positron-gl-style",
     "url-cloud":"positron",
     "img": "positron.jpg",
     "id": "positron"
   },{
     "title": "Dark Matter",
-    "description": "Dark Matter is a dark base map and a good starting point for other darker designs. The cartography by Stamen Design is licensed under CC0.",
+    "description": "Dark Matter is a dark base map and a good starting point for other darker designs. The cartography by Stamen Design is licensed under CC-BY.",
     "url-github": "https://github.com/openmaptiles/dark-matter-gl-style",
     "url-cloud":"darkmatter",
     "img": "darkmatter.jpg",
