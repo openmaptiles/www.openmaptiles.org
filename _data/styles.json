@@ -10,28 +10,24 @@
     "title": "MapTiler Basic",
     "description": "MapTiler Basic is basemap which tries to stay in the background and only give the most relevant information.",
     "url-github": "https://github.com/openmaptiles/maptiler-basic-gl-style",
-    "url-cloud":"basic-v2",
+    "url-cloud":"base-v4",
     "img": "basic.jpg",
     "id": "maptiler-basic"
   },{
     "title": "OSM Bright",
     "description": "OSM Bright is a general purpose base map showcasing the great detail of OpenStreetMap data. It is a good starting point for your own complex base maps.",
     "url-github": "https://github.com/openmaptiles/osm-bright-gl-style",
-    "url-cloud":"bright-v2",
-    "img": "bright.jpg",
-    "id": "osm-bright"
+    "img": "bright.jpg"
   },{
     "title": "Positron",
     "description": "Positron is beautiful light base map which is ideal for a non obtrusive basemap for your data visualizations. The cartography by Stamen Design is licensed under CC0.",
     "url-github": "https://github.com/openmaptiles/positron-gl-style",
-    "url-cloud":"positron",
     "img": "positron.jpg",
     "id": "positron"
   },{
     "title": "Dark Matter",
     "description": "Dark Matter is a dark base map and a good starting point for other darker designs. The cartography by Stamen Design is licensed under CC0.",
     "url-github": "https://github.com/openmaptiles/dark-matter-gl-style",
-    "url-cloud":"darkmatter",
     "img": "darkmatter.jpg",
     "id": "dark-matter"
   },{
