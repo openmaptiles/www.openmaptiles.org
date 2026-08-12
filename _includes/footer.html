@@ -44,6 +44,11 @@ of their own.
     <p class="site-footer__meta">
       &copy; {{ site.time | date: "%Y" }} OpenMapTiles Community
       {{ " • " }}
+      <a
+        href="{{ '/about/privacy/' | relative_url }}"
+        class="site-footer__link"
+      >Privacy Policy</a>
+      {{ " • " }}
       {%- comment -%}
       `csconsentlink` is the hook the cookie-consent vendor binds to — not a
       Tailwind class. It has to stay on the element.
