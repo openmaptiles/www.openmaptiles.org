@@ -57,6 +57,41 @@
   @include shadow(sm);   // shadow-sm
 }
 
+// Match the About page's headline style and section rhythm on the legal
+// layout (currently just /about/privacy/). Unlayered, so it already outranks
+// the layered `.prose :where(h1/h2)` from _typography.scss without needing
+// higher specificity — see the file banner above.
+//
+// legal.html sits directly in `.docs-shell`, skipping `.docs-content`'s
+// `padding-top: 2rem` — so it also lacks the top breathing room every other
+// docs-shell page gets. Reproduce about-page's own top padding instead.
+[data-section="legal_content"] {
+  padding-top: 3rem;
+
+  @include md { padding-top: 5rem; }
+}
+
+[data-section="legal_content"] h1 {
+  font-size: 2.25rem;                        // about-page__h1 (text-4xl)
+  line-height: calc(2.5 / 2.25);
+  font-weight: 800;
+  letter-spacing: -0.025em;                  // tracking-tight
+  margin-bottom: 1.5rem;
+
+  @include sm {
+    font-size: 3rem;                         // about-page__h1 sm:text-5xl
+    line-height: 1;
+  }
+}
+
+[data-section="legal_content"] h2 {
+  font-size: 1.25rem;                        // about-page__h2 (text-xl)
+  line-height: calc(1.75 / 1.25);
+  font-weight: 700;
+  margin-top: 5rem;                          // about-page__stack gap between sections
+  margin-bottom: 1.5rem;
+}
+
 .prose a:not(.no-underline) {
   color: var(--color-gray-900);
   text-decoration-line: underline;

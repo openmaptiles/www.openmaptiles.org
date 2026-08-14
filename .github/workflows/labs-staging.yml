@@ -41,7 +41,7 @@ name: Deploy to labs staging
 
 on:
   push:
-    branches: ["port-jekyll-rewrite"]
+    branches: ["update-privacy-policy"]
   workflow_dispatch:
 
 permissions:
