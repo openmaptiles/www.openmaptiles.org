@@ -1,0 +1,12 @@
+// `ping` is used by both _error-page.scss and _viewers.scss, which never ship in the
+// same bundle — hence its own file rather than a copy in each. The single-consumer
+// animations stay put: pulse-slow, spin-slow, bounce-left in _error-page.scss, pulse
+// in _viewers.scss.
+//
+// UNLAYERED, matching how Tailwind's animation utilities reached these elements.
+
+@keyframes ping {
+  75%, 100% { transform: scale(2); opacity: 0; }
+}
+
+.animate-ping { animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite; }

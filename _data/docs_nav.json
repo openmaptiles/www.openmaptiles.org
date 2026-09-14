@@ -1,0 +1,125 @@
+[
+  {
+    "title": "Get started",
+    "items": [
+      {
+        "name": "Introduction",
+        "path": "/docs"
+      },
+      {
+        "name": "Schema",
+        "path": "/docs/schema"
+      }
+    ]
+  },
+  {
+    "title": "Generate vector tiles",
+    "items": [
+      {
+        "name": "Generate your own map",
+        "path": "/docs/generate/generate-openmaptiles"
+      },
+      {
+        "name": "GeoJSON / Shapefile",
+        "path": "/docs/generate/custom-vector-from-shapefile-geojson"
+      },
+      {
+        "name": "PostGIS",
+        "path": "/docs/generate/custom-vector-from-postgis"
+      },
+      {
+        "name": "Create custom extract",
+        "path": "/docs/generate/create-custom-extract"
+      }
+    ]
+  },
+  {
+    "title": "Hosting map tiles",
+    "items": [
+      {
+        "name": "Ready-to-use API",
+        "path": "/docs/host/maptiler-cloud"
+      },
+      {
+        "name": "MapTiler Server",
+        "path": "/docs/host/maptiler-server"
+      },
+      {
+        "name": "TileServer GL",
+        "path": "/docs/host/tileserver-gl"
+      },
+      {
+        "name": "TileServer PHP",
+        "path": "/docs/host/tileserver-php"
+      }
+    ]
+  },
+  {
+    "title": "Style your map",
+    "items": [
+      {
+        "name": "MapTiler",
+        "path": "/docs/style/maptiler-cloud"
+      },
+      {
+        "name": "Maputnik",
+        "path": "/docs/style/maputnik"
+      },
+      {
+        "name": "Mapbox GL Style Spec",
+        "path": "/docs/style/mapbox-gl-style-spec"
+      }
+    ]
+  },
+  {
+    "title": "Display a map",
+    "items": [
+      {
+        "name": "Interactive web viewers",
+        "path": "/viewers"
+      },
+      {
+        "name": "MapTiler SDK JS",
+        "path": "/docs/website/maptiler-sdk-js"
+      },
+      {
+        "name": "MapLibre GL JS",
+        "path": "/docs/website/maplibre-gl-js"
+      },
+      {
+        "name": "Leaflet",
+        "path": "/docs/website/leaflet"
+      },
+      {
+        "name": "OpenLayers",
+        "path": "/docs/website/openlayers"
+      }
+    ]
+  },
+  {
+    "title": "Maps in a mobile app",
+    "items": [
+      {
+        "name": "Create a mobile app",
+        "path": "/docs/mobile/mobile"
+      }
+    ]
+  },
+  {
+    "title": "Generate raster tiles",
+    "items": [
+      {
+        "name": "Ready-to-use API",
+        "path": "/docs/raster/maptiler-cloud"
+      },
+      {
+        "name": "Custom raster layer",
+        "path": "/docs/raster/custom-raster"
+      },
+      {
+        "name": "TileServer GL",
+        "path": "/docs/raster/tileserver-gl"
+      }
+    ]
+  }
+]

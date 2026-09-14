@@ -1,0 +1,8 @@
+---
+# Front matter fence is required for Jekyll to process this through sass.
+---
+
+// /about/ only. Loads after core.css.
+
+@use "about-page";
+@use "element-overrides";   // LAST: must outrank the components above

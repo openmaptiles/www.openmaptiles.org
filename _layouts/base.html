@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    {% include seo.html %}
+
+    {%- comment -%}
+    core.css first — it declares the @layer order and the :root tokens — then the
+    bundles `stylesheets` names. Each bundle ends with the element overrides that must
+    outrank its own components, so never move one ahead of core. No `stylesheets` means
+    core.css alone: right for redirect stubs, wrong for anything with content.
+    {%- endcomment -%}
+    <link rel="stylesheet" href="{{ '/assets/css/core.css' | relative_url }}" />
+    {%- for sheet in page.stylesheets %}
+    <link rel="stylesheet" href="{{ '/assets/css/' | append: sheet | append: '.css' | relative_url }}" />
+    {%- endfor %}
+
+    <!-- Google Tag Manager -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','{{ site.gtm_id }}');
+    </script>
+    <!-- End Google Tag Manager -->
+  </head>
+  {%- comment -%}
+  No classes on <body> or <main>: _sass/_base.scss styles both, and the Tailwind
+  classes they used to carry generated nothing once Tailwind went.
+  {%- endcomment -%}
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+      <iframe src="https://www.googletagmanager.com/ns.html?id={{ site.gtm_id }}"
+              height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    {% unless page.show_nav == false %}{% include header.html %}{% endunless %}
+    {%- comment -%}
+    Search is lunr over search.json, built at compile time, so there is no crawler
+    attribute to scope here.
+    {%- endcomment -%}
+    <main id="main-content">
+      {{ content }}
+    </main>
+    {% unless page.show_nav == false %}{% include footer.html %}{% endunless %}
+
+    {% include site-config.html %}
+    <script type="module" src="{{ '/assets/js/main.js' | relative_url }}"></script>
+  </body>
+</html>

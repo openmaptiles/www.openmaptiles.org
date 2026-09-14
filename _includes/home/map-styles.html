@@ -1,0 +1,113 @@
+{%- comment -%}
+Homepage #map-styles: section header, carousel and one card per style in
+_data/styles.json.
+
+An earlier version made each card a <button> that pushState'd to
+/styles/:slug/ and opened a preview modal. Here the cards are real links to the
+same URLs, so they work with JS disabled; map-styles.js intercepts them to keep
+the in-place behaviour, and reads the data-style-* attributes below to fill the
+preview modal (home/style-modal.html) without a round trip.
+
+The leading and trailing spacer divs are load-bearing: the carousel's index maths
+measures the first spacer's width to convert scrollLeft into a card index.
+{%- endcomment -%}
+<section id="map-styles" class="mapstyles" data-map-styles data-section="map_styles">
+  <div class="mapstyles__head">
+    <h2 class="mapstyles__title">Open Map Styles</h2>
+    <p class="mapstyles__lead">
+      OpenMapTiles includes several free and open-source styles maintained
+      as part of the project. For a wider selection of professionally
+      designed premium styles, see the
+      <a
+        href="https://www.maptiler.com/maps/"
+        target="_blank"
+        rel="noopener noreferrer"
+        data-tracked="true"
+        data-track-event="cloud_intent_click"
+        data-track-section="map_styles_intro"
+        data-track-label="commercial offerings from MapTiler"
+        class="mapstyles__lead-link"
+      >commercial offerings from MapTiler</a>.
+    </p>
+  </div>
+
+  <div class="mapstyles__carousel">
+    <div class="mapstyles__arrows">
+      <div class="mapstyles__arrows-inner">
+        <button type="button" class="mapstyles__arrow" aria-label="Scroll left" data-carousel-prev>
+          {% include icons/caret-left-bold.svg %}
+        </button>
+        <button type="button" class="mapstyles__arrow" aria-label="Scroll right" data-carousel-next>
+          {% include icons/caret-right-bold.svg %}
+        </button>
+      </div>
+    </div>
+
+    <div class="mapstyles__track" data-carousel-track>
+      <div class="mapstyles__spacer mapstyles__spacer--lead" aria-hidden="true"></div>
+
+      {%- for style in site.data.styles %}
+      <a
+        href="{{ '/styles/' | append: style.slug | append: '/' | relative_url }}"
+        class="mapstyles__card"
+        aria-label="Preview {{ style.title }} style"
+        data-style-card
+        data-style-slug="{{ style.slug }}"
+        data-style-id="{{ style.style_id }}"
+        data-style-title="{{ style.title }}"
+        data-style-github="{{ style.github_url }}"
+        data-style-cloud="{{ style.cloud_url }}"
+        data-style-preview="{{ '/maps/style-preview.html' | relative_url }}?style={{ style.style_id | url_encode }}&amp;key={{ site.maps.key }}#{{ style.preview_hash }}"
+      >
+        <div class="mapstyles__thumb">
+          <img
+            src="{{ '/img/' | append: style.img | relative_url }}"
+            alt="{{ style.title }} map style"
+            loading="lazy"
+            class="mapstyles__thumb-img"
+          />
+          <div class="mapstyles__thumb-veil"></div>
+        </div>
+        <div class="mapstyles__body">
+          <h3 class="mapstyles__card-title">{{ style.title }}</h3>
+          <p class="mapstyles__card-text">{{ style.description }}</p>
+        </div>
+      </a>
+      {%- endfor %}
+
+      <div class="mapstyles__card mapstyles__card--more">
+        <div class="mapstyles__thumb mapstyles__thumb--more">
+          <picture class="mapstyles__picture">
+            <source
+              srcset="{{ '/img/home-banner-map.webp' | relative_url }}"
+              type="image/webp"
+            />
+            <img src="{{ '/img/home-banner-map.png' | relative_url }}" alt="MapTiler Basic map style from OpenStreetMap" loading="lazy" class="mapstyles__more-img" />
+          </picture>
+          <div class="mapstyles__more-icon">{% include icons/github-logo.svg %}</div>
+        </div>
+        <div class="mapstyles__body mapstyles__body--more">
+          <h3 class="mapstyles__card-title">Discover more styles</h3>
+          <p class="mapstyles__more-text">
+            Explore our full library of community styles and open-source map
+            design resources on GitHub.
+          </p>
+          <a
+            href="https://github.com/orgs/openmaptiles/repositories?q=-gl-style+sort%3Arelevance"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-tracked="true"
+            data-track-event="github_intent_click"
+            data-track-section="map_styles_discover"
+            data-track-repo="orgs/openmaptiles"
+            class="btn-primary-omt mapstyles__more-btn"
+          >View all on GitHub{% include icons/arrow-right.svg %}</a>
+        </div>
+      </div>
+
+      <div class="mapstyles__spacer mapstyles__spacer--trail" aria-hidden="true"></div>
+    </div>
+
+    <div class="mapstyles__dots" data-carousel-dots></div>
+  </div>
+</section>

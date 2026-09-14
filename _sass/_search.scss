@@ -1,0 +1,306 @@
+@use "config" as *;
+
+// Docs search. The markup is Pagefind-shaped (see _includes/docs/search.html) even
+// though the index is lunr, so these styles are the flattened result of what used to
+// be two stylesheets stacked on each other:
+//
+//   1. @pagefind/default-ui's ui.css, which sizes everything off
+//      `--pagefind-ui-scale: 0.8` — so its `calc(64px * scale)` is 51.2px, and
+//      so on. Those products are resolved here.
+//   2. a page-level override block, which beat most of it with !important and
+//      re-declared the custom properties on the container.
+//
+// Where (2) overrode (1) only (2)'s value is kept; where it did not, (1)'s
+// resolved value is. That is why several numbers below look arbitrary: they are
+// multiples of 0.8 left over from the scale variable. Both were unlayered, and so is nothing here except the
+// `mark` rule at the end — the component classes sit in @layer components like
+// every other ported component, because nothing competes with them.
+
+@layer components {
+
+  // Was `w-full` on the outer wrapper.
+  .docs-search {
+    width: 100%;
+  }
+
+  // Was `.pagefind-ui-container`. The custom properties are declared here rather
+  // than on :root, so only these five differ from ui.css's defaults; --pagefind-ui-scale stayed 0.8, which is why the sizes
+  // below are multiples of 0.8.
+  .docs-search__ui {
+    --omt-search-primary: #2563eb;
+    --omt-search-text: #6b7280;
+    --omt-search-border: #e5e7eb;
+    --omt-search-radius: 0.5rem;
+  }
+
+  // Was `.pagefind-ui`. width came from `width: 100% !important`.
+  .docs-search__root {
+    width: 100%;
+    color: var(--omt-search-text);
+    // --pagefind-ui-font was set to `inherit`, so the family stays the page's.
+    font-family: inherit;
+  }
+
+  .docs-search__form {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    height: 2.5rem;
+  }
+
+  // The magnifier. ui.css draws it as a masked ::before on the form; the override
+  // repositioned and resized it. The mask is Pagefind's own inline SVG, kept
+  // byte-for-byte so the glyph is identical.
+  .docs-search__form::before {
+    content: "";
+    position: absolute;
+    display: block;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+    left: 0.875rem;
+    width: 1.125rem;
+    height: 1.125rem;
+    z-index: 10;
+    background-color: var(--omt-search-text);
+    opacity: 0.7;
+    pointer-events: none;
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg width='18' height='18' viewBox='0 0 18 18' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12.7549 11.255H11.9649L11.6849 10.985C12.6649 9.845 13.2549 8.365 13.2549 6.755C13.2549 3.165 10.3449 0.255005 6.75488 0.255005C3.16488 0.255005 0.254883 3.165 0.254883 6.755C0.254883 10.345 3.16488 13.255 6.75488 13.255C8.36488 13.255 9.84488 12.665 10.9849 11.685L11.2549 11.965V12.755L16.2549 17.745L17.7449 16.255L12.7549 11.255ZM6.75488 11.255C4.26488 11.255 2.25488 9.245 2.25488 6.755C2.25488 4.26501 4.26488 2.255 6.75488 2.255C9.24488 2.255 11.2549 4.26501 11.2549 6.755C11.2549 9.245 9.24488 11.255 6.75488 11.255Z' fill='%23000000'/%3E%3C/svg%3E%0A");
+    mask-image: url("data:image/svg+xml,%3Csvg width='18' height='18' viewBox='0 0 18 18' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12.7549 11.255H11.9649L11.6849 10.985C12.6649 9.845 13.2549 8.365 13.2549 6.755C13.2549 3.165 10.3449 0.255005 6.75488 0.255005C3.16488 0.255005 0.254883 3.165 0.254883 6.755C0.254883 10.345 3.16488 13.255 6.75488 13.255C8.36488 13.255 9.84488 12.665 10.9849 11.685L11.2549 11.965V12.755L16.2549 17.745L17.7449 16.255L12.7549 11.255ZM6.75488 11.255C4.26488 11.255 2.25488 9.245 2.25488 6.755C2.25488 4.26501 4.26488 2.255 6.75488 2.255C9.24488 2.255 11.2549 4.26501 11.2549 6.755C11.2549 9.245 9.24488 11.255 6.75488 11.255Z' fill='%23000000'/%3E%3C/svg%3E%0A");
+    -webkit-mask-size: 100%;
+    mask-size: 100%;
+  }
+
+  .docs-search__input {
+    // All three are pinned to 2.5rem so the box is exactly 40px.
+    height: 2.5rem;
+    min-height: 2.5rem;
+    line-height: 2.5rem;
+    padding: 0 1rem 0 2.5rem;
+    background-color: #ffffff;
+    border: 1px solid var(--omt-search-border);
+    border-radius: var(--omt-search-radius);
+    box-sizing: border-box;
+    font-size: 0.875rem;
+    font-weight: normal;
+    // Not overridden, so these are ui.css's values.
+    position: relative;
+    -webkit-appearance: none;
+    appearance: none;
+    display: flex;
+    width: 100%;
+
+    &::placeholder {
+      line-height: 2.5rem;
+      transform: translateY(1px);              // optical alignment
+      color: #9ca3af;
+      opacity: 1;
+    }
+
+    &:focus {
+      border-color: var(--omt-search-primary);
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+    }
+  }
+
+  .docs-search__clear {
+    position: absolute;
+    // Pinned to `top: 0; height: 2.5rem`, exactly the input's
+    // OUTER box — so the button's white background painted over the input's 1px
+    // top and bottom borders and the outline looked broken beside the label.
+    // Inset by the border width instead.
+    top: 1px;
+    // ui.css's `calc(3px * 0.8)`, which was never overridden.
+    right: 2.4px;
+    height: calc(2.5rem - 2px);
+    padding: 0 0.875rem;
+    display: flex;
+    align-items: center;
+    z-index: 10;
+    font-size: 0.875rem;
+    color: var(--omt-search-text);
+    cursor: pointer;
+    background-color: #ffffff;
+    border-radius: var(--omt-search-radius);
+  }
+
+  // Pagefind's `.pagefind-ui__suppressed`: present whenever the input is empty.
+  .docs-search__clear--suppressed {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .docs-search__drawer {
+    position: absolute;
+    z-index: 50;
+    background: white;
+    width: 100%;
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    margin-top: 0.5rem;
+    border: 1px solid var(--omt-search-border);
+    max-height: 80vh;
+    overflow-y: auto;
+    // Pagefind sized its results for a full-width search page: the results area
+    // asks for min-width min(320px, 100%) and each excerpt for 200px. The docs
+    // sidebar's form is 208px, so those minimums overflowed the drawer and the
+    // text was clipped mid-word.
+    //
+    // Widening the drawer fixes that, but it cannot grow past the sidebar: the
+    // aside is `overflow-hidden`, and its padding box ends 304px from the form's
+    // left edge. At 320px the drawer's right edge AND its shadow were being
+    // clipped away. 288px is the widest that still leaves room for the shadow,
+    // and it gives each excerpt 240px — comfortably over Pagefind's 200px floor.
+    min-width: 288px;
+    // ui.css's drawer rules outranked the override (two classes vs one), so the
+    // flex box below is Pagefind's, not the override's.
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 48px;                                 // calc(60px * 0.8)
+
+    // macOS overlay scrollbars only appear while scrolling, so a list that does
+    // spill read as "cut off" rather than "scrollable". A thin always-visible
+    // track makes it obvious. Pagefind needed none: it paged at 5 and never
+    // overflowed.
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-gray-300) transparent;
+
+    &::-webkit-scrollbar { width: 8px; }
+    &::-webkit-scrollbar-track { background: transparent; }
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--color-gray-300);
+      border-radius: $radius-full;
+      border: 2px solid #ffffff;
+    }
+  }
+
+  // Pagefind's `.pagefind-ui__hidden`, which was `display: none !important`.
+  .docs-search__drawer--hidden {
+    display: none;
+  }
+
+  .docs-search__results-area {
+    padding: 0;
+    margin: 0;
+    // ui.css's `margin-top: calc(20px * 0.8)` is two classes deep, so it beat
+    // the override's one-class `margin: 0`. Only the top edge survives.
+    margin-top: 16px;
+    min-width: min(320px, 100%);               // calc(400px * 0.8)
+    flex: 1000;
+    // Keeps the "Load more results" button off the drawer's rounded corner.
+    padding-bottom: 8px;
+  }
+
+  // Only `padding` carried !important in the override, so ui.css's two-class rule
+  // kept font-size and font-weight. The declared 0.875rem/500 never applied.
+  .docs-search__message {
+    padding: 1.5rem 1.5rem;
+    font-size: 12.8px;                         // calc(16px * 0.8), from ui.css
+    font-weight: 700;                          // from ui.css
+    border-bottom: 1px solid var(--omt-search-border);
+    margin: 0;
+    box-sizing: content-box;
+    height: 19.2px;                            // calc(24px * 0.8)
+    display: flex;
+    align-items: center;
+    // line-height is deliberately unset: it inherits body's 1.5 (19.2px here).
+  }
+
+  .docs-search__results {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .docs-search__result {
+    border-bottom: 1px solid var(--omt-search-border);
+    padding: 1.25rem 1.5rem;
+    margin: 0;
+    list-style: none;
+    // ui.css's flex row survived the overrides.
+    display: flex;
+    align-items: flex-start;
+
+    &:last-child { border-bottom: none; }
+  }
+
+  .docs-search__result-inner {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 8px;                           // calc(10px * 0.8)
+  }
+
+  .docs-search__result-title {
+    display: inline-block;
+    margin: 0;
+  }
+
+  .docs-search__result-link {
+    color: var(--omt-search-primary);
+    font-weight: 600;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 0.25rem;
+
+    @media (hover: hover) {
+      &:hover { text-decoration: underline; }
+    }
+  }
+
+  // Keyboard navigation. Pagefind's UI moved focus between result links rather
+  // than painting a highlight, so this only has to make focus visible.
+  .docs-search__result-link:focus-visible {
+    outline: 2px solid var(--omt-search-primary);
+    outline-offset: 2px;
+  }
+
+  // ui.css's "Load more results" button, never overridden, so every
+  // value here is Pagefind's own (scaled by 0.8).
+  .docs-search__button {
+    margin-top: 32px;                          // calc(40px * 0.8)
+    border: 1px solid var(--omt-search-border);
+    border-radius: var(--omt-search-radius);
+    height: 38.4px;                            // calc(48px * 0.8)
+    padding-inline: 9.6px;                     // calc(12px * 0.8)
+    font-size: 12.8px;                         // calc(16px * 0.8)
+    color: var(--omt-search-primary);
+    background: #ffffff;
+    width: 100%;
+    text-align: center;
+    font-weight: 700;
+    cursor: pointer;
+
+    @media (hover: hover) {
+      &:hover { border-color: var(--omt-search-primary); }
+    }
+  }
+
+  .docs-search__result-excerpt {
+    font-size: 0.875rem;
+    line-height: 1.5;
+    display: inline-block;
+    margin: 3.2px 0 0;                         // calc(4px * 0.8)
+    min-width: 200px;                          // calc(250px * 0.8)
+  }
+}
+
+// UNLAYERED, and this part is load-bearing. Both of these are <p> elements, so
+// _element-overrides.scss's `p, li { color: --omt-text-body }` would win over a
+// @layer components rule regardless of specificity. Previously the override block
+// was unlayered too and simply out-specified _element-overrides.scss's bare `p`, giving grey
+// text; layering these would silently turn them near-black.
+.docs-search__message { color: #9ca3af; }
+.docs-search__result-excerpt { color: #6b7280; }
+
+// The override styled bare `mark`, which is
+// where lunr's matched terms land in an excerpt.
+mark {
+  background-color: #fef08a;
+  color: #854d0e;
+  padding: 0 0.125rem;
+  border-radius: 0.125rem;
+}

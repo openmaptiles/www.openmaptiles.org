@@ -1,78 +1,13 @@
 ---
-layout: page
-title: Documentation and tutorials
-description: Learn how to work with OpenMapTiles. Guides and tutorials about creating, styling, hosting, serving of tiles, and more.
-redirect_from:
-  - /docs/host/
-  - /docs/website/
-  - /docs/generate/
-  - /docs/style/
-  - /docs/raster/
+layout: docs
+permalink: /docs/
+title: "Documentation and tutorials – OpenMapTiles"
+description: "Learn how to work with OpenMapTiles. Guides and tutorials about creating, styling, hosting, serving of tiles, and more."
 ---
-
-<div class="row">
-  <div class="col8 padx-0">
-    <h2>Get started</h2>
-    <div class="col12 padb-4">
-      <article>
-        <p>The <a href="https://github.com/openmaptiles/openmaptiles">OpenMapTiles vector tile schema</a>
-is open source and licensed under <a href="https://github.com/openmaptiles/openmaptiles/blob/master/LICENSE.md">BSD + CC-BY</a>. You are free to use it to generate your own OpenMapTiles and use those vector tiles afterward. However, you are still obliged to follow original <a href="http://wiki.openstreetmap.org/wiki/Open_Database_License">ODbL license</a> and attribute OpenStreetMap data properly as well as <a href="https://github.com/openmaptiles/openmaptiles#license">attribute the OpenMapTiles project itself</a>. The correct attribution looks similar to this:</p>
-
-        <p><a href="http://openmaptiles.org/">© OpenMapTiles</a> <a href="http://www.openstreetmap.org/copyright">© OpenStreetMap contributors</a></p>
-
-        <h3 id="requirements--recommendations">Requirements &amp; Recommendations</h3>
-
-        <p>To work on OpenMapTiles, we recommend:</p>
-        <ul>
-          <li>Linux on x86_64 CPU</li>
-          <li>&gt;15 GB of free disk space</li>
-          <li>&gt;3 GB RAM.</li>
-        </ul>
-
-        <p>More details available in the <a href="https://github.com/openmaptiles/openmaptiles/blob/master/QUICKSTART.md#req">repo</a>.</p>
-
-        <p>You also need to install Docker:</p>
-
-        <ul>
-          <li><a href="https://docs.docker.com/engine/installation/">Docker</a>: minimal version 1.12.3+.</li>
-          <li><a href="https://docs.docker.com/compose/install/">Docker Compose</a>: minimal version 1.7.1+.</li>
-        </ul>
-
-        <p>Clone the <a href="https://github.com/openmaptiles/openmaptiles">OpenMapTiles repo</a>.</p>
-
-        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/openmaptiles/openmaptiles.git
- <span class="nb">cd</span> ./openmaptiles</code></pre></div></div>
-
-        <h3 id="generate-the-vector-tiles">Generate the Vector Tiles</h3>
-
-        <p>Download the latest Docker images.</p>
-
-        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker compose pull</code></pre></div></div>
-
-        <p>Now generate the vector tiles using the quickstart bash script.</p>
-
-        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./quickstart.sh</code></pre></div></div>
-
-        <p>By default, it will generate vector tileset of Albania for zoom levels 0 – 7 into <code class="language-plaintext highlighter-rouge">data</code> directory.</p>
-
-      </article>
-    </div>
-  </div>
-
-  <div class="col4">
-    <h2 class="padb-1">Tutorials</h2> {% for category in site.data.categories %}
-    <div class="row doc-section">
-      <h4>{{ category.title }}</h4>
-      <ul>
-        {% assign articles = site.pages | where:"category", category.id | sort: "order" %} {% for article in articles %}
-        {% if article.redirect %}
-          <li><a href="{{ article.redirect }}">{% if article.titlesidebar %}{{ article.titlesidebar }}{% else %}{{ article.title }}{% endif %}</a></li>
-        {% else %}
-          <li><a href="{{ article.url }}">{% if article.titlesidebar %}{{ article.titlesidebar }}{% else %}{{ article.title }}{% endif %}</a></li>
-        {% endif %}
-        {% endfor %}
-      </ul>
-    </div>
-    {% endfor %}
-  </div>
-</div>
+{%- comment -%}
+The docs index renders the generate-openmaptiles doc inline under the title
+"Get started". Pull the collection document rather than duplicating the content.
+{%- endcomment -%}
+{%- assign intro = site.docs | where: "path", "_docs/generate/generate-openmaptiles.md" | first -%}
+<h1>Get started</h1>
+{{ intro.content }}

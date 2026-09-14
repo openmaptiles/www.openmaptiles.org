@@ -1,0 +1,171 @@
+@use "config" as *;
+// Wrapped in `@layer components` so the element rules in _element-overrides.scss,
+// which are unlayered, outrank these regardless of specificity. Unlayered CSS always
+// beats layered CSS in the cascade, which is what makes that file the single place to
+// override any of this.
+
+@layer components {
+
+  // Docs shell — sidebar plus content column. Centred, max width 80rem, gutters that
+  // step up at sm/lg, and a column that becomes a row from md up.
+
+  .docs-shell {
+    max-width: 80rem;          // max-w-7xl
+    margin-inline: auto;
+    padding-inline: 1rem;      // px-4
+    padding-bottom: 2rem;      // pb-8
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;                 // gap-8
+    position: relative;
+    align-items: flex-start;
+
+    @include sm { padding-inline: 1.5rem; }   // sm:px-6
+    @include lg { padding-inline: 2rem; }     // lg:px-8
+    @include md { flex-direction: row; }      // md:flex-row
+  }
+
+  .docs-content {
+    flex: 1 1 0%;
+    min-width: 0;
+    max-width: none;           // prose max-w-none
+    padding-top: 2rem;         // pt-8
+
+    // Below md the shell is `flex-direction: column`, so width is the CROSS axis
+    // and `flex-basis: 0%` no longer governs it — the column sized itself to
+    // fit-content, which can never go below min-content. One long unbreakable
+    // token (an inline `code` span, a bare URL) therefore blew the column out to
+    // 1779px inside a 375px viewport and the whole page scrolled sideways.
+    //
+    // `width: 100%` fixes the box, and breaking long tokens keeps the content
+    // inside it. In row direction (md and up) flex-basis still wins over width, so
+    // the desktop layout is untouched.
+    width: 100%;
+    overflow-wrap: break-word;
+  }
+
+  // ── /docs/inspect/ ──────────────────────────────────────────────────────────
+  // The inspect page shell. An early version emitted the bare iframe only, dropping
+  // the <h1>, the lead paragraph and the frame's own box — no gate covered this
+  // page, so "builds and returns 200" was the only thing it had ever been held to.
+
+  .inspect-page {
+    height: calc(100vh - 10rem);
+    display: flex;
+    flex-direction: column;
+
+    @include md { height: calc(100vh - 8rem); }
+  }
+
+  .inspect-page__intro {
+    margin-bottom: 1rem;        // mb-4
+    flex-shrink: 0;
+  }
+
+  // `text-gray-600` is deliberately not ported: it is a layered utility, and
+  // _element-overrides.scss's unlayered `p, li { color }` beat it in the previous design. The size
+  // utilities do apply — prose reaches p through :where(), which loses on
+  // specificity inside the same layer.
+  .inspect-page__lead {
+    @include text(sm);
+    @include md { @include text(base); }
+  }
+
+  .inspect-page__frame {
+    flex-grow: 1;
+    border: 1px solid var(--color-gray-200);
+    border-radius: 0.5rem;      // rounded-lg
+    overflow: hidden;
+    // Unprefixed `bg-gray-50` is redefined unlayered by _element-overrides.scss, so it is the
+    // surface token here, not Tailwind's gray-50.
+    background-color: var(--omt-surface-alt);
+    position: relative;
+    @include shadow(sm);
+    min-height: 400px;
+  }
+
+  .inspect-frame {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+}
+
+// ── docs content links ──────────────────────────────────────────────────────
+// External-link treatment in docs content (emitted by _plugins/doclinks.rb).
+// UNLAYERED, because these must beat the prose link rules in @layer utilities,
+// which sit in @layer utilities.
+.doclink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.125rem;                             // gap-0.5
+  color: oklch(20.5% 0 0);                   // text-neutral-900
+  font-weight: 500;
+  text-decoration-line: underline;
+  text-decoration-color: oklch(87% 0 0);     // decoration-neutral-300
+  text-underline-offset: 2px;
+  transition: color 0.15s $ease,
+    text-decoration-color 0.15s $ease;
+
+  // Scoped to the plain variant. These come from `hover:text-black
+  // hover:decoration-neutral-600` on the plain/icon anchor; the
+  // button variant is a different element with a different class list and never
+  // had them. Unscoped, `.doclink:hover` (0,2,0) beat `.doclink--button` (0,1,0)
+  // and the button's white label turned black on hover.
+  &:not(.doclink--button) {
+    @include hover {
+      color: var(--color-black);
+      text-decoration-color: oklch(43.9% 0 0); // hover:decoration-neutral-600
+    }
+  }
+}
+
+.doclink__icon {
+  width: 0.875rem;                           // w-3.5
+  height: 0.875rem;
+  color: oklch(70.8% 0 0);                   // text-neutral-400
+  display: inline-block;
+  margin-left: 0.125rem;                     // ml-0.5
+  flex-shrink: 0;
+}
+
+.doclink--button {
+  justify-content: center;
+  gap: 0.375rem;                             // gap-1.5
+  padding-inline: 1.5rem;                    // px-6
+  padding-block: 0.625rem;                   // py-2.5
+  background-color: oklch(26.9% 0 0);        // bg-neutral-800
+  color: var(--color-white);
+  font-weight: 500;
+  border-radius: 0.5rem;                     // rounded-lg
+  text-decoration: none;
+  // `.doclink` sets an offset for its underline; the button has none, so the previous design
+  // leaves this at the initial value.
+  text-underline-offset: auto;
+  @include text(sm);
+  @include shadow(sm);
+  // `transition-colors`. The base .doclink transition only covers color and
+  // text-decoration-color, so the button's background snapped instead of easing.
+  transition: color 0.15s $ease, background-color 0.15s $ease,
+    border-color 0.15s $ease, outline-color 0.15s $ease,
+    text-decoration-color 0.15s $ease, fill 0.15s $ease, stroke 0.15s $ease;
+
+  .doclink__icon {
+    color: oklch(87% 0 0);                   // text-neutral-300
+    margin-left: 0;
+  }
+
+  @include hover { background-color: oklch(37.1% 0 0); }   // hover:bg-neutral-700
+}
+
+// prose's `max-width: 65ch` sits in @layer utilities and would beat the
+// component-layer rule above, so `max-w-none` is re-stated unlayered — which is
+// how the utility won in the previous design.
+.docs-content { max-width: none; }
+
+// Same reason: the inspect page's inner prose div carries `max-w-none` too, and a
+// component-layer rule loses to prose's 65ch.
+.inspect-page__intro { max-width: none; }

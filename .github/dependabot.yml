@@ -1,0 +1,34 @@
+version: 2
+
+# Two ecosystems, both of which have already bitten this repo once.
+#
+# github-actions: five actions were pinned to majors running Node 20, which the runners
+# now force onto Node 24 with a deprecation warning on every run. Bumped by hand in
+# August 2026; this keeps them current so it does not have to happen again.
+#
+# bundler: Gemfile.lock is committed and CI installs from it, so a stale lockfile is a
+# stale build. Grouped, because Jekyll and its plugins move together and one PR per gem
+# is noise on a repo this size.
+#
+# Both open PRs, which run jekyll-build.yml — the same script/verify-build that gates a
+# deploy. A bump that would break the site fails the check rather than reaching master.
+updates:
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: monthly
+    groups:
+      actions:
+        patterns: ["*"]
+    commit-message:
+      prefix: "ci"
+
+  - package-ecosystem: bundler
+    directory: "/"
+    schedule:
+      interval: monthly
+    groups:
+      jekyll:
+        patterns: ["*"]
+    commit-message:
+      prefix: "chore"

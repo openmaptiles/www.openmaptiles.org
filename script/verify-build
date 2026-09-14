@@ -1,0 +1,292 @@
+#!/usr/bin/env bash
+#
+# Asserts the shape of a built _site/ before it is published.
+#
+# Why: a static site on GitHub Pages has no runtime error surface — no 500s, no
+# monitoring. A build that comes out wrong is served until a person happens to look at
+# the right page.
+#
+# It does NOT guard against Pages' built-in --safe build skipping _plugins/. Every
+# workflow runs `bundle exec jekyll build` itself, so this only sees output that had
+# plugins; --safe applies when Settings -> Pages -> Source is "Deploy from a branch",
+# and then our artifact is never published and actions/deploy-pages is what fails.
+# Nothing in git guards a repo setting.
+#
+# Adding a check: it earns its place by catching something that has actually gone
+# wrong, or by protecting something outward-facing and hard to undo. "It could
+# theoretically break" is not enough — every check is also code that can break, and one
+# here shipped as a syntax error reporting "ok". Rejected on that basis: data-* hook
+# drift, search.json document depth, route targets built in JS, and an orphaned-class
+# check whose allowlist cost more than it returned.
+#
+# Run from the repo root, after a build:
+#   script/verify-build
+#
+# Options via environment:
+#   REQUIRE_CNAME=0   invert the CNAME assertion: require it to be ABSENT, for a build
+#                     published somewhere that must not claim the production domain
+#   EXPECT_SITEMAP=0  invert the sitemap assertion: require sitemap.xml to be ABSENT, so
+#                     a duplicate of the site cannot enumerate its URLs for crawlers
+#   BASEURL=/prefix   the site's baseurl when it is not the root. Internal redirect
+#                     targets are expected to carry it.
+#   SITE=path         verify a directory other than _site
+set -euo pipefail
+
+SITE="${SITE:-_site}"
+REQUIRE_CNAME="${REQUIRE_CNAME:-1}"
+EXPECT_SITEMAP="${EXPECT_SITEMAP:-1}"
+BASEURL="${BASEURL:-}"
+MANIFEST="script/redirects.tsv"
+
+fail=0
+ok()   { printf '  ok    %s\n' "$1"; }
+bad()  { printf '  FAIL  %s\n' "$1"; fail=1; }
+section() { printf '\n%s\n' "$1"; }
+
+# One scratch dir and one trap for the whole script. `trap ... EXIT` does not stack —
+# a second registration silently replaces the first and leaks whatever the first
+# was meant to clean up.
+scratch=$(mktemp -d)
+trap 'rm -rf "$scratch"' EXIT
+
+test -d "$SITE" || { echo "no such directory: $SITE — run 'bundle exec jekyll build' first"; exit 2; }
+
+# --- route count -------------------------------------------------------------
+# Floor, not an exact match: adding pages should not fail the build. It is set
+# just under the current count so a real regression trips it. 2026-09-08: 140.
+MIN_ROUTES=135
+section "Route count"
+routes=$(find "$SITE" -name '*.html' | wc -l | tr -d ' ')
+if [ "$routes" -ge "$MIN_ROUTES" ]; then ok "$routes html files (floor $MIN_ROUTES)"
+else bad "$routes html files, expected >= $MIN_ROUTES — did _plugins/ run?"; fi
+
+# --- custom plugin evidence --------------------------------------------------
+# One assertion per plugin, because --safe skips all of them together and the
+# route count alone does not say which.
+section "Custom plugins ran"
+[ -f "$SITE/languages/de/index.html" ] \
+  && ok "datapage_generator: /languages/:code/" \
+  || bad "datapage_generator did not generate /languages/ — _plugins/ was skipped"
+[ -f "$SITE/styles/osm-bright/index.html" ] \
+  && ok "datapage_generator: /styles/:slug/" \
+  || bad "datapage_generator did not generate /styles/ — _plugins/ was skipped"
+grep -q 'codeblock__copy' "$SITE/docs/host/tileserver-gl/index.html" 2>/dev/null \
+  && ok "codeblock.rb wrapped fenced code" \
+  || bad "codeblock.rb did not run — code blocks lost styling and copy buttons"
+# Match the arrow SVG's class, not target/rel — kramdown can emit those from the
+# markdown source, so a target= grep passes even when the plugin was skipped.
+grep -q 'doclink__icon' "$SITE/docs/host/tileserver-php/index.html" 2>/dev/null \
+  && ok "doclinks.rb treated external links" \
+  || bad "doclinks.rb did not run — external links render bare"
+
+# --- static assets -----------------------------------------------------------
+section "Static assets"
+for p in img/maptiler-logo.svg; do
+  [ -f "$SITE/$p" ] && ok "$p" || bad "$p missing"
+done
+for d in media inspect-tool assets; do
+  [ -d "$SITE/$d" ] && ok "$d/" || bad "$d/ missing"
+done
+
+# --- local references --------------------------------------------------------
+# Every in-site src= and href= must resolve to something in the artifact. See
+# script/checks/references.rb for what that catches and why it is not shell.
+section "Local references"
+refs_count="$scratch/refs-count"
+refs_out=$(ruby script/checks/references.rb "$SITE" "$BASEURL" 2>"$refs_count") || refs_rc=$?
+# A checker that cannot run must never read as a pass: it writes only the count to
+# stderr on a good run, so a non-zero exit means the checker broke, not the site.
+if [ "${refs_rc:-0}" -ne 0 ]; then
+  bad "the local-reference checker failed to run — the artifact is unverified"
+  sed 's/^/          /' "$refs_count"
+elif [ -z "$refs_out" ]; then
+  ok "$(tr -d '[:space:]' < "$refs_count") local references, all resolve"
+else
+  while IFS=$'\t' read -r ref where; do
+    [ -n "$ref" ] || continue
+    bad "$ref does not exist in the artifact — referenced by $where"
+  done <<< "$refs_out"
+fi
+
+# --- javascript ---------------------------------------------------------------
+# Two things the reference check cannot see: relative `import` specifiers, where one
+# bad path makes the browser abandon the whole module graph so NO JS runs while the
+# page still returns 200, and assets fetched at runtime from string constants, which
+# appear in no markup.
+section "JavaScript"
+imports=$(grep -rhoE '(from|import) *"\.\.?/[^"]+"' "$SITE/assets/js"/*.js \
+  | grep -oE '"\.\.?/[^"]+"' | tr -d '"' | sort -u)
+broken_imports=0
+for spec in $imports; do
+  [ -f "$SITE/assets/js/${spec#./}" ] || {
+    bad "$spec is imported but not in the artifact — the module graph fails, so no JS runs"
+    broken_imports=$((broken_imports + 1))
+  }
+done
+[ "$broken_imports" -eq 0 ] \
+  && ok "$(printf '%s\n' "$imports" | grep -c .) module imports resolve" \
+  || bad "$broken_imports unresolved module import(s)"
+
+# Listed rather than scanned: there are four, they change about never, and a scanner
+# for path-shaped string literals is more code than the thing it checks. If you add a
+# runtime fetch, add it here.
+for p in search.json assets/js/vendor/lunr.min.js \
+         assets/js/vendor/maptiler-sdk.umd.js assets/js/vendor/maptiler-sdk.css; do
+  [ -s "$SITE/$p" ] && ok "$p" || bad "$p missing — fetched at runtime by assets/js/"
+done
+
+# --- stylesheets -------------------------------------------------------------
+# CSS ships as core.css plus one bundle per section, named by each page's
+# `stylesheets` front matter (see _layouts/base.html). Get that wrong and the page
+# renders completely unstyled while Jekyll still exits 0 — so resolve the hrefs each
+# page actually emits rather than checking a fixed list.
+#
+# A page linking core.css alone is the tell: its `stylesheets` never resolved.
+section "Stylesheets"
+[ -s "$SITE/assets/css/core.css" ] \
+  && ok "core.css ($(wc -c < "$SITE/assets/css/core.css" | tr -d ' ') bytes)" \
+  || bad "assets/css/core.css missing or empty — every page links it first"
+
+missing_sheets=0
+styled_pages=0
+while IFS= read -r page; do
+  # Pages linking core.css are the ones with a layout; redirect stubs have none.
+  grep -q 'assets/css/core\.css' "$page" || continue
+  styled_pages=$((styled_pages + 1))
+  sheets=$(grep -o 'href="[^"]*/assets/css/[^"]*\.css"' "$page" | sed 's/.*\/assets\/css\///;s/"$//')
+  [ "$(printf '%s\n' "$sheets" | grep -c .)" -lt 2 ] && {
+    bad "${page#"$SITE"} links core.css only — no section bundle, so its components are unstyled"
+    missing_sheets=$((missing_sheets + 1))
+  }
+  for sheet in $sheets; do
+    [ -s "$SITE/assets/css/$sheet" ] || {
+      bad "${page#"$SITE"} links assets/css/$sheet, which is missing or empty"
+      missing_sheets=$((missing_sheets + 1))
+    }
+  done
+done < <(find "$SITE" -name '*.html')
+[ "$missing_sheets" -eq 0 ] \
+  && ok "$styled_pages pages, every linked bundle present and non-empty" \
+  || bad "$missing_sheets unresolved stylesheet reference(s)"
+
+# --- generated SEO assets ----------------------------------------------------
+section "Generated assets"
+for p in llm.txt robots.txt search.json _redirects; do
+  [ -s "$SITE/$p" ] && ok "$p" || bad "$p missing or empty"
+done
+# Asserted both ways: present at the canonical origin, absent anywhere serving a
+# duplicate of the site under EXPECT_SITEMAP=0. Trusting the config to
+# have dropped jekyll-sitemap is exactly the mistake the CNAME check already avoids.
+if [ "$EXPECT_SITEMAP" = "1" ]; then
+  [ -s "$SITE/sitemap.xml" ] && ok "sitemap.xml ($(grep -c '<loc>' "$SITE/sitemap.xml") URLs)" \
+    || bad "sitemap.xml missing or empty"
+else
+  [ -e "$SITE/sitemap.xml" ] \
+    && bad "sitemap.xml present but EXPECT_SITEMAP=0 — a duplicate of the site must not enumerate its URLs for crawlers" \
+    || ok "sitemap.xml absent, as required when EXPECT_SITEMAP=0"
+fi
+
+# --- custom domain -----------------------------------------------------------
+section "Custom domain"
+if [ "$REQUIRE_CNAME" = "1" ]; then
+  [ -s "$SITE/CNAME" ] && ok "CNAME present ($(tr -d '\n' < "$SITE/CNAME"))" \
+    || bad "CNAME missing — GitHub Pages reads it from the artifact; the custom domain drops on deploy"
+else
+  [ -e "$SITE/CNAME" ] \
+    && bad "CNAME present but REQUIRE_CNAME=0 — this build must not claim openmaptiles.org" \
+    || ok "CNAME absent, as required when REQUIRE_CNAME=0"
+fi
+
+# --- internal documents ------------------------------------------------------
+# The source directory is the repo root, so anything not in _config.yml's exclude
+# gets published.
+section "Internal documents withheld"
+# Checks three shapes, because a root .md leaks differently depending on its front
+# matter: rendered to $p/index.html with `permalink: pretty`, to $p.html without it, or
+# copied through verbatim as $p.md when it has no front matter at all.
+for p in DEPLOYMENT THIRD-PARTY-NOTICES README; do
+  { [ -e "$SITE/$p.html" ] || [ -d "$SITE/$p" ] || [ -e "$SITE/$p.md" ]; } \
+    && bad "$p leaked into the site — add it to exclude: in _config.yml" \
+    || ok "$p withheld"
+done
+[ -d "$SITE/node_modules" ] && bad "node_modules published" || ok "node_modules withheld"
+[ -d "$SITE/scratch" ] && bad "scratch/ published" || ok "scratch/ withheld"
+
+# --- baseurl coverage --------------------------------------------------------
+# Only meaningful under a non-root baseurl, i.e. a project-page deployment. Markdown
+# bodies write paths root-absolute and kramdown emits them verbatim, so without
+# _plugins/baseurl.rb every one of them resolves against the host root and 404s.
+# Invisible in the production build, where baseurl is empty and the same paths are
+# already correct. Protocol-relative URLs are absolute, not site paths.
+if [ -n "$BASEURL" ]; then
+  section "Root-absolute paths carry the baseurl"
+  # `|| true` on each grep: under `set -euo pipefail` a grep that matches nothing exits
+  # 1 and would abort the script on exactly the runs that should pass.
+  unprefixed=$( { grep -rhoE '(src|href)="/[^"]*"' "$SITE" 2>/dev/null || true; } \
+    | { grep -v "\"$BASEURL/" || true; } | { grep -v '="//' || true; } | sort -u)
+  if [ -n "$unprefixed" ]; then
+    bad "$(printf '%s\n' "$unprefixed" | wc -l | tr -d ' ') src/href paths missing $BASEURL — did _plugins/baseurl.rb run?"
+    printf '%s\n' "$unprefixed" | head -5 | sed 's/^/          /'
+  else
+    ok "no src/href path missing $BASEURL"
+  fi
+fi
+
+# --- legacy URL coverage -----------------------------------------------------
+# Every row of the manifest is a legacy URL that is live and indexed today and has no
+# route in this build, so it must be redirected rather than dropped. This is the only
+# automatic guard on that: rename a doc and drop its `redirect_from` and nothing else
+# notices, because the URL keeps answering right up until the release that removes it.
+section "Legacy URL redirects ($MANIFEST)"
+test -f "$MANIFEST" || { bad "$MANIFEST missing"; exit 1; }
+
+rows=0
+while IFS=$'\t' read -r url target scope; do
+  case "$url" in ''|'#'*) continue ;; esac
+  rows=$((rows + 1))
+
+  case "$url" in
+    *.html) out="$SITE$url" ;;
+    *)      out="$SITE${url}index.html" ;;
+  esac
+
+  if [ ! -f "$out" ]; then
+    bad "$url — no stub at ${out#"$SITE"}"
+    continue
+  fi
+  # Internal targets carry the baseurl; off-site ones must not.
+  case "$target" in
+    /*) expected="$BASEURL$target" ;;
+    *)  expected="$target" ;;
+  esac
+  if ! grep -qF "location=\"$expected\"" "$out"; then
+    got=$(grep -oE 'location="[^"]*"' "$out" | head -1) || true
+    bad "$url — stub points at ${got:-nothing}, expected \"$expected\""
+    continue
+  fi
+
+  if [ "$scope" = "both" ]; then
+    # _redirects rules carry no trailing slash on the source path.
+    src="${url%/}"
+    [ -z "$src" ] && src="/"
+    if ! awk -v p="$src" -v t="$target" '
+          /^[[:space:]]*#/ || NF < 2 { next }
+          $1 == p && $2 == t { found = 1 }
+          END { exit !found }' _redirects; then
+      bad "$url — stub is correct but _redirects has no matching '$src $target' rule"
+      continue
+    fi
+  fi
+
+  ok "$url -> $target"
+done < "$MANIFEST"
+printf '  %d legacy URLs checked\n' "$rows"
+
+# --- verdict -----------------------------------------------------------------
+section "Result"
+if [ "$fail" -eq 0 ]; then
+  echo "  PASS — $SITE is safe to publish"
+else
+  echo "  FAIL — do not publish $SITE"
+  exit 1
+fi

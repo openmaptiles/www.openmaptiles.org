@@ -1,0 +1,20 @@
+---
+# Front matter fence is required for Jekyll to process this through sass.
+---
+
+// The `home` layout: / , /viewers/ , the 7 /styles/:slug/ and 59 /languages/:code/
+// pages. Section order follows _layouts/home.html so the two stay easy to diff.
+
+@use "hero";         // includes the multilingual map dialog
+@use "maptiler";
+@use "schema";
+@use "companies";
+@use "mapstyles";    // includes the style preview modal
+@use "data";
+@use "about-home";
+@use "languages";
+@use "animations";   // .animate-ping, shared with error.scss
+@use "viewers";      // /viewers/ only, but it is one include on a shared layout
+
+// LAST: element rules that must outrank every component above.
+@use "element-overrides";

@@ -1,0 +1,70 @@
+@use "config" as *;
+// Wrapped in `@layer components` so the element rules in _element-overrides.scss,
+// which are unlayered, outrank these regardless of specificity. Unlayered CSS always
+// beats layered CSS in the cascade, which is what makes that file the single place to
+// override any of this.
+
+@layer components {
+  // build, by resolving the Tailwind class to its computed value.
+
+  .site-footer {
+    background-color: var(--color-white);      // bg-white
+    border-color: var(--color-gray-100);       // border-gray-100 sets all edges
+    border-top-width: 1px;                     // border-t
+    border-top-style: solid;
+    padding-block: 3rem;                       // py-12
+    margin-top: 5rem;                          // mt-20
+  }
+
+  .site-footer__inner {
+    text-align: center;                        // text-center
+    // Declarations go BEFORE the include: `container` ends in @media blocks, and a
+    // declaration after a nested at-rule becomes a SECOND rule for the same selector.
+    @include container(80rem);                 // max-w-7xl
+  }
+
+  .site-footer__credit {
+    color: var(--color-gray-500);              // text-gray-500
+    @include text(sm);
+  }
+
+  .site-footer__link {
+    color: var(--color-gray-900);
+    font-weight: 500;                          // font-medium
+    text-decoration-line: underline;
+    // `underline-offset-4` was dead in the previous design: the link also matched
+    // the unlayered `a.underline` rule in _element-overrides.scss, which set 2px and won.
+    text-underline-offset: 2px;
+    text-decoration-color: var(--color-gray-200);
+    transition-property: color, background-color, border-color, outline-color,
+      text-decoration-color, fill, stroke;
+    transition-timing-function: $ease;
+    transition-duration: 0.15s;
+
+    // Tailwind emitted its hover variants inside `@media (hover: hover)`, so the
+    // styles never fired on touch devices. Kept, rather than "fixed", so the
+    // rendered behaviour matches.
+    @include hover {
+      color: var(--color-black);
+      text-decoration-color: var(--color-gray-400);
+    }
+  }
+
+  .site-footer__meta {
+    margin-top: 0.5rem;                        // mt-2
+    color: var(--color-gray-400);              // text-gray-400
+    @include text(xs);
+  }
+
+  .site-footer__consent {
+    transition-property: color, background-color, border-color, outline-color,
+      text-decoration-color, fill, stroke;
+    transition-timing-function: $ease;
+    transition-duration: 0.15s;
+
+    @media (hover: hover) {
+      &:hover { color: var(--color-gray-600); }
+    }
+  }
+
+}

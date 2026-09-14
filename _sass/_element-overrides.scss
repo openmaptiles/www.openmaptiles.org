@@ -1,0 +1,76 @@
+// Element-level rules from _element-overrides.scss. LOADED LAST — the order is the point.
+//
+// In the previous design every Tailwind utility sat in `@layer utilities` while
+// _element-overrides.scss was unlayered, so these rules beat the utilities unconditionally.
+// That means classes like `text-gray-500` on a <p>, or `border-gray-200` on a
+// <section>, never actually applied: the token below won every time.
+//
+// The ported component SCSS is unlayered too, so it would beat these rules on
+// source order alone. Loading this file after the components restores the
+// original outcome. Verified by diffing computed styles section by section — before
+// this split, footer/companies/about paragraphs rendered gray-500/gray-600
+// instead of --omt-text-body, and headings rendered gray-900 instead of
+// --omt-text-dark.
+
+// The three dialog/hero titles are listed by class because each renders as a heading
+// or a <p> depending on the route (exactly one H1 per page). Without them the <p> form
+// would fall to the `p, li` rule below and change colour: this file is unlayered and
+// the component SCSS sits in @layer components, so the element selector outranks
+// `.hero__title` regardless of specificity.
+h1, h2, h3, h4, h5, h6,
+.hero__title, .languages__title, .style-modal__title {
+  color: var(--omt-text-dark);
+}
+
+p, li {
+  color: var(--omt-text-body);
+}
+
+// Every page section shares one divider token. Sections only ever carry a
+// bottom border, so only that edge shows — but this sets all four, exactly as
+// the original did, which is why the computed border-color is uniform.
+section {
+  border-color: var(--omt-section-border);
+
+  // Section header rows: the div holding an icon plus the heading.
+  > div:has(h2),
+  > div:has(h1) {
+    border-color: var(--omt-section-border);
+  }
+}
+
+header {
+  background-color: var(--omt-surface);
+  border-color: var(--omt-border);
+}
+
+.section-heading-omt {
+  background-color: var(--omt-surface-alt);
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.75rem;
+}
+
+a.underline {
+  text-decoration-color: var(--color-gray-200);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+
+  &:hover {
+    text-decoration-color: var(--color-gray-400);
+    text-decoration-thickness: 2px;
+  }
+}
+
+.nav-active-omt {
+  background-color: var(--omt-nav-active-bg);
+  color: var(--omt-nav-active-text);
+}
+
+.nav-inactive-omt {
+  color: var(--omt-nav-inactive-text);
+
+  &:hover {
+    background-color: var(--omt-nav-active-bg);
+    color: var(--omt-nav-active-text);
+  }
+}

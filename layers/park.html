@@ -1,0 +1,11 @@
+---
+# /layers/<name>/ was a real, distinct page on the legacy production site, which
+# answered 200 for it. This site does not keep a standalone page per layer — see the
+# "schema" collection scope in _config.yml — so the old URL lands on the matching
+# anchor on the combined page instead. Not a jekyll-redirect-from redirect_from: on
+# the destination page/anchor, so it is a manual stub like
+# docs/website/openlayers3.html.
+permalink: /layers/park/
+redirect_to: /docs/schema/#park
+sitemap: false
+---

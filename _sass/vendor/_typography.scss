@@ -1,0 +1,404 @@
+// VENDOR — extracted verbatim, once, from the previous build's compiled CSS. The
+// script that produced it is gone, so this file is now the source. Edit deliberately.
+//
+// Port of @tailwindcss/typography's `prose` rules, so spacing and rhythm are
+// unchanged. The `:where(...)` wrappers are verbatim: they contribute zero
+// specificity, which is what lets the unlayered project rules win. `@layer utilities`
+// is load-bearing for the same reason — without it prose's `:where(h2)` (0,1,0)
+// outranks _element-overrides.scss's `h1..h6` (0,0,1) and headings come out wrong.
+//
+// Trimmed from Tailwind's output, all for the same reason — kramdown + GFM cannot
+// produce the elements, or the site never uses the hook:
+//
+//   - the `:not(:where([class~=not-prose], ...))` guard, 76 times. Adds no
+//     specificity, and `not-prose` appears nowhere, so removing it changes neither
+//     matching nor cascade. Re-add it if an opt-out is ever needed.
+//   - dl, dt, dd, figure, figcaption, kbd, picture, video, and the prose-invert palette
+//   - `ol[type=A|a|I|i|1]` and `[class~=lead]`, which orphaned --omt-prose-lead
+//
+// blockquote and the table family are KEPT as insurance — plain markdown reaches them
+// from `> quote` and `| a | b |`, though no doc uses either today.
+
+@layer utilities {
+
+  .prose {
+    --omt-prose-body:oklch(37.3% .034 259.733);
+    --omt-prose-headings: oklch(21% .034 264.665); // overridden in _element-overrides.scss
+    --omt-prose-links: oklch(21% .034 264.665); // overridden in _element-overrides.scss
+    --omt-prose-bold: oklch(21% .034 264.665); // overridden in _element-overrides.scss
+    --omt-prose-counters: oklch(70.7% .022 261.325); // overridden in _element-overrides.scss
+    --omt-prose-bullets: oklch(70.7% .022 261.325); // overridden in _element-overrides.scss
+    --omt-prose-hr:oklch(92.8% .006 264.531);
+    --omt-prose-quotes:oklch(21% .034 264.665);
+    --omt-prose-quote-borders:oklch(92.8% .006 264.531);
+    --omt-prose-code:oklch(21% .034 264.665);
+    --omt-prose-pre-code:oklch(92.8% .006 264.531);
+    --omt-prose-pre-bg:oklch(27.8% .033 256.848);
+    --omt-prose-th-borders:oklch(87.2% .01 258.338);
+    --omt-prose-td-borders:oklch(92.8% .006 264.531);
+    font-size:1rem;
+    line-height:1.75;
+  }
+
+  .prose {
+    color:var(--omt-prose-body);
+    max-width:65ch;
+  }
+
+  .prose :where(p) {
+    margin-top:1.25em;
+    margin-bottom:1.25em;
+  }
+
+  .prose :where(a) {
+    color:var(--omt-prose-links);
+    font-weight:500;
+    text-decoration:underline;
+  }
+
+  .prose :where(strong) {
+    color:var(--omt-prose-bold);
+    font-weight:600;
+  }
+
+  .prose :where(a strong),
+  .prose :where(blockquote strong),
+  .prose :where(thead th strong) {
+    color:inherit;
+  }
+
+  .prose :where(ol) {
+    margin-top:1.25em;
+    margin-bottom:1.25em;
+    padding-inline-start:1.625em;
+    list-style-type:decimal;
+  }
+
+  .prose :where(ul) {
+    margin-top:1.25em;
+    margin-bottom:1.25em;
+    padding-inline-start:1.625em;
+    list-style-type:disc;
+  }
+
+  .prose :where(ol>li)::marker {
+    color:var(--omt-prose-counters);
+    font-weight:400;
+  }
+
+  .prose :where(ul>li)::marker {
+    color:var(--omt-prose-bullets);
+  }
+
+  .prose :where(hr) {
+    border-color:var(--omt-prose-hr);
+    border-top-width:1px;
+    margin-top:3em;
+    margin-bottom:3em;
+  }
+
+  .prose :where(blockquote) {
+    color:var(--omt-prose-quotes);
+    border-inline-start-width:.25rem;
+    border-inline-start-color:var(--omt-prose-quote-borders);
+    quotes:"“""”""‘""’";
+    margin-top:1.6em;
+    margin-bottom:1.6em;
+    padding-inline-start:1em;
+    font-style:italic;
+    font-weight:500;
+  }
+
+  .prose :where(blockquote p:first-of-type):before {
+    content:open-quote;
+  }
+
+  .prose :where(blockquote p:last-of-type):after {
+    content:close-quote;
+  }
+
+  .prose :where(h1) {
+    color:var(--omt-prose-headings);
+    margin-top:0;
+    margin-bottom:.888889em;
+    font-size:2.25em;
+    font-weight:800;
+    line-height:1.11111;
+  }
+
+  .prose :where(h1 strong) {
+    color:inherit;
+    font-weight:900;
+  }
+
+  .prose :where(h2) {
+    color:var(--omt-prose-headings);
+    margin-top:2em;
+    margin-bottom:1em;
+    font-size:1.5em;
+    font-weight:700;
+    line-height:1.33333;
+  }
+
+  .prose :where(h2 strong) {
+    color:inherit;
+    font-weight:800;
+  }
+
+  .prose :where(h3) {
+    color:var(--omt-prose-headings);
+    margin-top:1.6em;
+    margin-bottom:.6em;
+    font-size:1.25em;
+    font-weight:600;
+    line-height:1.6;
+  }
+
+  .prose :where(h3 strong) {
+    color:inherit;
+    font-weight:700;
+  }
+
+  .prose :where(h4) {
+    color:var(--omt-prose-headings);
+    margin-top:1.5em;
+    margin-bottom:.5em;
+    font-weight:600;
+    line-height:1.5;
+  }
+
+  .prose :where(h4 strong) {
+    color:inherit;
+    font-weight:700;
+  }
+
+  .prose :where(img) {
+    margin-top:2em;
+    margin-bottom:2em;
+  }
+
+  .prose :where(code) {
+    color:var(--omt-prose-code);
+    font-size:.875em;
+    font-weight:600;
+  }
+
+  .prose :where(code):before,
+  .prose :where(code):after {
+    content:"`";
+  }
+
+  .prose :where(a code),
+  .prose :where(h1 code) {
+    color:inherit;
+  }
+
+  .prose :where(h2 code) {
+    color:inherit;
+    font-size:.875em;
+  }
+
+  .prose :where(h3 code) {
+    color:inherit;
+    font-size:.9em;
+  }
+
+  .prose :where(h4 code),
+  .prose :where(blockquote code),
+  .prose :where(thead th code) {
+    color:inherit;
+  }
+
+  .prose :where(pre) {
+    color:var(--omt-prose-pre-code);
+    background-color:var(--omt-prose-pre-bg);
+    padding-top:.857143em;
+    padding-inline-end:1.14286em;
+    padding-bottom:.857143em;
+    border-radius:.375rem;
+    margin-top:1.71429em;
+    margin-bottom:1.71429em;
+    padding-inline-start:1.14286em;
+    font-size:.875em;
+    font-weight:400;
+    line-height:1.71429;
+    overflow-x:auto;
+  }
+
+  .prose :where(pre code) {
+    font-weight:inherit;
+    color:inherit;
+    font-size:inherit;
+    font-family:inherit;
+    line-height:inherit;
+    background-color:#0000;
+    border-width:0;
+    border-radius:0;
+    padding:0;
+  }
+
+  .prose :where(pre code):before,
+  .prose :where(pre code):after {
+    content:none;
+  }
+
+  .prose :where(table) {
+    table-layout:auto;
+    width:100%;
+    margin-top:2em;
+    margin-bottom:2em;
+    font-size:.875em;
+    line-height:1.71429;
+  }
+
+  .prose :where(thead) {
+    border-bottom-width:1px;
+    border-bottom-color:var(--omt-prose-th-borders);
+  }
+
+  .prose :where(thead th) {
+    color:var(--omt-prose-headings);
+    vertical-align:bottom;
+    padding-inline-end:.571429em;
+    padding-bottom:.571429em;
+    padding-inline-start:.571429em;
+    font-weight:600;
+  }
+
+  .prose :where(tbody tr) {
+    border-bottom-width:1px;
+    border-bottom-color:var(--omt-prose-td-borders);
+  }
+
+  .prose :where(tbody tr:last-child) {
+    border-bottom-width:0;
+  }
+
+  .prose :where(tbody td) {
+    vertical-align:baseline;
+  }
+
+  .prose :where(tfoot) {
+    border-top-width:1px;
+    border-top-color:var(--omt-prose-th-borders);
+  }
+
+  .prose :where(tfoot td) {
+    vertical-align:top;
+  }
+
+  .prose :where(th,td) {
+    text-align:start;
+  }
+
+  .prose :where(li) {
+    margin-top:.5em;
+    margin-bottom:.5em;
+  }
+
+  .prose :where(ol>li),
+  .prose :where(ul>li) {
+    padding-inline-start:.375em;
+  }
+
+  .prose :where(.prose>ul>li p) {
+    margin-top:.75em;
+    margin-bottom:.75em;
+  }
+
+  .prose :where(.prose>ul>li>p:first-child) {
+    margin-top:1.25em;
+  }
+
+  .prose :where(.prose>ul>li>p:last-child) {
+    margin-bottom:1.25em;
+  }
+
+  .prose :where(.prose>ol>li>p:first-child) {
+    margin-top:1.25em;
+  }
+
+  .prose :where(.prose>ol>li>p:last-child) {
+    margin-bottom:1.25em;
+  }
+
+  .prose :where(ul ul,ul ol,ol ul,ol ol) {
+    margin-top:.75em;
+    margin-bottom:.75em;
+  }
+
+  .prose :where(hr+*),
+  .prose :where(h2+*),
+  .prose :where(h3+*),
+  .prose :where(h4+*) {
+    margin-top:0;
+  }
+
+  .prose :where(thead th:first-child) {
+    padding-inline-start:0;
+  }
+
+  .prose :where(thead th:last-child) {
+    padding-inline-end:0;
+  }
+
+  .prose :where(tbody td,tfoot td) {
+    padding-top:.571429em;
+    padding-inline-end:.571429em;
+    padding-bottom:.571429em;
+    padding-inline-start:.571429em;
+  }
+
+  .prose :where(tbody td:first-child,tfoot td:first-child) {
+    padding-inline-start:0;
+  }
+
+  .prose :where(tbody td:last-child,tfoot td:last-child) {
+    padding-inline-end:0;
+  }
+
+  .prose :where(.prose>:first-child) {
+    margin-top:0;
+  }
+
+  .prose :where(.prose>:last-child) {
+    margin-bottom:0;
+  }
+
+  .prose {
+    --omt-prose-headings:var(--color-gray-900);
+    --omt-prose-links:var(--color-gray-900);
+    --omt-prose-bold:var(--color-gray-900);
+    --omt-prose-counters:var(--color-gray-400);
+    --omt-prose-bullets:var(--color-gray-400);
+  }
+
+  .prose :not(pre)>code {
+    color:#111827;
+    background-color:#f3f4f6;
+    border-radius:.25rem;
+    padding:.15em .35em;
+    font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;
+    font-size:.875em;
+    font-weight:400;
+  }
+
+  .prose a:not(.no-underline) {
+    color:var(--color-gray-900)!important;
+    text-decoration-line:underline!important;
+    -webkit-text-decoration-color:var(--color-gray-200)!important;
+    text-decoration-color:var(--color-gray-200)!important;
+    text-underline-offset:2px!important;
+    font-weight:500!important;
+    text-decoration-thickness:1px!important;
+    transition:all .15s ease-in-out!important;
+  }
+
+  .prose a:not(.no-underline):hover {
+    color:var(--color-black)!important;
+    -webkit-text-decoration-color:var(--color-gray-400)!important;
+    text-decoration-color:var(--color-gray-400)!important;
+    text-decoration-thickness:2px!important;
+  }
+
+}

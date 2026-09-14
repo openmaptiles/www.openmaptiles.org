@@ -1,0 +1,65 @@
+{%- comment -%}
+Homepage MapTiler Cloud section.
+
+Three different tracking events here, not one — cloud_intent_click,
+server_intent_click and download_intent_click — and the latter two carry a
+`destination` param, hence data-track-destination.
+{%- endcomment -%}
+<section id="maptiler" class="maptiler" data-section="maptiler_cta">
+  <div class="maptiler__inner">
+    <div class="maptiler__card">
+      <img
+        src="{{ '/img/maptiler-logo.svg' | relative_url }}"
+        alt="MapTiler logotype"
+        class="maptiler__logo"
+      />
+      <p class="maptiler__text">
+        The OpenMapTiles project was created by
+        <a
+          href="https://www.maptiler.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="maptiler__link"
+        >MapTiler</a>, the maintainer of the schema and tools. As the authors of the
+        open-source stack, MapTiler also provides
+        <strong>professional support and high-performance infrastructure</strong>
+        for organizations running maps in production.
+      </p>
+
+      <div class="maptiler__actions">
+        <a
+          href="https://www.maptiler.com/cloud/"
+          target="_blank"
+          rel="noopener noreferrer"
+          data-tracked="true"
+          data-track-event="cloud_intent_click"
+          data-track-section="maptiler_cta"
+          data-track-label="Use cloud maps"
+          class="btn-maptiler maptiler__btn"
+        >Use cloud maps</a>
+        <a
+          href="https://www.maptiler.com/server/"
+          target="_blank"
+          rel="noopener noreferrer"
+          data-tracked="true"
+          data-track-event="server_intent_click"
+          data-track-section="maptiler_cta"
+          data-track-destination="server"
+          data-track-label="Host it yourself"
+          class="btn-maptiler maptiler__btn"
+        >Host it yourself</a>
+        <a
+          href="https://www.maptiler.com/data/"
+          target="_blank"
+          rel="noopener noreferrer"
+          data-tracked="true"
+          data-track-event="download_intent_click"
+          data-track-section="maptiler_cta"
+          data-track-destination="downloads"
+          data-track-label="Download map data"
+          class="btn-maptiler maptiler__btn"
+        >Download map data</a>
+      </div>
+    </div>
+  </div>
+</section>

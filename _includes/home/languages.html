@@ -1,0 +1,78 @@
+{%- comment -%}
+Language picker, rendered inside the Hero dialog. This embedded form is the only
+one the site uses.
+
+An earlier version carried elaborate guards around map creation (a cancellable
+removal timer, a re-entrancy check) purely to survive a component framework's
+mount→unmount→remount cycle. None of that applies here, so it is not ported.
+{%- endcomment -%}
+<div class="languages" data-languages-map data-section="languages" data-active-language="{{ page.active_language }}">
+  <div class="languages__banner">
+    <div class="languages__banner-inner">
+      <div class="languages__banner-row">
+        <div class="languages__banner-info">
+          <div>
+            {%- comment -%}
+            Seeded from _data/languages.json so the heading is in the served HTML rather
+            than only after languages.js runs; the script sets the same string again.
+            Off a /languages/:code/ route this dialog is closed and the hero owns the
+            H1, so the element drops to a <p> there.
+            {%- endcomment -%}
+            {%- assign language_title = page.language.titlelocalized | default: page.language.title -%}
+            {% if page.active_language %}
+            <h1 class="languages__title" data-languages-title>{{ language_title }}</h1>
+            {% else %}
+            <p class="languages__title" data-languages-title></p>
+            {% endif %}
+            <p class="languages__subtitle">
+              OpenMapTiles is multilingual - display the map in your own
+              language.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="languages__map-area">
+    <div class="languages__map" data-languages-canvas></div>
+
+    <div class="languages__card">
+      <div class="languages__card-top">
+        <img
+          src="{{ '/img/maptiler-logo.svg' | relative_url }}"
+          alt="MapTiler logotype"
+          loading="lazy"
+          class="languages__card-logo"
+        />
+        <div class="languages__card-list">
+          <span><span class="languages__tick">✓</span> Free or commercial plan</span>
+          <span><span class="languages__tick">✓</span> Raster &amp; vector tiles</span>
+          <span><span class="languages__tick">✓</span> Your own map style</span>
+        </div>
+      </div>
+
+      <div class="languages__card-actions">
+        <a href="https://www.maptiler.com/cloud/" target="_blank" rel="noopener noreferrer"
+           data-tracked="true" data-track-event="cloud_intent_click"
+           data-track-section="languages" data-track-label="Use cloud maps"
+           class="btn-maptiler languages__card-btn">Use cloud maps</a>
+        <a href="https://www.maptiler.com/server/" target="_blank" rel="noopener noreferrer"
+           data-tracked="true" data-track-event="server_intent_click"
+           data-track-section="languages" data-track-destination="server"
+           data-track-label="Host it yourself"
+           class="btn-maptiler languages__card-btn">Host it yourself</a>
+        <a href="https://www.maptiler.com/data/" target="_blank" rel="noopener noreferrer"
+           data-tracked="true" data-track-event="download_intent_click"
+           data-track-section="languages" data-track-destination="downloads"
+           data-track-label="Download map data"
+           class="btn-maptiler languages__card-btn">Download map data</a>
+      </div>
+    </div>
+  </div>
+
+  {%- comment -%}Shown by languages.js when WebGL is unavailable.{%- endcomment -%}
+  <div class="languages__nowebgl" data-languages-nowebgl hidden>
+    <p>Your browser does not support WebGL, which is required for this map.</p>
+  </div>
+</div>

@@ -1,0 +1,187 @@
+{%- comment -%}
+Body of /osm2vectortiles/ — the project's history page.
+
+As with the About page, an earlier version nested a second <main>
+inside Layout's <main id="main-content">; this uses a <div>.
+
+`animate-fade-in` on the outer wrapper is not a Tailwind utility and no
+matching keyframes exist anywhere in the build, so it produced no styles and is
+not carried over.
+
+Contributors and partners move to _data/osm2vt.json — they were four and two
+near-identical copy-pasted blocks.
+{%- endcomment -%}
+{%- assign link = "osm2vt__link" -%}
+<div class="osm2vt" data-section="osm2vectortiles">
+  <div class="osm2vt__stack">
+
+    <div>
+      <a href="{{ '/about/' | relative_url }}" class="osm2vt__back">
+        {% include icons/arrow-left.svg %}
+        Back to About
+      </a>
+    </div>
+
+    <section class="osm2vt__section">
+      <h1 class="osm2vt__h1">OSM2VectorTiles</h1>
+      <p class="osm2vt__intro">
+        OSM2VectorTiles was a pioneering open-source project and the direct predecessor of
+        <a href="{{ '/' | relative_url }}" class="osm2vt__intro-link">OpenMapTiles</a>.
+        It simplified the creation and hosting of free world maps powered by OpenStreetMap, laying the foundation for modern web-based vector map tile rendering and delivery.
+      </p>
+    </section>
+
+    <section class="osm2vt__origins">
+      <p>
+        The project was born as the bachelor's thesis of Manuel Roth and Lukas Martinelli from the
+        <a href="https://ost.ch" target="_blank" rel="noopener noreferrer" class="{{ link }}">University of Applied Sciences Rapperswil, Switzerland (now OST)</a>,
+        supported and made possible by
+        <a href="https://www.maptiler.com" target="_blank" rel="noopener noreferrer" class="{{ link }}">Klokan Technologies (now MapTiler)</a>.
+      </p>
+      <p>
+        Recognized for its technological innovation and community impact, OSM2VectorTiles won the prestigious
+        <a href="https://wiki.openstreetmap.org/wiki/OpenStreetMap_Awards/2016" target="_blank" rel="noopener noreferrer" class="{{ link }}">OpenStreetMap Innovation Award</a>
+        in 2016.
+      </p>
+    </section>
+
+    <div class="osm2vt__links">
+      <a
+        href="https://github.com/osm2vectortiles/osm2vectortiles"
+        target="_blank"
+        rel="noopener noreferrer"
+        data-tracked="true"
+        data-track-event="github_intent_click"
+        data-track-section="osm2vectortiles"
+        data-track-repo="osm2vectortiles/osm2vectortiles"
+        class="osm2vt__card"
+      >
+        <div class="osm2vt__card-icon">{% include icons/github-logo.svg %}</div>
+        <div>
+          <div class="osm2vt__card-title">Project on GitHub</div>
+          <div class="osm2vt__card-text">Explore the archived open-source repository.</div>
+        </div>
+      </a>
+
+      <a
+        href="https://github.com/osm2vectortiles/bachelor-thesis"
+        target="_blank"
+        rel="noopener noreferrer"
+        data-tracked="true"
+        data-track-event="github_intent_click"
+        data-track-section="osm2vectortiles"
+        data-track-repo="osm2vectortiles/bachelor-thesis"
+        class="osm2vt__card"
+      >
+        <div class="osm2vt__card-icon">{% include icons/book-open.svg %}</div>
+        <div>
+          <div class="osm2vt__card-title">Bachelor Thesis Document</div>
+          <div class="osm2vt__card-text">Read “Updatable Vector Tiles from OpenStreetMap”.</div>
+        </div>
+      </a>
+    </div>
+
+    <section class="osm2vt__section">
+      <div class="section-heading-omt osm2vt__heading">
+        <div class="osm2vt__icon">{% include icons/users.svg %}</div>
+        <h2 class="osm2vt__h2">Contributors</h2>
+      </div>
+
+      <div class="osm2vt__people">
+        {%- for person in site.data.osm2vt.contributors %}
+        <div class="osm2vt__person">
+          <img
+            src="{{ '/img/osm2vectortiles/' | append: person.img | relative_url }}"
+            alt="{{ person.name }}"
+            class="osm2vt__avatar"
+          />
+          <a href="{{ person.href }}" target="_blank" rel="noopener noreferrer" class="osm2vt__person-link">
+            <h4 class="osm2vt__person-name">{{ person.name }}</h4>
+          </a>
+          <p class="osm2vt__person-role">{{ person.role }}</p>
+        </div>
+        {%- endfor %}
+      </div>
+    </section>
+
+    <section class="osm2vt__section osm2vt__section--wide">
+      <div class="section-heading-omt osm2vt__heading">
+        <div class="osm2vt__icon">{% include icons/video.svg %}</div>
+        <h2 class="osm2vt__h2">Presentations &amp; Videos</h2>
+      </div>
+
+      <div class="osm2vt__videos">
+        <div class="osm2vt__video-block">
+          <h3 class="osm2vt__h3">Introduction to Vector Tiles</h3>
+          <p class="osm2vt__video-text">
+            A high-level video introduction to vector tiles, the project, and how to use the provided vector tiles to create custom styles and map layouts.
+          </p>
+          <div class="osm2vt__frame osm2vt__frame--lg">
+            <iframe src="https://www.youtube.com/embed/Wh--DHRULkE" title="Introduction to Vector Tiles" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+        </div>
+
+        <div class="osm2vt__video-block">
+          <h3 class="osm2vt__h3">State of the Map (SOTM) 2016</h3>
+          <p class="osm2vt__video-text">
+            The presentation of OSM2VectorTiles at the State of the Map 2016 conference in Brussels, introducing the open-source pipeline and community response.
+          </p>
+          <div class="osm2vt__frame osm2vt__frame--lg">
+            <iframe src="https://www.youtube.com/embed/Jt2b0qXHucE" title="State of the Map 2016 Presentation" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+        </div>
+
+        <div class="osm2vt__video-block">
+          <h3 class="osm2vt__h3">FOSS4G 2016 Presentations</h3>
+          <p class="osm2vt__video-text">
+            Detailed technical presentations at FOSS4G 2016 in Bonn. These cover the process of creating custom vector tiles from OpenStreetMap data and self-hosting them using TileServer GL.
+          </p>
+          <div class="osm2vt__video-pair">
+            <div class="osm2vt__video-half">
+              <div class="osm2vt__frame osm2vt__frame--md">
+                <iframe src="https://www.youtube.com/embed/D7mmXonFIqA" title="FOSS4G 2016 Technical Presentation" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+              <p class="osm2vt__video-caption">Creating vector tiles based on OSM data</p>
+            </div>
+            <div class="osm2vt__video-half">
+              <div class="osm2vt__frame osm2vt__frame--md">
+                <iframe src="https://www.youtube.com/embed/rOg4VnSAnI4" title="TileServer GL Presentation" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+              <p class="osm2vt__video-caption">Hosting vector tile maps on your own server with TileServer GL</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="osm2vt__video-block">
+          <h3 class="osm2vt__h3">FOSSGIS 2016 (German)</h3>
+          <p class="osm2vt__video-text">
+            General introduction to serving vector tiles and styling demonstrations presented in German at FOSSGIS 2016.
+          </p>
+          <div class="osm2vt__frame osm2vt__frame--lg">
+            <iframe src="https://www.youtube.com/embed/lG7atynI8Pk" title="FOSSGIS 2016 Presentation" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="osm2vt__section">
+      <div class="section-heading-omt osm2vt__heading">
+        <div class="osm2vt__icon">{% include icons/handshake.svg %}</div>
+        <h2 class="osm2vt__h2">Project Partners</h2>
+      </div>
+
+      <div class="osm2vt__partners">
+        {%- for partner in site.data.osm2vt.partners %}
+        <a href="{{ partner.href }}" target="_blank" rel="noopener noreferrer" class="osm2vt__partner">
+          <img
+            src="{{ '/img/' | append: partner.img | relative_url }}"
+            alt="{{ partner.alt }}"
+            class="osm2vt__partner-logo"
+          />
+        </a>
+        {%- endfor %}
+      </div>
+    </section>
+
+  </div>
+</div>

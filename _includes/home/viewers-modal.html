@@ -1,0 +1,109 @@
+{%- comment -%}
+Side-by-side viewer comparison dialog.
+
+Only /viewers/ renders it, and it is always open there — an earlier version mounted the
+component unconditionally on that page with client:load, so this include is
+rendered outright rather than emitted hidden.
+
+Server-rendered initial state: the loader screen is visible, MapLibre GL
+is the active tab, and no error is shown. The error panel is emitted hidden so
+viewers-modal.js can reveal it without building DOM.
+
+The three libraries come from their CDNs at runtime, exactly as loadScript() and
+loadStyle() did — nothing is vendored for this widget.
+{%- endcomment -%}
+<div class="viewers" data-viewers-modal data-section="viewers_modal" role="dialog" aria-modal="true" aria-label="Interactive web viewers">
+  <div class="viewers__backdrop" data-viewers-close></div>
+
+  <div class="viewers__wrap">
+    <button
+      type="button"
+      class="viewers__close"
+      aria-label="Close viewers modal"
+      data-viewers-close
+    >{% include icons/x-bold.svg %}</button>
+
+    <div class="viewers__frame">
+      <div id="viewers-loader-screen" class="viewers__loader animate-pulse" data-viewers-loader>
+        <div class="viewers__loader-glyph">
+          <div class="animate-ping viewers__loader-ping"></div>
+          {% include icons/globe.svg %}
+        </div>
+        <p class="viewers__loader-text">Loading map scripts and assets...</p>
+      </div>
+
+      {%- comment -%}
+      All three maps stay mounted; only opacity and z-index change, which is how
+      pan/zoom state is carried across tab switches.
+      {%- endcomment -%}
+      <div class="viewers__stack">
+        <div id="map-mlgljs" class="viewers__pane" data-viewers-pane="mlgljs" data-active="true">
+          <div class="viewers__canvas" data-viewers-container="mlgljs"></div>
+        </div>
+        <div id="map-leaflet" class="viewers__pane" data-viewers-pane="leaflet">
+          <div class="viewers__canvas" data-viewers-container="leaflet"></div>
+        </div>
+        <div id="map-ol" class="viewers__pane" data-viewers-pane="ol">
+          <div class="viewers__canvas" data-viewers-container="ol"></div>
+        </div>
+      </div>
+
+      <div class="viewers__panel">
+        <div class="viewers__panel-head">
+          {%- comment -%}
+          H1: home.html emits this include on /viewers/ only, and the dialog is that
+          page's subject, so the hero headline steps down to an <h2> there.
+          {%- endcomment -%}
+          <h1 class="viewers__panel-title">Interactive web viewers</h1>
+        </div>
+
+        <p class="viewers__panel-text">
+          See how the OpenMapTiles schema renders across different open-source JavaScript web mapping libraries. Coordinates and zoom levels remain fully synchronized as you toggle.
+        </p>
+
+        <div class="viewers__tabs">
+          <button type="button" class="viewers__tab" data-viewers-tab="mlgljs" aria-selected="true">
+            {% include icons/globe.svg %}MapLibre GL</button>
+          <button type="button" class="viewers__tab" data-viewers-tab="leaflet" aria-selected="false">
+            {% include icons/leaf.svg %}Leaflet</button>
+          <button type="button" class="viewers__tab" data-viewers-tab="ol" aria-selected="false">
+            {% include icons/map-trifold-regular.svg %}OpenLayers</button>
+        </div>
+
+        <div class="viewers__cloud">
+          <img
+            src="{{ '/img/maptiler-logo-icon.png' | relative_url }}"
+            alt="MapTiler logo"
+            loading="lazy"
+            class="viewers__cloud-logo"
+          />
+          <a
+            href="https://www.maptiler.com/cloud/"
+            target="_blank"
+            rel="noopener noreferrer"
+            {%- comment -%}
+            No tracking attributes on purpose: this link had no handler, and
+            the generic outbound catch-all suppresses maptiler.com/cloud URLs
+            (classifyMapTiler returns "cloud"), so nothing fires.
+            {%- endcomment -%}
+            class="viewers__cloud-link"
+          >Try our Maps API <span class="viewers__cloud-note">- free or commercial plans for raster and vector tiles.</span></a>
+        </div>
+      </div>
+
+      {%- comment -%}
+      The error panel is only shown once loading fails, so it is emitted hidden
+      rather than omitted. It sits LAST rather than first:
+      error and loader are mutually exclusive, both absolutely positioned at
+      z-40, and keeping it last leaves the frame's other children at the same
+      structural index once the loader is removed.
+      {%- endcomment -%}
+      <div class="viewers__error" data-viewers-error hidden>
+        <div class="viewers__error-badge">{% include icons/globe.svg %}</div>
+        <h3 class="viewers__error-title">Error loading maps</h3>
+        <p class="viewers__error-text" data-viewers-error-text></p>
+        <button type="button" class="viewers__retry" data-viewers-retry>Retry</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+---
+layout: docs
+permalink: /docs/inspect/
+redirect_from: /inspect/
+title: "Map inspect tool – OpenMapTiles"
+description: "Inspect your OpenMapTiles vector tile layers directly in the browser using the interactive inspect and analysis tool."
+---
+{%- comment -%}
+Ports _InspectPage.tsx: a heading and lead paragraph above the standalone
+inspect tool, which sits in a bordered frame. The nested prose div is faithful —
+the layout's column is already prose and the component adds another inside it.
+{%- endcomment -%}
+<div class="inspect-page">
+  <div class="inspect-page__intro prose">
+    <h1>Map inspect tool</h1>
+    <p class="inspect-page__lead">
+      Analyze and inspect the vector tile layers dynamically. Click on features directly on the map to inspect their attribute values, layers, and properties.
+    </p>
+  </div>
+  <div class="inspect-page__frame">
+    <iframe
+      src="{{ '/inspect-tool.html' | relative_url }}#{{ site.maps.key }}"
+      title="Map inspect tool"
+      class="inspect-frame"></iframe>
+  </div>
+</div>

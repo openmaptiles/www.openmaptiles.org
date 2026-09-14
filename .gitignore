@@ -1,5 +1,39 @@
+# Jekyll build output and caches
 _site
-.sass-cache
 .jekyll-cache
 .jekyll-metadata
-_config.local.yaml
+.sass-cache
+_config.local.yml
+
+# Bundler
+.bundle
+vendor/bundle
+
+# No npm anywhere in this repo any more — kept as a guard
+node_modules
+package-lock.json
+
+# IDE / Editor
+.vscode
+.idea
+*.swp
+*.swo
+.DS_Store
+
+# Local env files
+.env
+.env.local
+
+# Local tool / editor configs
+opencode.json
+config/
+.mcp.json
+.playwright-mcp
+
+# Temporary scratch directories. Note: NOT *.png — img/ and media/ are tracked
+# site content at the repo root.
+scratch/
+
+# Dot folders
+.*/
+!.github/

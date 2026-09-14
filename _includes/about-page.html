@@ -1,0 +1,200 @@
+{%- comment -%}
+Body of /about/.
+
+Two departures, both noted inline below:
+  - an earlier version nested a second <main> inside the layout's
+    <main id="main-content">, which is invalid HTML; this uses a <div>
+  - the media-kit download links used href="img/press/..." with no leading
+    slash, so from /about/ they resolved to /about/img/press/... and 404'd.
+    Same class of bug as Companies. Fixed with relative_url.
+
+Icons are duotone Phosphor glyphs, inlined as SVG.
+{%- endcomment -%}
+{%- assign link = "about-page__link" -%}
+<div class="about-page" data-section="about_page">
+  <div class="about-page__stack">
+
+    <section class="about-page__section">
+      <h1 class="about-page__h1">About OpenMapTiles</h1>
+      <p class="about-page__intro">
+        OpenMapTiles is the fastest way to run open-source maps. In minutes,
+        you can start serving optimized vector map tiles ready for use in
+        websites, apps, or products.
+      </p>
+    </section>
+
+    <section class="about-page__section">
+      <div class="section-heading-omt about-page__heading">
+        <div class="about-page__icon">{% include icons/rocket-launch.svg %}</div>
+        <h2 class="about-page__h2">Project origins</h2>
+      </div>
+      <p class="about-page__body">
+        OpenMapTiles is the successor to
+        <a href="{{ '/osm2vectortiles' | relative_url }}" class="{{ link }}">OSM2VectorTiles</a>,
+        which won the
+        <a href="https://wiki.openstreetmap.org/wiki/OpenStreetMap_Awards/2016" class="{{ link }}">OpenStreetMap Innovation Award in 2016</a>.
+        It started as a bachelor's thesis at OST University in cooperation
+        with Klokan Technologies. Today, it is maintained by the
+        <a href="https://www.maptiler.com" target="_blank" rel="noopener noreferrer" class="{{ link }}">MapTiler team</a>.
+      </p>
+    </section>
+
+    <section class="about-page__section">
+      <div class="about-page__video">
+        <iframe
+          src="https://www.youtube.com/embed/EUOx_v5cj0k?si=2_wgx6vXnrQmySeK&amp;controls=0"
+          title="OpenMapTiles Video"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
+      <p class="about-page__caption">
+        The project is primarily maintained by developers and cartographers
+        from the MapTiler team as part of
+        <a href="https://www.maptiler.com/open-source/" class="{{ link }}">their open-source initiative</a>.
+      </p>
+    </section>
+
+    <section class="about-page__section">
+      <div class="section-heading-omt about-page__heading">
+        <div class="about-page__icon">{% include icons/map-trifold.svg %}</div>
+        <h2 class="about-page__h2">Open styles &amp; schema</h2>
+      </div>
+      <p class="about-page__body">
+        OpenMapTiles is a <strong>full map stack</strong>. We provide
+        beautiful
+        <a href="{{ '/#map-styles' | relative_url }}" class="{{ link }}">open map styles</a>
+        that you can adapt for your project or commercial product.
+      </p>
+      <p class="about-page__body">
+        Our
+        <a href="{{ '/docs/schema' | relative_url }}" class="{{ link }}">Vector Tile Schema</a>
+        encodes cartography decisions from
+        <a href="https://www.openstreetmap.org/" target="_blank" rel="noopener noreferrer" class="{{ link }}">OpenStreetMap</a>
+        and
+        <a href="https://www.naturalearthdata.com/" target="_blank" rel="noopener noreferrer" class="{{ link }}">Natural Earth</a>.
+        It is 100% free to use, extend, and build upon.
+      </p>
+    </section>
+
+    <section class="about-page__section">
+      <div class="section-heading-omt about-page__heading">
+        <div class="about-page__icon">{% include icons/database.svg %}</div>
+        <h2 class="about-page__h2">Ready-to-use map data</h2>
+      </div>
+      <p class="about-page__body">
+        We turn public OpenStreetMap data into ready-to-use vector tile
+        packages for the whole planet, individual countries, and major
+        cities.
+      </p>
+      <div class="about-page__grid">
+        <div class="about-page__card">
+          <div class="about-page__card-title">Web</div>
+          <div class="about-page__card-text">Interactive maps using modern JavaScript viewers.</div>
+        </div>
+        <div class="about-page__card">
+          <div class="about-page__card-title">Mobile</div>
+          <div class="about-page__card-text">Native iOS and Android apps, including offline use.</div>
+        </div>
+        <div class="about-page__card">
+          <div class="about-page__card-title">Print</div>
+          <div class="about-page__card-text">High-resolution raster images for physical maps.</div>
+        </div>
+      </div>
+      <p class="about-page__body about-page__body--spaced">
+        For the fastest start, you can download preprocessed global datasets
+        from commercial providers such as
+        <a href="https://www.maptiler.com/data/" target="_blank" rel="noopener noreferrer"
+           data-tracked="true" data-track-event="download_intent_click"
+           data-track-section="about_page" data-track-destination="downloads"
+           data-track-label="MapTiler Data" class="{{ link }}">MapTiler Data</a>,
+        or skip downloading altogether and get maps instantly with
+        <a href="https://www.maptiler.com/cloud/" target="_blank" rel="noopener noreferrer"
+           data-tracked="true" data-track-event="cloud_intent_click"
+           data-track-section="about_page" data-track-label="MapTiler Cloud"
+           class="{{ link }}">MapTiler Cloud</a>.
+      </p>
+    </section>
+
+    <section class="about-page__section">
+      <div class="section-heading-omt about-page__heading">
+        <div class="about-page__icon">{% include icons/lock-key-open.svg %}</div>
+        <h2 class="about-page__h2">No vendor lock-in</h2>
+      </div>
+      <p class="about-page__body">
+        The entire project is open-source (<a href="https://opensource.org/licenses/BSD-3-Clause" target="_blank" rel="noopener noreferrer" class="{{ link }}">BSD</a>{{ " + " }}<a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer" class="{{ link }}">CC-BY</a>)
+        and relies on open standards. You can run the entire pipeline
+        yourself.
+      </p>
+      <ul class="about-page__list">
+        <li>Adopt our workflow and generate tiles in-house.</li>
+        <li>Host your map data completely independently.</li>
+        <li>
+          Or use commercial APIs and data from
+          <a href="https://maptiler.com" target="_blank" rel="noopener noreferrer" class="{{ link }}">MapTiler</a>
+          to speed up deployment.
+        </li>
+      </ul>
+    </section>
+
+    <section class="about-page__section">
+      <div class="section-heading-omt about-page__heading">
+        <div class="about-page__icon">{% include icons/users.svg %}</div>
+        <h2 class="about-page__h2">Community</h2>
+      </div>
+      <p class="about-page__body">
+        Contributions to the source code are very welcome! Join the
+        developers building the future of open map infrastructure.
+      </p>
+      <div class="about-page__action">
+        <a
+          href="https://github.com/openmaptiles"
+          target="_blank"
+          rel="noopener noreferrer"
+          data-tracked="true"
+          data-track-event="github_intent_click"
+          data-track-section="about_page"
+          data-track-repo="openmaptiles"
+          class="btn-secondary-omt about-page__btn"
+        >{% include icons/code.svg %}View on GitHub</a>
+      </div>
+    </section>
+
+    <section class="about-page__section">
+      <div class="section-heading-omt about-page__heading about-page__heading--split">
+        <div class="about-page__heading-group">
+          <div class="about-page__icon">{% include icons/download.svg %}</div>
+          <h2 class="about-page__h2">Media kit</h2>
+        </div>
+      </div>
+
+      {%- assign kit = "logo.png|OpenMapTiles logo|Project Logo,banner.png|OpenMapTiles - vector tiles from OpenStreetMap banner|Project Banner,icons_with_map_background.png|Icons with Map Background|Map Icons" | split: "," -%}
+      <div class="about-page__grid">
+        {%- for entry in kit %}
+        {%- assign parts = entry | split: "|" %}
+        <a
+          href="{{ '/img/press/' | append: parts[0] | relative_url }}"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="about-page__kit"
+        >
+          <div class="about-page__kit-frame">
+            <img src="{{ '/img/press/' | append: parts[0] | relative_url }}" alt="{{ parts[1] }}" />
+          </div>
+          <div class="about-page__kit-label">{{ parts[2] }}</div>
+        </a>
+        {%- endfor %}
+      </div>
+
+      <div class="about-page__kit-cta">
+        <a
+          href="https://drive.google.com/drive/folders/0BwUe1kqIRJWScmdNbURyTVQ2Mlk?usp=sharing"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-secondary-omt about-page__btn about-page__btn--wide"
+        >{% include icons/download-regular.svg %}Browse media kit</a>
+      </div>
+    </section>
+
+  </div>
+</div>

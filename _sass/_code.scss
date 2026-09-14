@@ -1,0 +1,85 @@
+@use "config" as *;
+
+// Code blocks: the copy button and the <pre>/<code> chrome. The previous design used
+// inline attributes from react-syntax-highlighter; Rouge produces the markup now,
+// reshaped by _plugins/codeblock.rb. Token colours are vendor output, in
+// _sass/vendor/_prism-one-light.scss.
+
+@layer components {
+
+  .codeblock {
+    position: relative;
+  }
+
+  // ── copy button ──────────────────────────────────────────────────────────
+  // Reveals on hover of the block, matching `opacity-0 group-hover:opacity-100`.
+  .codeblock__copy {
+    position: absolute;
+    top: 0.5rem;                               // top-2
+    right: 0.5rem;                             // right-2
+    padding: 0.5rem;                           // p-2
+    border-radius: 0.375rem;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-gray-200);
+    color: var(--color-gray-500);
+    opacity: 0;
+    cursor: pointer;
+    transition: opacity 0.15s $ease;
+
+    &[data-copied="true"] { color: oklch(62.7% 0.194 149.214); }  // text-green-600
+  }
+
+  @media (hover: hover) {
+    .codeblock:hover .codeblock__copy { opacity: 1; }
+
+    .codeblock__copy:hover {
+      background-color: var(--omt-surface-alt);   // hover:bg-gray-50
+      color: var(--color-gray-900);
+    }
+  }
+
+  // Touch devices never fire the hover that reveals the button, so keep it
+  // visible there instead of unreachable.
+  @media (hover: none) {
+    .codeblock__copy { opacity: 1; }
+  }
+}
+
+// UNLAYERED on purpose. prose's `:where(pre)` and `:where(code)` sit in
+// @layer utilities, which outranks @layer components regardless of specificity,
+// so these would lose if they were layered. In the previous design the equivalent
+// styles were inline attributes, which outrank everything.
+.codeblock__pre {
+  // From the inline style react-syntax-highlighter emitted.
+  background: hsl(230, 1%, 98%);
+  color: hsl(230, 8%, 24%);
+  font-family: "Fira Code", "Fira Mono", Menlo, Consolas, "DejaVu Sans Mono", monospace;
+  direction: ltr;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  line-height: 1.5;
+  tab-size: 2;
+  hyphens: none;
+  padding: 1rem;                             // customStyle
+  margin: 0;
+  overflow: auto;
+  border-radius: 0.375rem;
+  border: 1px solid #e5e7eb;
+  font-size: 0.875rem;
+}
+
+// codeTagProps overrode the font stack on the <code> element only.
+.codeblock__code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  background: none;
+  color: inherit;
+  padding: 0;
+  border-radius: 0;
+  font-size: inherit;
+}
+
+// Token palette lives in _sass/vendor/_prism-one-light.scss, loaded straight after
+// this file — see assets/css/docs.scss.
+

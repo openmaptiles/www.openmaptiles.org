@@ -1,0 +1,12 @@
+---
+# The legacy repo's production-package.html carried no front matter, so Jekyll copied
+# it verbatim and it still answers 200 at /production-package.html today — separately
+# from /production-package/, which is a Cloudflare Redirect Rule. Both URLs are live,
+# so both get a stub. Pointing this one straight at the final target rather than at
+# /production-package/ saves a hop.
+#
+# TARGET MUST MATCH THE EDGE RULE. Verified against production 2026-08-03.
+permalink: /production-package.html
+redirect_to: https://maptiler.com/data/pricing/
+sitemap: false
+---

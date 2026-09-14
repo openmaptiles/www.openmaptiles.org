@@ -1,0 +1,72 @@
+{%- comment -%}
+Docs sidebar navigation.
+
+Nav groups come from _data/docs_nav.json, generated from the navGroups array in
+the previous implementation's hard-coded nav array.
+
+Bug fixed in passing: an earlier version hardcoded
+`href={`/openmaptiles-2026${item.path}`}` instead of using BASE_URL, so every
+sidebar link on every docs page would 404 once deployed at base "/" — the
+documented production target. `relative_url` makes that impossible.
+
+Active state is computed at build time, mirroring isActiveGroupItem(): exact
+match, or prefix match for anything other than /docs itself. Both sides are
+normalised to a trailing slash first — `remove_last: "/"` removes the last
+OCCURRENCE of the substring, not a trailing slash, so it turned "/docs" into
+"docs" and "/docs/schema" into "/docsschema" and nothing ever matched.
+
+The search box and the collapse toggle are emitted here rather than built at
+runtime; search.js only fills the drawer.
+{%- endcomment -%}
+{%- assign here = page.url -%}
+{%- unless here == "/" -%}
+  {%- assign here_last = here | slice: -1 -%}
+  {%- unless here_last == "/" -%}{%- assign here = here | append: "/" -%}{%- endunless -%}
+{%- endunless -%}
+
+<aside class="docs-sidebar" data-docs-sidebar data-section="docs_sidebar">
+  <div class="docs-sidebar__top">
+    <div class="docs-sidebar__search">
+      {% include docs/search.html %}
+    </div>
+    <button
+      type="button"
+      class="docs-sidebar__toggle"
+      aria-label="Hide sidebar"
+      aria-expanded="true"
+      data-sidebar-toggle
+    >
+      <span data-caret="left">{% include icons/caret-left.svg %}</span>
+      <span data-caret="right" hidden>{% include icons/caret-right.svg %}</span>
+    </button>
+  </div>
+
+  <div class="docs-sidebar__body">
+    <ul class="docs-sidebar__groups">
+      {%- for group in site.data.docs_nav %}
+      <li>
+        <h3 class="docs-sidebar__group-title">{{ group.title }}</h3>
+        <ul class="docs-sidebar__items">
+          {%- for item in group.items %}
+          {%- assign target = item.path -%}
+          {%- assign target_last = target | slice: -1 -%}
+          {%- unless target_last == "/" -%}{%- assign target = target | append: "/" -%}{%- endunless -%}
+          {%- assign active = false -%}
+          {%- if here == target -%}
+            {%- assign active = true -%}
+          {%- elsif target != "/docs/" and here contains target -%}
+            {%- assign active = true -%}
+          {%- endif -%}
+          <li>
+            <a
+              href="{{ item.path | relative_url }}"
+              class="docs-sidebar__link {% if active %}nav-active-omt{% else %}nav-inactive-omt docs-sidebar__link--inactive{% endif %}"
+            >{{ item.name }}</a>
+          </li>
+          {%- endfor %}
+        </ul>
+      </li>
+      {%- endfor %}
+    </ul>
+  </div>
+</aside>

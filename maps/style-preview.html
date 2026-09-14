@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Map Style Preview</title>
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+  <script src="https://unpkg.com/maplibre-gl@5.24.0/dist/maplibre-gl.js"></script>
+  <link href="https://unpkg.com/maplibre-gl@5.24.0/dist/maplibre-gl.css" rel="stylesheet" />
+  <style>
+    body { margin: 0; padding: 0; }
+    #map { position: absolute; top: 0; bottom: 0; width: 100%; }
+
+    /* Move zoom/navigation control down by 80px and align it horizontally with the 16px (right-4) offset of the close button on mobile (<640px) */
+    @media (max-width: 639px) {
+      .maplibregl-ctrl-top-right {
+        top: 80px !important;
+      }
+      .maplibregl-ctrl-top-right .maplibregl-ctrl {
+        margin-right: 18px !important;
+      }
+    }
+
+    /* Custom attribution style that perfectly mimics MapLibre default */
+    .custom-attribution {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      background-color: rgba(255, 255, 255, 0.75);
+      padding: 0 5px;
+      font: 12px/20px "Helvetica Neue", Arial, Helvetica, sans-serif;
+      color: rgba(0, 0, 0, 0.75);
+      z-index: 1;
+      border-radius: 3px 0 0 0;
+    }
+    .custom-attribution a {
+      color: rgba(0, 0, 0, 0.75);
+      text-decoration: none;
+    }
+    .custom-attribution a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+  <div class="custom-attribution">
+    <a href="https://www.maptiler.com/copyright/" target="_blank">© MapTiler</a>
+    <a href="https://www.openstreetmap.org/copyright" target="_blank">© OpenStreetMap contributors</a>
+  </div>
+  <script>
+    var urlParams = new URLSearchParams(window.location.search);
+    var key = urlParams.get('key') || 'LIb45gssRLBrsVQPT0MN';
+    var styleId = urlParams.get('style') || 'openstreetmap';
+
+    var hash = window.location.hash.slice(1) || '';
+    var zoom = 12.2;
+    var center = [8.5417, 47.3769]; // Default: Zurich
+
+    if (hash) {
+      if (hash.indexOf('/') !== -1) {
+        var parts = hash.split('/');
+        if (parts.length >= 3) {
+          zoom = parseFloat(parts[0]) || zoom;
+          center = [parseFloat(parts[2]) || center[0], parseFloat(parts[1]) || center[1]];
+        }
+      }
+    }
+
+    // Support both MapTiler style IDs and custom URLs (for open-source styles like Fiord Color)
+    function initMap(style) {
+      var map = new maplibregl.Map({
+        container: 'map',
+        style: style,
+        center: center,
+        zoom: zoom,
+        attributionControl: false
+      });
+      map.addControl(new maplibregl.NavigationControl(), 'top-right');
+    }
+
+    if (styleId.startsWith('http://') || styleId.startsWith('https://')) {
+      // Custom URL - fetch and process the style JSON to replace {key} placeholders
+      fetch(styleId)
+        .then(function(response) { return response.json(); })
+        .then(function(style) {
+          // Replace {key} placeholders in the style
+          var styleStr = JSON.stringify(style);
+          styleStr = styleStr.replace(/\{key\}/g, key);
+          var processedStyle = JSON.parse(styleStr);
+
+          // Fix broken sprite URLs (e.g., GitHub Pages that aren't deployed)
+          // Use MapTiler's default sprites as fallback
+          if (processedStyle.sprite && processedStyle.sprite.includes('github.io')) {
+            processedStyle.sprite = 'https://api.maptiler.com/maps/dataviz/sprite';
+          }
+
+          initMap(processedStyle);
+        })
+        .catch(function(err) {
+          console.error('Failed to load style:', err);
+          // Fallback to a default style
+          initMap('https://api.maptiler.com/maps/dataviz/style.json?key=' + key);
+        });
+    } else {
+      // MapTiler style ID
+      initMap('https://api.maptiler.com/maps/' + styleId + '/style.json?key=' + key);
+    }
+  </script>
+</body>
+</html>

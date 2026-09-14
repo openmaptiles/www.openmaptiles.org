@@ -1,0 +1,17 @@
+---
+layout: base
+---
+{%- comment -%}
+Shell for long-form legal text (privacy, and any future terms page written as
+real OMT content rather than a redirect stub). Reuses docs-shell for the same
+outer gutters/max-width as /docs/**, and prose for typography — but skips
+docs/sidebar.html, which docs.html includes unconditionally and which has no
+relevance here. `margin-inline: auto` is inline rather than a new _sass
+partial because exactly one page uses it today.
+{%- endcomment -%}
+<div class="docs-shell">
+  <article class="prose" data-section="legal_content" style="margin-inline:auto; overflow-wrap:break-word;">
+    <h1>{{ page.title }}</h1>
+    {{ content }}
+  </article>
+</div>

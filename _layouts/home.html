@@ -1,0 +1,33 @@
+---
+layout: base
+---
+{%- comment -%}
+Shared by /, /styles/:slug/ and /languages/:code/.
+
+Note the difference in section order: the homepage does NOT include Schema, while
+/styles/:slug/ and /languages/:code/
+both do, right after MapTiler.
+{%- endcomment -%}
+
+{%- comment -%}
+Both dialogs are emitted before the sections. They are position:fixed overlays with
+an explicit z-index, so DOM order does not affect how they stack — but it does set
+where their headings land in the document outline, and on /styles/:slug/ and
+/viewers/ the open dialog is the page's subject and owns its H1. Emitting them
+first keeps that H1 ahead of the section headings behind it.
+
+The style dialog is emitted on every route (map-styles.js reveals it when a card is
+clicked) and lived inside the MapStyles section until it moved here; initStyleModal()
+looks it up on the document for that reason.
+{%- endcomment -%}
+{% include home/style-modal.html %}
+{% if page.viewers_modal %}{% include home/viewers-modal.html %}{% endif %}
+
+{% include home/hero.html %}
+{% include home/maptiler.html %}
+{% if page.active_style or page.active_language or page.force_schema %}{% include home/schema.html %}{% endif %}
+{% include home/companies.html %}
+{% include home/map-styles.html %}
+{% include home/data.html %}
+{% include home/about.html %}
+

@@ -1,0 +1,78 @@
+{%- comment -%}
+Homepage schema section — the layer list linking into /docs/schema/.
+
+Rendered on /styles/:slug/, /languages/:code/ and /viewers/ — but NOT on the
+homepage, which omits this section. The condition lives in
+_layouts/home.html.
+
+The Phosphor <FileText> icon is inlined from _includes/icons/, extracted from
+the previous design rather than swapped for another icon set, so glyph metrics are
+identical.
+{%- endcomment -%}
+<section id="schema" class="schema" data-section="schema">
+  <div class="schema__inner">
+    <div class="schema__row">
+      <div class="schema__body">
+        <h2 class="schema__title">What is the Open Tile Schema?</h2>
+        <p class="schema__lead">
+          The Vector Tile Schema is an
+          <strong>open, production-ready specification</strong> for
+          structuring map data. Built on OpenStreetMap, Natural Earth, and
+          other open data sources, it
+          <strong>defines how geographic features are organized in vector tiles</strong>.
+        </p>
+        <p class="schema__text">
+          It captures common cartographic decisions - layers, attributes,
+          and naming - in a clear data model that helps you build maps
+          faster and more consistently.
+        </p>
+        <p class="schema__text">
+          Free to use, modify, and extend. The schema can be adapted or
+          reimplemented in any project with attribution.
+        </p>
+
+        <div class="schema__actions">
+          <a href="{{ '/docs/schema/' | relative_url }}" class="btn-primary-omt schema__cta">
+            {% include icons/file-text.svg %}
+            Explore the schema
+          </a>
+          <div class="schema__license">
+            <a
+              href="https://github.com/openmaptiles/openmaptiles"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-tracked="true"
+              data-track-event="github_intent_click"
+              data-track-section="schema"
+              data-track-label="View code on GitHub"
+              class="schema__link"
+            >View code on GitHub</a>.
+            <br />
+            <a
+              href="https://opensource.org/licenses/BSD-3-Clause"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="schema__link"
+            >BSD</a>
+            {{ " / " }}
+            <a
+              href="https://creativecommons.org/licenses/by/4.0/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="schema__link"
+            >CC-BY</a>
+            license · Attribution required
+          </div>
+        </div>
+      </div>
+      <div class="schema__logo-wrap">
+        <img
+          src="{{ '/img/press/logo.webp' | relative_url }}"
+          alt="OpenMapTiles Logo"
+          loading="lazy"
+          class="schema__logo"
+        />
+      </div>
+    </div>
+  </div>
+</section>

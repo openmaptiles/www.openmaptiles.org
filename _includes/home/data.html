@@ -1,0 +1,65 @@
+{%- comment -%}
+Homepage downloads section — one card per entry in _data/datasets.json.
+
+The five dataset cards move to _data/datasets.json. Their per-card sizes were
+three repeated Tailwind triples; they become size
+modifiers (sm/md/lg) here. Horizontal position and stacking stay inline,
+because they are per-item data rather than style.
+
+Each card carries two shadow layers plus the image — the "umbra"/"penumbra"
+pair that animates on hover.
+{%- endcomment -%}
+<section id="data" class="data" data-section="data_section">
+  <div class="data__inner">
+    <div class="data__card">
+      <h2 class="data__title">Get ready-made tiles</h2>
+      <p class="data__text">
+        Don't want to generate tiles yourself? The maintainers of
+        OpenMapTiles offer <strong>ready-to-use map tiles</strong> for the
+        entire planet, countries, and cities. Choose from a range of free
+        and premium datasets, including high-resolution satellite imagery.
+      </p>
+
+      <a
+        href="https://www.maptiler.com/on-prem-datasets/planet/"
+        target="_blank"
+        rel="noopener noreferrer"
+        data-tracked="true"
+        data-track-event="download_intent_click"
+        data-track-section="data_section"
+        data-track-destination="downloads"
+        data-track-label="Go to downloads"
+        class="btn-maptiler data__cta"
+      >Go to downloads</a>
+
+      <div class="data__carousel">
+        <div class="data__stage">
+          {%- for item in site.data.datasets %}
+          <a
+            href="{{ item.href }}"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="{{ item.title }}"
+            data-tracked="true"
+            data-track-event="download_intent_click"
+            data-track-section="data_carousel"
+            data-track-destination="downloads"
+            data-track-label="{{ item.title }}"
+            class="data__item"
+            style="left: calc(50% + {{ item.offset }}%); z-index: {{ item.z }};"
+          >
+            <div class="data__umbra" aria-hidden="true"></div>
+            <div class="data__penumbra" aria-hidden="true"></div>
+            <img
+              src="{{ '/img/' | append: item.src | relative_url }}"
+              alt="{{ item.alt }}"
+              loading="lazy"
+              class="data__img data__img--{{ item.size }}"
+            />
+          </a>
+          {%- endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,12 @@
+{%- comment -%}
+Runtime config for the ES modules. Emitted as JSON rather than interpolated into
+JS so the scripts stay static files Jekyll never has to process.
+{%- endcomment -%}
+<script type="application/json" id="site-config">
+{
+  "baseurl": {{ site.baseurl | jsonify }},
+  "apiKey": {{ site.maps.key | jsonify }},
+  "mapsDomain": {{ site.maps.domain | jsonify }},
+  "languages": {{ site.data.languages | jsonify }}
+}
+</script>

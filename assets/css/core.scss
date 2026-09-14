@@ -1,0 +1,18 @@
+---
+# Front matter fence is required for Jekyll to process this through sass.
+---
+
+// Linked first by every page, then whatever `stylesheets` names — see
+// _layouts/base.html. Anything added here ships site-wide; section styles belong in
+// that section's bundle.
+
+@use "tokens";         // :root + the @layer order statement — must be first
+@use "vendor/reset";   // @layer base — Tailwind v4 preflight, verbatim
+@use "base";
+@use "buttons";
+@use "header";
+@use "footer";
+
+// _element-overrides.scss is deliberately NOT here. It has to load after the
+// components it outranks, which live in the per-page bundles, so each bundle ends with
+// it instead.

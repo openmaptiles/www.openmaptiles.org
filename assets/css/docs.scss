@@ -1,0 +1,21 @@
+---
+# Front matter fence is required for Jekyll to process this through sass.
+---
+
+// The `docs` layout: /docs/**, /docs/inspect/, /docs/schema/ and the _docs collection.
+//
+// Load order is load-bearing: `typography` sits in @layer utilities so the unlayered
+// files after it win, and `docs-embedded` must follow both `docs-shell` and
+// `prose-overrides` — see the note in that file.
+
+@use "vendor/typography";  // the ported `prose` rules, verbatim
+@use "prose-overrides";
+@use "docs-shell";
+@use "docs-embedded";
+@use "sidebar";
+@use "search";
+@use "code";
+@use "vendor/prism-one-light";  // its token colours; must follow "code"
+
+// LAST: element rules that must outrank every component above.
+@use "element-overrides";

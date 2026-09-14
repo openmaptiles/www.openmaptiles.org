@@ -1,0 +1,66 @@
+{%- comment -%}
+Site footer: link columns, the cookie-consent hook, and the tracking attributes
+assets/js/tracking.js reads.
+
+Tracking is declarative here: the attributes below are read by one
+delegated listener that reads these data-track-* attributes, so the markup stays
+static and the event contract lives in one place:
+
+  data-track-event    the dataLayer event name
+  data-track-section  source_section
+  data-track-label    cta_label
+                      destination_url is taken from href
+
+data-section on the wrapper is the fallback source_section: it covers the
+untagged links here and every outbound_click, which carry no data-track-section
+of their own.
+{%- endcomment -%}
+<footer class="site-footer" data-section="footer">
+  <div class="site-footer__inner">
+    <p class="site-footer__credit">
+      OpenMapTiles.org is an open-source project from the OMT community and
+      <a
+        href="https://www.maptiler.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        data-tracked="true"
+        data-track-event="cloud_intent_click"
+        data-track-section="footer"
+        data-track-label="MapTiler"
+        class="site-footer__link"
+      >MapTiler</a>,
+      who provides the
+      <a
+        href="https://www.maptiler.com/cloud/"
+        target="_blank"
+        rel="noopener noreferrer"
+        data-tracked="true"
+        data-track-event="cloud_intent_click"
+        data-track-section="footer"
+        data-track-label="Maps API"
+        class="site-footer__link"
+      >Maps API</a>.
+    </p>
+    <p class="site-footer__meta">
+      &copy; {{ site.time | date: "%Y" }} OpenMapTiles Community
+      {{ " • " }}
+      <a
+        href="{{ '/about/privacy/' | relative_url }}"
+        class="site-footer__link"
+      >Privacy policy</a>
+      {{ " • " }}
+      {%- comment -%}
+      `csconsentlink` is the hook the cookie-consent vendor binds to — not a
+      Tailwind class. It has to stay on the element.
+      {%- endcomment -%}
+      <a
+        href="#"
+        class="csconsentlink site-footer__consent"
+        data-tracked="true"
+        data-track-event="cloud_intent_click"
+        data-track-section="footer"
+        data-track-label="Cookie settings"
+      >Cookie settings</a>
+    </p>
+  </div>
+</footer>

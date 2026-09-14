@@ -1,0 +1,116 @@
+{%- comment -%}
+Homepage hero: headline, calls to action, and the map mock-up.
+
+The Languages dialog is emitted here but starts closed, and is opened by
+assets/js/hero.js when the page is a /languages/:code/ route. In an earlier
+version the dialog was mounted conditionally from the same condition
+(`activeLanguage` or a pathname containing /languages).
+{%- endcomment -%}
+<section id="hero" class="hero" data-section="hero">
+  {%- comment -%}
+  Described rather than decorative: it carries a real alt, so aria-hidden is gone
+  with it — aria-hidden="true" removes the element from the accessibility tree
+  entirely and the alt would never be announced.
+  {%- endcomment -%}
+  <img
+    src="{{ '/img/header-map-2560px.webp' | relative_url }}"
+    alt="Free &amp; open-source map style from OpenStreetMap"
+    fetchpriority="high"
+    class="hero__backdrop"
+  />
+
+  <div class="hero__intro">
+    <div class="hero__copy">
+      {%- comment -%}
+      Exactly one H1 per page, and it goes to whatever that route is actually about:
+      the multilingual map on /languages/:code/, the style dialog on /styles/:slug/,
+      the viewers dialog on /viewers/. This generic headline is the H1 only on the
+      homepage — elsewhere it steps down to an <h2>, or to a <p> on the language
+      routes where the dialog covers the hero entirely. The class carries every
+      visual rule, including the colour — see _element-overrides.scss.
+      {%- endcomment -%}
+      {% if page.active_language %}
+      <p class="hero__title">Open-source stack for building maps with vector tiles</p>
+      {% elsif page.active_style or page.viewers_modal %}
+      <h2 class="hero__title">Open-source stack for building maps with vector tiles</h2>
+      {% else %}
+      <h1 class="hero__title">Open-source stack for building maps with vector tiles</h1>
+      {% endif %}
+      <p class="hero__lead">
+        Includes the OpenMapTiles schema, ready-to-use map styles, and
+        tools for generating vector tiles from OpenStreetMap.
+      </p>
+    </div>
+
+    <div class="hero__actions">
+      <a
+        href="{{ '/docs/' | relative_url }}"
+        data-track-event="hero_cta_click"
+        data-track-label="Documentation"
+        data-track-variant="primary"
+        class="btn-primary-omt hero__btn"
+      >{% include icons/file-text.svg %}Documentation</a>
+      <a
+        href="https://github.com/openmaptiles"
+        target="_blank"
+        rel="noopener noreferrer"
+        data-tracked="true"
+        data-track-event="hero_cta_click"
+        data-track-label="Code on GitHub"
+        data-track-variant="secondary"
+        class="btn-secondary-omt hero__btn"
+      >{% include icons/hero-code.svg %}Code on GitHub</a>
+    </div>
+  </div>
+
+  <button
+    type="button"
+    class="hero__mockup"
+    aria-label="Open MapTiler Basic map style preview"
+    data-hero-style-preview
+  >
+    <picture class="hero__picture">
+      <source
+        srcset="{{ '/img/home-banner-map.webp' | relative_url }}"
+        type="image/webp"
+      />
+      <img
+        src="{{ '/img/home-banner-map.png' | relative_url }}"
+        alt="OpenMapTiles Map Preview"
+        class="hero__mockup-img"
+      />
+    </picture>
+    <div class="hero__badge-wrap">
+      <span class="hero__badge">
+        {% include icons/map-trifold-bold.svg %}
+        Explore map styles
+      </span>
+    </div>
+  </button>
+</section>
+
+{%- comment -%}
+Full-screen multilingual map dialog. Hidden by default; hero.js opens it on
+/languages/:code/ routes and on popstate.
+{%- endcomment -%}
+<div
+  class="hero-dialog"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Multilingual map preview"
+  data-languages-dialog
+  {% unless page.active_language %}hidden{% endunless %}
+>
+  <div class="hero-dialog__backdrop" data-languages-close></div>
+  <div class="hero-dialog__frame">
+    <button
+      type="button"
+      class="hero-dialog__close"
+      aria-label="Close preview"
+      data-languages-close
+    >{% include icons/x.svg %}</button>
+    <div class="hero-dialog__body">
+      {% include home/languages.html %}
+    </div>
+  </div>
+</div>

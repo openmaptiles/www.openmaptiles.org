@@ -1,49 +1,18 @@
 ---
-layout: default
+layout: base
 ---
+{%- comment -%}
+Docs page shell: sidebar plus prose column.
 
-<div class="row">
-  <div class="col12 banner-org center">
-    <h1 class="white">{{ page.title }}</h1>
-  </div>
+Collection docs get their <h1> from the layout, which
+renders the front-matter title above the body. It also matters for spacing:
+prose zeroes the top margin of `.prose > :first-child`, so without the heading
+the first paragraph loses its 1.25em top margin.
+{%- endcomment -%}
+<div class="docs-shell">
+  {% include docs/sidebar.html %}
+  <article class="docs-content prose" data-section="docs_content">
+    {% if page.collection == "docs" %}<h1>{{ page.title }}</h1>{% endif %}
+    {{ content }}
+  </article>
 </div>
-
-<div class="container">
-  <div class="row">
-    <div class="col12 padt-2 padb-0">
-      {% for cat in site.data.categories %}
-        {% if cat.id == page.category %}
-          <p class="marb-0"><a href="/docs/">Docs</a> > <a href="/docs/{{ cat.id }}">{{ cat.title }}</a></p>
-        {% endif %}
-      {% endfor %}
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col8 padb-4">
-      <article>
-        {{ content }}
-      </article>
-    </div>
-
-  <div class="col4">
-    <h2 class="padb-1" >Tutorials</h2>
-    {% for category in site.data.categories %}
-    <div class="row doc-section">
-      <h4>{{ category.title }}</h4>
-      <ul>
-        {% assign articles = site.pages | where:"category", category.id | sort: "order" %}
-        {% for article in articles %}
-        {% if article.redirect %}
-          <li><a href="{{ article.redirect }}">{% if article.titlesidebar %}{{ article.titlesidebar }}{% else %}{{ article.title }}{% endif %}</a></li>
-        {% else %}
-          <li><a href="{{ article.url }}">{% if article.titlesidebar %}{{ article.titlesidebar }}{% else %}{{ article.title }}{% endif %}</a></li>
-        {% endif %}
-        {% endfor %}
-      </ul>
-    </div>
-    {% endfor %}
-  </div>
-  </div>
-</div>
-

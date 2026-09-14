@@ -1,0 +1,38 @@
+@use "config" as *;
+
+// Document-level defaults.
+//
+// The element-level rules from _element-overrides.scss (heading/paragraph colour, section
+// borders, nav states, a.underline) deliberately live in _element-overrides.scss
+// and load LAST — see the note at the top of that file.
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--omt-surface);
+  color: var(--color-gray-900);
+  font-family: var(--font-sans);
+  @include text(base);
+}
+
+#main-content {
+  flex-grow: 1;
+}
+
+// Screen-reader-only, from Tailwind's `sr-only`.
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

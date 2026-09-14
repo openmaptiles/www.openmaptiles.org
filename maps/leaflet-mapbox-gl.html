@@ -1,35 +1,11 @@
 ---
-layout: none
+# /maps/leaflet-mapbox-gl.html answers 200 on production today and is dropped here
+# (already half-broken there: unsubstituted access token, mapbox-gl-js v0.35.1, the
+# library this site replaces with MapLibre).
+# Restored as a redirect to /viewers/ rather than dropped, at the same target as its
+# sibling embed leaflet-vectorgrid.html. Listed in script/redirects.tsv or nothing
+# checks it.
 permalink: /maps/leaflet-mapbox-gl.html
+redirect_to: /viewers/
+sitemap: false
 ---
-<!DOCTYPE html>
-<html>
-<head>
-	<title>OpenMapTiles in Leaflet + Mapbox GL Leaflet</title>
-	<meta charset="utf-8" />
-
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
-  <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
-  <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v0.35.1/mapbox-gl.css" rel='stylesheet' />
-  <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v0.35.1/mapbox-gl.js"></script>
-  <script src="/js/leaflet-mapbox-gl.js"></script>
-</head>
-<body style='margin:0'>
-	<div id="map" style="width: 100vw; height: 100vh; background: white"></div>
-
-	<script>
-
-		var map = L.map('map');
-    map.options.minZoom = 2;
-    var gl = L.mapboxGL({
-        accessToken: '{token}',
-        style: '{{ site.maps.domain }}/maps/bright/style.json?key={{ site.maps.key }}'
-    }).addTo(map);
-    map.fitWorld();
-
-
-	</script>
-</body>
-</html>

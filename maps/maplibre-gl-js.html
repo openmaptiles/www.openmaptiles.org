@@ -1,15 +1,11 @@
----
-layout: none
-permalink: /maps/maplibre-gl-js.html
----
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset='utf-8' />
-    <title>OpenMapTiles OSM Bright style</title>
+    <title>OpenMapTiles with MapLibre GL JS</title>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-    <script src="https://unpkg.com/maplibre-gl/dist/maplibre-gl.js"></script>
-    <link href="https://unpkg.com/maplibre-gl/dist/maplibre-gl.css" rel="stylesheet" />
+    <script src="https://unpkg.com/maplibre-gl@5.24.0/dist/maplibre-gl.js"></script>
+    <link href="https://unpkg.com/maplibre-gl@5.24.0/dist/maplibre-gl.css" rel="stylesheet" />
     <style>
         body { margin:0; padding:0; }
         #map { position:absolute; top:0; bottom:0; width:100%; }
@@ -18,9 +14,11 @@ permalink: /maps/maplibre-gl-js.html
 <body>
     <div id='map'></div>
     <script>
+        var urlParams = new URLSearchParams(window.location.search);
+        var key = urlParams.get('key') || 'LIb45gssRLBrsVQPT0MN';
         var map = new maplibregl.Map({
             container: 'map',
-            style: '{{ site.maps.domain }}/maps/bright/style.json?key={{ site.maps.key }}',
+            style: 'https://api.maptiler.com/maps/openstreetmap/style.json?key=' + key,
             center: [8.5456, 47.3739],
             zoom: 11
         });

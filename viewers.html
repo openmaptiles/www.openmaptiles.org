@@ -1,62 +1,10 @@
 ---
-layout: page
-title: Viewers
-titlehtml: OpenMapTiles in Mapbox GL, OpenLayers, Leaflet and Tangram
-description: See our tiles in most used JavaScript web viewers such as Mapbox GL, OpenLayers, Leaflet and Tangram.
+layout: home
+stylesheets: [home]
+permalink: /viewers/
+title: "Vector Tile Map Viewers & Comparisons – OpenMapTiles"
+description: "Test and compare OpenMapTiles vector tile layers in real time across multiple rendering engines including MapLibre GL JS, Leaflet, and OpenLayers."
+viewers_modal: true
+force_schema: true
+redirect_from: /viewers.html
 ---
-
-<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans" />
-
-<script src="https://unpkg.com/maplibre-gl@1.14.0-rc.1/dist/maplibre-gl.js"></script>
-<link href="https://unpkg.com/maplibre-gl@1.14.0-rc.1/dist/maplibre-gl.css" rel="stylesheet" />
-
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css" />
-<script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
-
-<script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=fetch,Promise"></script>
-<script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v5.3.0/build/ol.js"></script>
-<script src="https://unpkg.com/ol-mapbox-style@3.6.2/dist/olms.js"></script>
-
-<!--
-<link rel="stylesheet" href="https://mapzen.com/js/mapzen.css">
-<script src="https://mapzen.com/js/mapzen.min.js"></script>
--->
-
-<div class="viewers map active" id="map-mlgljs"></div>
-<div class="viewers map" id="map-leaflet"></div>
-<div class="viewers map" id="map-ol"></div>
-<!-- <div class="viewers map" id="map-tangram"></div> -->
-
-<div class="viewers map-switchers"><!--
---><div class="active map-switch" id="map-switch-mlgljs" onclick="javascript:switchMap('mlgljs')">
-    <span>MapLibre GL JS</span>
-  </div><!--
-  --><div class="map-switch" id="map-switch-leaflet" onclick="javascript:switchMap('leaflet')">
-    <span>Leaflet</span>
-  </div><!--
-  --><div class="map-switch" id="map-switch-ol" onclick="javascript:switchMap('ol')">
-    <span>OpenLayers</span>
-  </div><!--
-  <div class="map-switch" id="map-switch-tangram" onclick="javascript:switchMap('tangram')">
-    <span>Tangram</span>
-  </div>
-  --></div>
-
-{% include maptilerbanner.html %}
-
-<div class="attribution"><a href="https://www.maptiler.com/license/maps/" target="_blank">© MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">© OpenStreetMap contributors</a></div>
-
-<script>
-var api = '{{ site.maps.key }}';
-</script>
-<script src="/js/viewers.js"></script>
-
-<!--
-<div id="banner-bg"></div>
-<div id="banner">
-  <div class="container">
-    <h1>Use different viewers</h1>
-    <h3>Vector tiles from OpenStreetMap</h3>
-  </div>
-</div>
--->

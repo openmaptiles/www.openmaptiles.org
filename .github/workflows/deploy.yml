@@ -1,0 +1,81 @@
+name: Deploy to GitHub Pages
+
+# Builds the site with our own `bundle exec jekyll build` and publishes the result,
+# rather than letting GitHub Pages run its sandboxed build.
+#
+# That distinction is the whole reason this file exists and must not be "simplified"
+# away. The built-in Pages build runs Jekyll in --safe mode, which skips _plugins/
+# silently. This site has three, and datapage_generator.rb produces the 59
+# /languages/:code/ and 6 /styles/:slug/ pages from _data/. Under the sandbox those
+# 65 pages simply would not exist — and the build would still exit 0.
+#
+# Nothing is published unless `script/verify-build` passes.
+#
+# The Pages *Source* setting decides whether this workflow is what deploys at all.
+# It is a repository setting and nothing in git can enforce it: Settings -> Pages ->
+# Source must read "GitHub Actions", not "Deploy from a branch".
+
+on:
+  push:
+    branches: ["master"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  build:
+    # Production only. A fork must not publish a build carrying this repo's CNAME and
+    # canonical URLs, so the job is pinned to the upstream repository by name.
+    if: github.repository == 'openmaptiles/www.openmaptiles.org'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      # Ruby version comes from .ruby-version (3.3.6): setup-ruby's `ruby-version`
+      # defaults to 'default', which reads that file. Do NOT add `ruby-version-file` —
+      # this action has no such input and warns "Unexpected input(s)" while quietly
+      # falling back to the same default, so the line looks load-bearing and is not.
+      # bundler-cache honours Gemfile.lock.
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v6
+
+      - name: Build
+        run: bundle exec jekyll build --trace
+        env:
+          JEKYLL_ENV: production
+
+      # A Jekyll build exits 0 even when it produces almost nothing, so assert the
+      # shape of _site before publishing it over the live site: the route floor,
+      # evidence that each custom plugin ran, the CNAME, that no internal document
+      # leaked, and every legacy URL in script/redirects.tsv.
+      - name: Verify build output
+        run: script/verify-build
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: './_site'
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5

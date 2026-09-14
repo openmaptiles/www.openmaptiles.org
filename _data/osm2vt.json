@@ -1,0 +1,40 @@
+{
+  "contributors": [
+    {
+      "name": "Manuel Roth",
+      "img": "manuelroth.jpg",
+      "href": "https://github.com/manuelroth",
+      "role": "CS Student at HSR"
+    },
+    {
+      "name": "Lukas Martinelli",
+      "img": "lukasmartinelli.jpg",
+      "href": "http://lukasmartinelli.ch/",
+      "role": "CS Student at HSR"
+    },
+    {
+      "name": "Petr Pridal, PhD",
+      "img": "petrpridal.jpg",
+      "href": "https://www.maptiler.com",
+      "role": "CEO of MapTiler"
+    },
+    {
+      "name": "Prof. Stefan Keller",
+      "img": "stefankeller.png",
+      "href": "https://www.ost.ch/de/person/stefan-f-keller-1419",
+      "role": "Professor at OST"
+    }
+  ],
+  "partners": [
+    {
+      "href": "https://www.maptiler.com",
+      "img": "klokantech-logo.png",
+      "alt": "Klokan Technologies"
+    },
+    {
+      "href": "https://www.ost.ch/de/forschung-und-dienstleistungen/informatik/ifs-institut-fuer-software",
+      "img": "hsr-logo.png",
+      "alt": "HSR Hochschule für Technik Rapperswil gray logo"
+    }
+  ]
+}

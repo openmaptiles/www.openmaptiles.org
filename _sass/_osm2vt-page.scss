@@ -1,0 +1,303 @@
+@use "config" as *;
+
+// Wrapped in `@layer components` so the unlayered element rules in
+// _element-overrides.scss, which are unlayered, outrank these regardless of
+// specificity.
+
+@layer components {
+
+  // The page template applies this wrapper too — see osm2vectortiles.html.
+  .osm2vt-outer {
+    // `padding-block` precedes the include on purpose — see the note in _footer.scss.
+    padding-block: 3rem;
+    @include container(56rem);                 // max-w-4xl
+
+    @include md { padding-block: 5rem; }
+  }
+
+  .osm2vt {
+    padding-block: 3rem;                       // py-12
+    @include container(56rem);                 // max-w-4xl
+
+    @include md { padding-block: 5rem; }       // md:py-20
+  }
+
+  // space-y-16 / space-y-6 / space-y-4 / space-y-8 / space-y-12 / space-y-2
+  .osm2vt__stack > :not(:last-child) { margin-bottom: 4rem; }
+  .osm2vt__section > :not(:last-child) { margin-bottom: 1.5rem; }
+  .osm2vt__section--wide > :not(:last-child) { margin-bottom: 2rem; }
+  .osm2vt__origins > :not(:last-child) { margin-bottom: 1rem; }
+  .osm2vt__videos > :not(:last-child) { margin-bottom: 3rem; }
+  .osm2vt__video-block > :not(:last-child) { margin-bottom: 1rem; }
+  .osm2vt__video-half > :not(:last-child) { margin-bottom: 0.5rem; }
+
+  .osm2vt__back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;                               // gap-2
+    @include text(sm);
+    color: var(--color-gray-500);
+    text-decoration: none;
+    transition: color 0.15s $ease;
+
+    svg { transition: transform 0.15s $ease; }
+
+    @include hover {
+      color: var(--color-gray-900);
+      svg { translate: -0.25rem 0; }         // group-hover:-translate-x-1
+    }
+  }
+
+  .osm2vt__h1 {
+    @include text(4xl);
+    font-weight: 800;
+    letter-spacing: -0.025em;
+
+    @include sm { font-size: 3rem; line-height: 1; }
+  }
+
+  .osm2vt__intro {
+    font-size: 1.25rem;                        // text-xl
+    line-height: 1.625;                        // leading-relaxed
+  }
+
+  .osm2vt__origins {
+    font-size: 1.125rem;                       // text-lg
+    line-height: 1.625;
+    color: var(--color-gray-700);              // text-gray-700
+  }
+
+  .osm2vt__heading {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;                              // gap-3
+  }
+
+  .osm2vt__icon { color: var(--color-gray-900); }
+
+  .osm2vt__h2 {
+    @include text(xl);
+    font-weight: 700;
+  }
+
+  .osm2vt__h3 {
+    @include text(lg);
+    font-weight: 700;
+  }
+
+  // ── link cards ───────────────────────────────────────────────────────────
+  .osm2vt__links {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 1rem;
+
+    @include sm { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+
+  .osm2vt__card {
+    padding: 1.25rem;                          // p-5
+    background-color: var(--color-white);
+    border: 2px solid var(--color-gray-200);
+    border-radius: 0.375rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;                                 // gap-4
+    text-decoration: none;
+    transition: all 0.15s $ease;
+
+    @include hover {
+      border-color: var(--color-gray-400);
+      .osm2vt__card-title { color: var(--color-black); }
+    }
+  }
+
+  .osm2vt__card-icon {
+    color: var(--color-gray-900);
+    // `bg-gray-50` is redefined unlayered in _element-overrides.scss and resolves to
+    // --omt-surface-alt, not gray-50.
+    background-color: var(--omt-surface-alt);
+    padding: 0.75rem;                          // p-3
+    border-radius: $radius-full;       // rounded-full
+  }
+
+  .osm2vt__card-title {
+    font-weight: 700;
+    color: var(--color-gray-900);
+    @include text(sm);
+    transition: color 0.15s $ease;
+  }
+
+  .osm2vt__card-text {
+    @include text(xs);
+    color: var(--color-gray-500);
+    margin-top: 0.25rem;                       // mt-1
+  }
+
+  // ── contributors ─────────────────────────────────────────────────────────
+  .osm2vt__people {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 1.5rem;                               // gap-6
+    padding-top: 1rem;                         // pt-4
+
+    @include sm { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    @include md { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  }
+
+  .osm2vt__person {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1.25rem;                          // p-5
+    background-color: var(--color-white);
+    border: 1px solid var(--color-gray-100);
+    border-radius: 0.75rem;                    // rounded-xl
+    // shadow-xs, composed the way Tailwind emitted it
+    @include shadow(xs);
+    transition: all 0.3s $ease;
+
+    @include hover {
+      @include shadow(md);   // hover:shadow-md
+      translate: 0 -0.25rem;                 // hover:-translate-y-1
+    }
+  }
+
+  .osm2vt__avatar {
+    width: 6rem;                               // w-24
+    height: 6rem;                              // h-24
+    border-radius: $radius-full;
+    object-fit: cover;
+    border: 2px solid var(--color-gray-100);
+    // shadow-inner, composed the way Tailwind emitted it
+    @include shadow(inner);
+    margin-bottom: 1rem;                       // mb-4
+  }
+
+  .osm2vt__person-link {
+    text-decoration: none;
+
+    @media (hover: hover) {
+      &:hover { text-decoration: underline; }
+    }
+  }
+
+  .osm2vt__person-name {
+    font-weight: 700;
+    color: var(--color-gray-900);
+    @include text(base);
+  }
+
+  .osm2vt__person-role {
+    @include text(sm);
+    color: var(--color-gray-500);
+    margin-top: 0.25rem;
+  }
+
+  // ── videos ───────────────────────────────────────────────────────────────
+  .osm2vt__video-text {
+    line-height: 1.625;                        // leading-relaxed
+    color: var(--color-gray-600);
+  }
+
+  .osm2vt__frame {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    width: 100%;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    border: 1px solid var(--color-gray-200);
+    background-color: var(--omt-surface-alt);
+
+    iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+  }
+
+  .osm2vt__frame--lg {
+    @include shadow(lg);   // shadow-lg
+  }
+
+  .osm2vt__frame--md {
+    @include shadow(md);   // shadow-md
+  }
+
+  .osm2vt__video-pair {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 1.5rem;
+
+    @include md { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+
+  .osm2vt__video-caption {
+    @include text(xs);
+    color: var(--color-gray-500);
+    text-align: center;
+  }
+
+  // ── partners ─────────────────────────────────────────────────────────────
+  .osm2vt__partners {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 2rem;                                 // gap-8
+    padding-top: 1rem;
+
+    @include sm { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+
+  .osm2vt__partner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;                             // p-8
+    background-color: var(--color-white);
+    border: 2px solid var(--color-gray-200);
+    border-radius: 0.75rem;
+    min-height: 140px;                         // min-h-[140px]
+    transition: all 0.15s $ease;
+
+    @include hover {
+      border-color: var(--color-gray-400);
+      .osm2vt__partner-logo { scale: 1.05; } // group-hover:scale-105
+    }
+  }
+
+  .osm2vt__partner-logo {
+    max-height: 3rem;                          // max-h-12
+    width: auto;
+    object-fit: contain;
+    transition: transform 0.15s $ease;
+  }
+}
+
+// Unlayered, for the same reason as `.about-page__link` — see the note there.
+.osm2vt__link {
+  color: var(--omt-link);
+  text-decoration-line: underline;
+  text-underline-offset: 2px;
+  font-weight: 500;
+  transition: color 150ms ease-in-out;
+
+  &:hover { color: var(--omt-text-dark); }
+}
+
+// The hero link used `font-semibold underline hover:text-gray-900` with no
+// link-omt, so it is a different treatment from the body links above.
+.osm2vt__intro-link {
+  font-weight: 600;
+  text-decoration-line: underline;
+  // The original carried the bare `underline` class, which also matched
+  // _element-overrides.scss's unlayered `a.underline` rule.
+  text-decoration-color: var(--color-gray-200);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+
+  @media (hover: hover) {
+    &:hover { color: var(--color-gray-900); }
+  }
+}

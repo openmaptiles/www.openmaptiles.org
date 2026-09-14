@@ -1,0 +1,109 @@
+---
+layout: docs
+stylesheets: [docs, docs-schema]
+permalink: /docs/schema/
+redirect_from: /schema/
+title: "Vector tile schema for OpenStreetMap layers – OpenMapTiles"
+description: "The OpenMapTiles Vector Tile Schema describes how vector data is organized into different thematic layers, and which attribute keys and values each layer contains."
+# _SchemaPage.tsx used a plain markdown renderer here — no external-link icons,
+# unlike _DocPage.tsx. See _plugins/doclinks.rb.
+doclinks: false
+---
+{%- comment -%}
+Ports src/pages/docs/_SchemaPage.tsx.
+
+Two-column layout: layer content on the left, a sticky layer index on the right
+(hidden below lg). Inside each layer, markdown headings are demoted one level —
+the React version mapped h2→h3 and h3→h4 so they sit under the section's own h2.
+
+Diagram images start hidden: `showDiagrams` defaults to false and the image
+renderer returned null. The toggle and the lightbox are wired in Phase 5.
+{%- endcomment -%}
+<div class="schema-page">
+  <div class="schema-page__main">
+    <div class="prose schema-page__intro">
+      <h1>Schema</h1>
+      <p>
+        The vector tile schema describes how the vector data is organized
+        into different thematic layers and which attributes and values each
+        layer contains. This is useful for writing a map style and allows
+        for alternative implementations of a schema.
+      </p>
+      <p>
+        The OpenMapTiles schema is open (CC-BY) and you are free to use,
+        extend, or
+        <a href="https://github.com/openmaptiles/openmaptiles" target="_blank" rel="noopener noreferrer">build upon the existing implementation</a>
+        (BSD license). Attribution is required. Please properly reference
+        OpenMapTiles if you build upon the schema.
+      </p>
+      <p>
+        The vector tile schema has been developed by
+        <a href="https://www.klokantech.com/" target="_blank" rel="noopener noreferrer">Klokan Technologies GmbH</a>
+        and was initially modeled after the cartography of the
+        <a href="https://carto.com/location-data-services/basemaps/" target="_blank" rel="noopener noreferrer">Carto Basemap Positron</a>.
+        The vector tile schema has been refined and improved in
+        cooperation with the
+        <a href="https://www.mediawiki.org/wiki/Maps" target="_blank" rel="noopener noreferrer">Wikimedia Foundation</a>
+        and is heavily influenced by Paul Norman's many years of experience
+        creating maps from OpenStreetMap.
+      </p>
+      <p>
+        Schema
+        <a href="https://github.com/openmaptiles/openmaptiles/releases" target="_blank" rel="noopener noreferrer">updates</a>
+        and
+        <a href="https://data.maptiler.com/changelog/" target="_blank" rel="noopener noreferrer">data changelog</a>.
+      </p>
+    </div>
+
+    {%- comment -%}
+    Sourced from the _schema collection, which is the same markdown
+    _SchemaPage.tsx reads with import.meta.glob — NOT from _data/layers.json.
+    That file's `content` had the leading diagram images and the `sql` fence
+    stripped, so this page was missing all 16 SQL blocks (~4.2 KB of visible
+    text) and every diagram image, which also left the "Show diagrams" switch
+    with nothing to toggle. Sorted by title, which equals the filename for all
+    16 layers, matching the component's sort by slug.
+    {%- endcomment -%}
+    {%- assign layers = site.schema | sort: "title" -%}
+    {%- for layer in layers %}
+    <section id="{{ layer.title }}" class="schema-layer">
+      <h2 class="schema-layer__title">{{ layer.title }}</h2>
+      <div class="prose schema-layer__body">
+        {%- comment -%}
+        Demote headings by one level, h3 first so the h2 rewrite cannot cascade
+        into it.
+        {%- endcomment -%}
+        {{ layer.content
+           | markdownify
+           | replace: "<h3", "<h4" | replace: "</h3>", "</h4>"
+           | replace: "<h2", "<h3" | replace: "</h2>", "</h3>" }}
+      </div>
+    </section>
+    {%- endfor %}
+  </div>
+
+  <nav class="schema-page__nav">
+    <p class="schema-page__nav-title">Layers</p>
+    <ul class="schema-page__nav-list">
+      {%- assign nav_layers = site.schema | sort: "title" -%}
+      {%- for layer in nav_layers %}
+      <li><a href="#{{ layer.title }}" class="schema-page__nav-link">{{ layer.title }}</a></li>
+      {%- endfor %}
+    </ul>
+
+    <a href="{{ '/docs/inspect' | relative_url }}" class="btn-primary-omt schema-page__inspect">Inspect</a>
+
+    <label class="schema-page__toggle">
+      <button
+        type="button"
+        role="switch"
+        aria-checked="false"
+        class="schema-page__switch"
+        data-diagrams-toggle
+      >
+        <span class="schema-page__switch-knob"></span>
+      </button>
+      <span class="schema-page__toggle-label">Show diagrams</span>
+    </label>
+  </nav>
+</div>

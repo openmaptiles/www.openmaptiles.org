@@ -1,0 +1,44 @@
+---
+layout: null
+permalink: /search.json
+sitemap: false
+---
+{%- comment -%}
+The lunr corpus, replacing Pagefind's binary index (plan §8).
+
+Pagefind ran over the built `dist/`, so it indexed rendered HTML. Here the docs
+are markdownified and stripped, which is the same text by the time it reaches the
+index — lunr stems tokens, so markup residue would only add noise.
+
+Scope: the docs collection, the three standalone docs pages, and the four
+content pages. The 60 language and 6 style pages are deliberately excluded — they
+render the same homepage section stack, so any homepage term would return 66
+near-identical hits and bury the docs. See open item 13.
+
+`description` is indexed alongside the body because three pages —
+`/`, `/viewers/` and `/docs/inspect/` — carry no page content at all: their text
+lives in the `home` layout's section includes. Pagefind indexed the rendered HTML
+and so covered them; front matter is the closest equivalent Liquid can reach.
+
+`jsonify` handles the escaping, including the backticks and quotes that appear
+throughout the docs.
+{%- endcomment -%}
+{%- assign extra_urls = "/,/about/,/osm2vectortiles/,/viewers/,/docs/,/docs/schema/,/docs/inspect/" | split: "," -%}
+[
+{%- assign first = true -%}
+
+{%- for doc in site.docs -%}
+  {%- unless first -%},{%- endunless -%}{%- assign first = false -%}
+  {%- assign body = doc.content | markdownify | strip_html | normalize_whitespace -%}
+  {"url":{{ doc.url | relative_url | jsonify }},"title":{{ doc.title | jsonify }},"category":{{ doc.category | jsonify }},"description":{{ doc.description | default: "" | jsonify }},"body":{{ body | jsonify }}}
+{%- endfor -%}
+
+{%- for url in extra_urls -%}
+  {%- assign match = site.pages | where: "url", url | first -%}
+  {%- if match -%}
+    {%- unless first -%},{%- endunless -%}{%- assign first = false -%}
+    {%- assign body = match.content | markdownify | strip_html | normalize_whitespace -%}
+    {"url":{{ match.url | relative_url | jsonify }},"title":{{ match.title | jsonify }},"category":{{ match.category | default: "" | jsonify }},"description":{{ match.description | default: "" | jsonify }},"body":{{ body | jsonify }}}
+  {%- endif -%}
+{%- endfor -%}
+]

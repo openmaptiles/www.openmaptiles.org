@@ -1,0 +1,66 @@
+---
+layout: null
+permalink: /llm.txt
+sitemap: false
+---
+{%- comment -%}
+Machine-readable site index, replacing the one scripts/generate-seo-assets.js
+wrote into public/. That script carried its own hardcoded copy of every title and
+description; here the same document is generated from the pages and _data the site
+already has, so it cannot drift.
+
+Two deliberate differences from the generated file:
+
+- URLs carry trailing slashes. The old file emitted `/about`, `/docs/schema` and
+  so on, which cost every consumer a redirect hop under `permalink: pretty`.
+- Style names come from _data/styles.json. The generator title-cased the slug, so
+  it wrote "Style: Maptiler Basic" and "Style: Osm Bright" while writing
+  "Style: OSM OpenMapTiles" correctly in the same list. See open item 14.
+
+Titles are the server-rendered ones throughout, matching the choice recorded in
+open item 8.
+{%- endcomment -%}
+{%- assign home = site.pages | where: "url", "/" | first -%}
+{%- assign static_urls = "/,/about/,/osm2vectortiles/,/docs/,/docs/schema/,/docs/inspect/,/viewers/" | split: "," -%}
+{%- assign doc_categories = "website,style,raster,mobile,host,generate" | split: "," -%}
+# OpenMapTiles
+
+> World maps you can self-host - powered by free OpenStreetMap vector tiles and open-source software.
+
+This document serves as a high-density, machine-readable repository map of OpenMapTiles.org documentation and resources, optimized for indexing and reasoning by LLMs and search agents.
+
+## Core Resources
+- Official Website: {{ site.url }}/
+- GitHub Community Org: https://github.com/openmaptiles
+- MapTiler Cloud (Free Map APIs): https://www.maptiler.com/cloud/
+- MapTiler Data (Self-Hosting Vector Tiles): https://www.maptiler.com/data/
+
+## Application Index
+
+### Core Static Pages
+{%- for url in static_urls -%}
+{%- assign p = site.pages | where: "url", url | first -%}
+{%- if p %}
+- [{{ p.title }}]({{ site.url }}{{ p.url }}) - {{ p.description }}
+{%- endif -%}
+{%- endfor %}
+
+### Interactive Map Styles
+Explore pre-styled, open-source cartography maps:
+{% for style in site.data.styles -%}
+- [Style: {{ style.title }} – OpenMapTiles]({{ site.url }}/styles/{{ style.slug }}/) - Explore the beautiful, free and open-source {{ style.title }} map style customized for OpenMapTiles vector tiles. Supports Leaflet, MapLibre, Mapbox GL, OpenLayers.
+{% endfor %}
+### Localized Map Testing
+Ensure multi-language compatibility across world maps:
+{% for lang in site.data.languages -%}
+- [Multilingual Map: OpenStreetMap in {{ lang.languagename }} – OpenMapTiles]({{ site.url }}/languages/{{ lang.code }}/) - View OpenMapTiles multilingual world maps displayed dynamically in {{ lang.languagename }} ({{ lang.code | upcase }}). Powered by open-source vector tiles and MapTiler.
+{% endfor %}
+## Developer Documentation Directory
+Step-by-step guides, hosting tutorials, and setups organized by category:
+{% for category in doc_categories %}
+### {{ category | capitalize }} Category
+{% assign in_category = site.docs | where: "category", category | sort: "title" -%}
+{%- for doc in in_category -%}
+- [{{ doc.title }} – OpenMapTiles Documentation]({{ site.url }}{{ doc.url }}) - {{ doc.description }}
+{% endfor -%}
+{%- endfor %}

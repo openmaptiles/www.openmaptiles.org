@@ -1,0 +1,397 @@
+@use "config" as *;
+// from theme colour, the compass interior, and three strings.
+//
+// The keyframes below were page-scoped in the previous design's
+// files, NOT from Tailwind — `animate-pulse-slow`, `animate-spin-slow` and
+// `animate-bounce-left` have no Tailwind utility or keyframes anywhere in the
+// generated stylesheet. They are real and must be carried across.
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.15; transform: scale(1); }
+  50% { opacity: 0.35; transform: scale(1.05); }
+}
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes bounce-left {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(-4px); }
+}
+
+.animate-pulse-slow { animation: pulse-slow 8s infinite ease-in-out; }
+.animate-spin-slow { animation: spin-slow 25s infinite linear; }
+.animate-bounce-left { animation: bounce-left 1s infinite ease-in-out; }
+
+// `.animate-ping`, which the radar sweep also uses, moved to _animations.scss —
+// /viewers/ needs it too and the two never share a bundle. error.scss lists both.
+
+@layer components {
+
+  .errorpg {
+    position: relative;
+    min-height: 75vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-inline: 1rem;
+    padding-block: 4rem;                       // py-16
+    overflow: hidden;
+    background-color: color-mix(in oklab, var(--color-gray-50) 30%, transparent);
+
+    @include sm { padding-block: 6rem; }       // sm:py-24
+    @include md { padding-block: 8rem; }       // md:py-32
+
+    // Theme accents. `gray` is the 404 palette, `amber` the 500 one.
+    --errorpg-ring: var(--color-gray-300);
+    --errorpg-ring-dashed: var(--color-gray-300);
+    --errorpg-crosshair: var(--color-gray-300);
+    --errorpg-compass-border: var(--color-gray-200);
+    --errorpg-pulse: #cadba8;
+    --errorpg-needle: #404040;
+    --errorpg-badge-text: #6e8547;
+    --errorpg-badge-bg: #f6f9f0;
+    --errorpg-badge-border: color-mix(in oklab, #cadba8 50%, transparent);
+  }
+
+  .errorpg--amber {
+    --errorpg-ring: oklch(87.9% 0.169 91.605);          // amber-300
+    --errorpg-ring-dashed: oklch(92.4% 0.12 95.746);    // amber-200
+    --errorpg-crosshair: color-mix(in oklab, oklch(92.4% 0.12 95.746) 50%, transparent);
+    --errorpg-compass-border: oklch(92.4% 0.12 95.746);
+    --errorpg-pulse: oklch(82.8% 0.189 84.429);         // amber-400
+    --errorpg-needle: oklch(66.6% 0.179 58.318);        // amber-600
+    --errorpg-badge-text: oklch(55.5% 0.163 48.998);    // amber-700
+    --errorpg-badge-bg: oklch(98.7% 0.022 95.277);      // amber-50
+    --errorpg-badge-border: oklch(92.4% 0.12 95.746);
+  }
+
+  // Dotted map grid backdrop.
+  .errorpg__grid {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(var(--color-gray-200) 1px, transparent 1px);
+    background-size: 24px 24px;
+    pointer-events: none;
+    opacity: 0.8;
+  }
+
+  .errorpg__radar {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    width: 350px;
+    height: 350px;
+    pointer-events: none;
+    opacity: 0.2;
+
+    @include sm { width: 500px; height: 500px; }
+  }
+
+  .errorpg__ring {
+    position: absolute;
+    border-radius: $radius-full;
+    border: 1px solid var(--errorpg-ring);
+  }
+
+  .errorpg__ring--dashed {
+    border-style: dashed;
+    border-color: var(--errorpg-ring-dashed);
+  }
+
+  .errorpg__ring--0 { inset: 0; }
+  .errorpg__ring--10 { inset: 10%; }
+  .errorpg__ring--25 { inset: 25%; }
+  .errorpg__ring--40 { inset: 40%; }
+
+  .errorpg__crosshair {
+    position: absolute;
+    background-color: var(--errorpg-crosshair);
+  }
+
+  .errorpg__crosshair--v {
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 1px;
+    translate: -50% 0;
+  }
+
+  .errorpg__crosshair--h {
+    left: 0;
+    right: 0;
+    top: 50%;
+    height: 1px;
+    translate: 0 -50%;
+  }
+
+  .errorpg__content {
+    position: relative;
+    z-index: 10;
+    max-width: 48rem;                          // max-w-3xl
+    margin-inline: auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;                               // gap-6
+
+    @include sm { gap: 2rem; }                 // sm:gap-8
+  }
+
+  // ── compass ──────────────────────────────────────────────────────────────
+  .errorpg__compass {
+    width: 4rem;                               // w-16
+    height: 4rem;
+    background-color: var(--color-white);
+    border-radius: $radius-full;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--errorpg-compass-border);
+    @include shadow(md);   // shadow-md
+    position: relative;
+
+    @include sm { width: 5rem; height: 5rem; }
+
+    @media (hover: hover) {
+      &:hover .errorpg__needle { rotate: 180deg; }
+      &:hover .errorpg__pointer { fill: var(--errorpg-needle); }
+    }
+  }
+
+  .errorpg__pulse {
+    position: absolute;
+    inset: 0;
+    border-radius: $radius-full;
+    background-color: var(--errorpg-pulse);
+    opacity: 0.1;
+    scale: 1.2;                                // scale-120
+  }
+
+  .errorpg__needle {
+    width: 2.5rem;                             // w-10
+    height: 2.5rem;
+    color: var(--errorpg-needle);
+    transition: transform 0.7s ease-out, rotate 0.7s ease-out;
+
+    @include sm { width: 3rem; height: 3rem; }
+  }
+
+  .errorpg__pointer { transition: fill 0.5s; }
+
+  // ── headline ─────────────────────────────────────────────────────────────
+  .errorpg__headline {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .errorpg__badge {
+    @include text(xs);
+    font-weight: 600;                          // font-semibold
+    letter-spacing: 0.1em;                     // tracking-widest
+    text-transform: uppercase;
+    color: var(--errorpg-badge-text);
+    background-color: var(--errorpg-badge-bg);
+    padding-inline: 0.75rem;                   // px-3
+    padding-block: 0.25rem;                    // py-1
+    border-radius: $radius-full;
+    border: 1px solid var(--errorpg-badge-border);
+    margin-bottom: 1rem;                       // mb-4
+  }
+
+  .errorpg__title {
+    font-size: 3rem;                           // text-5xl
+    line-height: 1;                            // leading-none
+    font-weight: 800;
+    letter-spacing: -0.025em;                  // tracking-tight
+    margin-bottom: 0.75rem;                    // mb-3
+
+    @include sm { font-size: 3.75rem; }        // sm:text-6xl
+    @include md { font-size: 4.5rem; }         // md:text-7xl
+  }
+
+  .errorpg__text {
+    font-size: 1rem;                           // text-base
+    line-height: 1.625;                        // leading-relaxed
+    color: var(--color-gray-600);
+    max-width: 36rem;                          // max-w-xl
+    margin-inline: auto;
+
+    @include sm { font-size: 1.125rem; }       // sm:text-lg
+  }
+
+  // ── home button ──────────────────────────────────────────────────────────
+  .errorpg__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .errorpg__home {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding-inline: 1.5rem;                    // px-6
+    padding-block: 0.75rem;                    // py-3
+    background-color: #404040;
+    color: var(--color-white);
+    @include text(sm);
+    font-weight: 600;                          // font-semibold
+    border-radius: $radius-full;
+    text-decoration: none;
+    @include shadow(lg);   // shadow-lg
+    transition: all 0.3s $ease;
+
+    @include hover {
+      background-color: var(--color-black);
+      scale: 1.03;
+    }
+  }
+
+  .errorpg__home-icon { width: 1rem; height: 1rem; }
+
+  .errorpg__divider {
+    width: 100%;
+    max-width: 36rem;                          // max-w-xl
+    height: 1px;
+    background-color: color-mix(in oklab, var(--color-gray-200) 80%, transparent);
+    margin-block: 1rem;                        // my-4
+  }
+
+  // ── destination cards ────────────────────────────────────────────────────
+  .errorpg__routes {
+    width: 100%;
+    text-align: center;
+  }
+
+  .errorpg__routes-title {
+    @include text(sm);
+    font-weight: 700;
+    color: var(--color-gray-400);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 1.5rem;                     // mb-6
+  }
+
+  .errorpg__cards {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 42rem;                          // max-w-2xl
+    margin-inline: auto;
+    padding-inline: 0.5rem;                    // px-2
+
+    @include sm { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+
+  .errorpg__card {
+    position: relative;
+    display: block;
+    border-radius: 0.75rem;
+    text-align: left;
+    text-decoration: none;
+  }
+
+  .errorpg__card-umbra {
+    position: absolute;
+    bottom: 0.25rem;
+    inset-inline: 1.5rem;
+    height: 0.5rem;
+    background-color: color-mix(in oklab, var(--color-black) 15%, transparent);
+    border-radius: $radius-full;
+    filter: blur(4px);
+    pointer-events: none;
+    transition: all 0.3s ease-out;
+  }
+
+  .errorpg__card-penumbra {
+    position: absolute;
+    inset: 0;
+    background-color: color-mix(in oklab, var(--color-black) 5%, transparent);
+    border-radius: 0.75rem;
+    filter: blur(8px);
+    pointer-events: none;
+    transition: all 0.3s ease-out;
+  }
+
+  .errorpg__card-body {
+    position: relative;
+    z-index: 10;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-gray-200);
+    border-radius: 0.75rem;
+    padding: 1.25rem;                          // p-5
+    height: 100%;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    transition: all 0.3s ease-out;
+  }
+
+  .errorpg__card-icon {
+    padding: 0.625rem;                         // p-2.5
+    border-radius: 0.5rem;                     // rounded-lg
+    // `bg-gray-50` resolves to --omt-surface-alt, see the note in _about-page.
+    background-color: var(--omt-surface-alt);
+    color: #6e8547;
+    border: 1px solid var(--color-gray-100);
+    flex-shrink: 0;
+    transition: background-color 0.15s, border-color 0.15s;
+
+    svg { width: 1.25rem; height: 1.25rem; }
+  }
+
+  .errorpg__card-title {
+    @include text(sm);
+    font-weight: 600;
+    color: var(--color-gray-900);
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;                             // gap-1.5
+  }
+
+  .errorpg__card-arrow {
+    display: inline-block;
+    transition: transform 0.3s, translate 0.3s;
+  }
+
+  .errorpg__card-text {
+    font-size: 0.75rem;
+    line-height: 1.625;
+    color: var(--color-gray-500);
+    margin-top: 0.25rem;
+  }
+
+  @media (hover: hover) {
+    .errorpg__card:hover {
+      .errorpg__card-umbra {
+        scale: 0.5 1;
+        opacity: 0;
+        filter: blur(8px);
+      }
+      .errorpg__card-penumbra {
+        scale: 0.95 0.95;
+        opacity: 0.15;
+        filter: blur(16px);
+        translate: 0 0.25rem;
+      }
+      .errorpg__card-body {
+        translate: 0 -0.75rem;                 // group-hover:-translate-y-3
+        scale: 1.02;
+      }
+      .errorpg__card-icon {
+        background-color: #f6f9f0;
+        border-color: color-mix(in oklab, #cadba8 50%, transparent);
+      }
+      .errorpg__card-title { color: var(--color-black); }
+      .errorpg__card-arrow { translate: 0.25rem 0; }
+    }
+  }
+}

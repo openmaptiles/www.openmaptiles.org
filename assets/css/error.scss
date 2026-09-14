@@ -1,0 +1,10 @@
+---
+# Front matter fence is required for Jekyll to process this through sass.
+---
+
+// 404.html and 500.html only. The radar, compass and route cards are ~9 KB that used
+// to ship with every page on the site.
+
+@use "animations";   // .animate-ping, shared with home.scss
+@use "error-page";
+@use "element-overrides";   // LAST: must outrank the components above

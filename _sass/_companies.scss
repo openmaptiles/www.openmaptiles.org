@@ -1,0 +1,80 @@
+@use "config" as *;
+// Wrapped in `@layer components` so the element rules in _element-overrides.scss,
+// which are unlayered, outrank these regardless of specificity. Unlayered CSS always
+// beats layered CSS in the cascade, which is what makes that file the single place to
+// override any of this.
+
+@layer components {
+  //
+  // `font-regular` in the original is not a real Tailwind class (the utility is
+  // `font-normal`), so it produced no declarations and is not carried over.
+
+  .companies {
+    background-color: var(--color-white);          // bg-white
+    padding-top: 2rem;                             // pt-8
+    padding-bottom: 5rem;                          // pb-20
+    border-bottom: 1px solid var(--color-gray-200); // border-b border-gray-200
+  }
+
+  .companies__inner {
+    @include container(64rem);                     // max-w-5xl
+  }
+
+  .companies__intro {
+    display: flex;
+    flex-direction: column;                        // flex-col
+    gap: 1rem;                                     // gap-4
+    margin-bottom: 3rem;                           // mb-12
+
+    @include sm {
+      flex-direction: row;                         // sm:flex-row
+      align-items: center;                         // sm:items-center
+    }
+  }
+
+  .companies__label {
+    @include text(sm);
+    color: var(--color-gray-400);                  // text-gray-400
+  }
+
+  .companies__rule {
+    display: none;                                 // hidden
+    flex: 1;                                       // flex-1
+    height: 1px;                                   // h-px
+    background-color: var(--color-gray-200);       // bg-gray-200
+
+    @include sm { display: block; }                // sm:block
+  }
+
+  .companies__logos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    column-gap: 3rem;                              // gap-x-12
+    row-gap: 2rem;                                 // gap-y-8
+
+    @include md { column-gap: 5rem; }              // md:gap-x-20
+  }
+
+  .companies__logo {
+    height: 2.25rem;                               // h-9
+    width: auto;
+    filter: grayscale(100%);                       // grayscale
+    opacity: 0.7;                                  // opacity-70
+    cursor: default;
+    transition-property: all;                      // transition-all
+    transition-timing-function: $ease;
+    transition-duration: 0.3s;                     // duration-300
+
+    @include md { height: 3rem; }                  // md:h-12
+
+    // Tailwind emitted hover variants inside `@media (hover: hover)`; kept so the
+    // rendered behaviour matches rather than silently gaining touch hover.
+    @include hover {
+      filter: grayscale(0);                      // hover:grayscale-0
+      opacity: 1;                                // hover:opacity-100
+    }
+  }
+
+}

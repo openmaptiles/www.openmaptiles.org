@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>OSM OpenMapTiles Preview</title>
+  <script src="https://unpkg.com/maplibre-gl@5.24.0/dist/maplibre-gl.js"></script>
+  <link href="https://unpkg.com/maplibre-gl@5.24.0/dist/maplibre-gl.css" rel="stylesheet" />
+  <style>
+    body { margin: 0; padding: 0; }
+    #map { position: absolute; top: 0; bottom: 0; width: 100%; }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+  <script>
+    var hash = window.location.hash.slice(1) || '';
+    var key = 'LIb45gssRLBrsVQPT0MN';
+    var zoom = 12.2;
+    var center = [8.5417, 47.3769];
+
+    if (hash) {
+      if (hash.indexOf('/') !== -1) {
+        var parts = hash.split('/');
+        if (parts.length >= 3) {
+          zoom = parseFloat(parts[0]) || zoom;
+          center = [parseFloat(parts[2]) || center[0], parseFloat(parts[1]) || center[1]];
+        }
+        var params = new URLSearchParams(window.location.search);
+        key = params.get('key') || key;
+      } else {
+        key = hash;
+      }
+    }
+
+    new maplibregl.Map({
+      container: 'map',
+      style: 'https://api.maptiler.com/maps/openstreetmap/style.json?key=' + key,
+      center: center,
+      zoom: zoom
+    });
+  </script>
+</body>
+</html>

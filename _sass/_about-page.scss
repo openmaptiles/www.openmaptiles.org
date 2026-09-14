@@ -1,0 +1,243 @@
+@use "config" as *;
+
+// Wrapped in `@layer components` so the unlayered element rules in
+// _element-overrides.scss, which are unlayered, outrank these regardless of
+// specificity.
+
+@layer components {
+
+  .about-page {
+    // `padding-block` precedes the include on purpose — see the note in _footer.scss.
+    padding-block: 3rem;                       // py-12
+    @include container(56rem);                 // max-w-4xl
+
+    @include md { padding-block: 5rem; }       // md:py-20
+  }
+
+  // space-y-20 / space-y-6: Tailwind v4 puts the margin on the block END of
+  // every child but the last.
+  .about-page__stack > :not(:last-child) { margin-bottom: 5rem; }
+  .about-page__section > :not(:last-child) { margin-bottom: 1.5rem; }
+
+  .about-page__h1 {
+    @include text(4xl);
+    font-weight: 800;                          // font-extrabold
+    letter-spacing: -0.025em;                  // tracking-tight
+
+    @include sm {
+      font-size: 3rem;                         // sm:text-5xl
+      line-height: 1;
+    }
+  }
+
+  .about-page__intro {
+    font-size: 1.25rem;                        // text-xl
+    line-height: 1.625;                        // leading-relaxed
+  }
+
+  .about-page__heading {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;                              // gap-3
+  }
+
+  .about-page__heading--split {
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1rem;
+
+    @include sm {
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+
+  .about-page__heading-group {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  // The original wrapper was a plain <div className="text-gray-900"> — block,
+  // not flex.
+  .about-page__icon {
+    color: var(--color-gray-900);
+  }
+
+  .about-page__h2 {
+    @include text(xl);
+    font-weight: 700;                          // font-bold
+  }
+
+  .about-page__body {
+    font-size: 1.125rem;                       // text-lg
+    line-height: 1.625;                        // leading-relaxed
+  }
+
+  .about-page__body--spaced { padding-top: 1rem; }   // pt-4
+
+  // ── video ────────────────────────────────────────────────────────────────
+  .about-page__video {
+    position: relative;
+    aspect-ratio: 16 / 9;                      // aspect-video
+    width: 100%;
+    border-radius: 0.75rem;                    // rounded-xl
+    overflow: hidden;
+    // Tailwind composed shadow-lg with four empty slots (inset, inset-ring,
+    // ring-offset, ring) ahead of the real values. Reproduced so the computed
+    // value matches rather than merely looking the same.
+    @include shadow(lg);
+    border: 1px solid var(--color-gray-200);
+    // `bg-gray-50` resolved to --omt-surface-alt, not gray-50: _element-overrides.scss
+    // redefined that utility unlayered and won.
+    background-color: var(--omt-surface-alt);
+
+    iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+  }
+
+  .about-page__caption {
+    font-size: 0.875rem;                       // text-sm
+    line-height: 1.25;                         // leading-tight
+    text-align: center;
+    max-width: 42rem;                          // max-w-2xl
+    margin-inline: auto;
+    text-wrap: balance;                        // text-balance
+  }
+
+  // ── three-up cards ───────────────────────────────────────────────────────
+  .about-page__grid {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 1rem;                                 // gap-4
+    padding-top: 1rem;                         // pt-4
+
+    @include sm { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  }
+
+  .about-page__card {
+    padding: 1.25rem;                          // p-5
+    background-color: var(--color-white);
+    border: 2px solid var(--color-gray-200);   // border-2 border-gray-200
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 0.375rem;                   // rounded-md
+  }
+
+  .about-page__card-title {
+    font-weight: 700;                          // font-bold
+    margin-bottom: 0.5rem;                     // mb-2
+    text-transform: uppercase;
+    letter-spacing: 0.05em;                    // tracking-wider
+    @include text(sm);
+  }
+
+  .about-page__card-text {
+    font-size: 0.875rem;
+    line-height: 1.625;                        // leading-relaxed
+    color: var(--color-gray-600);              // text-gray-600
+    flex: 1;
+  }
+
+  // ── list ─────────────────────────────────────────────────────────────────
+  .about-page__list {
+    list-style-type: disc;                     // list-disc
+    margin-left: 1.5rem;                       // ml-6
+    margin-top: 1rem;                          // mt-4
+    @include text(lg);
+    color: var(--color-gray-700);              // text-gray-700
+
+    > :not(:last-child) { margin-bottom: 1rem; }  // space-y-4
+  }
+
+  // ── buttons ──────────────────────────────────────────────────────────────
+  .about-page__action { padding-top: 1rem; }   // pt-4
+
+  .about-page__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;                               // gap-2
+    padding-inline: 1.5rem;                    // px-6
+    padding-block: 0.75rem;                    // py-3
+    @include text(sm);
+    font-weight: 500;                          // font-medium
+    border-radius: 0.375rem;                   // rounded-md
+  }
+
+  .about-page__btn--wide { padding-inline: 2rem; }  // px-8
+
+  // ── media kit ────────────────────────────────────────────────────────────
+  .about-page__kit {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    text-decoration: none;
+  }
+
+  .about-page__kit-frame {
+    border: 2px solid var(--color-gray-200);
+    background-color: var(--color-white);
+    padding: 1rem;                             // p-4
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    min-height: 160px;                         // min-h-[160px]
+    border-radius: 0.375rem;
+    transition: all 0.15s $ease;
+
+    img {
+      max-width: 100%;
+      height: auto;
+      object-fit: contain;
+      transition: all 0.15s $ease;
+    }
+  }
+
+  .about-page__kit-label {
+    font-weight: 500;
+    color: var(--color-gray-900);
+    margin-top: 1rem;                          // mt-4
+    text-align: center;
+    letter-spacing: 0.05em;                    // tracking-wider
+    @include text(sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;                              // gap-1
+    flex-shrink: 0;
+    transition: color 0.15s $ease;
+  }
+
+  @media (hover: hover) {
+    .about-page__kit:hover {
+      .about-page__kit-frame { border-color: var(--color-gray-400); }
+      .about-page__kit-label { color: var(--color-gray-600); }
+    }
+  }
+
+  .about-page__kit-cta {
+    padding-top: 3rem;                         // pt-12
+    display: flex;
+    justify-content: center;
+  }
+}
+
+// Unlayered: the original carried `link-omt` alongside layered underline utilities,
+// so this has to outrank the component layer. Same treatment as `.osm2vt__link`.
+.about-page__link {
+  color: var(--omt-link);
+  text-decoration-line: underline;
+  text-underline-offset: 2px;
+  font-weight: 500;
+  transition: color 150ms ease-in-out;
+
+  &:hover { color: var(--omt-text-dark); }
+}

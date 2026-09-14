@@ -1,0 +1,130 @@
+@use "config" as *;
+
+// The one card that docs markdown builds out of raw HTML.
+//
+// Most docs are pure markdown; seven files contain raw HTML, and six of those use
+// nothing but `class="btn"`, which _plugins/doclinks.rb handles. The seventh,
+// _docs/mobile/mobile.md, hand-builds a demo-app card. It originally carried ~30
+// Tailwind utility classes, which generated nothing once Tailwind was removed — the
+// card rendered as unstyled stacked blocks — and the first fix reproduced that exact
+// set of utilities here. That worked but left a trap: the list was fixed, so any new
+// Tailwind class in any doc would silently do nothing, with no error.
+//
+// The card now uses semantic classes instead, so there is nothing to keep in sync.
+// Values are unchanged; they were read off the previous design's computed styles for
+// that subtree; /docs/mobile/mobile/ is the page that exercises them.
+//
+// UNLAYERED, and that is load-bearing. prose lives in @layer utilities, so a
+// @layer components rule loses to it regardless of specificity — the title has to
+// beat prose's 48px heading margin-top and the paragraphs have to beat its margins.
+//
+// Nothing here styles an <img>. The previous design's markdown image renderer REPLACED the
+// class attribute on ordinary images with its own set, so authored classes never
+// reached the banner before either; _prose-overrides.scss reproduces that, plus
+// the app-store-badge exception the renderer kept. That is why the old shim needed
+// `:not(img)` on almost every rule and this file needs none.
+
+.docs-content {
+  // Map embeds in docs markdown. Replaces an inline `style="margin-bottom:25px"` that
+  // two docs carried; the value is unchanged. UNLAYERED for the same reason as the rest
+  // of this file — prose sits in @layer utilities and would otherwise win.
+  .doc-embed {
+    display: block;
+    margin-bottom: 25px;
+  }
+
+  .appcard {
+    margin-block: 2rem;
+    padding-inline: 1.5rem;
+    padding-block: 1rem;
+    border: 1px solid oklch(97% 0 0);          // border-neutral-100
+    border-radius: 0.75rem;
+    background-color: color-mix(in oklab, oklch(98.5% 0 0) 50%, transparent);
+  }
+
+  .appcard__row {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+
+    @include md { flex-direction: row; }
+  }
+
+  .appcard__body {
+    flex: 1 1 0%;
+    min-width: 0;
+  }
+
+  .appcard__title {
+    font-size: 1.25rem;
+    line-height: calc(1.75 / 1.25);
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    // No colour: _element-overrides.scss's unlayered `h1..h6` rule beat `text-neutral-900` in the
+    // previous design, so the rendered colour is --omt-text-dark either way.
+  }
+
+  .appcard__text {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+    // Same story for `text-neutral-600`, which lost to `p, li`.
+  }
+
+  // The middle paragraph is the one with mb-4 rather than mb-6.
+  .appcard__text--tight { margin-bottom: 1rem; }
+
+  .appcard__badges {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-block: 1rem;
+    align-items: center;
+  }
+
+  // Two separate rules underline links in prose and both have to be escaped:
+  // prose's own `:where(a) { text-decoration: underline }`, which this beats on
+  // specificity, and the generated `.prose a:not(.no-underline)` whose every
+  // declaration is `!important` — that one can only be escaped by the class name in
+  // its `:not()`, which is why the markup still carries a literal `no-underline`.
+  .appcard__badge-link {
+    display: inline-block;
+    text-decoration-line: none;
+  }
+
+  // Badges keep the authored hover and transition, because the image renderer kept
+  // their classes. `shadow` and `shadow-sm` are identical in this Tailwind build, so
+  // the hover state is a no-op visually — carried for fidelity, not effect.
+  .appcard__badge {
+    transition-property: box-shadow;
+    transition-timing-function: $ease;
+    transition-duration: 0.15s;
+  }
+
+  .appcard__media {
+    width: 100%;
+    max-width: 220px;
+    margin-inline: auto;
+    display: flex;
+    justify-content: center;
+    flex-shrink: 0;
+
+    @include md {
+      width: calc(1 / 3 * 100%);
+      margin-inline: 0;
+    }
+  }
+
+  @media (hover: hover) {
+    .appcard__badge:hover { @include shadow(sm); }
+    .appcard__shot:hover {
+      scale: 1.02;
+      transition-property: transform, translate, scale, rotate;
+      transition-timing-function: $ease;
+      transition-duration: 0.2s;
+    }
+  }
+}

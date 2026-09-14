@@ -1,0 +1,553 @@
+@use "config" as *;
+@use "dialog" as *;
+
+@layer components {
+
+  .mapstyles {
+    padding-block: 5rem;                       // py-20
+    background-color: var(--color-white);
+    border-bottom: 1px solid var(--color-gray-200);
+    overflow: hidden;
+  }
+
+  .mapstyles__head {
+    max-width: 64rem;                          // max-w-5xl
+    margin-inline: auto;
+    padding-inline: 1rem;
+    margin-bottom: 3rem;                       // mb-12
+    text-align: center;
+
+    @include sm { padding-inline: 1.5rem; margin-bottom: 4rem; }
+    @include lg { padding-inline: 2rem; }
+  }
+
+  .mapstyles__title {
+    @include text(3xl);
+    font-weight: 800;
+
+    @include sm { font-size: 2.25rem; line-height: calc(2.5 / 2.25); }
+  }
+
+  .mapstyles__lead {
+    margin-top: 1rem;
+    @include text(lg);
+    max-width: 48rem;
+    margin-inline: auto;
+  }
+
+  .mapstyles__lead-link {
+    color: var(--color-gray-900);
+    text-decoration-line: underline;
+    font-weight: 500;
+    transition: color 0.15s;
+
+    // The original carried the literal class `underline`, which picked up
+    // _element-overrides.scss's unlayered `a.underline` treatment — see _element-overrides.scss.
+    text-decoration-color: var(--color-gray-200);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+
+    @include hover {
+      color: var(--color-gray-600);
+      text-decoration-color: var(--color-gray-400);
+      text-decoration-thickness: 2px;
+    }
+  }
+
+  // ── carousel ─────────────────────────────────────────────────────────────
+  .mapstyles__carousel {
+    position: relative;
+    width: 100%;
+  }
+
+  .mapstyles__arrows {
+    position: absolute;
+    inset-block: 0;
+    inset-inline: 0;
+    pointer-events: none;
+    z-index: 10;
+    display: none;                             // hidden md:block
+
+    @include md { display: block; }
+  }
+
+  .mapstyles__arrows-inner {
+    width: 100%;
+    height: 100%;
+    padding-inline: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @include sm { padding-inline: 1.5rem; }
+    @include lg { padding-inline: 2.5rem; }
+  }
+
+  // Arrows fade in on hover of the carousel, matching `group-hover:opacity-100`.
+  .mapstyles__arrow {
+    pointer-events: auto;
+    padding: 0.75rem;
+    background-color: var(--color-white);
+    border-radius: $radius-full;
+    @include shadow(lg);   // shadow-lg
+    border: 1px solid var(--color-gray-200);
+    color: var(--color-gray-600);
+    transition: all 0.15s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    cursor: pointer;
+
+    &:focus { outline: none; }
+
+    &[disabled] { cursor: not-allowed; }
+
+    svg { width: 1.5rem; height: 1.5rem; }
+  }
+
+  @media (hover: hover) {
+    .mapstyles__carousel:hover .mapstyles__arrow { opacity: 1; }
+    .mapstyles__carousel:hover .mapstyles__arrow[disabled] { opacity: 0.5; }
+    .mapstyles__arrow:not([disabled]):hover { color: var(--color-gray-900); }
+  }
+
+  .mapstyles__track {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    padding-bottom: 3rem;                      // pb-12
+    padding-top: 1rem;                         // pt-4
+
+    // The original hid the scrollbar with arbitrary variants.
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    &::-webkit-scrollbar { display: none; }
+  }
+
+  // Width formula copied exactly: it centres the first card against a 1024px
+  // container regardless of viewport.
+  .mapstyles__spacer--lead {
+    flex: none;
+    scroll-snap-align: start;
+    width: max(1rem, calc((100vw - 1024px) / 2 + 2rem));
+
+    @include sm { width: max(1.5rem, calc((100vw - 1024px) / 2 + 2rem)); }
+  }
+
+  .mapstyles__spacer--trail {
+    flex: none;
+    width: 2rem;
+
+    @include sm { width: 5rem; }
+  }
+
+  .mapstyles__card {
+    flex: none;
+    width: 80vw;
+    scroll-snap-align: start;
+    background-color: var(--color-white);
+    border-radius: 0.75rem;
+    @include shadow(sm);   // shadow-sm
+    border: 1px solid var(--color-gray-200);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.15s;
+    margin-right: 1.5rem;                      // mr-6
+    cursor: pointer;
+    text-decoration: none;
+
+    &:focus { outline: none; }
+
+    @include sm { width: 320px; margin-right: 2rem; }
+    @include md { width: 380px; }
+  }
+
+  // `text-left` was on the style cards only — they were <button>s, which centre
+  // their text by default. The "discover more" card is a plain div and inherits
+  // the track's `start`, so the shared class must not set this.
+  a.mapstyles__card { text-align: left; }
+
+  @media (hover: hover) {
+    .mapstyles__card:hover {
+      translate: 0 -0.25rem;
+      @include shadow(md);   // hover:shadow-md
+
+      .mapstyles__thumb-img { scale: 1.05; }
+      .mapstyles__thumb-veil {
+        background-color: color-mix(in oklab, var(--color-black) 10%, transparent);
+      }
+    }
+  }
+
+  .mapstyles__thumb {
+    aspect-ratio: 16 / 9;
+    position: relative;
+    overflow: hidden;
+    background-color: var(--color-gray-100);
+  }
+
+  .mapstyles__thumb-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s, scale 0.5s;
+  }
+
+  .mapstyles__thumb-veil {
+    position: absolute;
+    inset: 0;
+    // bg-black/0 — a zero-alpha color-mix, which is what that class computes to.
+    background-color: color-mix(in oklab, var(--color-black) 0%, transparent);
+    transition: background-color 0.15s;
+  }
+
+  .mapstyles__body {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  .mapstyles__card-title {
+    @include text(xl);
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+  }
+
+  .mapstyles__card-text {
+    line-height: 1.625;
+    flex-grow: 1;
+  }
+
+  // ── "discover more" card ─────────────────────────────────────────────────
+  .mapstyles__card--more {
+    background-color: transparent;
+    border: 2px dashed var(--color-gray-300);
+    box-shadow: none;
+    cursor: default;
+    // Same trap as `text-left` below: `mr-6 sm:mr-8` was on the style cards
+    // only, not on this one. Inheriting it from the shared class adds 32px to
+    // the track's scroll extent, which moves the last snap position.
+    margin-right: 0;
+
+    @include hover {
+      translate: none;
+      box-shadow: none;
+      border-color: var(--color-gray-400);
+      .mapstyles__more-img { opacity: 0.5; }
+    }
+  }
+
+  .mapstyles__thumb--more {
+    background-color: var(--color-gray-200);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .mapstyles__picture { width: 100%; height: 100%; }
+
+  .mapstyles__more-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.3;
+    filter: grayscale(100%);
+    transition: opacity 0.15s;
+  }
+
+  .mapstyles__more-icon {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg { width: 4rem; height: 4rem; color: var(--color-gray-400); }
+  }
+
+  .mapstyles__body--more { text-align: center; }
+
+  .mapstyles__more-text {
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+    @include text(sm);
+  }
+
+  .mapstyles__more-btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    padding-inline: 1.5rem;
+    padding-block: 0.75rem;
+    border: 1px solid transparent;
+    @include text(sm);
+                                               // inherited and the card grew 1px
+    font-weight: 500;
+    border-radius: 0.375rem;
+    text-decoration: none;
+
+    svg { width: 1.25rem; height: 1.25rem; }
+  }
+
+  // ── dots ─────────────────────────────────────────────────────────────────
+  .mapstyles__dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  .mapstyles__dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: $radius-full;
+    background-color: var(--color-gray-300);
+    transition: all 0.3s;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+
+    &[aria-current="true"] {
+      width: 1.5rem;
+      background-color: #404040;
+    }
+
+    @media (hover: hover) {
+      &:not([aria-current="true"]):hover { background-color: var(--color-gray-400); }
+    }
+  }
+
+  // ── preview modal ────────────────────────────────────────────────────────
+  // The style preview dialog. `animate-in fade-in zoom-in-95` are not
+  // carried over: tailwindcss-animate is not installed, so they generated no CSS
+  // in the previous design either. `duration-200`
+  // did generate a rule, so it is kept.
+
+  .style-modal {
+    @include dialog-overlay(100);
+
+    // @layer components outranks the reset's [hidden] rule in @layer base.
+    &[hidden] { display: none; }
+  }
+
+  .style-modal__backdrop {
+    @include dialog-backdrop(70%);
+  }
+
+  .style-modal__wrap {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  // Negative offsets from sm up so it overlaps the frame corner by ~10px.
+  .style-modal__close {
+    @include dialog-close(30);
+  }
+
+  .style-modal__frame {
+    position: relative;
+    background-color: transparent;
+    border-radius: 0;                          // rounded-none
+    @include shadow(2xl);   // shadow-2xl
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition-duration: 0.2s;                 // duration-200, no property set
+
+    @include sm { border-radius: 0.75rem; }
+  }
+
+  .style-modal__nav {
+    position: absolute;
+    inset-block: 0;
+    inset-inline: 0;
+    pointer-events: none;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-inline: 1rem;
+  }
+
+  .style-modal__nav-btn {
+    pointer-events: auto;
+    padding: 0.75rem;
+    background-color: color-mix(in oklab, var(--color-white) 90%, transparent);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    border-radius: $radius-full;
+    @include shadow(md);   // shadow-md
+    border: 1px solid var(--color-gray-200);
+    color: var(--color-gray-600);
+    transition: all 0.15s $ease;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    // 1.25rem, not the 1.5rem the carousel arrows get from the same include. Tailwind's
+    // `w-6 h-6` sized both at 24px, so this is 4px smaller than the previous design —
+    // kept deliberately, unverifiable here (the previous design's source is not in
+    // this repo).
+    svg { width: 1.25rem; height: 1.25rem; }
+
+    &:active { scale: 0.95; }
+
+    @include hover {
+      color: var(--color-gray-900);
+      scale: 1.05;
+    }
+  }
+
+  .style-modal__preview {
+    overflow: hidden;
+    position: relative;
+    background-color: var(--color-gray-100);
+    width: 100%;
+    height: 100%;
+    flex-grow: 1;
+  }
+
+  .style-modal__iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  .style-modal__card {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    right: 1rem;
+    z-index: 20;
+    background-color: var(--color-white);
+    border-radius: 0.75rem;
+    @include shadow(xl);   // shadow-xl
+    border: 1px solid var(--color-gray-100);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    pointer-events: auto;
+
+    @include sm {
+      bottom: 2rem;
+      left: 2rem;
+      right: auto;
+      top: auto;
+      width: 380px;
+      padding: 2rem;
+    }
+  }
+
+  .style-modal__title {
+    font-size: 1.25rem;                        // text-xl
+    line-height: 1.25;                         // leading-tight wins over text-xl
+    font-weight: 700;
+  }
+
+  .style-modal__desc {
+    margin-top: 0.75rem;
+    font-size: 0.875rem;                       // text-sm
+    line-height: 1.625;                        // leading-relaxed wins over text-sm
+    font-weight: 400;
+  }
+
+  .style-modal__actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+  }
+
+  // Shared layout for the Github and "Use cloud map" buttons; colour comes from
+  // btn-primary-omt / btn-maptiler, exactly as in the original.
+  .style-modal__btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding-inline: 1rem;
+    padding-block: 0.5rem;
+    @include text(sm);
+    font-weight: 400;
+    border-radius: 0.375rem;
+    @include shadow(sm);   // shadow-sm
+    cursor: pointer;
+    text-decoration: none;
+
+    svg {
+      width: 1rem;
+      height: 1rem;
+      margin-right: 0.5rem;
+    }
+  }
+
+  .style-modal__cloud {
+    flex-grow: 1;
+
+    &[hidden] { display: none; }
+  }
+
+  .style-modal__copy {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.625rem;                         // p-2.5
+    border-radius: 0.375rem;
+    border: 1px solid transparent;
+    @include text(sm);
+    font-weight: 400;
+    cursor: pointer;
+    @include shadow(sm);   // shadow-sm
+
+    &:focus { outline: none; }
+
+    svg { width: 1rem; height: 1rem; }
+
+    // Copy icon first, check second — only one is ever visible.
+    svg:nth-of-type(2) { display: none; }
+  }
+
+  // The copied state replaces btn-primary-omt outright, so map-styles.js
+  // swaps the class rather than trying to out-specify an unlayered rule.
+  .style-modal__copy--copied {
+    background-color: #cadba8bf;               // bg-[#cadba8]/75
+    color: #435129;
+
+    svg:nth-of-type(1) { display: none; }
+    svg:nth-of-type(2) { display: block; }
+  }
+
+  .style-modal__more {
+    margin-top: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.625rem;                             // gap-2.5
+  }
+
+  .style-modal__more-logo {
+    width: 1.25rem;
+    height: 1.25rem;
+    object-fit: contain;
+  }
+
+  .style-modal__more-link {
+    @include text(sm);
+    font-weight: 400;
+    color: #3174ff;
+    transition: color 0.15s;
+
+    @media (hover: hover) {
+      &:hover { color: #2563eb; }
+    }
+  }
+}

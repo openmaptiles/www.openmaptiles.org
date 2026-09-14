@@ -1,0 +1,135 @@
+{%- comment -%}
+Full-screen style preview dialog opened from the homepage style cards.
+
+An earlier version mounted this subtree only while a style was selected. It is rendered
+MapStyles with client:load on /styles/:slug/, so the modal IS in the
+server-rendered HTML there — this include reproduces that, and is emitted
+`hidden` everywhere else so map-styles.js can reveal it without building DOM
+(the same approach as the mobile menu and the multilingual dialog).
+
+The iframe deliberately carries NO src when inactive: a display:none iframe
+still loads its document, and the homepage must not pull a map tile request.
+map-styles.js sets src on open.
+
+Fields that change per style are marked with data-style-* hooks; everything
+structural stays put.
+{%- endcomment -%}
+{%- assign active = page.style -%}
+<div
+  class="style-modal"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Map style preview"
+  data-style-modal
+  data-section="map_styles_modal"
+  {% unless active %}hidden{% endunless %}
+>
+  <div class="style-modal__backdrop" data-style-modal-close></div>
+
+  <div class="style-modal__wrap">
+    {%- comment -%}
+    Sits outside the frame with negative offsets from sm up, so it overlaps the
+    modal edge by ~10px — same as the hero dialog's close button.
+    {%- endcomment -%}
+    <button
+      type="button"
+      class="style-modal__close"
+      aria-label="Close preview"
+      data-style-modal-close
+    >{% include icons/x.svg %}</button>
+
+    <div class="style-modal__frame">
+      <div class="style-modal__nav">
+        <button type="button" class="style-modal__nav-btn" aria-label="Previous style" data-style-prev>
+          {% include icons/caret-left-bold.svg %}
+        </button>
+        <button type="button" class="style-modal__nav-btn" aria-label="Next style" data-style-next>
+          {% include icons/caret-right-bold.svg %}
+        </button>
+      </div>
+
+      <div class="style-modal__preview">
+        <iframe
+          class="style-modal__iframe"
+          {% if active %}src="{{ '/maps/style-preview.html' | relative_url }}?style={{ active.style_id | url_encode }}&amp;key={{ site.maps.key }}#{{ active.preview_hash }}"{% endif %}
+          title="{% if active %}{{ active.title }} live preview{% endif %}"
+          data-style-iframe
+        ></iframe>
+
+        <div class="style-modal__card">
+          {%- comment -%}
+          On /styles/:slug/ this dialog is what the page is about, so its title is the
+          page's H1 and the hero headline steps down to an <h2>. Everywhere else the
+          modal is closed and this element is empty, so it renders as a <p> — the
+          layout emits this dialog first, and an empty heading must not lead the
+          document outline. map-styles.js addresses it by data-style-modal-title,
+          not by tag, and the colour comes from the class — see _element-overrides.scss.
+          {%- endcomment -%}
+          {% if page.active_style %}
+          <h1 class="style-modal__title" data-style-modal-title>{{ active.title }}</h1>
+          {% else %}
+          <p class="style-modal__title" data-style-modal-title>{{ active.title }}</p>
+          {% endif %}
+          <p class="style-modal__desc" data-style-modal-desc>{{ active.description }}</p>
+
+          <div class="style-modal__actions">
+            <a
+              href="{{ active.github_url }}"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-tracked="true"
+              data-track-event="github_intent_click"
+              data-track-section="map_styles_modal"
+              class="btn-primary-omt style-modal__btn"
+              data-style-modal-github
+            >{% include icons/code-bold.svg %}GitHub</a>
+
+            {%- comment -%}
+            Both icons ship; CSS shows one. Swapping the element would work, but
+            keeping the check in the DOM avoids hand-writing SVG strings in JS
+            (the same reason the mobile menu and schema diagrams are emitted
+            hidden). The copied state also drops btn-primary-omt entirely, as
+            the base class does, so the green fill does not have to out-specify it.
+            {%- endcomment -%}
+            <button
+              type="button"
+              class="btn-primary-omt style-modal__copy"
+              title="Copy map code"
+              data-style-copy
+            >{% include icons/copy-bold.svg %}{% include icons/check-bold.svg %}</button>
+
+            <a
+              href="{{ active.cloud_url }}"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-tracked="true"
+              data-track-event="style_customize_click"
+              class="btn-maptiler style-modal__btn style-modal__cloud"
+              data-style-modal-cloud
+              {% unless active.cloud_url %}hidden{% endunless %}
+            >{% include icons/arrow-up-right-bold.svg %}Use cloud map</a>
+          </div>
+
+          <div class="style-modal__more">
+            <img
+              src="{{ '/img/maptiler-logo-icon.png' | relative_url }}"
+              alt="MapTiler logo"
+              loading="lazy"
+              class="style-modal__more-logo"
+            />
+            <a
+              href="https://cloud.maptiler.com/maps/"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-tracked="true"
+              data-track-event="cloud_intent_click"
+              data-track-section="map_styles_modal"
+              data-track-label="See more map styles from MapTiler"
+              class="style-modal__more-link"
+            >See more map styles from MapTiler</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

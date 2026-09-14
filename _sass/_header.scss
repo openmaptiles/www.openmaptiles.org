@@ -1,0 +1,223 @@
+@use "config" as *;
+// Wrapped in `@layer components` so the element rules in _element-overrides.scss,
+// which are unlayered, outrank these regardless of specificity. Unlayered CSS always
+// beats layered CSS in the cascade, which is what makes that file the single place to
+// override any of this.
+
+@layer components {
+  // Base colours (background, border) come from the `header` rule in _base.scss,
+  // carried over from _element-overrides.scss.
+
+  .site-header {
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+
+  .site-header__inner {
+    @include container(80rem);                 // max-w-7xl
+  }
+
+  .site-header__bar {
+    display: flex;
+    align-items: center;
+    height: 4rem;                              // h-16
+  }
+
+  .site-header__brand-wrap {
+    flex: 1;
+    display: flex;
+    align-items: center;
+  }
+
+  .site-header__brand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+
+    @include hover {
+      .site-header__logo { scale: 1.1; }     // group-hover:scale-110
+      .site-header__wordmark { color: var(--color-black); }
+    }
+  }
+
+  .site-header__logo {
+    height: 2rem;                              // h-8
+    width: auto;
+    transition: all 0.15s $ease;
+  }
+
+  .site-header__wordmark {
+    @include text(xl);
+    font-weight: 700;                          // font-bold
+    color: var(--color-gray-900);
+    transition: color 0.15s $ease;
+  }
+
+  .site-header__nav {
+    display: none;                             // hidden
+
+    // space-x-2 is a sibling margin, not a gap — with `gap` the computed value
+    // differs even though it looks the same.
+    > * + * { margin-left: 0.5rem; }
+
+    @include md { display: flex; }             // md:flex
+  }
+
+  .site-header__link {
+    @include text(sm);
+    padding-inline: 1rem;                      // px-4
+    padding-block: 0.5rem;                     // py-2
+    border-radius: $radius-full;                     // rounded-full
+    font-weight: 500;                          // font-medium
+    text-decoration: none;
+    transition: all 0.15s $ease;
+  }
+
+  .site-header__github-wrap {
+    display: none;
+
+    @include md {
+      display: flex;
+      flex: 1;
+      justify-content: flex-end;
+      align-items: center;
+    }
+  }
+
+  .site-header__github {
+    color: var(--color-gray-500);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    transition: color 0.15s $ease;
+
+    @include hover {
+      color: var(--color-gray-900);
+      .site-header__stars { background-color: var(--color-gray-200); }
+    }
+  }
+
+  .site-header__github-icon {
+    height: 1.25rem;                           // h-5 w-5
+    width: 1.25rem;
+    filter: invert(100%);                      // filter invert
+    transition: opacity 0.15s $ease;
+  }
+
+  .site-header__github-label {
+    @include text(sm);
+    font-weight: 400;                          // font-normal
+  }
+
+  // Populated by assets/js/ui.js once the GitHub API responds; `hidden` until then,
+  // so the static output shows no placeholder.
+  .site-header__stars {
+    margin-left: 0.25rem;                      // ml-1
+    display: inline-flex;
+    align-items: center;
+    padding-inline: 0.5rem;                    // px-2
+    padding-block: 0.125rem;                   // py-0.5
+    border-radius: $radius-full;
+    @include text(xs);
+    font-weight: 500;
+    background-color: var(--color-gray-100);
+    color: var(--color-gray-600);
+    border: 1px solid var(--color-gray-200);
+    transition: background-color 0.15s $ease;
+
+    &[hidden] { display: none; }
+
+    // The star glyph inside the badge: text-yellow-400, h-3 w-3, mr-1.
+    svg {
+      color: oklch(85.2% 0.199 91.936);
+      width: 0.75rem;
+      height: 0.75rem;
+      margin-right: 0.25rem;
+      flex-shrink: 0;
+    }
+  }
+
+  .site-header__menu-wrap {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+
+    @include md { display: none; }             // md:hidden
+  }
+
+  .site-header__menu-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;                           // p-2
+    border-radius: 0.375rem;                   // rounded-md
+    color: var(--color-gray-400);
+    background: none;
+    cursor: pointer;
+
+    @include hover {
+      color: var(--color-gray-500);
+      background-color: var(--color-gray-100);
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: inset 0 0 0 2px #404040;     // focus:ring-inset focus:ring-[#404040]
+    }
+
+    .icon--lg { width: 1.5rem; height: 1.5rem; }  // h-6 w-6
+
+    [hidden] { display: none; }
+  }
+
+  .site-header__mobile {
+    border-top: 1px solid var(--color-gray-100);
+    padding-inline: 1rem;
+    padding-block: 1rem;
+
+    &[hidden] { display: none; }
+
+    @include md { display: none; }
+  }
+
+  .site-header__mobile-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .site-header__mobile-link {
+    display: block;
+    padding-inline: 1rem;
+    padding-block: 0.5rem;
+    font-size: 1rem;                           // text-base
+    border-radius: $radius-full;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background-color 0.15s, color 0.15s;
+  }
+
+  .site-header__mobile-github {
+    padding-inline: 1rem;
+    padding-block: 0.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--color-gray-600);
+    border-radius: $radius-full;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-decoration: none;
+
+    @include hover {
+      background-color: var(--color-gray-50);
+      color: var(--color-gray-800);
+    }
+  }
+
+}

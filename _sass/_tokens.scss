@@ -1,0 +1,67 @@
+// Compiles to CSS, so it belongs to assets/css/core.scss ALONE — Sass emits a
+// module's CSS once per compilation, so @use-ing this from a per-page bundle too would
+// ship the whole :root block twice. Mixins and Sass-only values live in _config.scss,
+// which is safe to @use anywhere.
+//
+// The @layer statement has to be the first thing in the first stylesheet: named layers
+// take their order from wherever it appears, and every layered rule depends on it.
+// Everything the project authors stays UNLAYERED and so outranks both layers.
+@layer base, components, utilities;
+
+// The --omt-* set is the site's semantic palette, carried over unchanged. The
+// --color-gray-* scale is Tailwind v4's default gray, extracted from the generated
+// stylesheet — the ported prose and component rules reference these exact values.
+:root {
+  // ── Primary action button ────────────────────────────────────────────────
+  --omt-primary: #cadba8;
+  --omt-primary-hover: #bac99c;
+  --omt-primary-text: #435129;
+
+  // ── Secondary action button ──────────────────────────────────────────────
+  --omt-secondary-bg: #ffffff;
+  --omt-secondary-text: #6e8547;
+  --omt-secondary-border: #cadba8;
+  --omt-secondary-border-width: 2px;
+  --omt-secondary-hover-bg: #f9fafb;
+
+  // ── Page / header surface ────────────────────────────────────────────────
+  --omt-surface: #ffffff;
+  --omt-surface-alt: #f6f9f0;
+  --omt-border: #f2f2f2;
+  --omt-section-border: #eef1e9;
+
+  // ── Text scale ───────────────────────────────────────────────────────────
+  --omt-text-dark: #151711;
+  --omt-text-body: #252720;
+  --omt-link: #151711;
+
+  // ── Navigation ───────────────────────────────────────────────────────────
+  --omt-nav-active-bg: #f6f9f0;
+  --omt-nav-active-text: #111827;
+  --omt-nav-inactive-text: #6b7280;
+
+  // ── Accent (search, links) ───────────────────────────────────────────────
+  --omt-accent: #2563eb;
+
+  // ── Tailwind v4 default gray scale ───────────────────────────────────────
+  --color-gray-50: oklch(98.5% 0.002 247.839);
+  --color-gray-100: oklch(96.7% 0.003 264.542);
+  --color-gray-200: oklch(92.8% 0.006 264.531);
+  --color-gray-300: oklch(87.2% 0.01 258.338);
+  --color-gray-400: oklch(70.7% 0.022 261.325);
+  --color-gray-500: oklch(55.1% 0.027 264.364);
+  --color-gray-600: oklch(44.6% 0.03 256.802);
+  --color-gray-700: oklch(37.3% 0.034 259.733);
+  --color-gray-800: oklch(27.8% 0.033 256.848);
+  --color-gray-900: oklch(21% 0.034 264.665);
+  --color-black: #000;
+  --color-white: #fff;
+
+  // ── Typography stacks ────────────────────────────────────────────────────
+  --font-sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+  --default-font-family: var(--font-sans);
+  --default-mono-font-family: var(--font-mono);
+}

@@ -1,0 +1,35 @@
+{%- comment -%}
+Homepage logo wall. Logo filenames are built from a name list, so the images are
+not greppable by filename — see the loop below.
+
+Bug fixed in passing: an earlier version used `src="img/home/amazon.png"` — a
+relative path with no leading slash — so the logos resolved correctly only on
+`/` and 404'd on all 66 style and language pages. `relative_url` makes that
+structurally impossible.
+{%- endcomment -%}
+{%- comment -%}
+Each entry is `filename-stem|alt`: the stem still builds the src, but the alt is
+now written out rather than reused from it.
+{%- endcomment -%}
+{%- assign companies = "amazon|Amazon logo,bosch|Bosch logo,carto|Carto logo,ibm|IBM logo,planet|Planet logo,siemens|Siemens logo" | split: "," -%}
+<section id="companies" class="companies" data-section="companies">
+  <div class="companies__inner">
+    <div class="companies__intro">
+      <p class="companies__label">
+        Used by hundreds of mapping projects and applications including
+      </p>
+      <div class="companies__rule"></div>
+    </div>
+    <div class="companies__logos">
+      {%- for entry in companies %}
+      {%- assign parts = entry | split: "|" %}
+      <img
+        src="{{ '/img/home/' | append: parts[0] | append: '.png' | relative_url }}"
+        alt="{{ parts[1] }}"
+        loading="lazy"
+        class="companies__logo"
+      />
+      {%- endfor %}
+    </div>
+  </div>
+</section>

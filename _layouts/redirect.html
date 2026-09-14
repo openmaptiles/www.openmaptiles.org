@@ -1,0 +1,57 @@
+{%- comment -%}
+Overrides jekyll-redirect-from's built-in template. Identical markup, except the
+navigation target is made site-root-relative.
+
+The gem runs every `redirect_from` path through Jekyll's `absolute_url`, so the
+stubs it emits point at `https://openmaptiles.org/…` regardless of where they are
+served from. That is right in production and wrong everywhere else: in local
+development and on a Cloudflare preview, following any legacy URL leaves the build
+under test and lands on the live site — which is how the restored redirects
+looked broken when the content was reviewed by following them.
+
+`canonical` deliberately stays absolute: that one is a statement to crawlers about
+the production URL, not a navigation instruction.
+
+Stripping `site.url` alone is also correct under a non-root `baseurl`: the gem builds
+the target with `absolute_url`, which is site.url + baseurl + path, so removing only
+site.url leaves the baseurl in place. Do NOT add `relative_url` here — that prepends
+baseurl a second time. Verified against a deployment serving under a non-root
+baseurl.
+
+Off-site targets already carry a scheme, so the gem leaves them absolute and
+`remove_first` does not match — they pass through untouched.
+
+The fragment problem: a source URL's #fragment never reaches the server (browsers
+strip it before the request), so a stub built at Jekyll build time cannot know it —
+`page.redirect.to` is whatever the front matter said, nothing more. Only the browser,
+at redirect time, still has it as `location.hash`. The second script line appends the
+*visitor's* current fragment, but only when the target does not already carry its
+own (e.g. layers/poi.html's redirect_to: /docs/schema/#poi must not become
+.../#poi#something). This is what lets /schema/#park reach /docs/schema/#park even
+though no per-anchor stub exists for it. A plain `location=` assignment does not
+navigate synchronously — the browser schedules it and keeps running the rest of the
+script first — so this second line still overrides the first before either takes
+effect. The meta-refresh fallback below cannot do the same: a fragment that never
+reaches the server is equally invisible to a static, non-JS redirect.
+
+script/verify-build's manifest check greps the built stub for the literal string
+`location="<expected target>"` (see the case block near the end of the script), so
+the first line MUST stay exactly `location="{{ target }}"` with no variables —
+that is the assertion the whole legacy-URL-coverage check rests on. The fragment
+logic has to live in a second, separate statement.
+{%- endcomment -%}
+{%- assign target = page.redirect.to | remove_first: site.url -%}
+<!DOCTYPE html>
+<html lang="en-US">
+  <meta charset="utf-8">
+  <title>Redirecting&hellip;</title>
+  <link rel="canonical" href="{{ page.redirect.to }}">
+  <script>
+    location="{{ target }}"
+    if ("{{ target }}".indexOf("#") === -1 && location.hash) { location = "{{ target }}" + location.hash }
+  </script>
+  <meta http-equiv="refresh" content="0; url={{ target }}">
+  <meta name="robots" content="noindex">
+  <h1>Redirecting&hellip;</h1>
+  <a href="{{ target }}">Click here if you are not redirected.</a>
+</html>

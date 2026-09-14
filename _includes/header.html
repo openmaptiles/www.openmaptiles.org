@@ -1,0 +1,117 @@
+{%- comment -%}
+Site header: brand, primary navigation and the mobile menu.
+
+Active state is computed here at build time instead of from
+`window.location.pathname`: exact
+match for "/", prefix match for the rest.
+
+Two things are left to assets/js/ui.js, and the static output reflects their
+initial state exactly:
+  - the GitHub star badge, which only rendered once the API fetch resolved
+    (`stars !== null`), so it was never in the server HTML either
+  - the mobile menu, which is emitted closed
+
+The mobile menu is emitted here with `hidden` rather than omitted, so the script
+toggles an attribute instead of building DOM. That is a deliberate improvement:
+the markup is in the document for assistive tech and needs no client-side
+render pass.
+{%- endcomment -%}
+{%- comment -%}
+Active-state test: exact match for "/", prefix match otherwise.
+Note "/" must be an exact test — `contains` would mark Home active everywhere.
+{%- endcomment -%}
+{%- assign is_home = false -%}
+{%- assign is_docs = false -%}
+{%- assign is_about = false -%}
+{%- if page.url == "/" -%}{%- assign is_home = true -%}{%- endif -%}
+{%- if page.url contains "/docs" -%}{%- assign is_docs = true -%}{%- endif -%}
+{%- if page.url contains "/about" -%}{%- assign is_about = true -%}{%- endif -%}
+
+<header class="site-header" data-section="header">
+  <div class="site-header__inner">
+    <div class="site-header__bar">
+      <div class="site-header__brand-wrap">
+        <a href="{{ '/' | relative_url }}" class="site-header__brand">
+          <img
+            src="{{ '/img/press/logo.webp' | relative_url }}"
+            alt="OpenMapTiles logo symbol"
+            class="site-header__logo"
+          />
+          <span class="site-header__wordmark">OpenMapTiles</span>
+        </a>
+      </div>
+
+      <nav class="site-header__nav">
+        <a href="{{ '/' | relative_url }}"
+           class="site-header__link {% if is_home %}nav-active-omt{% else %}nav-inactive-omt{% endif %}">Home</a>
+        <a href="{{ '/docs/' | relative_url }}"
+           class="site-header__link {% if is_docs %}nav-active-omt{% else %}nav-inactive-omt{% endif %}">Documentation</a>
+        <a href="{{ '/about/' | relative_url }}"
+           class="site-header__link {% if is_about %}nav-active-omt{% else %}nav-inactive-omt{% endif %}">About</a>
+      </nav>
+
+      <div class="site-header__github-wrap">
+        <a
+          href="https://github.com/openmaptiles/openmaptiles"
+          target="_blank"
+          rel="noopener noreferrer"
+          data-tracked="true"
+          data-track-event="github_intent_click"
+          data-track-section="header"
+          data-track-repo="openmaptiles/openmaptiles"
+          class="site-header__github"
+        >
+          <img
+            src="{{ '/img/GitHub-Mark-Light-32px.png' | relative_url }}"
+            alt="GitHub logo"
+            class="site-header__github-icon"
+          />
+          <span class="site-header__github-label">GitHub</span>
+          {%- comment -%}assets/js/ui.js fills this from the GitHub API.{%- endcomment -%}
+          <span class="site-header__stars" data-github-stars hidden></span>
+        </a>
+      </div>
+
+      <div class="site-header__menu-wrap">
+        <button
+          type="button"
+          class="site-header__menu-btn"
+          aria-controls="mobile-menu"
+          aria-expanded="false"
+          data-mobile-menu-toggle
+        >
+          <span class="sr-only">Open main menu</span>
+          {%- comment -%}
+          The icon <svg> sits directly inside the button (the script swaps
+          List↔X on state), so no wrapper element here — ui.js swaps the markup.
+          {%- endcomment -%}
+          {% include icons/list.svg %}
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="site-header__mobile" id="mobile-menu" hidden>
+    <div class="site-header__mobile-links">
+      <a href="{{ '/' | relative_url }}"
+         class="site-header__mobile-link {% if is_home %}nav-active-omt{% else %}nav-inactive-omt{% endif %}">Home</a>
+      <a href="{{ '/docs/' | relative_url }}"
+         class="site-header__mobile-link {% if is_docs %}nav-active-omt{% else %}nav-inactive-omt{% endif %}">Documentation</a>
+      <a href="{{ '/about/' | relative_url }}"
+         class="site-header__mobile-link {% if is_about %}nav-active-omt{% else %}nav-inactive-omt{% endif %}">About</a>
+      <a
+        href="https://github.com/openmaptiles/openmaptiles"
+        target="_blank"
+        rel="noopener noreferrer"
+        data-tracked="true"
+        data-track-event="github_intent_click"
+        data-track-section="header"
+        data-track-repo="openmaptiles/openmaptiles"
+        class="site-header__mobile-github"
+      >
+        <span>GitHub</span>
+        <span class="site-header__stars" data-github-stars hidden></span>
+      </a>
+    </div>
+  </div>
+</header>

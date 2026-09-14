@@ -1,12 +1,18 @@
 ---
+# Off-site redirect the legacy site served. A Cloudflare Redirect Rule on the
+# openmaptiles.org zone already answers this path at the edge, before the request
+# reaches GitHub Pages — so this stub is normally dead code. It is shipped anyway
+# so the redirect survives the proxy being set to DNS-only, the zone rules being
+# rebuilt, or the site being served from anywhere else.
+#
+# Note: the legacy repo's own stub pointed at /docs/website/openlayers/, but the
+# edge rule overrode it and sends visitors to docs.maptiler.com. The edge target is
+# what is live and indexed, so it is what is reproduced here.
+#
+# TARGET MUST MATCH THE EDGE RULE. Verified against production 2026-08-03.
+# If you change one, change both. script/redirects.tsv is the manifest, and
+# script/verify-build asserts the two agree.
+permalink: /docs/website/openlayers3/
+redirect_to: https://docs.maptiler.com/openlayers/examples/vector-tiles-in-openlayers/
+sitemap: false
 ---
-<!DOCTYPE html>
-<html lang="en-US">
-  <meta charset="utf-8">
-  <title>Redirecting&hellip;</title>
-  <link rel="canonical" href="/docs/website/openlayers/">
-  <meta http-equiv="refresh" content="0; url=/docs/website/openlayers/">
-  <h1>Redirecting…</h1>
-  <a href="/docs/website/openlayers/">Click here if you are not redirected.</a>
-  <script>location = "/docs/website/openlayers/"</script>
-</html>

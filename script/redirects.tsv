@@ -1,0 +1,74 @@
+# Every legacy URL that must keep working, and where it goes.
+#
+# Columns, tab-separated:
+#   1  url          the legacy path, exactly as it is served (trailing slash = directory)
+#   2  target       what the emitted stub must navigate to
+#   3  scope        both       -> a stub must exist AND _redirects must carry the same rule
+#                   stub-only -> a stub must exist; _redirects must NOT need a rule
+#
+# `script/verify-build` asserts every row against a built _site/. Adding a redirect
+# without adding it here means nothing checks it, which is how the inherited
+# _redirects file drifted from the live Cloudflare rules in the first place.
+#
+# Derived on 2026-08-03 by diffing the legacy openmaptiles/www.openmaptiles.org
+# routes against this build, and by reading the live 301 targets back off
+# production (several off-site targets in the inherited _redirects were stale).
+
+# --- schema reference: /layers/* -> /docs/schema/#anchor -----------------------
+# No standalone page per layer any more (see the "schema" collection scope in
+# _config.yml) — every row lands on the matching anchor on the combined page.
+/layers/aerodrome_label/	/docs/schema/#aerodrome_label	both
+/layers/aeroway/	/docs/schema/#aeroway	both
+/layers/boundary/	/docs/schema/#boundary	both
+/layers/building/	/docs/schema/#building	both
+/layers/housenumber/	/docs/schema/#housenumber	both
+/layers/landcover/	/docs/schema/#landcover	both
+/layers/landuse/	/docs/schema/#landuse	both
+/layers/mountain_peak/	/docs/schema/#mountain_peak	both
+/layers/park/	/docs/schema/#park	both
+/layers/place/	/docs/schema/#place	both
+/layers/poi/	/docs/schema/#poi	both
+/layers/transportation/	/docs/schema/#transportation	both
+/layers/transportation_name/	/docs/schema/#transportation_name	both
+/layers/water/	/docs/schema/#water	both
+/layers/water_name/	/docs/schema/#water_name	both
+/layers/waterway/	/docs/schema/#waterway	both
+
+# --- routes that moved --------------------------------------------------------
+/schema/	/docs/schema/	both
+/inspect/	/docs/inspect/	both
+/mobile/	/docs/mobile/mobile/	both
+/mobile-app/	/docs/mobile/mobile/	both
+/mobile/sourcecode/	/docs/mobile/mobile/	both
+/faq/	/docs/generate/create-custom-extract/	both
+
+# --- index pages folded elsewhere ---------------------------------------------
+/languages/	/	both
+/styles/	/#map-styles	both
+/styles/openstreetmap/	/styles/osm-openmaptiles/	both
+
+# --- off-site; also live as Cloudflare zone Redirect Rules --------------------
+/support/	https://docs.maptiler.com/	both
+/terms/	https://www.maptiler.com/terms/server-data/	both
+/hosting/	https://maptiler.com/cloud/	both
+/coordinate-systems/	https://maptiler.com/cloud/	both
+/extracts/	https://data.maptiler.com/extracts/	both
+/production-package/	https://maptiler.com/data/pricing/	both
+/downloads/	https://www.maptiler.com/on-prem-datasets/planet/	both
+/downloads/embed/	https://www.maptiler.com/on-prem-datasets/planet/	both
+/docs/website/openlayers3/	https://docs.maptiler.com/openlayers/examples/vector-tiles-in-openlayers/	both
+
+# --- legacy .html URLs --------------------------------------------------------
+/viewers.html	/viewers/	both
+/production-package.html	https://maptiler.com/data/pricing/	both
+/maps/leaflet-vectorgrid.html	/viewers/	both
+/maps/leaflet-mapbox-gl.html	/viewers/	both
+
+# --- pre-existing, emitted from the docs' own front matter --------------------
+# These three carry redirect_from front matter from an earlier version of the site.
+# All three 404 in production today; jekyll-redirect-from restores them.
+# Deliberately absent from _redirects — the stubs work on every host.
+/docs/website/mapbox-gl-js/	/docs/website/maplibre-gl-js/	stub-only
+/docs/generate/generate-vector-tiles/	/docs/generate/generate-openmaptiles/	stub-only
+/docs/generate/custom-vector/	/docs/generate/custom-vector-from-shapefile-geojson/	stub-only
+

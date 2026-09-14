@@ -1,0 +1,84 @@
+{%- comment -%}
+Shared body for 404.html and 500.html, which are identical apart from
+the theme colour, the compass icon's interior, and three strings. Driven by page
+front matter:
+
+  error_code, error_heading, error_text, error_theme ("gray" | "amber")
+
+The four destination cards were four copy-pasted blocks and now live in
+_data/error_cards.json.
+{%- endcomment -%}
+{%- assign theme = page.error_theme | default: "gray" -%}
+<div class="errorpg errorpg--{{ theme }}" data-section="error_page">
+
+  <div class="errorpg__grid" aria-hidden="true"></div>
+
+  <div class="errorpg__radar" aria-hidden="true">
+    <div class="errorpg__ring errorpg__ring--0 animate-pulse-slow"></div>
+    <div class="errorpg__ring errorpg__ring--10 errorpg__ring--dashed animate-spin-slow"></div>
+    <div class="errorpg__ring errorpg__ring--25"></div>
+    <div class="errorpg__ring errorpg__ring--40 errorpg__ring--dashed animate-spin-slow" style="animation-direction: reverse;"></div>
+    <div class="errorpg__crosshair errorpg__crosshair--v"></div>
+    <div class="errorpg__crosshair errorpg__crosshair--h"></div>
+  </div>
+
+  <div class="errorpg__content">
+
+    <div class="errorpg__compass">
+      <div class="errorpg__pulse animate-ping" aria-hidden="true"></div>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="errorpg__needle">
+        <circle cx="12" cy="12" r="10" stroke-dasharray="3 2"></circle>
+        {%- if theme == "amber" %}
+        <path d="M12 9v4M12 17h.01" stroke-width="2" stroke-linecap="round"></path>
+        <path d="M12 3l10 16H2L12 3z" stroke="currentColor" stroke-width="1.5"></path>
+        {%- else %}
+        <polygon points="12,4 15,12 12,20 9,12" fill="#cadba8" class="errorpg__pointer"></polygon>
+        <circle cx="12" cy="12" r="1.5" fill="currentColor"></circle>
+        {%- endif %}
+      </svg>
+    </div>
+
+    <div class="errorpg__headline">
+      <span class="errorpg__badge">Status Code {{ page.error_code }}</span>
+      <h1 class="errorpg__title">{{ page.error_heading }}</h1>
+      <p class="errorpg__text">{{ page.error_text }}</p>
+    </div>
+
+    <div class="errorpg__actions">
+      <a href="{{ '/' | relative_url }}" class="errorpg__home">
+        <svg class="errorpg__home-icon animate-bounce-left" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+        </svg>
+        Back to Homepage
+      </a>
+    </div>
+
+    <div class="errorpg__divider"></div>
+
+    <div class="errorpg__routes">
+      <h3 class="errorpg__routes-title">Recalculate Route</h3>
+
+      <div class="errorpg__cards">
+        {%- for card in site.data.error_cards %}
+        <a href="{{ card.href | relative_url }}" class="errorpg__card">
+          <div class="errorpg__card-umbra" aria-hidden="true"></div>
+          <div class="errorpg__card-penumbra" aria-hidden="true"></div>
+          <div class="errorpg__card-body">
+            <div class="errorpg__card-icon">
+              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="{{ card.path }}"/></svg>
+            </div>
+            <div>
+              <h4 class="errorpg__card-title">
+                {{ card.title }}
+                <span class="errorpg__card-arrow">→</span>
+              </h4>
+              <p class="errorpg__card-text">{{ card.text }}</p>
+            </div>
+          </div>
+        </a>
+        {%- endfor %}
+      </div>
+    </div>
+
+  </div>
+</div>

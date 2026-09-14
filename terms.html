@@ -1,13 +1,14 @@
 ---
-layout: null
+# Off-site redirect the legacy site served. A Cloudflare Redirect Rule on the
+# openmaptiles.org zone already answers this path at the edge, before the request
+# reaches GitHub Pages — so this stub is normally dead code. It is shipped anyway
+# so the redirect survives the proxy being set to DNS-only, the zone rules being
+# rebuilt, or the site being served from anywhere else.
+#
+# TARGET MUST MATCH THE EDGE RULE. Verified against production 2026-08-03.
+# If you change one, change both. script/redirects.tsv is the manifest, and
+# script/verify-build asserts the two agree.
+permalink: /terms/
+redirect_to: https://www.maptiler.com/terms/server-data/
+sitemap: false
 ---
-<!DOCTYPE html>
-<html lang="en-US">
-  <meta charset="utf-8">
-  <title>Redirecting…</title>
-  <link rel="canonical" href="https://www.maptiler.com/data/license/">
-  <meta http-equiv="refresh" content="0; url=https://www.maptiler.com/data/license/">
-  <h1>Redirecting…</h1>
-  <a href="https://www.maptiler.com/data/license/">Click here if you are not redirected.</a>
-  <script>location="https://www.maptiler.com/data/license/"</script>
-</html>

@@ -1,0 +1,47 @@
+[
+  {
+    "src": "dataset-satellite.webp",
+    "alt": "Satellite imagery",
+    "title": "Satellite",
+    "href": "https://www.maptiler.com/on-prem-datasets/dataset/satellite-2021/#0.22/0/0",
+    "offset": -34.06,
+    "z": 1,
+    "size": "sm"
+  },
+  {
+    "src": "dataset-satellite-highres.webp",
+    "alt": "High-resolution satellite",
+    "title": "Satellite Highres",
+    "href": "https://www.maptiler.com/satellite/",
+    "offset": -18.25,
+    "z": 2,
+    "size": "md"
+  },
+  {
+    "src": "dataset-planet.webp",
+    "alt": "OpenMapTiles planet",
+    "title": "OpenStreetMap",
+    "href": "https://www.maptiler.com/on-prem-datasets/dataset/osm/#5.14/45.767/12.621",
+    "offset": 0,
+    "z": 5,
+    "size": "lg"
+  },
+  {
+    "src": "dataset-hillshade.webp",
+    "alt": "Hillshade terrain",
+    "title": "Hillshade",
+    "href": "https://www.maptiler.com/on-prem-datasets/dataset/hillshade/#0.22/0/0",
+    "offset": 18.25,
+    "z": 2,
+    "size": "md"
+  },
+  {
+    "src": "dataset-contours.webp",
+    "alt": "Map with contour lines",
+    "title": "Contours",
+    "href": "https://www.maptiler.com/on-prem-datasets/dataset/contours/#0.22/0/0",
+    "offset": 34.06,
+    "z": 1,
+    "size": "sm"
+  }
+]

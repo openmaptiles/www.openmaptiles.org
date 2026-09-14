@@ -1,0 +1,149 @@
+@use "config" as *;
+// The open/closed state is driven by a data attribute, toggled by assets/js/ui.js.
+// Open is the default, so the sidebar is usable with JS off.
+
+@layer components {
+
+  .docs-sidebar {
+    width: 100%;
+    transition: all 0.3s $ease;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    padding-right: 1rem;                       // pr-4
+    overflow: hidden;
+
+    // `sticky` + `h-[calc(100vh-4rem)]` only makes sense beside the content. Below
+    // md the shell stacks, so the sidebar is a full-width block — and pinning it
+    // meant the article scrolled straight over the nav, text on text, with a whole
+    // empty viewport before the docs even started. Static and auto-height below md,
+    // sticky from md up.
+    @include md {
+      position: sticky;
+      top: 4rem;                               // top-16
+      height: calc(100vh - 4rem);
+      width: 20rem;                            // md:w-80
+      padding-right: 2rem;                     // md:pr-8
+    }
+
+    // Collapsing is an md-and-up affordance. Below md the sidebar sits ABOVE the
+    // article rather than beside it, so shrinking it to 5rem buys no reading room
+    // — it just leaves a narrow strip with the nav hidden and the search box
+    // squeezed to nothing. Scoped to md so a stale attribute (set at a wide
+    // viewport, then resized down) cannot collapse the mobile layout either.
+    @include md {
+      &[data-collapsed="true"] {
+        width: 5rem;                           // w-20
+
+        .docs-sidebar__search {
+          opacity: 0;
+          pointer-events: none;
+          width: 0;
+          overflow: hidden;
+        }
+
+        .docs-sidebar__body {
+          opacity: 0;
+          pointer-events: none;
+        }
+      }
+    }
+  }
+
+  .docs-sidebar__top {
+    background-color: var(--color-white);
+    z-index: 30;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding-bottom: 1.5rem;                    // pb-6
+    padding-top: 2rem;                         // pt-8
+    padding-inline: 1rem;                      // px-4
+    flex-shrink: 0;
+  }
+
+  .docs-sidebar__search {
+    flex: 1;
+    min-width: 0;
+    transition: all 0.3s $ease;
+    opacity: 1;
+  }
+
+  .docs-sidebar__toggle {
+    // Hidden below md: there is nothing useful to collapse when the sidebar is a
+    // full-width block above the content. display:none also takes it out of the
+    // tab order, so it cannot be reached by keyboard on a phone either.
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;                             // w-10
+    height: 2.5rem;                            // h-10
+    background-color: var(--color-white);
+    border: 1px solid var(--color-gray-200);
+    border-radius: 0.375rem;
+    color: var(--color-gray-400);
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: all 0.15s $ease;
+
+    @include md { display: flex; }
+
+    [hidden] { display: none; }
+
+    @include hover {
+      background-color: var(--omt-surface-alt);   // hover:bg-gray-50
+      color: var(--color-gray-600);
+    }
+  }
+
+  .docs-sidebar__body {
+    opacity: 1;
+    transition: opacity 0.2s $ease;
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-inline: 1rem;
+    padding-bottom: 3rem;                      // pb-12
+  }
+
+  // space-y-6 / space-y-1
+  .docs-sidebar__groups > :not(:last-child) { margin-bottom: 1.5rem; }
+  .docs-sidebar__items > :not(:last-child) { margin-bottom: 0.25rem; }
+
+  .docs-sidebar__groups,
+  .docs-sidebar__items {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .docs-sidebar__group-title {
+    padding-inline: 0.75rem;                   // px-3
+    @include text(sm);
+    font-weight: 600;                          // font-semibold
+    color: var(--color-gray-900);
+    text-transform: uppercase;
+    letter-spacing: -0.025em;                  // tracking-tight
+    margin-bottom: 0.5rem;                     // mb-2
+    overflow-wrap: break-word;
+  }
+
+  .docs-sidebar__link {
+    display: block;
+    padding-inline: 1rem;                      // px-4
+    padding-block: 0.5rem;                     // py-2
+    border-radius: $radius-full;
+    @include text(sm);
+    font-weight: 500;                          // font-medium
+    white-space: normal;
+    overflow-wrap: break-word;
+    text-decoration: none;
+    transition: background-color 0.15s, color 0.15s;
+  }
+
+  @media (hover: hover) {
+    .docs-sidebar__link--inactive:hover {
+      background-color: var(--omt-surface-alt);    // hover:bg-gray-50
+    }
+  }
+}

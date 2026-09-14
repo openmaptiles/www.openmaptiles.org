@@ -1,0 +1,435 @@
+@use "config" as *;
+@use "dialog" as *;
+//
+// `animate-in`, `fade-in`, `zoom-in-95` and `slide-in-from-bottom-5` are not
+// carried over: tailwindcss-animate is not installed, so they generated no CSS.
+// `animate-spin-slow` on the loader globe is the same story here — its keyframes
+// live in page-scoped blocks used by 404.html/500.html, so on /viewers/ the
+// glyph does not actually spin. It must NOT be reproduced: _error-page.scss defines
+// .animate-spin-slow globally, and reusing the class would animate something
+// the previous design leaves still.
+//
+// `animate-pulse` and `animate-ping` ARE real Tailwind utilities and do run.
+// `.animate-ping` lives in _animations.scss because _error-page.scss needs it too;
+// `pulse` is used only here, so it stays here, unlayered, the same way.
+
+@keyframes pulse {
+  50% { opacity: 0.5; }
+}
+
+.animate-pulse { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+
+@layer components {
+
+  .viewers {
+    @include dialog-overlay(100);
+    transition-duration: 0.3s;                 // duration-300, no property set
+  }
+
+  .viewers__backdrop {
+    @include dialog-backdrop(75%);
+    transition: opacity 0.15s $ease;
+  }
+
+  .viewers__wrap {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  // Same treatment as the style preview and hero dialogs: pulled outside the
+  // frame from sm up so it overlaps the corner.
+  // The only close button of the three that scales on hover — the previous viewers
+  // modal carries `hover:scale-105 active:scale-95`, the other two do not.
+  .viewers__close {
+    @include dialog-close(50);
+    transition: all 0.15s $ease;
+
+    &:active { scale: 0.95; }
+
+    @include hover { scale: 1.05; }
+  }
+
+  .viewers__frame {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: oklch(20.8% 0.042 265.755);   // bg-slate-900
+    overflow: hidden;
+    @include shadow(2xl);   // shadow-2xl
+    display: flex;
+    flex-direction: column;
+    border: 1px solid color-mix(in oklab, var(--color-white) 10%, transparent);
+    transition-duration: 0.2s;                 // duration-200
+
+    @include sm { border-radius: 1rem; }       // sm:rounded-2xl
+  }
+
+  // ── error state ──────────────────────────────────────────────────────────
+  .viewers__error {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-gray-950);
+    padding: 1.5rem;
+    z-index: 40;
+    text-align: center;
+    color: var(--color-white);
+
+    &[hidden] { display: none; }
+  }
+
+  .viewers__error-badge {
+    padding: 1rem;
+    background-color: color-mix(in oklab, oklch(63.7% 0.237 25.331) 20%, transparent);
+    border: 1px solid oklch(63.7% 0.237 25.331);   // border-red-500
+    border-radius: $radius-full;
+    margin-bottom: 1rem;
+
+    svg {
+      width: 3rem;
+      height: 3rem;
+      color: oklch(63.7% 0.237 25.331);
+    }
+  }
+
+  .viewers__error-title {
+    @include text(2xl);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    // No colour here on purpose. The panel sets `text-white`, but _element-overrides.scss's
+    // unlayered `h1..h6` rule matches this h3 and beats inheritance, so the previous design
+    // renders it --omt-text-dark on near-black. _element-overrides.scss
+    // reproduces that automatically; declaring anything here would be dead.
+  }
+
+  // Same story as the title: `text-gray-400` on this <p> lost to _element-overrides.scss's
+  // `p, li` rule, so no colour is set here.
+  .viewers__error-text {
+    max-width: 28rem;                          // max-w-md
+  }
+
+  .viewers__retry {
+    margin-top: 1.5rem;
+    padding-inline: 1.5rem;
+    padding-block: 0.5rem;
+    background-color: var(--color-white);
+    color: var(--color-gray-900);
+    border-radius: 0.375rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.15s $ease;
+
+    @media (hover: hover) {
+      &:hover { background-color: var(--color-gray-100); }
+    }
+  }
+
+  // ── loader state ─────────────────────────────────────────────────────────
+  .viewers__loader {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-gray-950);
+    z-index: 40;
+    color: var(--color-white);
+
+    &[hidden] { display: none; }
+  }
+
+  // The globe sits directly in the glyph wrapper, as in the original. Its
+  // `text-gray-300` did apply — svg is not covered by _element-overrides.scss's element rules.
+  .viewers__loader-glyph > svg {
+    width: 3rem;
+    height: 3rem;
+    color: var(--color-gray-300);
+  }
+
+  .viewers__loader-glyph {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .viewers__loader-ping {
+    position: absolute;
+    display: inline-flex;
+    height: 3rem;
+    width: 3rem;
+    border-radius: $radius-full;
+    background-color: color-mix(in oklab, var(--color-white) 20%, transparent);
+    opacity: 0.75;
+  }
+
+  // `text-gray-400` lost to _element-overrides.scss's `p, li` rule here too.
+  .viewers__loader-text {
+    margin-top: 1rem;
+    @include text(sm);
+    font-family: var(--font-mono);
+  }
+
+  // ── map panes ────────────────────────────────────────────────────────────
+  .viewers__stack {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    background-color: oklch(12.9% 0.042 264.695);   // bg-slate-950
+  }
+
+  .viewers__pane {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    transition: opacity 0.5s $ease;
+    opacity: 0;
+    z-index: 10;
+    pointer-events: none;
+
+    &[data-active="true"] {
+      opacity: 1;
+      z-index: 20;
+      pointer-events: auto;
+    }
+  }
+
+  .viewers__canvas {
+    width: 100%;
+    height: 100%;
+  }
+
+  // ── floating control panel ───────────────────────────────────────────────
+  .viewers__panel {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    right: 1rem;
+    z-index: 20;
+    background-color: color-mix(in oklab, var(--color-white) 95%, transparent);
+    -webkit-backdrop-filter: blur(12px);       // backdrop-blur-md, --blur-md 12px
+    backdrop-filter: blur(12px);
+    border-radius: 1rem;                       // rounded-2xl
+    @include shadow(2xl);   // shadow-2xl
+    border: 1px solid var(--color-gray-100);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    pointer-events: auto;
+    transition-duration: 0.3s;                 // duration-300
+
+    @include sm {
+      bottom: 2rem;
+      left: 2rem;
+      right: auto;
+      top: auto;
+      width: 410px;
+    }
+  }
+
+  .viewers__panel-head { margin-bottom: 0.5rem; }
+
+  .viewers__panel-title {
+    font-size: 1.125rem;                       // text-lg
+    line-height: 1.25;                         // leading-tight wins over text-lg
+    font-weight: 700;
+  }
+
+  .viewers__panel-text {
+    font-size: 0.875rem;                       // text-sm
+    line-height: 1.625;                        // leading-relaxed wins over text-sm
+    font-weight: 400;
+  }
+
+  // ── tab switcher ─────────────────────────────────────────────────────────
+  .viewers__tabs {
+    margin-top: 1.25rem;
+    padding: 0.25rem;
+    background-color: color-mix(in oklab, var(--color-gray-100) 90%, transparent);
+    border-radius: 0.75rem;                    // rounded-xl
+    display: flex;
+    gap: 0.25rem;
+    border: 1px solid var(--color-gray-200);
+  }
+
+  .viewers__tab {
+    flex: 1;
+    padding-block: 0.625rem;                   // py-2.5
+    padding-inline: 0.375rem;                  // px-1.5
+    @include text(xs);
+    border-radius: 0.5rem;                     // rounded-lg
+    transition: all 0.15s $ease;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.375rem;                             // gap-1.5
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    color: var(--color-gray-600);
+
+    &:focus { outline-style: none; }
+
+    @include sm { padding-inline: 0.75rem; }
+
+    svg { width: 1rem; height: 1rem; }
+
+    &[aria-selected="true"] {
+      background-color: #404040;
+      color: var(--color-white);
+      @include shadow(md);   // shadow-md
+      scale: 1.02;
+    }
+
+    @media (hover: hover) {
+      &[aria-selected="false"]:hover {
+        color: var(--color-gray-900);
+        background-color: color-mix(in oklab, var(--color-gray-200) 50%, transparent);
+      }
+    }
+  }
+
+  // ── MapTiler Cloud footnote ──────────────────────────────────────────────
+  .viewers__cloud {
+    margin-top: 1.25rem;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 0.625rem;                             // gap-2.5
+  }
+
+  .viewers__cloud-logo {
+    width: 1.25rem;
+    height: 1.25rem;
+    object-fit: contain;
+    margin-top: 0.125rem;                      // mt-0.5
+  }
+
+  .viewers__cloud-link {
+    font-size: 0.875rem;
+    line-height: 1.625;                        // leading-relaxed
+    font-weight: 400;
+    color: #3174ff;
+    text-wrap: balance;
+    transition: color 0.15s $ease;
+
+    @media (hover: hover) {
+      &:hover { color: #2563eb; }
+    }
+  }
+
+  .viewers__cloud-note { color: var(--color-gray-500); }
+}
+
+// UNLAYERED, and !important throughout, because this was a plain <style> block
+// inside the previous design overriding the three libraries' own control CSS —
+// which is itself injected into <head> at runtime, after our stylesheet.
+
+/* Position map controls consistently on the top-right */
+.maplibregl-ctrl-top-right,
+.leaflet-top.leaflet-right,
+.ol-zoom {
+  top: 64px !important;
+  right: 16px !important;
+  left: auto !important;
+}
+
+/* Eliminate dark poles background in Leaflet by matching ocean color */
+.leaflet-container,
+#map-leaflet {
+  background-color: #aad3df !important;
+}
+
+/* On desktop the close button sits outside the frame, so pull the controls up */
+@media (min-width: 640px) {
+  .maplibregl-ctrl-top-right,
+  .leaflet-top.leaflet-right,
+  .ol-zoom {
+    top: 16px !important;
+    right: 16px !important;
+  }
+}
+
+/* Custom premium styling for Leaflet controls */
+.leaflet-bar {
+  border: none !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+  border-radius: 10px !important;
+  overflow: hidden !important;
+}
+
+.leaflet-bar a,
+.leaflet-bar a:hover {
+  background-color: #ffffff !important;
+  color: #1e293b !important;
+  border-bottom: 1px solid #f1f5f9 !important;
+  width: 34px !important;
+  height: 34px !important;
+  line-height: 34px !important;
+  font-size: 16px !important;
+  transition: all 0.2s ease !important;
+}
+
+.leaflet-bar a:hover {
+  background-color: #f1f5f9 !important;
+  color: #0f172a !important;
+}
+
+/* Custom premium styling for OpenLayers controls */
+.ol-zoom {
+  background-color: transparent !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.ol-zoom .ol-zoom-in,
+.ol-zoom .ol-zoom-out {
+  background-color: #ffffff !important;
+  color: #1e293b !important;
+  border: none !important;
+  border-radius: 10px !important;
+  width: 34px !important;
+  height: 34px !important;
+  line-height: 34px !important;
+  font-size: 16px !important;
+  font-weight: 500 !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  margin-bottom: 4px !important;
+  display: block !important;
+}
+
+.ol-zoom .ol-zoom-in:hover,
+.ol-zoom .ol-zoom-out:hover {
+  background-color: #f1f5f9 !important;
+  color: #0f172a !important;
+}
+
+/* Align MapLibre controls with custom premium styles as well */
+.maplibregl-ctrl-group {
+  border: none !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+  border-radius: 10px !important;
+  overflow: hidden !important;
+}
+
+.maplibregl-ctrl-group button {
+  width: 34px !important;
+  height: 34px !important;
+  background-color: #ffffff !important;
+  transition: all 0.2s ease !important;
+}
+
+.maplibregl-ctrl-group button:hover {
+  background-color: #f1f5f9 !important;
+}

@@ -1,4 +1,24 @@
+---
+layout: null
+permalink: /robots.txt
+sitemap: false
+---
+{%- comment -%}
+Comments below this line are served to crawlers verbatim, so keep build notes in
+here, where Liquid strips them.
+
+The legacy site shipped no robots.txt, so crawlers fell back to "everything
+allowed" and had to discover the sitemap from Search Console alone. This states
+both explicitly and changes nothing about what is crawlable.
+{%- endcomment -%}
+{%- if site.staging -%}
+# Staging build (`site.staging`): this host serves a full duplicate of
+# openmaptiles.org, so it is closed to crawlers and advertises no sitemap.
+User-agent: *
+Disallow: /
+{%- else -%}
 User-agent: *
 Allow: /
 
-Sitemap: sitemap.xml
+Sitemap: {{ site.url }}/sitemap.xml
+{%- endif %}

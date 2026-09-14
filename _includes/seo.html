@@ -1,0 +1,118 @@
+{%- comment -%}
+Every <head> tag that varies per page: title, description, canonical, Open Graph
+and Twitter cards, and the robots directive.
+The title and description fallback chains are order-sensitive; each step is spelled
+out below rather than collapsed, so a change to one cannot silently shift another.
+{%- endcomment -%}
+
+{%- assign site_name = "OpenMapTiles" -%}
+{%- assign default_title = "OpenMapTiles – World maps you can self-host" -%}
+{%- assign default_desc = "Vector tiles from OpenStreetMap and OpenData to create world maps for web and mobile." -%}
+
+{%- comment -%}
+Collection docs get the " – OpenMapTiles Documentation" suffix, matching
+the docs collection. That string already contains "OpenMapTiles", so the
+site-name append below correctly leaves it alone.
+{%- endcomment -%}
+{%- if page.collection == "docs" and page.title -%}
+  {%- assign raw_title = page.title | append: " – OpenMapTiles Documentation" -%}
+{%- else -%}
+  {%- assign raw_title = page.title -%}
+{%- endif -%}
+
+{%- if raw_title -%}
+  {%- if raw_title contains site_name -%}
+    {%- assign page_title = raw_title -%}
+  {%- else -%}
+    {%- assign page_title = raw_title | append: " – " | append: site_name -%}
+  {%- endif -%}
+{%- else -%}
+  {%- assign page_title = default_title -%}
+{%- endif -%}
+
+{%- comment -%}
+Docs without an explicit description fall back to the generated sentence from
+the docs collection before the site-wide default applies.
+{%- endcomment -%}
+{%- if page.description -%}
+  {%- assign page_desc = page.description -%}
+{%- elsif page.collection == "docs" -%}
+  {%- assign doc_slug = page.path | split: "/" | last | remove: ".md" -%}
+  {%- assign page_desc = "Read the detailed OpenMapTiles developer guide on " | append: doc_slug | append: " under the " | append: page.category | append: " category." -%}
+{%- else -%}
+  {%- assign page_desc = default_desc -%}
+{%- endif -%}
+{%- assign absolute_url = site.url | append: page.url -%}
+
+{%- if page.image -%}
+  {%- if page.image contains "http" -%}
+    {%- assign absolute_image = page.image -%}
+  {%- else -%}
+    {%- assign absolute_image = site.url | append: page.image -%}
+  {%- endif -%}
+{%- else -%}
+  {%- assign absolute_image = site.url | append: "/img/share-img.png" -%}
+{%- endif -%}
+
+<title>{{ page_title }}</title>
+
+<!-- Standard SEO Metadata -->
+<meta name="author" content="{{ site.author }}" />
+<meta name="description" content="{{ page_desc }}" />
+<meta name="theme-color" content="#95BF73" />
+{%- comment -%}
+Staging builds force noindex regardless of the page's own value. robots.txt already
+disallows the whole host, but Disallow only stops crawling — a URL discovered
+elsewhere can still be indexed unfetched. This meta tag is what keeps it out.
+Production is unaffected: `site.staging` is never set by _config.yml.
+{%- endcomment -%}
+{%- if site.staging -%}
+  {%- assign robots_value = "noindex, nofollow" -%}
+{%- else -%}
+  {%- assign robots_value = page.robots | default: "index, follow" -%}
+{%- endif -%}
+<meta name="robots" content="{{ robots_value }}" />
+
+{%- comment -%}
+og:title and twitter:title use raw_title, NOT page.title. They are set
+from its `title` prop, and for docs that prop already carries the
+" – OpenMapTiles Documentation" suffix — so the social title includes it while the
+<title> tag gets the site name appended on top. Using page.title here dropped the
+suffix on all 36 doc pages.
+{%- endcomment -%}
+{%- assign social_title = raw_title | default: site_name -%}
+
+<!-- Open Graph (OG) -->
+<meta property="og:title" content="{{ social_title }}" />
+<meta property="og:description" content="{{ page_desc }}" />
+<meta property="og:image" content="{{ absolute_image }}" />
+<meta property="og:url" content="{{ absolute_url }}" />
+<meta property="og:site_name" content="{{ site_name }}" />
+<meta property="og:type" content="website" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="{{ social_title }}" />
+<meta name="twitter:description" content="{{ page_desc }}" />
+<meta name="twitter:image" content="{{ absolute_image }}" />
+<meta name="twitter:site" content="{{ site.twitter }}" />
+
+{%- comment -%}
+A page may point its canonical at another page by setting `canonical` in front
+matter to a site-root-relative path (e.g. /docs/host/maptiler-cloud/). It gets
+the site.url prefix the same way absolute_url above does, so the emitted tag
+follows the host the site is built for — localhost when served locally,
+openmaptiles.org in production.
+{%- endcomment -%}
+{%- if page.canonical -%}
+  {%- assign canonical_url = site.url | append: page.canonical -%}
+{%- else -%}
+  {%- assign canonical_url = absolute_url -%}
+{%- endif -%}
+
+<!-- Canonical URL -->
+<link rel="canonical" href="{{ canonical_url }}" />
+
+<!-- Favicon / Icons -->
+<link rel="icon" type="image/png" sizes="32x32" href="{{ '/favicon.png' | relative_url }}" />
+<link rel="shortcut icon" type="image/x-icon" href="{{ '/favicon.ico' | relative_url }}" />

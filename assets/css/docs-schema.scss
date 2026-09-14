@@ -1,0 +1,9 @@
+---
+# Front matter fence is required for Jekyll to process this through sass.
+---
+
+// /docs/schema/ only, on top of core.css and docs.css — that page carries
+// `stylesheets: [docs, docs-schema]`. _element-overrides.scss comes from docs.css and
+// still wins, being unlayered against this file's @layer components.
+
+@use "schema-page";

@@ -1,0 +1,47 @@
+{%- comment -%}
+Docs search box. Replaces Pagefind's default UI with lunr, per plan §8.
+
+The DOM shape is Pagefind's, element for element, because the stylesheet targets that
+markup and the sidebar gate compares by structural path:
+
+  div            (was `w-full`)
+  └ div          (was `.pagefind-ui-container`, carries the custom properties)
+    └ div        (was `.pagefind-ui`)
+      └ form     (was `.pagefind-ui__form`, with the magnifier as ::before)
+        ├ input
+        ├ button (clear, suppressed until there is a query)
+        └ div    (drawer, hidden until a search has run)
+
+Everything inside the drawer is built by search.js from search.json — Pagefind
+built its results at runtime too, so there is nothing to server-render.
+
+The strings are Pagefind's English defaults, read out of its own translation
+table, so the placeholder and clear label say exactly what they say today.
+{%- endcomment -%}
+<div class="docs-search">
+  <div class="docs-search__ui">
+    <div class="docs-search__root" data-docs-search>
+      <form class="docs-search__form" role="search" aria-label="Search this site" action="javascript:void(0);">
+        <input
+          class="docs-search__input"
+          type="text"
+          placeholder="Search"
+          title="Search"
+          autocapitalize="none"
+          enterkeyhint="search"
+          autocomplete="off"
+          role="combobox"
+          aria-expanded="false"
+          aria-controls="docs-search-results"
+          data-search-input
+        />
+        <button
+          type="button"
+          class="docs-search__clear docs-search__clear--suppressed"
+          data-search-clear
+        >Clear</button>
+        <div class="docs-search__drawer docs-search__drawer--hidden" data-search-drawer></div>
+      </form>
+    </div>
+  </div>
+</div>

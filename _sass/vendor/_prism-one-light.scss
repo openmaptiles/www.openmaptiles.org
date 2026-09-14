@@ -1,0 +1,56 @@
+// VENDOR — not authored here, not regenerable. See the sibling files.
+//
+// Prism's `oneLight` token palette, verbatim from
+// node_modules/react-syntax-highlighter/dist/cjs/styles/prism/one-light.js, where the
+// previous design applied it as inline styles. Only the Prism-token-to-Rouge-class
+// mapping is ours.
+//
+// UNLAYERED, like the rules in _code.scss: prose's `:where(pre)` sits in
+// @layer utilities and would outrank a layered palette. Loads after _code.scss, which
+// sets the base `.codeblock__pre` colours — no conflict, different selectors.
+
+.codeblock__pre {
+  // comment / prolog / cdata
+  .c, .c1, .cm, .cp, .cs, .cd { color: hsl(230, 4%, 64%); font-style: italic; }
+
+  // punctuation, entity, plain names, doctype
+  .p, .pi, .n, .py, .nn, .nx { color: hsl(230, 8%, 24%); }
+
+  // attr-name, class-name, boolean, constant, number, atrule
+  .na, .nc, .no, .nl, .m, .mi, .mf, .mh, .mo, .mb, .mx, .il, .kc, .kt {
+    color: hsl(35, 99%, 36%);
+  }
+
+  // keyword
+  .k, .kd, .kn, .kp, .kr, .kv { color: hsl(301, 63%, 40%); }
+
+  // property, tag, symbol, deleted, important
+  .nt, .ss, .gd, .nd { color: hsl(5, 74%, 59%); }
+
+  // selector, string, char, builtin, inserted, regex, attr-value
+  .s, .s1, .s2, .sa, .sb, .sc, .sd, .se, .sh, .si, .sx, .sr, .dl,
+  .nb, .gi { color: hsl(119, 34%, 47%); }
+
+  // variable, operator, function
+  .nv, .vc, .vg, .vi, .o, .ow, .nf, .fm { color: hsl(221, 87%, 60%); }
+
+  // url
+  .u { color: hsl(198, 99%, 37%); }
+
+  // generic emphasis, kept from Rouge's defaults
+  .gs { font-weight: 700; }
+  .ge { font-style: italic; }
+
+  // Two tokens are deliberately left uncoloured:
+  //
+  //   .w    whitespace. 91 occurrences, nothing to colour.
+  //   .err  Rouge's Error token, where its lexer gave up — 12 occurrences across
+  //         four pages, all of them commas plus PostgreSQL's `$$` dollar quoting.
+  //         Uncoloured they inherit the pre's hsl(230, 8%, 24%), which is exactly
+  //         the colour Prism gives punctuation, so the rendered result matches
+  //         the previous design. Styling .err red (as most Rouge themes do) would NOT.
+  //
+  // Verified against the corpus: 28 distinct token classes appear across the 36
+  // docs, 26 are coloured above, and those two need no colour. The remaining
+  // ~37 selectors above are insurance for languages the docs do not use yet.
+}

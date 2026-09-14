@@ -1,0 +1,75 @@
+{%- comment -%}
+Homepage About section, including the contributor logos.
+
+Same relative-path bug as Companies: contributor logos used `src="img/..."`
+without a leading slash, so they 404'd on every non-root page. Fixed via
+`relative_url`. Note MapTiler's logo sits at /img/, the rest at /img/home/.
+{%- endcomment -%}
+{%- assign contributors = "MapTiler logotype|/img/maptiler-logo.svg,Klokantech logo|/img/home/klokantech-h.png,HSR Hochschule für Technik Rapperswil logo|/img/home/hsr_logo.png,Qwant logo|/img/home/qwant.png,Wikimedia logo|/img/home/wikimedia.png" | split: "," -%}
+<section id="about" class="about-home" data-section="about">
+  <div class="about-home__inner">
+    <div class="about-home__body">
+      <h2 class="about-home__title">Rooted in open-source history</h2>
+      <div class="about-home__prose">
+        <p>
+          OpenMapTiles builds on OSM2VectorTiles, a project that won the
+          OpenStreetMap Innovation Award in 2016. It originated in
+          Switzerland as a bachelor’s thesis at OST University, developed in
+          cooperation with Klokan Technologies.
+        </p>
+        <p>
+          The schema design was influenced by the cartography of the
+          Positron basemap, developed with Paul Norman and the Wikimedia
+          Foundation. Today, the project is maintained and supported by the
+          <a
+            href="https://www.maptiler.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-tracked="true"
+            data-track-event="cloud_intent_click"
+            data-track-section="about"
+            data-track-label="MapTiler team"
+            class="about-home__link"
+          >MapTiler team</a>.
+        </p>
+      </div>
+
+      <div class="about-home__cta-wrap">
+        <a href="{{ '/about/' | relative_url }}" class="btn-secondary-omt about-home__cta">
+          Learn more about the project
+          {% include icons/arrow-right.svg %}
+        </a>
+      </div>
+
+      <div class="about-home__contributors">
+        <h3 class="about-home__contributors-title">Project contributors</h3>
+
+        <div class="about-home__logos">
+          {%- for entry in contributors %}
+          {%- assign parts = entry | split: "|" %}
+          <img
+            src="{{ parts[1] | relative_url }}"
+            alt="{{ parts[0] }}"
+            loading="lazy"
+            class="about-home__logo"
+          />
+          {%- endfor %}
+        </div>
+
+        <p class="about-home__note">
+          … and many individual contributors on
+          <a
+            href="https://github.com/openmaptiles/openmaptiles"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-tracked="true"
+            data-track-event="github_intent_click"
+            data-track-section="about"
+            data-track-label="GitHub"
+            class="about-home__link about-home__link--medium"
+          >GitHub</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

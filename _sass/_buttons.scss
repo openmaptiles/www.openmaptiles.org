@@ -1,0 +1,37 @@
+// Buttons, ported from _element-overrides.scss.
+//
+// These classes carry ONLY colour and transition, exactly as the originals did.
+// Layout (display, padding, gap, radius) came from utility classes on each
+// element, so it lives with the component that uses the button — notably
+// `gap-2` was present on the Schema and About CTAs but NOT on the MapTiler or
+// Data buttons, so it cannot be baked in here.
+
+.btn-primary-omt {
+  background-color: var(--omt-primary);
+  color: var(--omt-primary-text);
+  transition: background-color 150ms ease-in-out;
+
+  &:hover { background-color: var(--omt-primary-hover); }
+}
+
+.btn-secondary-omt {
+  background-color: var(--omt-secondary-bg);
+  color: var(--omt-secondary-text);
+  border-color: var(--omt-secondary-border);
+  border-width: var(--omt-secondary-border-width);
+  border-style: solid;
+  transition: background-color 150ms ease-in-out, border-color 150ms ease-in-out;
+
+  &:hover { background-color: var(--omt-secondary-hover-bg); }
+}
+
+.btn-maptiler {
+  background-color: #3174ff;
+  color: #fff;
+  transition: background-color 150ms ease-in-out;
+
+  &:hover {
+    // Tailwind emitted this as the computed hover shade; kept exact.
+    background-color: rgb(41.65, 98.6, 216.75);
+  }
+}

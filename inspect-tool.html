@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Map inspect tool</title>
+  <link rel="stylesheet" type="text/css" href="inspect-tool/mapbox-gl.css" />
+  <link rel="stylesheet" type="text/css" href="inspect-tool/mapbox-gl-inspect.css" />
+  <script src="inspect-tool/mapbox-gl.js"></script>
+  <script src="inspect-tool/mapbox-gl-inspect.min.js"></script>
+  <style>
+    body {background:#fff;color:#333;font-family:Arial, sans-serif; margin: 0; padding: 0; overflow: hidden;}
+    #map {position:absolute;top:0;left:0;right:250px;bottom:0;}
+    #layerList {position:absolute;top:10px;right:0;bottom:0;width:240px;overflow:auto;}
+    #layerList div {padding: 3px 6px; font-size: 14px; display: flex; align-items: center; gap: 6px;}
+    #layerList div div {width:15px;height:15px;flex-shrink:0;border-radius:2px;}
+
+    /* Move zoom/navigation control down by 80px and align it horizontally with the close button on mobile (<640px) */
+    @media (max-width: 639px) {
+      .mapboxgl-ctrl-top-right {
+        top: 80px !important;
+      }
+      .mapboxgl-ctrl-top-right .mapboxgl-ctrl {
+        margin-right: 18px !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div id="map"></div>
+<div id="layerList"></div>
+<pre id="propertyList"></pre>
+
+<script>
+var key = window.location.hash.slice(1) || 'LIb45gssRLBrsVQPT0MN';
+var map = new mapboxgl.Map({
+  container: 'map',
+  hash: true,
+  style: {
+    version: 8,
+    sources: {
+      'vector_layer_': {
+        type: 'vector',
+        url: 'https://api.maptiler.com/tiles/v3-openmaptiles/tiles.json?key=' + key
+      }
+    },
+    layers: []
+  }
+});
+map.addControl(new mapboxgl.NavigationControl());
+var inspect = new MapboxInspect({
+  showInspectMap: true,
+  showInspectButton: false
+});
+map.addControl(inspect);
+var legendTimer;
+function buildLegend() {
+  var layerList = document.getElementById('layerList');
+  layerList.innerHTML = '';
+  Object.keys(inspect.sources).forEach(function(sourceId) {
+    var layerIds = inspect.sources[sourceId];
+    layerIds.forEach(function(layerId) {
+      var item = document.createElement('div');
+      item.innerHTML = '<div style="background:' + inspect.assignLayerColor(layerId) + ';"></div> ' + layerId;
+      layerList.appendChild(item);
+    });
+  });
+}
+map.on('sourcedata', function() {
+  clearTimeout(legendTimer);
+  legendTimer = setTimeout(buildLegend, 300);
+});
+</script>
+
+</body>
+</html>

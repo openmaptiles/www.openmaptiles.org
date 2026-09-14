@@ -1,0 +1,184 @@
+@use "config" as *;
+
+@layer components {
+
+  .languages {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .languages__banner {
+    flex: none;
+    pointer-events: none;
+    z-index: 20;
+  }
+
+  .languages__banner-inner {
+    background-color: color-mix(in oklab, var(--color-white) 95%, transparent);
+    backdrop-filter: blur(12px);               // backdrop-blur-md
+    border-bottom: 1px solid var(--color-gray-200);
+    padding-left: 1rem;
+    padding-right: 3.5rem;                     // pr-14, clearing the close button
+    padding-block: 1rem;
+    @include shadow(sm);
+    border-start-start-radius: 0.75rem;
+    border-start-end-radius: 0.75rem;
+
+    @include sm {
+      padding-left: 1.5rem;
+      padding-right: 4rem;
+    }
+  }
+
+  .languages__banner-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    pointer-events: auto;
+
+    @include md { flex-direction: row; }
+  }
+
+  .languages__banner-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    justify-content: space-between;
+
+    @include sm { flex-direction: row; }
+  }
+
+  .languages__title {
+    font-size: 1.25rem;                        // text-xl
+    line-height: 1.25;                         // leading-tight
+    font-weight: 700;
+    color: var(--color-gray-900);
+    margin-bottom: 0.125rem;                   // mb-0.5
+  }
+
+  .languages__subtitle {
+    @include text(sm);
+    color: var(--color-gray-600);
+  }
+
+  .languages__map-area {
+    flex: 1;
+    min-height: 0;
+    position: relative;
+    z-index: 10;
+    border-end-start-radius: 0.75rem;
+    border-end-end-radius: 0.75rem;
+    overflow: hidden;
+  }
+
+  .languages__map {
+    width: 100%;
+    height: 100%;
+  }
+
+  .languages__card {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    right: 1rem;
+    z-index: 20;
+    background-color: var(--color-white);
+    border-radius: 0.75rem;
+    @include shadow(xl);
+    border: 1px solid var(--color-gray-100);
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    pointer-events: auto;
+
+    @include sm {
+      bottom: 2rem;
+      left: 2rem;
+      right: auto;
+      top: auto;
+      width: 250px;
+      padding: 1.5rem;
+    }
+  }
+
+  .languages__card-top {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .languages__card-logo {
+    height: 1.75rem;                           // h-7
+    width: auto;
+    object-fit: contain;
+    align-self: flex-start;
+  }
+
+  .languages__card-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    @include text(sm);
+    font-weight: 400;
+    color: var(--color-gray-700);
+
+    > span {
+      display: flex;
+      align-items: center;
+      gap: 0.375rem;                           // gap-1.5
+    }
+  }
+
+  .languages__tick {
+    color: oklch(62.7% 0.194 149.214);         // text-green-600
+    font-weight: 700;
+  }
+
+  .languages__card-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .languages__card-btn {
+    width: 100%;
+    justify-content: center;
+    display: inline-flex;
+    align-items: center;
+    padding-inline: 1rem;
+    padding-block: 0.625rem;                   // py-2.5
+    @include text(sm);
+    font-weight: 500;
+    border-radius: 0.375rem;
+    white-space: nowrap;
+    @include shadow(sm);
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .languages__nowebgl {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-gray-100);
+    z-index: 0;
+
+    &[hidden] { display: none; }
+
+    p {
+      color: var(--color-gray-600);
+      text-align: center;
+      padding-inline: 1rem;
+    }
+  }
+}
