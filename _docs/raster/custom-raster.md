@@ -12,7 +12,7 @@ You can combine OpenMapTiles with any custom raster layer. This includes not onl
 
 Raster data you want to use for the map should be converted into map tiles first. You can use [MapTiler](https://www.maptiler.com/) for the job. MapTiler is [easy to use](https://www.maptiler.com/how-to/overlay-image-over-map/) and also supports [georeferencing](https://www.maptiler.com/how-to/georeferencing/) if your raster data does not have a geographical position yet. It supports many input formats, including PNG, JPEG, GeoTIFF, ECW, and PDF.
 
-We recommend exporting map tiles in MBTiles format, but a folder output is also possible.
+We recommend exporting map tiles in [MBTiles](/docs/what-is/mbtiles/) format, but a folder output is also possible.
 
 ## Prepare map style
 
@@ -44,7 +44,7 @@ Add a new source with a reference to your map tiles:
   },
 ```
 
-Then you can start editing your style in Maputnik and adjust it as you want. Editing the raster layer style can be very simple:
+Then you can start editing your style in Maputnik and adjust it as you want. Editing the raster [layer style](/docs/what-is/layer-style/) can be very simple:
 
 ```json
 {

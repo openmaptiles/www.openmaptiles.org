@@ -10,7 +10,7 @@ There are two ways to display OpenMapTiles with the [OpenLayers](http://openlaye
 
 ## Raster tiles from server
 
-OpenLayers doesn't support vector tiles by default. Raster tiles can be generated on demand for any of the [GL styles](/#map-styles) with the open-source server software called [TileServer GL](/docs/host/tileserver-gl/). Such raster tiles can be displayed using [ol.source.XYZ](http://openlayers.org/en/latest/examples/xyz.html) source.
+OpenLayers doesn't support vector tiles by default. [Raster tiles](/docs/what-is/raster-tiles/) can be generated on demand for any of the [GL styles](/#map-styles) with the open-source server software called [TileServer GL](/docs/host/tileserver-gl/). Such raster tiles can be displayed using [ol.source.XYZ](http://openlayers.org/en/latest/examples/xyz.html) source.
 
 ## Vector tiles with a plugin
 
@@ -70,4 +70,4 @@ olms.apply('map', '{{ site.maps.domain }}/maps/openstreetmap/style.json?key=' + 
 
 ## More examples
 
-Take a look at the compilation of [OpenLayers examples](https://docs.maptiler.com/openlayers/examples/) to explore the potential of incorporating OpenMapTiles maps into your OpenLayers projects. Discover techniques for displaying data from GeoJSON on the map, generating a Choropleth map, showcasing a marker, and much more. Check out these examples to unlock the full capabilities of OpenLayers regarding map visualization and data representation.
+Take a look at the compilation of [OpenLayers examples](https://docs.maptiler.com/openlayers/examples/) to explore the potential of incorporating OpenMapTiles maps into your OpenLayers projects. Discover techniques for displaying data from GeoJSON on the map, generating a [Choropleth](/docs/what-is/choropleth/) map, showcasing a marker, and much more. Check out these examples to unlock the full capabilities of OpenLayers regarding map visualization and data representation.

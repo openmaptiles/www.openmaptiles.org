@@ -1,0 +1,52 @@
+---
+layout: docs
+stylesheets: [docs, docs-glossary]
+permalink: /docs/what-is/
+title: "What is ... – glossary of GIS and web map terms"
+description: "A glossary of the GIS, OpenStreetMap and web mapping terms used in the OpenMapTiles documentation."
+---
+{%- comment -%}
+Glossary index for the _docs/what-is/ entries.
+
+Only this page is listed in the docs sidebar (_data/docs_nav.json, "Get started"
+group). The entries themselves are deliberately absent from the nav — they are
+reference material reached from this list or from search, and adding 30+ terms to
+a sidebar that currently holds 21 links would bury the task-based guides. The
+sidebar's prefix-match active rule keeps "What is ..." highlighted while an entry
+is open, so the section still reads as the current location.
+
+Entries are the docs-collection documents under _docs/what-is/, identified by
+`category: what-is` rather than by path — `where` on a front-matter field is what
+the rest of the site does, and a document that forgets the category would also be
+missing from any future category-driven UI, so one rule fails loudly rather than
+two failing separately.
+
+Sorted alphabetically by title, case-insensitively: Liquid's `sort` is
+codepoint-ordered, so a lowercase term (`pmtiles`) would otherwise sort after
+every capitalised one (`WMTS`). `sort_natural` is the case-insensitive variant.
+{%- endcomment -%}
+{%- assign entries = site.docs | where: "category", "what-is" | sort_natural: "title" -%}
+
+<div class="glossary">
+  <div class="glossary__hero">
+    <h1 class="glossary__title">What is ...</h1>
+    <p class="glossary__lede">
+      A glossary of the GIS, OpenStreetMap and web mapping terms used across
+      this documentation. Each entry explains what the term means and how you
+      use it with vector tiles.
+    </p>
+  </div>
+
+  {%- if entries.size > 0 %}
+  <ul class="glossary__list">
+    {%- for entry in entries %}
+    <li class="glossary__item">
+      <a class="glossary__link no-underline" href="{{ entry.url | relative_url }}">{{ entry.title }}</a>
+      {%- if entry.description %}
+      <p class="glossary__desc">{{ entry.description }}</p>
+      {%- endif %}
+    </li>
+    {%- endfor %}
+  </ul>
+  {%- endif %}
+</div>

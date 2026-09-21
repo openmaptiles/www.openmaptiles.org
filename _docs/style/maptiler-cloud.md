@@ -26,7 +26,7 @@ The MapTiler Customize tool provides an easy-to-use, slide-out configuration pan
 If you need fine-grained control over individual OpenMapTiles layers, the Customize tool allows you to switch into the **Advanced Editor**:
 
 - Edit specific filters, font sizes, line widths, and opacity values for individual layers (e.g., secondary roads vs. motorways).
-- Directly view and modify the underlying Mapbox GL Style JSON structure.
+- Directly view and modify the underlying Mapbox GL [Style JSON](/docs/what-is/style-json/) structure.
 - Add your own custom vector sources or raster imagery overlays.
 - Set up zoom-dependent rules for styling elements differently at various map scale levels.
 

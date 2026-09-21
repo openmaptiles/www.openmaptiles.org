@@ -10,7 +10,7 @@ order: 3
 
 [Leaflet](https://leafletjs.com/) is the most popular lightweight, open-source JavaScript library for mobile-friendly interactive maps. Weighing in at only about 42 KB of JS, Leaflet offers a highly extensible, modular ecosystem with hundreds of plugins for any mapping requirement.
 
-While Leaflet is traditionally designed for displaying raster tile layers, you can seamlessly integrate it with OpenMapTiles. This can be achieved by loading pre-rendered raster tiles, using the [official MapTiler Leaflet SDK plugin](https://github.com/maptiler/leaflet-maptilersdk), or using a generic **MapLibre vector tile plugin** bridge.
+While Leaflet is traditionally designed for displaying [raster tile](/docs/what-is/raster-tiles/) layers, you can seamlessly integrate it with OpenMapTiles. This can be achieved by loading pre-rendered raster tiles, using the [official MapTiler Leaflet SDK plugin](https://github.com/maptiler/leaflet-maptilersdk), or using a generic **MapLibre vector tile plugin** bridge.
 
 ### Option A: Serve Raster Tiles (Simple & Fast)
 

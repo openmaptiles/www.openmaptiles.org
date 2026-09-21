@@ -7,7 +7,7 @@ order: 2
 redirect_from: /docs/website/mapbox-gl-js/
 ---
 
-[MapLibre GL JS](https://www.maplibre.org/) is a community-led fork derived from mapbox-gl-js prior to their switch to a non-OSS license. It's a web mapping library based on WebGL.
+[MapLibre GL JS](https://www.maplibre.org/) is a community-led fork derived from mapbox-gl-js prior to their switch to a non-OSS license. It's a web mapping library that does its [map rendering](/docs/what-is/map-rendering/) in the browser with WebGL.
 
 Using MapLibre GL JS for serving an OpenMapTiles tileset is the most common use case.
 

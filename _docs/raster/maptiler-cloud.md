@@ -9,7 +9,7 @@ canonical: /docs/host/maptiler-cloud/
 
 ## MapTiler Cloud
 
-The MapTiler team provides a **free (for non-commercial use), highly reliable maps API** with map styles based on the **OpenMapTiles schema** and powered by **OpenStreetMap data**. The entire planet is updated weekly, with both high-performance vector and raster tiles available instantly to developers and companies.
+The MapTiler team provides a **free (for non-commercial use), highly reliable [maps API](/docs/what-is/maps-api/)** with map styles based on the **OpenMapTiles schema** and powered by **[OpenStreetMap](/docs/what-is/openstreetmap/) data**. The entire planet is updated weekly, with both high-performance vector and [raster tiles](/docs/what-is/raster-tiles/) available instantly to developers and companies.
 
 Setting up your own map server, maintaining PostGIS databases, importing massive OpenStreetMap datasets, and configuring tile rendering pipelines (like Docker or TileServer GL) can be complex and resource-intensive. MapTiler Cloud offers a fully managed alternative that lets you start serving beautiful maps in seconds.
 

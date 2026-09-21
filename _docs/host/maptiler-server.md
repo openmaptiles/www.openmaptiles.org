@@ -7,7 +7,7 @@ order: 2
 ---
 ## MapTiler Server
 
-**The easiest way to deploy a world basemap powered by OpenStreetMap.**
+**The easiest way to deploy a world basemap powered by [OpenStreetMap](/docs/what-is/openstreetmap/).**
 
 ### 1. Download and install
 
@@ -30,7 +30,7 @@ Linux: Run directly with `maptiler-server` or as a system service `maptiler-serv
 
 ### 3. Add data and run administration
 
-Put MBTiles into the server's work directory and visit the web administration at **`http://localhost:3560/admin`** in your browser.
+Put [MBTiles](/docs/what-is/mbtiles/) into the server's work directory and visit the web administration at **`http://localhost:3560/admin`** in your browser.
 
 #### More articles
 
