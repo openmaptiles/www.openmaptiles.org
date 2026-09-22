@@ -1,6 +1,6 @@
 ---
 layout: docs
-category: what-is
+category: terminology
 title: OpenStreetMap
 description: OpenStreetMap is a free, openly licensed map of the world, built and maintained by a global community of contributors.
 ---
@@ -11,9 +11,9 @@ OpenStreetMap is the source of the map data behind OpenMapTiles. Where OpenStree
 
 ## OpenStreetMap data
 
-The raw data is [vector data](/docs/what-is/vector-data/): a set of nodes, ways, and relations with free-form keys and values such as `highway=residential` or `building=yes`. The whole planet is available as a single file, and the data changes continuously as contributors edit it.
+The raw data is [vector data](/docs/terminology/vector-data/): a set of nodes, ways, and relations with free-form keys and values such as `highway=residential` or `building=yes`. The whole planet is available as a single file, and the data changes continuously as contributors edit it.
 
-The data is published under the [Open Database License](https://www.openstreetmap.org/copyright) (ODbL). You can use it commercially and you can modify it, but [attribution](/docs/what-is/attribution/) is required and derived databases have to stay under the same license.
+The data is published under the [Open Database License](https://www.openstreetmap.org/copyright) (ODbL). You can use it commercially and you can modify it, but [attribution](/docs/terminology/attribution/) is required and derived databases have to stay under the same license.
 
 ## OpenStreetMap vector tiles
 
@@ -27,7 +27,7 @@ The OpenMapTiles schema organizes the data into 16 thematic layers, such as `tra
 
 ## OpenStreetMap styles
 
-A tileset carries no colors, so the [cartography](/docs/what-is/cartography/) comes from the style. The project's own is [OSM OpenMapTiles](/styles/osm-openmaptiles/), which draws every feature the schema carries and is heavily inspired by OSM Carto, the style you see on openstreetmap.org itself. The difference is where the drawing happens: OSM Carto renders [raster tiles](/docs/what-is/raster-tiles/) straight from the database, while OSM OpenMapTiles is drawn from vector tiles in the client. [Other open styles](/#map-styles) on the same schema are starting points for your own designs.
+A tileset carries no colors, so the [cartography](/docs/terminology/cartography/) comes from the style. The project's own is [OSM OpenMapTiles](/styles/osm-openmaptiles/), which draws every feature the schema carries and is heavily inspired by OSM Carto, the style you see on openstreetmap.org itself. The difference is where the drawing happens: OSM Carto renders [raster tiles](/docs/terminology/raster-tiles/) straight from the database, while OSM OpenMapTiles is drawn from vector tiles in the client. [Other open styles](/#map-styles) on the same schema are starting points for your own designs.
 
 ## Related resources
 

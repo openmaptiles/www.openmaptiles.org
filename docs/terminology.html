@@ -1,22 +1,22 @@
 ---
 layout: docs
 stylesheets: [docs, docs-glossary]
-permalink: /docs/what-is/
-title: "What is ... – glossary of GIS and web map terms"
+permalink: /docs/terminology/
+title: "Terminology – glossary of GIS and web map terms"
 description: "A glossary of the GIS, OpenStreetMap and web mapping terms used in the OpenMapTiles documentation."
 ---
 {%- comment -%}
-Glossary index for the _docs/what-is/ entries.
+Glossary index for the _docs/terminology/ entries.
 
-Only this page is listed in the docs sidebar (_data/docs_nav.json, "Get started"
-group). The entries themselves are deliberately absent from the nav — they are
-reference material reached from this list or from search, and adding 30+ terms to
-a sidebar that currently holds 21 links would bury the task-based guides. The
-sidebar's prefix-match active rule keeps "What is ..." highlighted while an entry
-is open, so the section still reads as the current location.
+Only this page is listed in the docs sidebar (_data/docs_nav.json, "Definitions"
+group, last in the list). The entries themselves are deliberately absent from the
+nav — they are reference material reached from this list or from search, and adding
+30+ terms to a sidebar that currently holds 21 links would bury the task-based
+guides. The sidebar's prefix-match active rule keeps "Terminology" highlighted while
+an entry is open, so the section still reads as the current location.
 
-Entries are the docs-collection documents under _docs/what-is/, identified by
-`category: what-is` rather than by path — `where` on a front-matter field is what
+Entries are the docs-collection documents under _docs/terminology/, identified by
+`category: terminology` rather than by path — `where` on a front-matter field is what
 the rest of the site does, and a document that forgets the category would also be
 missing from any future category-driven UI, so one rule fails loudly rather than
 two failing separately.
@@ -25,11 +25,11 @@ Sorted alphabetically by title, case-insensitively: Liquid's `sort` is
 codepoint-ordered, so a lowercase term (`pmtiles`) would otherwise sort after
 every capitalised one (`WMTS`). `sort_natural` is the case-insensitive variant.
 {%- endcomment -%}
-{%- assign entries = site.docs | where: "category", "what-is" | sort_natural: "title" -%}
+{%- assign entries = site.docs | where: "category", "terminology" | sort_natural: "title" -%}
 
 <div class="glossary">
   <div class="glossary__hero">
-    <h1 class="glossary__title">What is ...</h1>
+    <h1 class="glossary__title">OpenMapTiles terminology and definitions</h1>
     <p class="glossary__lede">
       A glossary of the GIS, OpenStreetMap and web mapping terms used across
       this documentation. Each entry explains what the term means and how you

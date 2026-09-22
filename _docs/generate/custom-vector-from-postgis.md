@@ -6,7 +6,7 @@ title: PostGIS custom vector tiles
 description: How to generate custom vector tiles from a PostGIS database. A step-by-step guide covering data import, OpenMapTiles configuration, and map tile generation.
 ---
 
-You can combine OpenMapTiles with your custom [vector data](/docs/what-is/vector-data/) saved in **PostGIS** database (there is a separate article for [data stored in **Shapefile or GeoJSON**](/docs/generate/custom-vector-from-shapefile-geojson/)). The easiest way is to convert your data into vector tiles and then [combine it with a standard OpenMapTiles source in a map style](https://openmaptiles.org/docs/raster/custom-raster/#prepare-map-style). The big advantage of this approach is that you don't need to generate the whole OpenMapTiles schema, which is quite time-consuming.
+You can combine OpenMapTiles with your custom [vector data](/docs/terminology/vector-data/) saved in **PostGIS** database (there is a separate article for [data stored in **Shapefile or GeoJSON**](/docs/generate/custom-vector-from-shapefile-geojson/)). The easiest way is to convert your data into vector tiles and then [combine it with a standard OpenMapTiles source in a map style](https://openmaptiles.org/docs/raster/custom-raster/#prepare-map-style). The big advantage of this approach is that you don't need to generate the whole OpenMapTiles schema, which is quite time-consuming.
 
 This approach is a bit more complicated to set up than in the case of [data stored in Shapefile or GeoJSON](/docs/generate/custom-vector-from-shapefile-geojson/). On the other hand, it gives you even bigger control over tiles generation and you can use SQL syntax a lot of people are familiar with.
 
@@ -28,7 +28,7 @@ make start-db
 
 ## Import the data into PostGIS
 
-Move your data into `data/` directory. Modify command where `"./data/name.shp"` replace with the name of the [Shapefile](/docs/what-is/shapefile/) and `"name"` is the name of the table in PostgreSQL
+Move your data into `data/` directory. Modify command where `"./data/name.shp"` replace with the name of the [Shapefile](/docs/terminology/shapefile/) and `"name"` is the name of the table in PostgreSQL
 
 ```bash
 docker compose run --rm openmaptiles-tools sh -c \
@@ -162,7 +162,7 @@ Finally, generate your tiles:
 make generate-tiles-pg
 ```
 
-Your [MBTiles](/docs/what-is/mbtiles/) file is now in `data/tiles.mbtiles`. You can preview it using [TileServer-GL](/docs/host/tileserver-gl/):
+Your [MBTiles](/docs/terminology/mbtiles/) file is now in `data/tiles.mbtiles`. You can preview it using [TileServer-GL](/docs/host/tileserver-gl/):
 
 ```bash
 make start-tileserver

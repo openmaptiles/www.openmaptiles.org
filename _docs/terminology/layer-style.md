@@ -1,11 +1,11 @@
 ---
 layout: docs
-category: what-is
+category: terminology
 title: Layer style
 description: A layer style is the block inside a map style that decides how one layer of map data is drawn.
 ---
 
-A **layer style** is a single entry in the `layers` array of a [style JSON](/docs/what-is/style-json/). It takes one slice of the [vector data](/docs/what-is/vector-data/) and says how to paint it. A map is built by stacking dozens of these, each responsible for one thing.
+A **layer style** is a single entry in the `layers` array of a [style JSON](/docs/terminology/style-json/). It takes one slice of the [vector data](/docs/terminology/vector-data/) and says how to paint it. A map is built by stacking dozens of these, each responsible for one thing.
 
 ## What a layer style contains
 
@@ -16,7 +16,7 @@ A **layer style** is a single entry in the `layers` array of a [style JSON](/doc
 | `source` | Which declared source to read from |
 | `source-layer` | Which layer inside the tiles to read, for vector sources |
 | `filter` | An expression selecting which features to include |
-| `minzoom`, [`maxzoom`](/docs/what-is/maxzoom/) | The zoom range in which the layer is drawn |
+| `minzoom`, [`maxzoom`](/docs/terminology/maxzoom/) | The zoom range in which the layer is drawn |
 | `layout` | Properties applied when the geometry is laid out |
 | `paint` | Properties applied when it is painted |
 

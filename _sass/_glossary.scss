@@ -1,6 +1,6 @@
 @use "config" as *;
 
-// The /docs/what-is/ index: hero, then the flat A–Z term list.
+// The /docs/terminology/ index: hero, then the flat A–Z term list.
 //
 // UNLAYERED, all of it — and that is the whole design note. The page renders inside
 // the docs layout's `<article class="docs-content prose">`, so every element here is
@@ -62,11 +62,11 @@
   @include text(lg);
   display: inline-block;
   font-weight: 600;                            // font-semibold
-  color: var(--omt-accent);
+  color: var(--omt-text-dark);                 // the heading colour, not --omt-accent
   text-decoration: none;
 
   &:hover {
-    color: var(--omt-accent);
+    color: var(--omt-text-dark);
     text-decoration: underline;
   }
 }

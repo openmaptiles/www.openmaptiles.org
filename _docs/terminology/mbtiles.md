@@ -1,6 +1,6 @@
 ---
 layout: docs
-category: what-is
+category: terminology
 title: MBTiles
 description: MBTiles is an open format that stores a whole tileset inside a single SQLite database file.
 ---
@@ -14,9 +14,9 @@ This matters at scale. A planet-wide tileset contains hundreds of millions of ti
 The database holds two things that matter:
 
 - A `tiles` table with a row per tile, keyed by zoom level, column, and row, with the tile itself stored as a blob.
-- A `metadata` table with the tileset name, format, bounds, minzoom, and [maxzoom](/docs/what-is/maxzoom/). For vector tilesets it also carries a JSON description of the layers and their fields.
+- A `metadata` table with the tileset name, format, bounds, minzoom, and [maxzoom](/docs/terminology/maxzoom/). For vector tilesets it also carries a JSON description of the layers and their fields.
 
-The blobs can be [raster tiles](/docs/what-is/raster-tiles/) or compressed vector tiles, so the same container works for both.
+The blobs can be [raster tiles](/docs/terminology/raster-tiles/) or compressed vector tiles, so the same container works for both.
 
 One detail catches people out: MBTiles numbers rows from the bottom, following the TMS convention, while most web maps number them from the top. Tile servers handle the flip for you, but it explains why a map can come out upside down when tiles are read straight from the file.
 

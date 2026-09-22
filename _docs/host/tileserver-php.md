@@ -7,11 +7,11 @@ order: 4
 ---
 
 In case you wish to publish vector tiles and already have a PHP stack running,
-you can use TileServer PHP for serving vector or [raster tiles](/docs/what-is/raster-tiles/).
-TileServer PHP implements the OGC [WMTS](/docs/what-is/wmts/) standard for pre-rendered
+you can use TileServer PHP for serving vector or [raster tiles](/docs/terminology/raster-tiles/).
+TileServer PHP implements the OGC [WMTS](/docs/terminology/wmts/) standard for pre-rendered
 raster tiles, but it is fully prepared for fast serving of vector tiles.
 TileServer PHP is a single PHP file that you need to copy alongside the
-[MBTiles](/docs/what-is/mbtiles/) file.
+[MBTiles](/docs/terminology/mbtiles/) file.
 
 More information is on [the project's GitHub page](https://github.com/maptiler/tileserver-php).
 

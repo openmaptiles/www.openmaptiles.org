@@ -2,7 +2,7 @@
 # Front matter fence is required for Jekyll to process this through sass.
 ---
 
-// /docs/what-is/ only, on top of core.css and docs.css — that page carries
+// /docs/terminology/ only, on top of core.css and docs.css — that page carries
 // `stylesheets: [docs, docs-glossary]`. _element-overrides.scss comes from docs.css and
 // still wins, being unlayered against this file's @layer components.
 

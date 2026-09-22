@@ -1,11 +1,11 @@
 ---
 layout: docs
-category: what-is
+category: terminology
 title: LineString
 description: A LineString is a geometry type made of an ordered list of coordinates that join up into a connected line.
 ---
 
-A **LineString** is a geometry made of two or more positions joined in order. It is how [vector data](/docs/what-is/vector-data/) represents anything linear: a road, a river, a railway, a contour, a route.
+A **LineString** is a geometry made of two or more positions joined in order. It is how [vector data](/docs/terminology/vector-data/) represents anything linear: a road, a river, a railway, a contour, a route.
 
 The order of the coordinates is part of the data, not an implementation detail. It sets the direction of the line, which matters for one-way streets, for the direction a river flows, and for deciding which side of a road a label or a casing belongs on.
 

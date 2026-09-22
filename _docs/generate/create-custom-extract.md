@@ -9,7 +9,7 @@ description: Create a custom map extract of an area of your choice
 redirect_from: /faq/
 ---
 
-If you need an extract that is not included on the [downloads page](https://www.maptiler.com/on-prem-datasets/planet/), you need to download the planet file and create your own [MBTiles](/docs/what-is/mbtiles/) extract. If you need a smaller area, then it is available as OSM.PBF extract, e.g., on [Geofabrik](https://geofabrik.de/). Extracting could be done before importing into a database.
+If you need an extract that is not included on the [downloads page](https://www.maptiler.com/on-prem-datasets/planet/), you need to download the planet file and create your own [MBTiles](/docs/terminology/mbtiles/) extract. If you need a smaller area, then it is available as OSM.PBF extract, e.g., on [Geofabrik](https://geofabrik.de/). Extracting could be done before importing into a database.
 
 ## Preparation
 
@@ -58,6 +58,6 @@ osmconvert ./data/planet.osm.pbf \
 ## Data updates
 
 The extracts and the planet download are refreshed weekly from the newest
-[OpenStreetMap](/docs/what-is/openstreetmap/) planet dump, so a re-download picks up recent OSM edits without any
+[OpenStreetMap](/docs/terminology/openstreetmap/) planet dump, so a re-download picks up recent OSM edits without any
 change to the commands above.
 

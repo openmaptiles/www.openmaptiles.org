@@ -1,11 +1,11 @@
 ---
 layout: docs
-category: what-is
+category: terminology
 title: Shapefile
 description: A Shapefile is an Esri vector data format that stores points, lines or polygons as a set of files sharing one base name.
 ---
 
-A **Shapefile** is a [vector data](/docs/what-is/vector-data/) format published by Esri in the 1990s. It is still one of the most common ways to exchange geographic data, and most open government datasets are offered in it.
+A **Shapefile** is a [vector data](/docs/terminology/vector-data/) format published by Esri in the 1990s. It is still one of the most common ways to exchange geographic data, and most open government datasets are offered in it.
 
 Despite the name, a Shapefile is not one file. It is a set of files that share a base name and have to travel together:
 
@@ -22,7 +22,7 @@ One Shapefile holds one geometry type. Points, lines, and polygons cannot be mix
 
 ## Turning a Shapefile into tiles
 
-A Shapefile cannot be read by a web map directly. To put one on a map you convert it, either into a tileset of its own, normally an [MBTiles](/docs/what-is/mbtiles/) file, or into an overlay combined with a basemap.
+A Shapefile cannot be read by a web map directly. To put one on a map you convert it, either into a tileset of its own, normally an [MBTiles](/docs/terminology/mbtiles/) file, or into an overlay combined with a basemap.
 
 ## Related resources
 

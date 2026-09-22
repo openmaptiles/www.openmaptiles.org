@@ -23,7 +23,7 @@ and so covered them; front matter is the closest equivalent Liquid can reach.
 `jsonify` handles the escaping, including the backticks and quotes that appear
 throughout the docs.
 {%- endcomment -%}
-{%- assign extra_urls = "/,/about/,/osm2vectortiles/,/viewers/,/docs/,/docs/schema/,/docs/inspect/,/docs/what-is/" | split: "," -%}
+{%- assign extra_urls = "/,/about/,/osm2vectortiles/,/viewers/,/docs/,/docs/schema/,/docs/inspect/,/docs/terminology/" | split: "," -%}
 [
 {%- assign first = true -%}
 

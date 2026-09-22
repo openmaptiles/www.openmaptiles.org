@@ -1,13 +1,15 @@
 ---
 layout: docs
-category: what-is
+category: terminology
 title: Choropleth
 description: A choropleth map shades predefined areas by a data value, so each region's color represents a statistic.
 ---
 
 A **choropleth** map colors predefined areas according to a value. Population density by district, election results by constituency, rainfall by county.
 
-It is the most common way to map statistics, and the [cartography](/docs/what-is/cartography/) is easy to get wrong.
+It is the most common way to map statistics, and the [cartography](/docs/terminology/cartography/) is easy to get wrong.
+
+![A map of the United States with each state shaded red or blue according to its election result](/img/terminology/choropleth.webp)
 
 ## Mistakes in mapping choropleth
 
@@ -21,7 +23,7 @@ For a sequential value use a single hue that runs light to dark. Keep diverging 
 
 ## Building choropleth on a basemap
 
-A choropleth is an overlay, not a basemap. The usual arrangement is a restrained basemap underneath, your polygons above it in a fill [layer style](/docs/what-is/layer-style/) shaded by value, and the basemap's labels on top so place names stay readable.
+A choropleth is an overlay, not a basemap. The usual arrangement is a restrained basemap underneath, your polygons above it in a fill [layer style](/docs/terminology/layer-style/) shaded by value, and the basemap's labels on top so place names stay readable.
 
 This is a good reason to reach for a muted style. [Positron](/styles/positron/) and similar low-contrast designs exist precisely to sit under data without competing with it.
 

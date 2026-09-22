@@ -17,7 +17,7 @@ it is no longer free to use. We recommend using the open-source fork [MapLibre G
 
 To display maps with MapLibre GL you need:
 
-1. Style: A [style JSON](/docs/what-is/style-json/) that describes what your map looks like
+1. Style: A [style JSON](/docs/terminology/style-json/) that describes what your map looks like
 2. Data: Vector Tiles as the data source for your style
 
 OpenMapTiles provides both vector tiles you can download and ready-made styles to use together with them. Check out how to [display a map with MapLibre GL JS](/docs/website/maplibre-gl-js/).

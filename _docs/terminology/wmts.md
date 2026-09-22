@@ -1,6 +1,6 @@
 ---
 layout: docs
-category: what-is
+category: terminology
 title: WMTS
 description: WMTS (Web Map Tile Service) is an OGC standard for serving pre-rendered map tiles over the web and describing them in a capabilities document.
 ---
@@ -66,16 +66,16 @@ The same URL works in any other WMTS-capable desktop GIS or server product.
 
 ## WMTS and vector tiles
 
-WMTS carries images, not [vector data](/docs/what-is/vector-data/), so you cannot serve an OpenMapTiles vector tileset over WMTS directly. You have two options:
+WMTS carries images, not [vector data](/docs/terminology/vector-data/), so you cannot serve an OpenMapTiles vector tileset over WMTS directly. You have two options:
 
-- **[Raster tiles](/docs/what-is/raster-tiles/) over WMTS**: Render the vector tiles to images and publish those. This is what the capabilities URL above serves, and it is the option to use for GIS software and for any client without WebGL. See [generating raster tiles](/docs/raster/maptiler-cloud/).
+- **[Raster tiles](/docs/terminology/raster-tiles/) over WMTS**: Render the vector tiles to images and publish those. This is what the capabilities URL above serves, and it is the option to use for GIS software and for any client without WebGL. See [generating raster tiles](/docs/raster/maptiler-cloud/).
 - **Vector tiles over XYZ**: Web map libraries request `.pbf` vector tiles by `{z}/{x}/{y}` and style them in the browser. See [displaying a map](/docs/website/maplibre-gl-js/).
 
 Both use the same Web Mercator tiling scheme, so you can mix them in one map.
 
 ## Self-hosting a WMTS endpoint
 
-If you generate and host tiles yourself, normally from an [MBTiles](/docs/what-is/mbtiles/) file, each of the tile servers documented here provides a WMTS endpoint:
+If you generate and host tiles yourself, normally from an [MBTiles](/docs/terminology/mbtiles/) file, each of the tile servers documented here provides a WMTS endpoint:
 
 - [MapTiler Server](/docs/host/maptiler-server/) exposes WMTS next to WMS and OGC API Tiles, and runs on your own hardware with a web administration interface.
 - [TileServer GL](/docs/host/tileserver-gl/) provides a WMTS endpoint for each configured style, next to its vector and raster tiles.

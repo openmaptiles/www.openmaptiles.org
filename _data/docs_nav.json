@@ -9,10 +9,6 @@
       {
         "name": "Schema",
         "path": "/docs/schema"
-      },
-      {
-        "name": "What is ...",
-        "path": "/docs/what-is"
       }
     ]
   },
@@ -123,6 +119,15 @@
       {
         "name": "TileServer GL",
         "path": "/docs/raster/tileserver-gl"
+      }
+    ]
+  },
+  {
+    "title": "Definitions",
+    "items": [
+      {
+        "name": "Terminology",
+        "path": "/docs/terminology"
       }
     ]
   }
