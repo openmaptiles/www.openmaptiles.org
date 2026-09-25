@@ -6,7 +6,7 @@ description: Learn how to serve raster and vector tiles with open-source TileSer
 order: 3
 ---
 
-Once you have generated your own vector tiles or downloaded them from the [downloads](http://openmaptiles.org/downloads) section, you need a tile server to serve the vector tiles via HTTP to your map clients or fall back to rendering [raster tiles](/docs/terminology/raster-tiles/) for users with legacy browsers.
+Once you have generated your own [vector tiles](/docs/terminology/vector-tiles/) or downloaded them from the [downloads](http://openmaptiles.org/downloads) section, you need a tile server to serve the vector tiles via HTTP to your map clients or fall back to rendering [raster tiles](/docs/terminology/raster-tiles/) for users with legacy browsers.
 
 TileServer GL supports serving both vector and raster tiles (through Mapbox GL Native). It also provides a [WMTS](/docs/terminology/wmts/) endpoint. For more information, dive into the [main documentation for TileServer GL](https://tileserver.readthedocs.io/en/latest/).
 

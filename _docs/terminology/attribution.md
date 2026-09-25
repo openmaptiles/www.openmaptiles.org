@@ -25,6 +25,6 @@ If the map is too small for a visible credit, put it next to the map or behind a
 
 ## Related resources
 
-- [Get started](/docs/)
-- [Display a map with MapLibre GL JS](/docs/website/maplibre-gl-js/)
+- [OpenStreetMap](/docs/terminology/openstreetmap/)
+- [Generate your own map](/docs/generate/generate-openmaptiles/)
 - [OpenStreetMap copyright and license](https://www.openstreetmap.org/copyright)

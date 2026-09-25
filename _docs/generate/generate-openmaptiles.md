@@ -8,7 +8,7 @@ redirect_from: /docs/generate/generate-vector-tiles/
 ---
 
 The [OpenMapTiles vector tile schema](https://github.com/openmaptiles/openmaptiles)
-is open source and licensed under [BSD + CC-BY](https://github.com/openmaptiles/openmaptiles/blob/master/LICENSE.md). You are free to use it to generate your own OpenMapTiles and use those vector tiles afterward. However, you are still obliged to follow the original [ODbL license](http://wiki.openstreetmap.org/wiki/Open_Database_License) and attribute [OpenStreetMap](/docs/terminology/openstreetmap/) data properly as well as [attribute the OpenMapTiles project itself](https://github.com/openmaptiles/openmaptiles#license). The correct [attribution](/docs/terminology/attribution/) looks similar to this:
+is open source and licensed under [BSD + CC-BY](https://github.com/openmaptiles/openmaptiles/blob/master/LICENSE.md). You are free to use it to generate your own OpenMapTiles and use those [vector tiles](/docs/terminology/vector-tiles/) afterward. However, you are still obliged to follow the original [ODbL license](http://wiki.openstreetmap.org/wiki/Open_Database_License) and attribute [OpenStreetMap](/docs/terminology/openstreetmap/) data properly as well as [attribute the OpenMapTiles project itself](https://github.com/openmaptiles/openmaptiles#license). The correct [attribution](/docs/terminology/attribution/) looks similar to this:
 
 [© OpenMapTiles](http://openmaptiles.org/) [© OpenStreetMap contributors](http://www.openstreetmap.org/copyright)
 
@@ -48,4 +48,4 @@ Now generate the vector tiles using the quickstart bash script.
 ./quickstart.sh
 ```
 
-By default, it will generate a vector tileset of Albania for zoom levels 0-7 into the `data` directory.
+By default, it will generate a vector tileset of Albania for [zoom levels](/docs/terminology/zoom-level/) 0-7 into the `data` directory.

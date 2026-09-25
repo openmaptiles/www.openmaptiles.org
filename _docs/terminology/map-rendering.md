@@ -5,7 +5,7 @@ title: Map rendering
 description: Map rendering is the work of turning map data and a style into the picture on screen, either once on a server or continuously in the client.
 ---
 
-**Map rendering** is the work of turning map data into a picture. It takes geometry, decides which features to draw and in what order, applies colors and widths, places the labels, and produces pixels. With vector tiles it is not a single step in a pipeline: the client redraws the map from the same tiles on every frame.
+**Map rendering** is the work of turning map data into a picture. It takes geometry, decides which features to draw and in what order, applies colors and widths, places the labels, and produces pixels. With [vector tiles](/docs/terminology/vector-tiles/) it is not a single step in a pipeline: the client redraws the map from the same tiles on every frame.
 
 The question that shapes everything else is where the drawing happens: in the client as you look at the map, or on a server before the map is sent.
 
@@ -27,6 +27,7 @@ Whichever side renders, most of the difficulty is in the labels. Names have to a
 
 ## Related resources
 
+- [Vector tiles](/docs/terminology/vector-tiles/)
+- [Raster tiles](/docs/terminology/raster-tiles/)
+- [Style JSON](/docs/terminology/style-json/)
 - [Interactive web viewers](/viewers/)
-- [Serve maps with MapTiler Server](/docs/host/maptiler-server/)
-- [Serve maps with TileServer GL](/docs/host/tileserver-gl/)

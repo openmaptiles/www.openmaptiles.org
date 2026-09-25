@@ -17,11 +17,13 @@ Most of the linear data in an OpenMapTiles tileset is in the `transportation` an
 
 The `transportation_name` layer is where multi-part lines show up most obviously: road segments that share a name are stitched together, so a label can be placed along the whole road instead of on each small piece.
 
-OpenMapTiles has no MultiLineString type, which is worth knowing if you come from a GIS background (namely if you are familiar with GeoJSON or PostGIS terminilogy). The [MVT specification](https://github.com/mapbox/vector-tile-spec/blob/master/2.1/README.md) defines only Point, LineString, and Polygon, and a multi-part line is an ordinary LineString feature that happens to contain more than one line.
+OpenMapTiles has no MultiLineString type, which is worth knowing if you come from a GIS background (namely if you are familiar with [GeoJSON](/docs/terminology/geojson/) or [PostGIS](/docs/terminology/postgis/) terminology). The [MVT specification](https://github.com/mapbox/vector-tile-spec/blob/master/2.1/README.md) defines only Point, LineString, and Polygon, and a multi-part line is an ordinary LineString feature that happens to contain more than one line.
 
 Because tiles are cut into a grid, a line crossing a tile boundary is clipped and appears in both tiles. This is normal and the renderer joins them visually, but it is worth knowing if you are counting features or measuring lengths from tile data rather than from the source database.
 
 ## Related resources
 
+- [Vector data](/docs/terminology/vector-data/)
+- [GeoJSON](/docs/terminology/geojson/)
+- [Shapefile](/docs/terminology/shapefile/)
 - [Vector tile schema](/docs/schema/)
-- [Custom vector tiles from GeoJSON and Shapefile](/docs/generate/custom-vector-from-shapefile-geojson/)

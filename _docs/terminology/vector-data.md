@@ -23,6 +23,7 @@ Separating the source from the layers is what lets one tileset feed many layers 
 
 ## Related resources
 
+- [Vector tiles](/docs/terminology/vector-tiles/)
+- [GeoJSON](/docs/terminology/geojson/)
+- [Shapefile](/docs/terminology/shapefile/)
 - [Vector tile schema](/docs/schema/)
-- [Custom vector tiles from PostGIS](/docs/generate/custom-vector-from-postgis/)
-- [Mapbox GL Style Spec](/docs/style/mapbox-gl-style-spec/)

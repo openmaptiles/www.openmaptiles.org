@@ -6,7 +6,7 @@ description: Display maps on a web using the OpenLayers JavaScript library.
 order: 4
 ---
 
-There are two ways to display OpenMapTiles with the [OpenLayers](http://openlayers.org/) library: using raster or vector tiles.
+There are two ways to display OpenMapTiles with the [OpenLayers](http://openlayers.org/) library: using raster or [vector tiles](/docs/terminology/vector-tiles/).
 
 ## Raster tiles from server
 
@@ -70,4 +70,4 @@ olms.apply('map', '{{ site.maps.domain }}/maps/openstreetmap/style.json?key=' + 
 
 ## More examples
 
-Take a look at the compilation of [OpenLayers examples](https://docs.maptiler.com/openlayers/examples/) to explore the potential of incorporating OpenMapTiles maps into your OpenLayers projects. Discover techniques for displaying data from GeoJSON on the map, generating a [Choropleth](/docs/terminology/choropleth/) map, showcasing a marker, and much more. Check out these examples to unlock the full capabilities of OpenLayers regarding map visualization and data representation.
+Take a look at the compilation of [OpenLayers examples](https://docs.maptiler.com/openlayers/examples/) to explore the potential of incorporating OpenMapTiles maps into your OpenLayers projects. Discover techniques for displaying data from [GeoJSON](/docs/terminology/geojson/) on the map, generating a [Choropleth](/docs/terminology/choropleth/) map, showcasing a marker, and much more. Check out these examples to unlock the full capabilities of OpenLayers regarding map visualization and data representation.

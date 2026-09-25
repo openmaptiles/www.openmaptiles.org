@@ -5,7 +5,7 @@ title: WMTS
 description: WMTS (Web Map Tile Service) is an OGC standard for serving pre-rendered map tiles over the web and describing them in a capabilities document.
 ---
 
-**WMTS (Web Map Tile Service)** is an [Open Geospatial Consortium](https://www.ogc.org/standards/wmts/) standard for publishing map tiles on the web. A WMTS server cuts a map into a fixed pyramid of pre-rendered images and publishes an XML capabilities document that describes which tiles exist, in which projection, and at which zoom levels. A GIS client reads that one document and configures itself, so you do not have to enter tile URLs or projection settings by hand.
+**WMTS (Web Map Tile Service)** is an [Open Geospatial Consortium](https://www.ogc.org/standards/wmts/) standard for publishing map tiles on the web. A WMTS server cuts a map into a fixed pyramid of pre-rendered images and publishes an XML capabilities document that describes which tiles exist, in which projection, and at which [zoom levels](/docs/terminology/zoom-level/). A GIS client reads that one document and configures itself, so you do not have to enter tile URLs or projection settings by hand.
 
 The standard was published as version 1.0.0 in 2010. It is still the format most desktop GIS software expects when you add a remote basemap.
 
@@ -68,7 +68,7 @@ The same URL works in any other WMTS-capable desktop GIS or server product.
 
 WMTS carries images, not [vector data](/docs/terminology/vector-data/), so you cannot serve an OpenMapTiles vector tileset over WMTS directly. You have two options:
 
-- **[Raster tiles](/docs/terminology/raster-tiles/) over WMTS**: Render the vector tiles to images and publish those. This is what the capabilities URL above serves, and it is the option to use for GIS software and for any client without WebGL. See [generating raster tiles](/docs/raster/maptiler-cloud/).
+- **[Raster tiles](/docs/terminology/raster-tiles/) over WMTS**: Render the [vector tiles](/docs/terminology/vector-tiles/) to images and publish those. This is what the capabilities URL above serves, and it is the option to use for GIS software and for any client without WebGL. See [generating raster tiles](/docs/raster/maptiler-cloud/).
 - **Vector tiles over XYZ**: Web map libraries request `.pbf` vector tiles by `{z}/{x}/{y}` and style them in the browser. See [displaying a map](/docs/website/maplibre-gl-js/).
 
 Both use the same Web Mercator tiling scheme, so you can mix them in one map.
@@ -83,8 +83,9 @@ If you generate and host tiles yourself, normally from an [MBTiles](/docs/termin
 
 ## Related resources
 
+- [Raster tiles](/docs/terminology/raster-tiles/)
+- [WMTS via Maps API](/docs/host/maptiler-cloud/)
 - [Serve maps with MapTiler Server](/docs/host/maptiler-server/)
 - [Serve maps with TileServer GL](/docs/host/tileserver-gl/)
 - [Serve maps with TileServer PHP](/docs/host/tileserver-php/)
-- [Ready-to-use raster tiles API](/docs/raster/maptiler-cloud/)
 - [OGC WMTS standard](https://www.ogc.org/standards/wmts/)

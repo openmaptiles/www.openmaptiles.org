@@ -26,6 +26,7 @@ That gives you a real exit: you can move from a hosted [maps API](/docs/terminol
 
 ## Related resources
 
+- [OpenStreetMap](/docs/terminology/openstreetmap/)
 - [About OpenMapTiles](/about/)
 - [Vector tile schema](/docs/schema/)
 - [Generate your own map](/docs/generate/generate-openmaptiles/)

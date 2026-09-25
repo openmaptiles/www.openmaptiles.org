@@ -29,4 +29,6 @@ This is a good reason to reach for a muted style. [Positron](/styles/positron/) 
 
 ## Related resources
 
+- [Layer style](/docs/terminology/layer-style/)
+- [GeoJSON](/docs/terminology/geojson/)
 - [Custom vector tiles from GeoJSON and Shapefile](/docs/generate/custom-vector-from-shapefile-geojson/)

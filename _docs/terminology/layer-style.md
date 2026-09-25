@@ -28,6 +28,8 @@ One source layer usually feeds several layer styles. Roads often need a wide dar
 
 ## Related resources
 
-- [Mapbox GL Style Spec](/docs/style/mapbox-gl-style-spec/)
+- [Style JSON](/docs/terminology/style-json/)
+- [Mapbox GL style specification](/docs/style/mapbox-gl-style-spec/)
+- [Style your map with MapTiler](/docs/style/maptiler-cloud/)
 - [Style your map with Maputnik](/docs/style/maputnik/)
 - [Vector tile schema](/docs/schema/)

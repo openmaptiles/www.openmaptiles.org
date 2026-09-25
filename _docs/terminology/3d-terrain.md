@@ -23,5 +23,6 @@ Terrain and hillshading are often confused. Hillshading is a flat image that sim
 
 ## Related resources
 
-- [Create a mobile app](/docs/mobile/mobile/)
 - [Display a map with MapTiler SDK JS](/docs/website/maptiler-sdk-js/)
+- [Create a mobile app](/docs/mobile/mobile/)
+- [Vector tiles](/docs/terminology/vector-tiles/)

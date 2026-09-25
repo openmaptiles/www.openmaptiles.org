@@ -50,7 +50,7 @@ You can point your Leaflet layer to a tile hosting service (like MapTiler Cloud)
 
 ### Option B: MapTiler Leaflet SDK Plugin (Official & Easiest Vector)
 
-If you host your maps on MapTiler Cloud or use standard OpenMapTiles styles, the [official MapTiler Leaflet SDK plugin](https://github.com/maptiler/leaflet-maptilersdk) (`@maptiler/leaflet-maptilersdk`) is the recommended way to display vector tiles in Leaflet.
+If you host your maps on MapTiler Cloud or use standard OpenMapTiles styles, the [official MapTiler Leaflet SDK plugin](https://github.com/maptiler/leaflet-maptilersdk) (`@maptiler/leaflet-maptilersdk`) is the recommended way to display [vector tiles](/docs/terminology/vector-tiles/) in Leaflet.
 
 It provides an extremely simple API that loads high-performance vector basemaps natively under the hood using MapTiler's optimized rendering configurations:
 

@@ -26,5 +26,5 @@ A Shapefile cannot be read by a web map directly. To put one on a map you conver
 
 ## Related resources
 
+- [GeoJSON](/docs/terminology/geojson/)
 - [Custom vector tiles from GeoJSON and Shapefile](/docs/generate/custom-vector-from-shapefile-geojson/)
-- [Custom vector tiles from PostGIS](/docs/generate/custom-vector-from-postgis/)

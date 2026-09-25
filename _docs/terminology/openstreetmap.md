@@ -19,7 +19,7 @@ The data is published under the [Open Database License](https://www.openstreetma
 
 Raw OpenStreetMap data is not practical to load in a browser. The planet file is tens of gigabytes, and the tagging is inconsistent because it grew organically.
 
-OpenMapTiles solves this by importing the data into [PostGIS](/docs/generate/custom-vector-from-postgis/), normalizing the tags, and cutting the result into vector tiles. You get a predictable set of layers and attributes instead of the full tag soup.
+OpenMapTiles solves this by importing the data into [PostGIS](/docs/generate/custom-vector-from-postgis/), normalizing the tags, and cutting the result into [vector tiles](/docs/terminology/vector-tiles/). You get a predictable set of layers and attributes instead of the full tag soup.
 
 ## OpenStreetMap layers
 
@@ -31,6 +31,7 @@ A tileset carries no colors, so the [cartography](/docs/terminology/cartography/
 
 ## Related resources
 
+- [Attribution](/docs/terminology/attribution/)
 - [Vector tile schema](/docs/schema/)
 - [Generate your own map](/docs/generate/generate-openmaptiles/)
 - [OpenStreetMap copyright and license](https://www.openstreetmap.org/copyright)

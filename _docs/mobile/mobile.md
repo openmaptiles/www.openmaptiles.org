@@ -11,7 +11,7 @@ description: Create a native mobile app for Android and iOS using the MapTiler M
 
 ## Mobile Map Development Overview
 
-Using [OpenStreetMap](/docs/terminology/openstreetmap/) data and the OpenMapTiles schema, you can build stunning, fast, and fully interactive maps directly inside native mobile applications. Because vector tiles are rendered on the device itself using the GPU, mobile maps respond instantly to user gestures (rotation, tilting, zooming) and allow for dynamic visual style changes in real time.
+Using [OpenStreetMap](/docs/terminology/openstreetmap/) data and the OpenMapTiles schema, you can build stunning, fast, and fully interactive maps directly inside native mobile applications. Because [vector tiles](/docs/terminology/vector-tiles/) are rendered on the device itself using the GPU, mobile maps respond instantly to user gestures (rotation, tilting, zooming) and allow for dynamic visual style changes in real time.
 
 To display OpenMapTiles on mobile devices, developers have two primary native options: the official **MapTiler Mobile SDKs** (the recommended, modern approach) or the community-led **MapLibre Native SDKs**.
 

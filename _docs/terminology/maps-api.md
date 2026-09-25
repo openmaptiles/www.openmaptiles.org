@@ -26,5 +26,3 @@ Because the schema is open, this is not a one-way decision. A style written agai
 ## Related resources
 
 - [Ready-to-use maps API](/docs/host/maptiler-cloud/)
-- [Serve maps with MapTiler Server](/docs/host/maptiler-server/)
-- [Serve maps with TileServer GL](/docs/host/tileserver-gl/)

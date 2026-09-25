@@ -6,7 +6,7 @@ description: Serve map tiles with open-source TileServer PHP
 order: 4
 ---
 
-In case you wish to publish vector tiles and already have a PHP stack running,
+In case you wish to publish [vector tiles](/docs/terminology/vector-tiles/) and already have a PHP stack running,
 you can use TileServer PHP for serving vector or [raster tiles](/docs/terminology/raster-tiles/).
 TileServer PHP implements the OGC [WMTS](/docs/terminology/wmts/) standard for pre-rendered
 raster tiles, but it is fully prepared for fast serving of vector tiles.
