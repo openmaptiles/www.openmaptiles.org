@@ -23,12 +23,12 @@ For a sequential value use a single hue that runs light to dark. Keep diverging 
 
 ## Building choropleth on a basemap
 
-A choropleth is an overlay, not a basemap. The usual arrangement is a restrained basemap underneath, your polygons above it in a fill [layer style](/docs/terminology/layer-style/) shaded by value, and the basemap's labels on top so place names stay readable.
+A choropleth is an overlay, not a basemap. The usual arrangement is a restrained basemap underneath, your polygons above it in a fill [style layer](/docs/terminology/style-layer/) shaded by value, and the basemap's labels on top so place names stay readable.
 
 This is a good reason to reach for a muted style. [Positron](/styles/positron/) and similar low-contrast designs exist precisely to sit under data without competing with it.
 
 ## Related resources
 
-- [Layer style](/docs/terminology/layer-style/)
+- [Style layer](/docs/terminology/style-layer/)
 - [GeoJSON](/docs/terminology/geojson/)
 - [Custom vector tiles from GeoJSON and Shapefile](/docs/generate/custom-vector-from-shapefile-geojson/)

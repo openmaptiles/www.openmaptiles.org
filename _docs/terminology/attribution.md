@@ -2,10 +2,10 @@
 layout: docs
 category: terminology
 title: Attribution
-description: Attribution is the credit line a map displays to acknowledge the data, the schema and the software it was built from.
+description: Attribution is the credit line a map displays to acknowledge the data and the schema it was built from.
 ---
 
-**Attribution** is the credit line shown on a map that names the sources it was built from. For maps built with OpenMapTiles it is not optional. The [OpenStreetMap](/docs/terminology/openstreetmap/) data is published under the Open Database License, which requires you to credit the source, and the OpenMapTiles project asks to be credited as well.
+**Attribution** is the credit line shown on a map that names the sources it was built from. For maps built with OpenMapTiles it is not optional. The [OpenStreetMap](/docs/terminology/openstreetmap/) data is published under the Open Database License, which requires you to credit the source. The OpenMapTiles schema is published under [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/), which requires you to credit the OpenMapTiles project as well.
 
 ## What you have to credit
 

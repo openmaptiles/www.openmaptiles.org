@@ -113,4 +113,4 @@ One of the greatest features of vector maps is the ability to run completely off
 1. **Bundled Tiles**: Pack highly compressed `.mbtiles` packages containing local OpenMapTiles data directly inside the mobile app's asset folder.
 2. **On-Demand Downloads**: Programmatically download a bounding box of OpenMapTiles data and cache it locally on the user's storage card, enabling offline navigation and exploration in remote regions.
 
-<a href="https://docs.maptiler.com" class="btn">Get Started with MapTiler Mobile SDKs</a>
+<a href="https://docs.maptiler.com/mobile-sdk/ios/examples/offline-get-started/" class="btn">Get Started with MapTiler Mobile SDKs</a>

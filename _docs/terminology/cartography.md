@@ -15,7 +15,7 @@ In a vector tile stack those decisions are split across two places, and it helps
 
 The [schema](/docs/schema/) decides what data is available. It sets the layers, the attributes, and the [zoom level](/docs/terminology/zoom-level/) at which each feature first appears. Dropping a minor road from low zooms is a schema decision, and no style can bring it back if the data is not in the tile.
 
-The **style**, written as a [style JSON](/docs/terminology/style-json/), decides how the available data looks. Colors, widths, fonts, label priorities, and which layers are drawn at all are decisions made in each [layer style](/docs/terminology/layer-style/), and they can be changed at any time without regenerating anything.
+The **style**, written as a [style JSON](/docs/terminology/style-json/), decides how the available data looks. Colors, widths, fonts, label priorities, and which layers are drawn at all are decisions made in each [style layer](/docs/terminology/style-layer/), and they can be changed at any time without regenerating anything.
 
 The practical consequence is that if a feature is missing from your map, the first question is which of the two is responsible. If it is not in the tile, the style cannot help.
 
@@ -26,7 +26,7 @@ The hardest part is generalization: keeping a map legible as it zooms out. Coast
 ## Related resources
 
 - [Style JSON](/docs/terminology/style-json/)
-- [Layer style](/docs/terminology/layer-style/)
+- [Style layer](/docs/terminology/style-layer/)
 - [Vector tile schema](/docs/schema/)
 - [Style your map with MapTiler](/docs/style/maptiler-cloud/)
 - [Style your map with Maputnik](/docs/style/maputnik/)

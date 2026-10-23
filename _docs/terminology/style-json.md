@@ -21,17 +21,17 @@ A style has a few top-level keys:
 | `glyphs` | A URL template for the font glyph ranges used by labels |
 | `sprite` | A URL for the packed icon image and its index |
 
-Each entry in `layers` is one [layer style](/docs/terminology/layer-style/), and their order is the draw order. The first entry is painted first and everything after it draws on top, which is why a style usually starts with landcover and ends with labels.
+Each entry in `layers` is one [style layer](/docs/terminology/style-layer/), and their order is the draw order. The first entry is painted first and everything after it draws on top, which is why a style usually starts with landcover and ends with labels.
 
 ## JSON styles in practice
 
 Because the format is a published specification rather than one product's config file, a style written for one renderer generally works in another, and the open styles built on the [OpenMapTiles schema](/docs/schema/) can be forked and edited freely.
 
-You can edit a style by hand, but a visual editor is faster for color work, and it writes the same JSON back out.
+You can edit a style by hand, but a visual editor such as [Maputnik](/docs/style/maputnik/) or [MapTiler map designer tool](/docs/style/maptiler-cloud/) is faster for color work, and it writes the same JSON back out.
 
 ## Related resources
 
-- [Layer style](/docs/terminology/layer-style/)
+- [Style layer](/docs/terminology/style-layer/)
 - [Mapbox GL style specification](/docs/style/mapbox-gl-style-spec/)
 - [Style your map with Maputnik](/docs/style/maputnik/)
 - [Customize map styles with the visual editor](/docs/style/maptiler-cloud/)

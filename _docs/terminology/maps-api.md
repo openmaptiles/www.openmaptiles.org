@@ -19,7 +19,7 @@ That [style JSON](/docs/terminology/style-json/) names everything else the map n
 
 ## Hosted or self-hosted
 
-Running the pipeline yourself gives you full control and no per-request cost, but you take on the imports, the updates, and the storage. A hosted maps API removes that work in exchange for a subscription and a dependency.
+Running the pipeline yourself gives you full control and no per-request fees, but you take on the imports, the updates, the storage, and the cost of servers and bandwidth. A hosted maps API removes that work in exchange for a subscription and a dependency.
 
 Because the schema is open, this is not a one-way decision. A style written against the [OpenMapTiles schema](/docs/schema/) works against a hosted endpoint or your own server, so you can start on one and move to the other.
 

@@ -2,18 +2,20 @@
 layout: docs
 category: terminology
 title: WMTS
-description: WMTS (Web Map Tile Service) is an OGC standard for serving pre-rendered map tiles over the web and describing them in a capabilities document.
+description: WMTS (Web Map Tile Service) is an OGC standard for serving map tiles over the web and describing them in a capabilities document.
 ---
 
-**WMTS (Web Map Tile Service)** is an [Open Geospatial Consortium](https://www.ogc.org/standards/wmts/) standard for publishing map tiles on the web. A WMTS server cuts a map into a fixed pyramid of pre-rendered images and publishes an XML capabilities document that describes which tiles exist, in which projection, and at which [zoom levels](/docs/terminology/zoom-level/). A GIS client reads that one document and configures itself, so you do not have to enter tile URLs or projection settings by hand.
+**WMTS (Web Map Tile Service)** is an [Open Geospatial Consortium](https://www.ogc.org/standards/wmts/) standard for publishing map tiles on the web. A WMTS server serves a map as a fixed pyramid of tile images and publishes an XML capabilities document that describes which tiles exist, in which projection, and at which [zoom levels](/docs/terminology/zoom-level/). A GIS client reads that one document and configures itself, so you do not have to enter tile URLs or projection settings by hand.
 
-The standard was published as version 1.0.0 in 2010. It is still the format most desktop GIS software expects when you add a remote basemap.
+The standard was published as version 1.0.0 in 2010. It is still one of the most widely supported ways to add a remote basemap in desktop GIS software.
 
 ## Why tiles instead of images
 
 The older [WMS](https://www.ogc.org/standards/wms/) standard renders a new image for whatever bounding box the client asks for. Every request is different, so the server renders again on every pan and zoom, and almost nothing can be cached.
 
-WMTS renders the map ahead of time into a grid of small, fixed images, usually 256x256 or 512x512 pixels, addressed by zoom level, row, and column. Every client looking at the same area requests the same URL, so tiles can be cached by the server, by a CDN, and by the browser. This is what makes WMTS fast enough for interactive maps, and it is the same approach used by the XYZ tiles in web map libraries.
+WMTS splits the map into a grid of small, fixed images, usually 256x256 or 512x512 pixels, addressed by zoom level, row, and column. The tiles can be rendered ahead of time, or rendered on the first request and then cached. Either way, every client looking at the same area requests the same URL, so tiles can be cached by the server, by a CDN, and by the browser. This is what makes WMTS fast enough for interactive maps, and it is the same approach used by the XYZ tiles in web map libraries.
+
+WMTS now has a successor, [OGC API – Tiles](https://ogcapi.ogc.org/tiles/). It is a lighter standard built on REST and JSON, and it can serve vector tiles as well as images.
 
 ## Tile matrix sets
 
@@ -39,7 +41,7 @@ For WebMercatorQuad this is the same ordering as the `{z}/{x}/{y}` convention, w
 | `GetTile` | Yes | Returns a single tile image |
 | `GetFeatureInfo` | No | Returns attributes of the features at a pixel within a tile |
 
-You can encode requests in two ways. **KVP** puts the parameters in the query string, and **RESTful** encoding puts them in the URL path, which looks like an ordinary XYZ tile URL. A service can support either or both, and the capabilities document tells you which.
+The standard defines three request encodings. **KVP** puts the parameters in the query string, **RESTful** encoding puts them in the URL path, which looks like an ordinary XYZ tile URL, and **SOAP** sends the request as an XML message but is rarely used. A service can support one or more of them, and the capabilities document tells you which.
 
 ## Connecting to a WMTS service
 
@@ -66,9 +68,9 @@ The same URL works in any other WMTS-capable desktop GIS or server product.
 
 ## WMTS and vector tiles
 
-WMTS carries images, not [vector data](/docs/terminology/vector-data/), so you cannot serve an OpenMapTiles vector tileset over WMTS directly. You have two options:
+WMTS was designed for images, not [vector data](/docs/terminology/vector-data/), and the GIS clients that use it expect images, so an OpenMapTiles vector tileset is normally not served over WMTS. You have two options:
 
-- **[Raster tiles](/docs/terminology/raster-tiles/) over WMTS**: Render the [vector tiles](/docs/terminology/vector-tiles/) to images and publish those. This is what the capabilities URL above serves, and it is the option to use for GIS software and for any client without WebGL. See [generating raster tiles](/docs/raster/maptiler-cloud/).
+- **[Raster tiles](/docs/terminology/raster-tiles/) over WMTS**: Render the [vector tiles](/docs/terminology/vector-tiles/) to images and publish those. This is what the capabilities URL above serves, and it is the option to use for GIS software without vector tile support and for any client without WebGL. See [generating raster tiles](/docs/raster/maptiler-cloud/).
 - **Vector tiles over XYZ**: Web map libraries request `.pbf` vector tiles by `{z}/{x}/{y}` and style them in the browser. See [displaying a map](/docs/website/maplibre-gl-js/).
 
 Both use the same Web Mercator tiling scheme, so you can mix them in one map.

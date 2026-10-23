@@ -7,7 +7,7 @@ description: Vector tiles are map tiles that carry geometry and attributes inste
 
 **Vector tiles** are map tiles that store geographic vector data rather than pre-rendered images. Each tile holds the [vector data](/docs/terminology/vector-data/) for a specific area at a given [zoom level](/docs/terminology/zoom-level/), containing both geometries and their associated attributes. The client receives this raw data and renders the map locally.
 
-Unlike [raster tiles](/docs/terminology/raster-tiles/), which arrive pre-rendered, vector tiles carry unstyled data. A single vector tile using [style JSON](/docs/terminology/style-json/) can render a light theme, a dark theme, or localized labels without requiring additional requests to the server.
+Unlike [raster tiles](/docs/terminology/raster-tiles/), which arrive pre-rendered, vector tiles carry unstyled data. A single vector tile using [style JSON](/docs/terminology/style-json/) can render a light theme, a dark theme, or localized labels without downloading the tiles again.
 
 ## What is inside a vector tile
 
@@ -29,7 +29,7 @@ Coordinates inside a vector tile are not stored as global latitude and longitude
 
 Vector tiles follow a grid system identified by three coordinates: zoom, column, and row (`{z}/{x}/{y}`). Zoom level 0 consists of a single tile covering the entire world, and each subsequent zoom level splits each tile into four.
 
-Geometries that cross tile boundaries are clipped and repeated across neighboring tiles. While client renderers seamlessly reassemble these features visually, performing spatial analysis (such as feature counts or length calculations) directly on raw tile data will yield inaccurate results due to duplicated features. These calculations should be run against the source database instead.
+Geometries that cross tile boundaries are clipped and repeated across neighboring tiles. Tiles also usually include a **buffer**: the geometry extends a little beyond the edge of the tile, so lines, outlines, and labels join without visible seams. With the buffer set to 0, calculations on tile data get simpler, but the rendered map shows artifacts along the tile edges. While client renderers seamlessly reassemble these features visually, performing spatial analysis (such as feature counts or length calculations) directly on raw tile data will yield inaccurate results due to duplicated features. These calculations should be run against the source database instead.
 
 ## Storing and serving
 

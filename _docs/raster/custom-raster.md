@@ -44,7 +44,7 @@ Add a new source with a reference to your map tiles:
   },
 ```
 
-Then you can start editing your style in Maputnik and adjust it as you want. Editing the raster [layer style](/docs/terminology/layer-style/) can be very simple:
+Then you can start editing your style in Maputnik and adjust it as you want. Editing the raster [style layer](/docs/terminology/style-layer/) can be very simple:
 
 ```json
 {
