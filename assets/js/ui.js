@@ -84,6 +84,47 @@ function initSidebarToggle() {
   });
 }
 
+// ── docs sidebar: keep the active link in view ───────────────────────────────
+// The nav list scrolls on its own (md and up), and every page load starts it at
+// the top, so an entry far down the list was off-screen on its own page. Restore
+// the position saved when leaving the previous docs page so clicking around does
+// not jump; if there is none, or it would hide the active link (arrived via
+// search or an in-article link), centre the active link instead.
+//
+// Only the list's own scrollTop is set — scrollIntoView() would also scroll the
+// page. Below md the list is not height-constrained, so these writes are no-ops.
+const SIDEBAR_SCROLL_KEY = "omt:docs-sidebar-scroll";
+
+function initSidebarScroll() {
+  const body = document.querySelector(".docs-sidebar__body");
+  if (!body) return;
+
+  let saved = null;
+  try {
+    saved = sessionStorage.getItem(SIDEBAR_SCROLL_KEY);
+  } catch {
+    // Storage blocked (private mode, site data disabled) — fall back to centring.
+  }
+  if (saved !== null) body.scrollTop = Number(saved) || 0;
+
+  const active = body.querySelector(".nav-active-omt");
+  if (active) {
+    const list = body.getBoundingClientRect();
+    const link = active.getBoundingClientRect();
+    if (link.top < list.top || link.bottom > list.bottom) {
+      body.scrollTop += link.top - list.top - (list.height - link.height) / 2;
+    }
+  }
+
+  window.addEventListener("pagehide", () => {
+    try {
+      sessionStorage.setItem(SIDEBAR_SCROLL_KEY, String(body.scrollTop));
+    } catch {
+      // Non-fatal: the next page just centres the active link.
+    }
+  });
+}
+
 // ── code blocks: copy to clipboard ───────────────────────────────────────────
 // Copy-to-clipboard on code blocks, reverting the button after 2s.
 const CHECK_ICON =
@@ -138,6 +179,7 @@ export function initUI() {
   initMobileMenu();
   initGitHubStars();
   initSidebarToggle();
+  initSidebarScroll();
   initCopyButtons();
   initDiagramsToggle();
 }

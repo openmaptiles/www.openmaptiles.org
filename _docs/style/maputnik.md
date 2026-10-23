@@ -18,9 +18,9 @@ Once you are done editing the style, you can download the modified style in JSON
 
 ## Edit the Style locally
 
-If you want to edit the style locally with the [Maputnik CLI](https://github.com/maplibre/maputnik/releases), clone one of the OpenMapTiles style GitHub repositories. On the [Styles](http://openmaptiles.org/styles) page, you can find a list of styles with a preview.
+If you want to edit the style locally with the [Maputnik CLI](https://github.com/maplibre/maputnik/releases), clone one of the OpenMapTiles style GitHub repositories. On the [Styles](/#map-styles) page, you can find a list of styles with a preview.
 
-In our example, we will use the [Positron style](https://github.com/openmaptiles/positron-gl-style). Clone the repository containing the style JSON file using the following command:
+In our example, we will use the [Positron style](https://github.com/openmaptiles/positron-gl-style). Clone the repository containing the [style JSON](/docs/terminology/style-json/) file using the following command:
 
 ```bash
 git clone https://github.com/openmaptiles/positron-gl-style.git

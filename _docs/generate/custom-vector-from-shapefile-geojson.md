@@ -7,7 +7,7 @@ description: How to generate custom vector tiles from GeoJSON or Shapefile using
 redirect_from: /docs/generate/custom-vector/
 ---
 
-You can combine OpenMapTiles with your custom vector data saved in **Shapefile** or **GeoJSON** format (there is a separate article for [data stored in **PostGIS** database](/docs/generate/custom-vector-from-postgis/)). The easiest way is to convert your data into vector tiles and then [combine it with a standard OpenMapTiles source in a map style](https://openmaptiles.org/docs/raster/custom-raster/#prepare-map-style). The big advantage of this approach is that you don't need to generate the whole OpenMapTiles schema which is quite time-consuming.
+You can combine OpenMapTiles with your custom [vector data](/docs/terminology/vector-data/) saved in **[Shapefile](/docs/terminology/shapefile/)** or **[GeoJSON](/docs/terminology/geojson/)** format (there is a separate article for [data stored in **PostGIS** database](/docs/generate/custom-vector-from-postgis/)). The easiest way is to convert your data into [vector tiles](/docs/terminology/vector-tiles/) and then [combine it with a standard OpenMapTiles source in a map style](/docs/raster/custom-raster/#prepare-map-style). The big advantage of this approach is that you don't need to generate the whole OpenMapTiles schema which is quite time-consuming.
 
 ## Preparation
 
@@ -27,7 +27,7 @@ Having your data in a correct coordinate system, you can do the conversion using
 tippecanoe -o tiles.mbtiles your_data_in_4326.json
 ```
 
-It will convert your data into MBTiles for zoom levels 0 to 14. Tippecanoe enables much more sophisticated options, including layer and attribute management, dropping features, generalization, and more. See [documentation](https://github.com/felt/tippecanoe?tab=readme-ov-file#cookbook).
+It will convert your data into [MBTiles](/docs/terminology/mbtiles/) for [zoom levels](/docs/terminology/zoom-level/) 0 to 14. Tippecanoe enables much more sophisticated options, including layer and attribute management, dropping features, generalization, and more. See [documentation](https://github.com/felt/tippecanoe?tab=readme-ov-file#cookbook).
 
 You can visually check the generated MBTiles file using [TileServer-GL](/docs/host/tileserver-gl/):
 

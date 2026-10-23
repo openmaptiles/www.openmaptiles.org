@@ -17,7 +17,7 @@ Since the MapTiler SDK JS is designed to work seamlessly with the OpenMapTiles s
 - **Simpler Configuration**: No need to manually construct complex style URLs. Simply specify style presets (e.g., `STREETS`, `SATELLITE`, `OUTDOOR`, `WINTER`) and let the SDK handle the rest.
 - **Auto-Configured Endpoints**: Fonts (glyphs) and sprites are automatically set up using optimal CDN endpoints compatible with the official OpenMapTiles schemas.
 - **Advanced UI Controls**: Includes built-in support for language selection (easily switch the language of OpenMapTiles labels), geocoding (search for places), and coordinates controls out of the box.
-- **3D Terrain & Globe**: Native support for 3D terrain representation and seamless global projection.
+- **3D Terrain & Globe**: Native support for [3D terrain](/docs/terminology/3d-terrain/) representation and seamless global projection.
 
 ### Quick Start
 
@@ -69,6 +69,6 @@ Then, initialize the map inside a container element:
 
 ### Full Compatibility with OpenMapTiles
 
-When loading standard vector tiles from OpenMapTiles, the SDK translates schema definitions under the hood, ensuring perfect vector representation of administrative borders, road symbols, POIs, and geographic features.
+When loading standard [vector tiles](/docs/terminology/vector-tiles/) from OpenMapTiles, the SDK translates schema definitions under the hood, ensuring perfect vector representation of administrative borders, road symbols, POIs, and geographic features.
 
 <a href="https://docs.maptiler.com/sdk-js/" class="btn">Explore MapTiler SDK JS API Reference</a>

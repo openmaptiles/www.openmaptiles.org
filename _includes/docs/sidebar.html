@@ -15,6 +15,11 @@ normalised to a trailing slash first — `remove_last: "/"` removes the last
 OCCURRENCE of the substring, not a trailing slash, so it turned "/docs" into
 "docs" and "/docs/schema" into "/docsschema" and nothing ever matched.
 
+A group carries either a `title`, rendered as the uppercase heading, or
+`separator: true`, rendered as a rule above the group in place of a heading. The
+rule reuses the site header's border token so the two read as the same line. A
+group may set both, or neither, and the items still render.
+
 The search box and the collapse toggle are emitted here rather than built at
 runtime; search.js only fills the drawer.
 {%- endcomment -%}
@@ -45,7 +50,12 @@ runtime; search.js only fills the drawer.
     <ul class="docs-sidebar__groups">
       {%- for group in site.data.docs_nav %}
       <li>
+        {%- if group.separator %}
+        <hr class="docs-sidebar__separator">
+        {%- endif %}
+        {%- if group.title %}
         <h3 class="docs-sidebar__group-title">{{ group.title }}</h3>
+        {%- endif %}
         <ul class="docs-sidebar__items">
           {%- for item in group.items %}
           {%- assign target = item.path -%}
