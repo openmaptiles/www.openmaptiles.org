@@ -47,9 +47,9 @@ module OpenMapTiles
         next add_target(m[0], attrs) if label.include?("<img")
 
         if attrs.include?("btn")
-          %(<a href="#{href}" target="_blank" rel="noopener noreferrer" class="doclink doclink--button no-underline"><span>#{label}</span>#{ARROW}</a>)
+          %(<a href="#{href}" target="_blank" rel="noopener" class="doclink doclink--button no-underline"><span>#{label}</span>#{ARROW}</a>)
         else
-          %(<a href="#{href}" target="_blank" rel="noopener noreferrer" class="doclink"><span>#{label}</span>#{ARROW}</a>)
+          %(<a href="#{href}" target="_blank" rel="noopener" class="doclink"><span>#{label}</span>#{ARROW}</a>)
         end
       end
     end
@@ -57,7 +57,7 @@ module OpenMapTiles
     def self.add_target(anchor, attrs)
       return anchor if attrs.include?("target=")
 
-      anchor.sub("<a ", %(<a target="_blank" rel="noopener noreferrer" ))
+      anchor.sub("<a ", %(<a target="_blank" rel="noopener" ))
     end
   end
 end

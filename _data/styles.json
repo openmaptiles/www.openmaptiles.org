@@ -15,7 +15,7 @@
     "description": "MapTiler Basic is a basemap that tries to stay in the background and only give the most relevant information.",
     "github_url": "https://github.com/openmaptiles/maptiler-basic-gl-style",
     "cloud_url": "https://cloud.maptiler.com/maps/basic/",
-    "style_id": "basic-v2",
+    "style_id": "basic",
     "img": "styles/basic.webp",
     "preview_hash": "12.2/47.3769/8.5417"
   },
@@ -25,7 +25,7 @@
     "description": "OSM Bright is a general-purpose basemap showcasing the great detail of OpenStreetMap data. It is a good starting point for your own complex basemaps.",
     "github_url": "https://github.com/openmaptiles/osm-bright-gl-style",
     "cloud_url": "https://cloud.maptiler.com/maps/bright/",
-    "style_id": "bright-v2",
+    "style_id": "bright",
     "img": "styles/bright.webp",
     "preview_hash": "12.2/47.3769/8.5417"
   },
@@ -45,7 +45,7 @@
     "description": "Dark Matter is a dark basemap and a good starting point for other darker designs. The cartography by Stamen Design is licensed under CC-BY.",
     "github_url": "https://github.com/openmaptiles/dark-matter-gl-style",
     "cloud_url": "https://cloud.maptiler.com/maps/darkmatter/",
-    "style_id": "dataviz-dark",
+    "style_id": "darkmatter",
     "img": "styles/darkmatter.webp",
     "preview_hash": "12.2/47.3769/8.5417"
   },
