@@ -1,0 +1,81 @@
+@use "config" as *;
+
+// The /docs/terminology/ index: hero, then the flat A–Z term list.
+//
+// UNLAYERED, all of it — and that is the whole design note. The page renders inside
+// the docs layout's `<article class="docs-content prose">`, so every element here is
+// a prose descendant. `prose` lives in @layer utilities and _element-overrides.scss
+// is unlayered, and BOTH outrank @layer components no matter the specificity — so a
+// layered version of this file lost `list-style`, `padding`, every margin, and the
+// link and description colours. Same trap, same fix, as the unlayered tail of
+// _schema-page.scss.
+//
+// `.prose :where(ul)` and friends contribute no specificity through `:where()`, so a
+// single unlayered class clears them. The term link is the exception: the ported
+// `.prose a:not(.no-underline)` in vendor/_typography.scss marks EVERY declaration
+// `!important`, which no specificity can outrank. The only escape is the class name
+// inside its own `:not()` — so the anchor carries a literal `no-underline`, exactly as
+// .appcard__badge-link does in _docs-embedded.scss. Removing that class from the
+// markup silently reverts the link to grey prose styling.
+
+.glossary__hero {
+  padding-bottom: 2rem;                        // pb-8
+  margin-bottom: 2.5rem;                       // mb-10
+  border-bottom: 1px solid var(--color-gray-200);
+}
+
+// A <div>, not a <header>: _element-overrides.scss styles the `header` element for
+// the site chrome (surface background, border token), and this would inherit it.
+.glossary__title {
+  @include text(4xl);
+  font-weight: 700;                            // font-bold
+  margin: 0 0 0.75rem;                         // mb-3, beating prose's .888em
+}
+
+.glossary__lede {
+  @include text(lg);
+  color: var(--color-gray-600);
+  margin: 0;
+  max-width: 42rem;                            // keeps the measure readable on wide screens
+}
+
+// ── term list ────────────────────────────────────────────────────────────────
+// The markers carry no meaning here — the row rhythm comes from the item borders.
+.glossary__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.glossary__item {
+  margin: 0;                                   // prose puts .5em on every li
+  padding: 1.25rem 0;                          // py-5
+  border-bottom: 1px solid var(--omt-border);
+}
+
+.glossary__item:last-child {
+  border-bottom: 0;
+}
+
+// Requires the `no-underline` class on the anchor — see the note at the top.
+.glossary__link {
+  @include text(lg);
+  display: inline-block;
+  font-weight: 600;                            // font-semibold
+  color: var(--omt-text-dark);                 // the heading colour, not --omt-accent
+  text-decoration: none;
+
+  &:hover {
+    color: var(--omt-text-dark);
+    text-decoration: underline;
+  }
+}
+
+// Beats the unlayered `p, li { color: --omt-text-body }` in _element-overrides.scss
+// on specificity, and prose's own `p` margins by being unlayered.
+.glossary__desc {
+  @include text(base);
+  color: var(--color-gray-600);
+  margin: 0.25rem 0 0;                         // mt-1
+  max-width: 46rem;
+}

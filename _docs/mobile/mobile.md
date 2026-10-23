@@ -11,7 +11,7 @@ description: Create a native mobile app for Android and iOS using the MapTiler M
 
 ## Mobile Map Development Overview
 
-Using OpenStreetMap data and the OpenMapTiles schema, you can build stunning, fast, and fully interactive maps directly inside native mobile applications. Because vector tiles are rendered on the device itself using the GPU, mobile maps respond instantly to user gestures (rotation, tilting, zooming) and allow for dynamic visual style changes in real time.
+Using [OpenStreetMap](/docs/terminology/openstreetmap/) data and the OpenMapTiles schema, you can build stunning, fast, and fully interactive maps directly inside native mobile applications. Because [vector tiles](/docs/terminology/vector-tiles/) are rendered on the device itself using the GPU, mobile maps respond instantly to user gestures (rotation, tilting, zooming) and allow for dynamic visual style changes in real time.
 
 To display OpenMapTiles on mobile devices, developers have two primary native options: the official **MapTiler Mobile SDKs** (the recommended, modern approach) or the community-led **MapLibre Native SDKs**.
 
@@ -22,7 +22,7 @@ MapTiler provides modern, dedicated mobile SDKs specifically optimized for rende
 ### MapTiler SDK for iOS
 The native iOS SDK is written in Swift and designed to integrate seamlessly with modern Apple development environments:
 - **Framework Support**: Features native support for both **SwiftUI** and traditional **UIKit** application lifecycles.
-- **Modern Features**: Includes out-of-the-box support for 3D terrain rendering, smooth animations, and high-performance vector graphics.
+- **Modern Features**: Includes out-of-the-box support for [3D terrain](/docs/terminology/3d-terrain/) rendering, smooth animations, and high-performance vector graphics.
 - **Easy Styles**: Automatically loads and caches standard OpenMapTiles styles (like Basic, Streets, and Outdoor) using your MapTiler Cloud API key.
 
 ### MapTiler SDK for Android
@@ -46,7 +46,7 @@ Explore beautiful map styles, switch on 3D terrain, and try the geolocation feat
 </p>
 
 <p class="appcard__text">
-Its cartography comes from MapTiler’s next-generation vector schema, but the same rendering pipeline, dynamic style switching and mobile look-and-feel are what you get when you serve OpenMapTiles vector tiles to the mobile SDKs described above.
+Its [cartography](/docs/terminology/cartography/) comes from MapTiler’s next-generation vector schema, but the same rendering pipeline, dynamic style switching and mobile look-and-feel are what you get when you serve OpenMapTiles vector tiles to the mobile SDKs described above.
 </p>
 
 {%- comment -%}
@@ -77,14 +77,14 @@ file changed, which would drift on the next extract.
 
 If you prefer pure open-source alternatives, the community-driven **MapLibre Native** ecosystem is fully compatible with OpenMapTiles. It is a direct fork of Mapbox GL Native prior to its license change.
 
-- **MapLibre Native for iOS**: Easily integrated via Swift Package Manager or CocoaPods. Allows you to load any OpenMapTiles style JSON endpoint.
+- **MapLibre Native for iOS**: Easily integrated via Swift Package Manager or CocoaPods. Allows you to load any OpenMapTiles [style JSON](/docs/terminology/style-json/) endpoint.
 - **MapLibre Native for Android**: Distributed via Maven/Gradle. Offers deep control over the rendering pipeline and is perfect for fully customized mapping experiences.
 
 ---
 
 ## Cross-Platform Frameworks
 
-For multiplatform applications, you can share a single codebase across iOS and Android while retaining high-performance vector map rendering:
+For multiplatform applications, you can share a single codebase across iOS and Android while retaining high-performance vector [map rendering](/docs/terminology/map-rendering/):
 
 ### Flutter
 
@@ -113,4 +113,4 @@ One of the greatest features of vector maps is the ability to run completely off
 1. **Bundled Tiles**: Pack highly compressed `.mbtiles` packages containing local OpenMapTiles data directly inside the mobile app's asset folder.
 2. **On-Demand Downloads**: Programmatically download a bounding box of OpenMapTiles data and cache it locally on the user's storage card, enabling offline navigation and exploration in remote regions.
 
-<a href="https://docs.maptiler.com" class="btn">Get Started with MapTiler Mobile SDKs</a>
+<a href="https://docs.maptiler.com/mobile-sdk/ios/examples/offline-get-started/" class="btn">Get Started with MapTiler Mobile SDKs</a>

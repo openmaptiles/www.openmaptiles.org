@@ -128,6 +128,21 @@
     overflow-wrap: break-word;
   }
 
+  // Stands in for a group title, separating the group from the one above rather
+  // than naming it. Same rule as the site header's bottom border (1px solid
+  // --omt-border), so the two lines match. `border: 0` first because the UA
+  // stylesheet gives `hr` an inset border on all four sides.
+  //
+  // Full width of the sidebar body's content box, which lines up with the outer
+  // edge of the group titles above it. The bottom margin replaces the 0.5rem the
+  // title would have contributed, with a little more room so the rule does not
+  // crowd the link under it.
+  .docs-sidebar__separator {
+    border: 0;
+    border-top: 1px solid var(--omt-border);
+    margin: 0 0 1rem;
+  }
+
   .docs-sidebar__link {
     display: block;
     padding-inline: 1rem;                      // px-4
