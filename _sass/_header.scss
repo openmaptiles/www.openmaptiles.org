@@ -77,6 +77,14 @@
     transition: all 0.15s $ease;
   }
 
+  // Separates on-site sections from off-site links (Downloads).
+  .site-header__divider {
+    align-self: center;
+    width: 1px;
+    height: 1.25rem;                           // h-5
+    background-color: var(--color-gray-200);
+  }
+
   .site-header__github-wrap {
     display: none;
 
@@ -200,6 +208,26 @@
     font-weight: 500;
     text-decoration: none;
     transition: background-color 0.15s, color 0.15s;
+  }
+
+  .site-header__mobile-divider {
+    margin: 0.25rem 1rem;
+    border: 0;
+    border-top: 1px solid var(--color-gray-100);
+  }
+
+  // Off-site nav link, desktop and mobile. Kept after .site-header__mobile-link
+  // so its display wins over that rule's `block`.
+  .site-header__link--external {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+
+    svg {
+      width: 0.75rem;
+      height: 0.75rem;
+      opacity: 0.6;
+    }
   }
 
   .site-header__mobile-github {

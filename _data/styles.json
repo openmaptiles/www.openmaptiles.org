@@ -4,7 +4,7 @@
     "title": "OSM OpenMapTiles",
     "description": "The official style of OpenMapTiles, designed to display all features in vector tiles. Heavily inspired by OSM Carto.",
     "github_url": "https://github.com/openmaptiles/openmaptiles/tree/master/style",
-    "cloud_url": "https://cloud.maptiler.com/maps/openstreetmap/",
+    "cloud_url": "https://www.maptiler.com/maps/#style=openstreetmap",
     "style_id": "openstreetmap",
     "img": "styles/openmaptiles.webp",
     "preview_hash": "12.2/51.5074/-0.1278"
@@ -14,7 +14,7 @@
     "title": "MapTiler Basic",
     "description": "MapTiler Basic is a basemap that tries to stay in the background and only give the most relevant information.",
     "github_url": "https://github.com/openmaptiles/maptiler-basic-gl-style",
-    "cloud_url": "https://cloud.maptiler.com/maps/basic/",
+    "cloud_url": "https://www.maptiler.com/maps/#style=basic",
     "style_id": "basic",
     "img": "styles/basic.webp",
     "preview_hash": "12.2/47.3769/8.5417"
@@ -24,7 +24,7 @@
     "title": "OSM Bright",
     "description": "OSM Bright is a general-purpose basemap showcasing the great detail of OpenStreetMap data. It is a good starting point for your own complex basemaps.",
     "github_url": "https://github.com/openmaptiles/osm-bright-gl-style",
-    "cloud_url": "https://cloud.maptiler.com/maps/bright/",
+    "cloud_url": "https://www.maptiler.com/maps/#style=bright",
     "style_id": "bright",
     "img": "styles/bright.webp",
     "preview_hash": "12.2/47.3769/8.5417"
@@ -34,7 +34,7 @@
     "title": "Positron",
     "description": "Positron is a beautiful light basemap, ideal as a non-obtrusive base for your data visualizations. The cartography by Stamen Design is licensed under CC-BY.",
     "github_url": "https://github.com/openmaptiles/positron-gl-style",
-    "cloud_url": "https://cloud.maptiler.com/maps/positron/",
+    "cloud_url": "https://www.maptiler.com/maps/#style=positron",
     "style_id": "positron",
     "img": "styles/positron.webp",
     "preview_hash": "12.2/47.3769/8.5417"
@@ -44,7 +44,7 @@
     "title": "Dark Matter",
     "description": "Dark Matter is a dark basemap and a good starting point for other darker designs. The cartography by Stamen Design is licensed under CC-BY.",
     "github_url": "https://github.com/openmaptiles/dark-matter-gl-style",
-    "cloud_url": "https://cloud.maptiler.com/maps/darkmatter/",
+    "cloud_url": "https://www.maptiler.com/maps/#style=darkmatter",
     "style_id": "darkmatter",
     "img": "styles/darkmatter.webp",
     "preview_hash": "12.2/47.3769/8.5417"

@@ -60,7 +60,7 @@ For example, the OpenStreetMap style built on the [OpenMapTiles schema](/docs/sc
 To add it to QGIS:
 
 1. Open **Layer > Add Layer > Add WMS/WMTS Layer**, then click **New** to create a connection.
-2. Name the connection and paste the capabilities URL into the **URL** field, with [your own API key](https://cloud.maptiler.com/account/keys/) in place of `YOUR_MAPTILER_API_KEY`.
+2. Name the connection and paste the capabilities URL into the **URL** field, with [your own API key](https://www.maptiler.com/cloud/) in place of `YOUR_MAPTILER_API_KEY`.
 3. Click **OK**, then **Connect**. QGIS reads the capabilities document and lists the available layers and tile matrix sets.
 4. Select a layer and click **Add**.
 
