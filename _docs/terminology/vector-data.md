@@ -1,7 +1,7 @@
 ---
 layout: docs
 category: terminology
-title: Vector data
+title: Vector Data
 description: Vector data describes geographic features as points, lines and polygons with coordinates and attributes, rather than as a grid of pixels.
 ---
 

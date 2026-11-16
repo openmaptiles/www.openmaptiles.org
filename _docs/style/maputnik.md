@@ -2,13 +2,13 @@
 layout: docs
 category: style
 order: 2
-title: Design a style with Maputnik
+title: Design a Style with Maputnik
 description: Edit map style with open-source Maputnik map design tool.
 ---
 
 [Maputnik](https://maputnik.github.io/) is a free and open-source visual editor for the [GL style specification](https://docs.maptiler.com/gl-style-specification/). You can either use the online version of Maputnik at [https://maplibre.org/maputnik/](https://maplibre.org/maputnik/) or [download the editor](https://github.com/maplibre/maputnik/releases) to use it locally.
 
-## Edit the Style online
+## Edit the style online
 
 The easiest way to get started is to choose an existing style as a starting point. On [https://maplibre.org/maputnik/](https://maplibre.org/maputnik/) you can choose from many existing styles that work well with OpenMapTiles and directly edit them.
 
@@ -16,7 +16,7 @@ Once you are done editing the style, you can download the modified style in JSON
 
 ![Choose style in Maputnik](/media/maputnik_choose_style.png)
 
-## Edit the Style locally
+## Edit the style locally
 
 If you want to edit the style locally with the [Maputnik CLI](https://github.com/maplibre/maputnik/releases), clone one of the OpenMapTiles style GitHub repositories. On the [Styles](/#map-styles) page, you can find a list of styles with a preview.
 

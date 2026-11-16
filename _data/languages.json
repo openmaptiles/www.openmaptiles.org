@@ -2,7 +2,7 @@
   {
     "code": "native",
     "languagename": "Native",
-    "title": "OpenStreetMap in local language",
+    "title": "OpenStreetMap in Local Language",
     "order": 0
   },
   {
@@ -16,7 +16,8 @@
     "code": "de",
     "languagename": "German",
     "title": "OpenStreetMap in German",
-    "titlelocalized": "OpenStreetMap in Deutsch",
+    "titlelocalized": "OpenStreetMap auf Deutsch",
+    "titlelang": "de",
     "order": 2,
     "bbox": "5.25146,45.69648,17.35840,55.24616"
   },
@@ -25,6 +26,7 @@
     "languagename": "French",
     "title": "OpenStreetMap in French",
     "titlelocalized": "OpenStreetMap en français",
+    "titlelang": "fr",
     "order": 3,
     "bbox": "-5.14024,41.33375,9.55932,51.08940"
   },
@@ -32,7 +34,8 @@
     "code": "es",
     "languagename": "Spanish",
     "title": "OpenStreetMap in Spanish",
-    "titlelocalized": "OpenStreetMap en Español",
+    "titlelocalized": "OpenStreetMap en español",
+    "titlelang": "es",
     "order": 4,
     "bbox": "-18.39368,27.43354,4.59189,43.99331"
   },
@@ -41,6 +44,7 @@
     "languagename": "Czech",
     "title": "OpenStreetMap in Czech",
     "titlelocalized": "OpenStreetMap v češtině",
+    "titlelang": "cs",
     "order": 100,
     "bbox": "12.08477,48.54292,18.86321,51.06426"
   },
@@ -48,6 +52,8 @@
     "code": "ar",
     "languagename": "Arabic",
     "title": "OpenStreetMap in Arabic",
+    "titlelocalized": "OpenStreetMap باللغة العربية",
+    "titlelang": "ar",
     "order": 1000,
     "nonlatin": true,
     "bbox": "-16.76514,10.66855,74.37744,44.78367"
@@ -56,6 +62,8 @@
     "code": "az",
     "languagename": "Azerbaijani",
     "title": "OpenStreetMap in Azerbaijani",
+    "titlelocalized": "OpenStreetMap Azərbaycan dilində",
+    "titlelang": "az",
     "order": 1000,
     "bbox": "44.76337,38.39296,51.17656,41.96468"
   },
@@ -63,6 +71,8 @@
     "code": "be",
     "languagename": "Belarusian",
     "title": "OpenStreetMap in Belarusian",
+    "titlelocalized": "OpenStreetMap па-беларуску",
+    "titlelang": "be",
     "order": 1000,
     "nonlatin": true,
     "bbox": "23.17833,51.26269,32.76278,56.17224"
@@ -71,6 +81,8 @@
     "code": "bg",
     "languagename": "Bulgarian",
     "title": "OpenStreetMap in Bulgarian",
+    "titlelocalized": "OpenStreetMap на български",
+    "titlelang": "bg",
     "order": 1000,
     "nonlatin": true,
     "bbox": "22.35715,41.23537,28.88754,44.21622"
@@ -79,6 +91,8 @@
     "code": "br",
     "languagename": "Breton",
     "title": "OpenStreetMap in Breton",
+    "titlelocalized": "OpenStreetMap e brezhoneg",
+    "titlelang": "br",
     "order": 1000,
     "bbox": "-5.14403,47.27775,-1.01569,49.11330"
   },
@@ -86,6 +100,8 @@
     "code": "bs",
     "languagename": "Bosnian",
     "title": "OpenStreetMap in Bosnian",
+    "titlelocalized": "OpenStreetMap na bosanskom",
+    "titlelang": "bs",
     "order": 1000,
     "bbox": "15.72868,42.55531,19.62373,45.27641"
   },
@@ -93,6 +109,8 @@
     "code": "ca",
     "languagename": "Catalan",
     "title": "OpenStreetMap in Catalan",
+    "titlelocalized": "OpenStreetMap en català",
+    "titlelang": "ca",
     "order": 1000,
     "bbox": "0.15941,40.52298,3.32225,42.86152"
   },
@@ -101,6 +119,7 @@
     "languagename": "Welsh",
     "title": "OpenStreetMap in Welsh",
     "titlelocalized": "OpenStreetMap yn Gymraeg",
+    "titlelang": "cy",
     "order": 1000,
     "bbox": "-5.80773,51.22903,-2.64986,53.63500"
   },
@@ -108,6 +127,8 @@
     "code": "da",
     "languagename": "Danish",
     "title": "OpenStreetMap in Danish",
+    "titlelocalized": "OpenStreetMap på dansk",
+    "titlelang": "da",
     "order": 1000,
     "bbox": "7.71533,54.45167,15.55306,57.95243"
   },
@@ -115,6 +136,8 @@
     "code": "el",
     "languagename": "Greek",
     "title": "OpenStreetMap in Greek",
+    "titlelocalized": "OpenStreetMap στα ελληνικά",
+    "titlelang": "el",
     "order": 1000,
     "nonlatin": true,
     "bbox": "19.11275,34.71889,29.68381,41.74889"
@@ -123,6 +146,8 @@
     "code": "eo",
     "languagename": "Esperanto",
     "title": "OpenStreetMap in Esperanto",
+    "titlelocalized": "OpenStreetMap en Esperanto",
+    "titlelang": "eo",
     "order": 1000,
     "bbox": "-15.00000,26.00000,35.00000,76.00000"
   },
@@ -130,6 +155,8 @@
     "code": "et",
     "languagename": "Estonian",
     "title": "OpenStreetMap in Estonian",
+    "titlelocalized": "OpenStreetMap eesti keeles",
+    "titlelang": "et",
     "order": 1000,
     "bbox": "21.38261,57.50933,28.21002,59.93833"
   },
@@ -137,6 +164,8 @@
     "code": "fi",
     "languagename": "Finnish",
     "title": "OpenStreetMap in Finnish",
+    "titlelocalized": "OpenStreetMap suomeksi",
+    "titlelang": "fi",
     "order": 1000,
     "bbox": "19.08320,59.45416,31.58671,70.09229"
   },
@@ -144,6 +173,8 @@
     "code": "fy",
     "languagename": "Western Frisian",
     "title": "OpenStreetMap in Western Frisian",
+    "titlelocalized": "OpenStreetMap yn it Frysk",
+    "titlelang": "fy",
     "order": 1000,
     "bbox": "4.81838,52.76481,6.42761,53.53971"
   },
@@ -151,6 +182,8 @@
     "code": "ga",
     "languagename": "Irish",
     "title": "OpenStreetMap in Irish",
+    "titlelocalized": "OpenStreetMap i nGaeilge",
+    "titlelang": "ga",
     "order": 1000,
     "bbox": "-11.01338,51.22200,-5.65824,55.63600"
   },
@@ -158,6 +191,8 @@
     "code": "gd",
     "languagename": "Scottish Gaelic",
     "title": "OpenStreetMap in Scottish Gaelic",
+    "titlelocalized": "OpenStreetMap ann an Gàidhlig",
+    "titlelang": "gd",
     "order": 1000,
     "bbox": "-14.01552,54.43398,-0.32092,61.06100"
   },
@@ -165,6 +200,8 @@
     "code": "he",
     "languagename": "Hebrew",
     "title": "OpenStreetMap in Hebrew",
+    "titlelocalized": "OpenStreetMap בעברית",
+    "titlelang": "he",
     "order": 1000,
     "nonlatin": true,
     "bbox": "34.26750,29.45338,35.89502,33.33563"
@@ -173,6 +210,8 @@
     "code": "hr",
     "languagename": "Croatian",
     "title": "OpenStreetMap in Croatian",
+    "titlelocalized": "OpenStreetMap na hrvatskom",
+    "titlelang": "hr",
     "order": 1000,
     "bbox": "13.21048,42.17660,19.44727,46.55503"
   },
@@ -180,6 +219,8 @@
     "code": "hu",
     "languagename": "Hungarian",
     "title": "OpenStreetMap in Hungarian",
+    "titlelocalized": "OpenStreetMap magyarul",
+    "titlelang": "hu",
     "order": 1000,
     "bbox": "16.11389,45.73713,22.89650,48.58526"
   },
@@ -187,6 +228,8 @@
     "code": "hy",
     "languagename": "Armenian",
     "title": "OpenStreetMap in Armenian",
+    "titlelocalized": "OpenStreetMap հայերենով",
+    "titlelang": "hy",
     "order": 1000,
     "nonlatin": true,
     "bbox": "43.44714,38.84048,46.63331,41.30165"
@@ -195,6 +238,8 @@
     "code": "is",
     "languagename": "Icelandic",
     "title": "OpenStreetMap in Icelandic",
+    "titlelocalized": "OpenStreetMap á íslensku",
+    "titlelang": "is",
     "order": 1000,
     "bbox": "-25.01351,63.08592,-12.80462,67.35300"
   },
@@ -203,6 +248,7 @@
     "languagename": "Italian",
     "title": "OpenStreetMap in Italian",
     "titlelocalized": "OpenStreetMap in italiano",
+    "titlelang": "it",
     "order": 1000,
     "bbox": "6.62727,35.28896,18.78447,47.09215"
   },
@@ -210,6 +256,8 @@
     "code": "ja",
     "languagename": "Japanese",
     "title": "OpenStreetMap in Japanese",
+    "titlelocalized": "OpenStreetMap 日本語版",
+    "titlelang": "ja",
     "order": 1000,
     "nonlatin": true,
     "bbox": "122.5607,21.20992,153.8901,45.80245"
@@ -218,6 +266,8 @@
     "code": "ja_kana",
     "languagename": "Japanese (Kana)",
     "title": "OpenStreetMap in Japanese (Kana)",
+    "titlelocalized": "OpenStreetMap 日本語版（カナ）",
+    "titlelang": "ja",
     "order": 1000,
     "nonlatin": true,
     "bbox": "122.71418,20.21458,154.20554,45.71120"
@@ -226,6 +276,8 @@
     "code": "ja_rm",
     "languagename": "Japanese (Latin)",
     "title": "OpenStreetMap in Japanese (Latin)",
+    "titlelocalized": "OpenStreetMap Nihongo-ban (rōmaji)",
+    "titlelang": "ja-Latn",
     "order": 1000,
     "bbox": "122.71418,20.21458,154.20554,45.71120"
   },
@@ -233,6 +285,8 @@
     "code": "ka",
     "languagename": "Georgian",
     "title": "OpenStreetMap in Georgian",
+    "titlelocalized": "OpenStreetMap ქართულად",
+    "titlelang": "ka",
     "order": 1000,
     "nonlatin": true,
     "bbox": "39.95703,41.04011,46.73233,43.58580"
@@ -241,6 +295,8 @@
     "code": "kk",
     "languagename": "Kazakh",
     "title": "OpenStreetMap in Kazakh",
+    "titlelocalized": "OpenStreetMap қазақ тілінде",
+    "titlelang": "kk",
     "order": 1000,
     "nonlatin": true,
     "bbox": "46.49322,40.56869,87.31563,55.44217"
@@ -249,6 +305,8 @@
     "code": "kn",
     "languagename": "Kannada",
     "title": "OpenStreetMap in Kannada",
+    "titlelocalized": "ಕನ್ನಡದಲ್ಲಿ OpenStreetMap",
+    "titlelang": "kn",
     "order": 1000,
     "nonlatin": true,
     "bbox": "74.05439,11.59456,78.58758,18.47665"
@@ -257,6 +315,8 @@
     "code": "ko",
     "languagename": "Korean",
     "title": "OpenStreetMap in Korean",
+    "titlelocalized": "한국어 OpenStreetMap",
+    "titlelang": "ko",
     "order": 1000,
     "nonlatin": true,
     "bbox": "124.37273,32.91046,132.12361,38.61772"
@@ -265,6 +325,8 @@
     "code": "ko_rm",
     "languagename": "Korean (Latin)",
     "title": "OpenStreetMap in Korean (Latin)",
+    "titlelocalized": "Hangugeo OpenStreetMap (romanja)",
+    "titlelang": "ko-Latn",
     "order": 1000,
     "bbox": "124.37273,32.91046,132.12361,38.61772"
   },
@@ -272,6 +334,8 @@
     "code": "la",
     "languagename": "Latin",
     "title": "OpenStreetMap in Latin",
+    "titlelocalized": "OpenStreetMap Latine",
+    "titlelang": "la",
     "order": 1000,
     "bbox": "12.43283,41.88349,12.47283,41.92349"
   },
@@ -279,6 +343,8 @@
     "code": "lb",
     "languagename": "Luxembourgish",
     "title": "OpenStreetMap in Luxembourgish",
+    "titlelocalized": "OpenStreetMap op Lëtzebuergesch",
+    "titlelang": "lb",
     "order": 1000,
     "bbox": "5.73570,49.44786,6.53125,50.18280"
   },
@@ -286,6 +352,8 @@
     "code": "lt",
     "languagename": "Lithuanian",
     "title": "OpenStreetMap in Lithuanian",
+    "titlelocalized": "OpenStreetMap lietuvių kalba",
+    "titlelang": "lt",
     "order": 1000,
     "bbox": "20.65572,53.89679,26.83552,56.45042"
   },
@@ -293,6 +361,8 @@
     "code": "lv",
     "languagename": "Latvian",
     "title": "OpenStreetMap in Latvian",
+    "titlelocalized": "OpenStreetMap latviešu valodā",
+    "titlelang": "lv",
     "order": 1000,
     "bbox": "20.60099,55.67465,28.24149,58.08557"
   },
@@ -300,6 +370,8 @@
     "code": "mk",
     "languagename": "Macedonian",
     "title": "OpenStreetMap in Macedonian",
+    "titlelocalized": "OpenStreetMap на македонски",
+    "titlelang": "mk",
     "order": 1000,
     "nonlatin": true,
     "bbox": "20.45290,40.85248,23.03414,42.37390"
@@ -308,6 +380,8 @@
     "code": "mt",
     "languagename": "Maltese",
     "title": "OpenStreetMap in Maltese",
+    "titlelocalized": "OpenStreetMap bil-Malti",
+    "titlelang": "mt",
     "order": 1000,
     "bbox": "13.93604,35.58537,14.82279,36.28255"
   },
@@ -315,6 +389,8 @@
     "code": "nl",
     "languagename": "Dutch",
     "title": "OpenStreetMap in Dutch",
+    "titlelocalized": "OpenStreetMap in het Nederlands",
+    "titlelang": "nl",
     "order": 1000,
     "bbox": "3.31497,50.75037,7.22750,53.67661"
   },
@@ -322,6 +398,8 @@
     "code": "no",
     "languagename": "Norwegian",
     "title": "OpenStreetMap in Norwegian",
+    "titlelocalized": "OpenStreetMap på norsk",
+    "titlelang": "no",
     "order": 1000,
     "bbox": "4.40078,57.91886,31.11181,71.18544"
   },
@@ -330,6 +408,7 @@
     "languagename": "Polish",
     "title": "OpenStreetMap in Polish",
     "titlelocalized": "OpenStreetMap w języku polskim",
+    "titlelang": "pl",
     "order": 1000,
     "bbox": "14.06964,49.00205,24.14578,55.03605"
   },
@@ -337,6 +416,8 @@
     "code": "pt",
     "languagename": "Portuguese",
     "title": "OpenStreetMap in Portuguese",
+    "titlelocalized": "OpenStreetMap em português",
+    "titlelang": "pt",
     "order": 1000,
     "bbox": "-9.50053,36.94726,-6.18916,42.15431"
   },
@@ -344,13 +425,17 @@
     "code": "rm",
     "languagename": "Romansh",
     "title": "OpenStreetMap in Romansh",
+    "titlelocalized": "OpenStreetMap en rumantsch",
+    "titlelang": "rm",
     "order": 1000,
     "bbox": "8.65106,46.16918,10.49229,47.06515"
   },
   {
     "code": "ro",
     "languagename": "Romanian",
-    "title": "OpenStreetMap in Romania",
+    "title": "OpenStreetMap in Romanian",
+    "titlelocalized": "OpenStreetMap în limba română",
+    "titlelang": "ro",
     "order": 1000,
     "bbox": "20.26200,43.61881,30.04543,48.26547"
   },
@@ -359,6 +444,7 @@
     "languagename": "Russian",
     "title": "OpenStreetMap in Russian",
     "titlelocalized": "OpenStreetMap на русском",
+    "titlelang": "ru",
     "order": 1000,
     "nonlatin": true,
     "bbox": "19.63890,41.18510,60.00000,71.00000"
@@ -368,6 +454,7 @@
     "languagename": "Slovak",
     "title": "OpenStreetMap in Slovak",
     "titlelocalized": "OpenStreetMap v slovenčine",
+    "titlelang": "sk",
     "order": 1000,
     "bbox": "16.83319,47.73118,22.56571,49.61382"
   },
@@ -375,6 +462,8 @@
     "code": "sl",
     "languagename": "Slovene",
     "title": "OpenStreetMap in Slovene",
+    "titlelocalized": "OpenStreetMap v slovenščini",
+    "titlelang": "sl",
     "order": 1000,
     "bbox": "13.37547,45.42147,16.59670,46.87668"
   },
@@ -382,6 +471,8 @@
     "code": "sq",
     "languagename": "Albanian",
     "title": "OpenStreetMap in Albanian",
+    "titlelocalized": "OpenStreetMap në shqip",
+    "titlelang": "sq",
     "order": 1000,
     "bbox": "19.00099,39.64039,21.05743,42.66108"
   },
@@ -389,6 +480,8 @@
     "code": "sr",
     "languagename": "Serbian (Cyrillic)",
     "title": "OpenStreetMap in Serbian (Cyrillic)",
+    "titlelocalized": "OpenStreetMap на српском",
+    "titlelang": "sr-Cyrl",
     "order": 1000,
     "nonlatin": true,
     "bbox": "18.81499,41.85764,23.00631,46.19028"
@@ -397,6 +490,8 @@
     "code": "sr-Latn",
     "languagename": "Serbian (Latin)",
     "title": "OpenStreetMap in Serbian (Latin)",
+    "titlelocalized": "OpenStreetMap na srpskom",
+    "titlelang": "sr-Latn",
     "order": 1000,
     "bbox": "18.81499,41.85764,23.00631,46.19028"
   },
@@ -404,6 +499,8 @@
     "code": "sv",
     "languagename": "Swedish",
     "title": "OpenStreetMap in Swedish",
+    "titlelocalized": "OpenStreetMap på svenska",
+    "titlelang": "sv",
     "order": 1000,
     "bbox": "10.59350,55.13710,24.17769,69.05997"
   },
@@ -411,6 +508,8 @@
     "code": "th",
     "languagename": "Thai",
     "title": "OpenStreetMap in Thai",
+    "titlelocalized": "OpenStreetMap ภาษาไทย",
+    "titlelang": "th",
     "order": 1000,
     "nonlatin": true,
     "bbox": "97.34381,5.61285,105.63681,20.46481"
@@ -419,6 +518,8 @@
     "code": "tr",
     "languagename": "Turkish",
     "title": "OpenStreetMap in Turkish",
+    "titlelocalized": "Türkçe OpenStreetMap",
+    "titlelang": "tr",
     "order": 1000,
     "bbox": "25.56563,35.80590,44.81766,42.29700"
   },
@@ -426,6 +527,8 @@
     "code": "uk",
     "languagename": "Ukrainian",
     "title": "OpenStreetMap in Ukrainian",
+    "titlelocalized": "OpenStreetMap українською",
+    "titlelang": "uk",
     "order": 1000,
     "nonlatin": true,
     "bbox": "22.13706,44.18460,40.22781,52.37975"
@@ -434,7 +537,8 @@
     "code": "zh",
     "languagename": "Chinese",
     "title": "OpenStreetMap in Chinese",
-    "titlelocalized": "OpenStreetMap中文",
+    "titlelocalized": "OpenStreetMap 中文版",
+    "titlelang": "zh",
     "order": 1000,
     "nonlatin": true,
     "bbox": "73.41788,14.27437,134.8559,53.65559"

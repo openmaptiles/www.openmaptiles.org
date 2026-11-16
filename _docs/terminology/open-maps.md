@@ -1,7 +1,7 @@
 ---
 layout: docs
 category: terminology
-title: Open maps
+title: Open Maps
 description: Open maps are maps built from openly licensed data, schemas, styles and software, so you can host and change every part of the stack yourself.
 ---
 

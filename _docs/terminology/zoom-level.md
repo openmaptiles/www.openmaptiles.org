@@ -1,7 +1,7 @@
 ---
 layout: docs
 category: terminology
-title: Zoom level
+title: Zoom Level
 description: A zoom level is one step in the tile pyramid, defining the geographic scale and detail represented by a single map tile.
 ---
 

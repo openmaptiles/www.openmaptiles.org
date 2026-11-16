@@ -1,7 +1,7 @@
 ---
 layout: docs
 category: terminology
-title: Style layer
+title: Style Layer
 description: A style layer is a single block inside a map style (style.json) that decides how one layer of map data is drawn.
 ---
 

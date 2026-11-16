@@ -1,7 +1,7 @@
 ---
 layout: docs
 category: terminology
-title: Vector tiles
+title: Vector Tiles
 description: Vector tiles are map tiles that carry geometry and attributes instead of a finished image, so the client draws the map itself.
 ---
 

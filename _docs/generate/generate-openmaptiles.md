@@ -2,7 +2,7 @@
 layout: docs
 category: generate
 order: 1
-title: Generate your own map
+title: Generate Your Own Map
 description: Generate your own map using open-source tools
 redirect_from: /docs/generate/generate-vector-tiles/
 ---
@@ -12,7 +12,7 @@ is open source and licensed under [BSD + CC-BY](https://github.com/openmaptiles/
 
 [© OpenMapTiles](http://openmaptiles.org/) [© OpenStreetMap contributors](http://www.openstreetmap.org/copyright)
 
-## Requirements & Recommendations
+## Requirements & recommendations
 
 To work on OpenMapTiles, we recommend:
 
@@ -34,7 +34,7 @@ git clone https://github.com/openmaptiles/openmaptiles.git
 cd ./openmaptiles
 ```
 
-## Generate the Vector Tiles
+## Generate the vector tiles
 
 Download the latest Docker images.
 

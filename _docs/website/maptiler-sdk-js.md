@@ -12,14 +12,14 @@ order: 1
 
 Since the MapTiler SDK JS is designed to work seamlessly with the OpenMapTiles schema, it is the recommended client library if you host your maps on MapTiler Cloud or use standard OpenMapTiles styles.
 
-### Key Benefits
+### Key benefits
 
 - **Simpler Configuration**: No need to manually construct complex style URLs. Simply specify style presets (e.g., `STREETS`, `SATELLITE`, `OUTDOOR`, `WINTER`) and let the SDK handle the rest.
 - **Auto-Configured Endpoints**: Fonts (glyphs) and sprites are automatically set up using optimal CDN endpoints compatible with the official OpenMapTiles schemas.
 - **Advanced UI Controls**: Includes built-in support for language selection (easily switch the language of OpenMapTiles labels), geocoding (search for places), and coordinates controls out of the box.
 - **3D Terrain & Globe**: Native support for [3D terrain](/docs/terminology/3d-terrain/) representation and seamless global projection.
 
-### Quick Start
+### Quick start
 
 To use the MapTiler SDK JS, include the library and CSS files in the `<head>` of your HTML document:
 
@@ -67,7 +67,7 @@ Then, initialize the map inside a container element:
 </html>
 ```
 
-### Full Compatibility with OpenMapTiles
+### Full compatibility with OpenMapTiles
 
 When loading standard [vector tiles](/docs/terminology/vector-tiles/) from OpenMapTiles, the SDK translates schema definitions under the hood, ensuring perfect vector representation of administrative borders, road symbols, POIs, and geographic features.
 

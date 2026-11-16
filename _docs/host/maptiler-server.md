@@ -1,7 +1,7 @@
 ---
 layout: docs
 category: host
-title: Serve maps with MapTiler Server
+title: Serve Maps with MapTiler Server
 description: Serve raster and vector tiles with an open-source MapTiler Server
 order: 2
 ---
