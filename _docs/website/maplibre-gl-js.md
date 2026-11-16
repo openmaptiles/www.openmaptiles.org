@@ -61,3 +61,5 @@ All [OpenMapTiles styles](/#map-styles) can be referenced directly in a viewer.
 ## Fonts and sprites
 
 MapLibre GL JS requires fonts to be packaged as PBFs and symbols to be packaged as sprites. Check the [GL style specification documentation](/docs/style/mapbox-gl-style-spec/) for OpenMapTiles to create your own font and sprite packages.
+
+<a href="https://mapsnippets.org/maplibre/" class="btn">Browse MapLibre GL JS code examples on MapSnippets</a>

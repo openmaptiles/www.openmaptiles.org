@@ -72,3 +72,5 @@ Then, initialize the map inside a container element:
 When loading standard [vector tiles](/docs/terminology/vector-tiles/) from OpenMapTiles, the SDK translates schema definitions under the hood, ensuring perfect vector representation of administrative borders, road symbols, POIs, and geographic features.
 
 <a href="https://docs.maptiler.com/sdk-js/" class="btn">Explore MapTiler SDK JS API Reference</a>
+
+<a href="https://mapsnippets.org/maptiler-sdk/" class="btn">Browse MapTiler SDK JS code examples on MapSnippets</a>

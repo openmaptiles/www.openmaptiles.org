@@ -141,4 +141,4 @@ This lets you take advantage of sharp, zoomable vector layers and custom styling
 - **Use Option B (MapTiler Leaflet SDK)** if you want the easiest, plug-and-play setup for high-fidelity vector tiles, automatic multi-language label translation, and official MapTiler Cloud styles.
 - **Use Option C (MapLibre Leaflet Bridge)** if you are self-hosting your vector tiles, running a custom TileServer GL pipeline, or using an independent style URL.
 
-<a href="https://leafletjs.com/" class="btn">Discover the Leaflet Ecosystem</a>
+<a href="https://mapsnippets.org/leaflet/" class="btn">Browse Leaflet code examples on MapSnippets</a>
