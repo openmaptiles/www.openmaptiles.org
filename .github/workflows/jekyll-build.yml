@@ -20,7 +20,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v7
 
-      # Ruby version comes from .ruby-version (3.3.6) via setup-ruby's default. See
+      # Ruby version comes from .ruby-version (3.3) via setup-ruby's default. See
       # deploy.yml for why there is no `ruby-version-file` input here.
       # bundler-cache honours Gemfile.lock.
       - name: Setup Ruby

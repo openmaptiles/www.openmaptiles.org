@@ -39,7 +39,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v7
 
-      # Ruby version comes from .ruby-version (3.3.6): setup-ruby's `ruby-version`
+      # Ruby version comes from .ruby-version (3.3): setup-ruby's `ruby-version`
       # defaults to 'default', which reads that file. Do NOT add `ruby-version-file` —
       # this action has no such input and warns "Unexpected input(s)" while quietly
       # falling back to the same default, so the line looks load-bearing and is not.

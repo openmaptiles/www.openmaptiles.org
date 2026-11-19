@@ -15,7 +15,7 @@ bundle exec jekyll build     # → _site/
 
 | | |
 |---|---|
-| Ruby | **3.3.6**, pinned in `.ruby-version` |
+| Ruby | **3.3**, pinned in `.ruby-version` |
 | Bundler | gems pinned in `Gemfile.lock` — commit lockfile changes |
 | Node | **not required.** Nothing in this repo uses npm. |
 
