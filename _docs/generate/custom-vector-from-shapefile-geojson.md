@@ -2,7 +2,7 @@
 layout: docs
 category: generate
 order: 2
-title: Custom vector tiles from GeoJSON & Shapefile
+title: Custom Vector Tiles from GeoJSON & Shapefile
 description: How to generate custom vector tiles from GeoJSON or Shapefile using open-source tools and combine it with a map.
 redirect_from: /docs/generate/custom-vector/
 ---
@@ -19,7 +19,7 @@ Before using tippecanoe, you need to transform your data into the EPSG:4326 coor
 ogr2ogr -f GeoJSON your_data_in_4326.json -t_srs EPSG:4326 your_data.shp
 ```
 
-## Generate the Vector Tiles
+## Generate the vector tiles
 
 Having your data in a correct coordinate system, you can do the conversion using tippecanoe. The most simple use case is:
 

@@ -1,7 +1,7 @@
 ---
 layout: docs
 category: raster
-title: Custom raster layer
+title: Custom Raster Layer
 description: Create custom raster layer and combine it with any existing raster map.
 order: 2
 ---

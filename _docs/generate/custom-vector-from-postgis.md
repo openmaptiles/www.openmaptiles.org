@@ -2,7 +2,7 @@
 layout: docs
 category: generate
 order: 3
-title: PostGIS custom vector tiles
+title: PostGIS Custom Vector Tiles
 description: How to generate custom vector tiles from a PostGIS database. A step-by-step guide covering data import, OpenMapTiles configuration, and map tile generation.
 ---
 

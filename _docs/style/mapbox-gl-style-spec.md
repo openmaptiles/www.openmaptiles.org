@@ -2,7 +2,7 @@
 layout: docs
 category: style
 order: 3
-title: Style map with Mapbox GL
+title: Style Map with Mapbox GL
 description: Style vector tiles map in browser using the Mapbox GL.
 ---
 
@@ -22,7 +22,7 @@ To display maps with MapLibre GL you need:
 
 OpenMapTiles provides both vector tiles you can download and ready-made styles to use together with them. Check out how to [display a map with MapLibre GL JS](/docs/website/maplibre-gl-js/).
 
-### Data Source
+### Data source
 
 To make your style work with OpenMapTiles vector tiles, you need to point the [data source](https://www.mapbox.com/mapbox-gl-style-spec/#sources) to a tile server.
 

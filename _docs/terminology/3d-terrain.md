@@ -1,7 +1,7 @@
 ---
 layout: docs
 category: terminology
-title: 3D terrain
+title: 3D Terrain
 description: 3D terrain uses elevation data to give a map relief, so hills and valleys have height instead of being drawn flat.
 ---
 

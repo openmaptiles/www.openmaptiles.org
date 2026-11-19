@@ -5,17 +5,17 @@ redirect_from:
   - /mobile/
   - /mobile-app/
   - /mobile/sourcecode/
-title: Create a mobile app
+title: Create a Mobile App
 description: Create a native mobile app for Android and iOS using the MapTiler Mobile SDK and MapLibre Native.
 ---
 
-## Mobile Map Development Overview
+## Mobile map development overview
 
 Using [OpenStreetMap](/docs/terminology/openstreetmap/) data and the OpenMapTiles schema, you can build stunning, fast, and fully interactive maps directly inside native mobile applications. Because [vector tiles](/docs/terminology/vector-tiles/) are rendered on the device itself using the GPU, mobile maps respond instantly to user gestures (rotation, tilting, zooming) and allow for dynamic visual style changes in real time.
 
 To display OpenMapTiles on mobile devices, developers have two primary native options: the official **MapTiler Mobile SDKs** (the recommended, modern approach) or the community-led **MapLibre Native SDKs**.
 
-## MapTiler Mobile SDKs (Recommended)
+## MapTiler mobile SDKs (recommended)
 
 MapTiler provides modern, dedicated mobile SDKs specifically optimized for rendering maps hosted on MapTiler Cloud or self-hosted servers using the OpenMapTiles schema.
 
@@ -46,7 +46,7 @@ Explore beautiful map styles, switch on 3D terrain, and try the geolocation feat
 </p>
 
 <p class="appcard__text">
-Its [cartography](/docs/terminology/cartography/) comes from MapTiler’s next-generation vector schema, but the same rendering pipeline, dynamic style switching and mobile look-and-feel are what you get when you serve OpenMapTiles vector tiles to the mobile SDKs described above.
+Its <a href="/docs/terminology/cartography/">cartography</a> comes from MapTiler’s next-generation vector schema, but the same rendering pipeline, dynamic style switching and mobile look-and-feel are what you get when you serve OpenMapTiles vector tiles to the mobile SDKs described above.
 </p>
 
 {%- comment -%}
@@ -82,7 +82,7 @@ If you prefer pure open-source alternatives, the community-driven **MapLibre Nat
 
 ---
 
-## Cross-Platform Frameworks
+## Cross-platform frameworks
 
 For multiplatform applications, you can share a single codebase across iOS and Android while retaining high-performance vector [map rendering](/docs/terminology/map-rendering/):
 
@@ -107,7 +107,7 @@ React Native allows you to build mobile applications using JavaScript and React.
 
 ---
 
-## Offline Maps Support
+## Offline maps support
 
 One of the greatest features of vector maps is the ability to run completely offline. Both MapTiler Mobile SDKs and MapLibre Native support offline maps:
 1. **Bundled Tiles**: Pack highly compressed `.mbtiles` packages containing local OpenMapTiles data directly inside the mobile app's asset folder.

@@ -1,7 +1,7 @@
 ---
 layout: docs
 category: terminology
-title: Raster tiles
+title: Raster Tiles
 description: Raster tiles are map images cut into a fixed grid and addressed by zoom level, column and row, either pre-rendered or rendered on request.
 ---
 

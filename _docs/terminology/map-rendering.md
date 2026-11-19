@@ -1,7 +1,7 @@
 ---
 layout: docs
 category: terminology
-title: Map rendering
+title: Map Rendering
 description: Map rendering is the work of turning map data and a style into the picture on screen, either on a server or in the client as you use the map.
 ---
 

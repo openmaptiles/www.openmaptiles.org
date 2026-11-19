@@ -1,7 +1,7 @@
 ---
 layout: docs
 category: host
-title: Serve maps with TileServer PHP
+title: Serve Maps with TileServer PHP
 description: Serve map tiles with open-source TileServer PHP
 order: 4
 ---
@@ -29,7 +29,7 @@ Note: If you don't already have a PHP stack installed, you can use the WAMP or X
 The source code is available on TileServer's [GitHub](https://github.com/maptiler/tileserver-php). Download the latest release and
 unpack it to a directory on your LAMP/WAMP server.
 
-### 2. Download Vector Tiles
+### 2. Download vector tiles
 
 Go to the [Downloads page](https://data.maptiler.com/downloads/) and download the vector tiles for your region or the
 planet. You need to copy this file into a directory with TileServer PHP.

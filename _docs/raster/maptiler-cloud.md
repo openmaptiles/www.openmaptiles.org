@@ -20,7 +20,7 @@ Setting up your own map server, maintaining [PostGIS](/docs/terminology/postgis/
 - **Global High-Speed CDN**: Maps are delivered through a fast, geographically distributed content delivery network, ensuring low latency and maximum reliability worldwide.
 - **Fully Customizable**: Use the intuitive visual customizer or the advanced GL style editor to modify colors, fonts, and layers in real time.
 
-### Quick Start with [MapTiler SDK JS](/docs/website/maptiler-sdk-js/)
+### Quick start with [MapTiler SDK JS](/docs/website/maptiler-sdk-js/)
 
 To load OpenMapTiles vector or raster maps from MapTiler Cloud in your web application, you can use the lightweight and high-performance [MapTiler SDK JS](/docs/website/maptiler-sdk-js/) library.
 

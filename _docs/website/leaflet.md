@@ -6,13 +6,13 @@ description: Display maps on a web using the Leaflet JavaScript library.
 order: 3
 ---
 
-## Displaying Maps with Leaflet
+## Displaying maps with Leaflet
 
 [Leaflet](https://leafletjs.com/) is the most popular lightweight, open-source JavaScript library for mobile-friendly interactive maps. Weighing in at only about 42 KB of JS, Leaflet offers a highly extensible, modular ecosystem with hundreds of plugins for any mapping requirement.
 
 While Leaflet is traditionally designed for displaying [raster tile](/docs/terminology/raster-tiles/) layers, you can seamlessly integrate it with OpenMapTiles. This can be achieved by loading pre-rendered raster tiles, using the [official MapTiler Leaflet SDK plugin](https://github.com/maptiler/leaflet-maptilersdk), or using a generic **MapLibre vector tile plugin** bridge.
 
-### Option A: Serve Raster Tiles (Simple & Fast)
+### Option A: Serve raster tiles (simple & fast)
 
 The simplest way to use Leaflet with OpenMapTiles is to load pre-rendered raster tiles. This approach has near-universal browser support and does not require complex client-side WebGL compilation.
 
@@ -48,7 +48,7 @@ You can point your Leaflet layer to a tile hosting service (like MapTiler Cloud)
 </html>
 ```
 
-### Option B: MapTiler Leaflet SDK Plugin (Official & Easiest Vector)
+### Option B: MapTiler Leaflet SDK plugin (official & easiest vector)
 
 If you host your maps on MapTiler Cloud or use standard OpenMapTiles styles, the [official MapTiler Leaflet SDK plugin](https://github.com/maptiler/leaflet-maptilersdk) (`@maptiler/leaflet-maptilersdk`) is the recommended way to display [vector tiles](/docs/terminology/vector-tiles/) in Leaflet.
 
@@ -90,7 +90,7 @@ It provides an extremely simple API that loads high-performance vector basemaps 
 </html>
 ```
 
-### Option C: Render Vector Tiles via MapLibre Bridge
+### Option C: Render vector tiles via MapLibre bridge
 
 If you are self-hosting your vector tiles or style specifications (for instance, using TileServer GL), you can use the open-source **MapLibre GL Leaflet plugin** (`@maplibre/maplibre-gl-leaflet`). This plugin acts as a bridge, allowing MapLibre GL JS to render your OpenMapTiles vector layers directly inside Leaflet.
 
@@ -135,10 +135,10 @@ This lets you take advantage of sharp, zoomable vector layers and custom styling
 </html>
 ```
 
-### Choosing the Right Approach
+### Choosing the right approach
 
 - **Use Option A (Raster Tiles)** if you require broad support for legacy mobile devices, have highly restrictive performance constraints, or are building simple apps with basic mapping needs.
 - **Use Option B (MapTiler Leaflet SDK)** if you want the easiest, plug-and-play setup for high-fidelity vector tiles, automatic multi-language label translation, and official MapTiler Cloud styles.
 - **Use Option C (MapLibre Leaflet Bridge)** if you are self-hosting your vector tiles, running a custom TileServer GL pipeline, or using an independent style URL.
 
-<a href="https://leafletjs.com/" class="btn">Discover the Leaflet Ecosystem</a>
+<a href="https://mapsnippets.org/leaflet/" class="btn">Browse Leaflet code examples on MapSnippets</a>

@@ -2,7 +2,7 @@
 layout: docs
 category: generate
 order: 4
-title: Create custom map extract
+title: Create Custom Map Extract
 description: Create a custom map extract of an area of your choice
 # The legacy site's only FAQ entry was about extract/planet refresh cadence, which
 # belongs with this page. See the "Data updates" section below.
@@ -19,14 +19,14 @@ or
 
 [Download OpenStreetMap extract](https://download.geofabrik.de/).
 
-## Choose your Bounding Box
+## Choose your bounding box
 
 1. Visit [boundingbox.klokantech.com](http://boundingbox.klokantech.com/) and drag a rectangle around your desired area.
 2. Copy the bounding box in CSV format
 
 ![Choose Bounding Box](/media/choose-bounding-box.png)
 
-## Create MBTiles Extract
+## Create MBTiles extract
 
 To create an extract, use the [`mbtiles-tools copy`](https://github.com/openmaptiles/openmaptiles-tools/blob/master/bin/mbtiles-tools) utility included in [openmaptiles-tools](https://github.com/openmaptiles/openmaptiles-tools/) docker. It takes a bounding box and a MBTiles file as input and creates an extract clipped to the bounding box.
 
@@ -43,7 +43,7 @@ mbtiles-tools copy ./data/tiles.mbtiles ./data/smaller_tiles.mbtiles \
         --bbox=16.2882,49.0093,16.9248,49.4175
 ```
 
-## Create OSM.PBF Extract
+## Create OSM.PBF extract
 
 Creating extract from OSM.PBF, use the `osmconvert` tool included in [openmaptiles-tools](https://github.com/openmaptiles/openmaptiles-tools/) docker. It takes a bounding box and an OSM.PBF file as input and creates an extract clipped to the bounding box.
 

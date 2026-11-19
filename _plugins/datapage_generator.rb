@@ -53,7 +53,10 @@ module OpenMapTiles
       Array(site.data["languages"]).each do |lang|
         name = lang["languagename"]
         code = lang["code"]
-        title = "Multilingual Map: OpenStreetMap in #{name} – OpenMapTiles"
+        # Use the H1 wording (in the target language) so searches typed in that
+        # language match the page title, not only the English "OpenStreetMap in X".
+        heading = lang["titlelocalized"] || lang["title"] || "OpenStreetMap in #{name}"
+        title = "Multilingual Map: #{heading} – OpenMapTiles"
         desc  = "View OpenMapTiles multilingual world maps displayed dynamically in " \
                 "#{name} (#{code.upcase}). Powered by open-source vector tiles and MapTiler."
 

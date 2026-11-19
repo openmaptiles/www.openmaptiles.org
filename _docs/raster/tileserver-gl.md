@@ -1,7 +1,7 @@
 ---
 layout: docs
 category: raster
-title: Raster tiles from TileServer GL
+title: Raster Tiles from TileServer GL
 description: Serve raster and vector tiles from OpenStreetMap with open-source TileServer GL
 order: 3
 canonical: /docs/host/tileserver-gl/
@@ -27,7 +27,7 @@ Now download the vector tiles in the form of an [MBTiles](/docs/terminology/mbti
 curl -o zurich_switzerland.mbtiles https://[ADDRESS-YOU-GET-IN-DOWNLOADS]
 ```
 
-## Serve Map Tiles
+## Serve map tiles
 
 You should mount the current directory containing the vector tiles to the `/data` path inside the container and bind the local port `8080` to port `8080` inside the container:
 
@@ -53,6 +53,6 @@ In the **Styles** section of TileServer, you can see the preconfigured styles fo
 
 ![Tileserver GL raster tiles](/media/tileserver_gl_styles.png)
 
-## Additional Documentation
+## Additional documentation
 
 Read up on the [main documentation for TileServer GL](https://tileserver.readthedocs.io/en/latest/) for advanced configurations or special settings.

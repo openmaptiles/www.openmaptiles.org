@@ -1,7 +1,7 @@
 ---
 layout: docs
 category: host
-title: Serve maps with TileServer GL
+title: Serve Maps with TileServer GL
 description: Learn how to serve raster and vector tiles with open-source TileServer GL. Follow the guide to host your own maps server using MBTiles.
 order: 3
 ---
@@ -26,7 +26,7 @@ Now download the vector tiles in the form of an [MBTiles](/docs/terminology/mbti
 curl -o zurich_switzerland.mbtiles https://[ADDRESS-YOU-GET-IN-DOWNLOADS]
 ```
 
-## Serve Map Tiles
+## Serve map tiles
 
 You should mount the current directory containing the vector tiles to the `/data` path inside the container and bind the local port `8080` to port `8080` inside the container:
 
@@ -52,6 +52,6 @@ In the **Styles** section of TileServer, you can see the preconfigured styles fo
 
 ![Tileserver GL raster tiles](/media/tileserver_gl_styles.png)
 
-## Additional Documentation
+## Additional documentation
 
 Read up on the [main documentation for TileServer GL](https://tileserver.readthedocs.io/en/latest/) for advanced configurations or special settings.

@@ -75,7 +75,15 @@ export async function initLanguages(config) {
     languages.find((l) => l.code === "en") ||
     {};
 
-  if (titleEl) titleEl.textContent = current.titlelocalized || current.title || "";
+  if (titleEl) {
+    titleEl.textContent = current.titlelocalized || current.title || "";
+    // Localized H1s are written in the target language; tag them so screen
+    // readers and search engines don't treat them as English.
+    if (current.titlelocalized && current.titlelang) {
+      titleEl.setAttribute("lang", current.titlelang);
+      titleEl.setAttribute("dir", "auto");
+    }
+  }
 
   if (!hasWebGL()) {
     if (noWebgl) noWebgl.removeAttribute("hidden");
