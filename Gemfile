@@ -9,7 +9,7 @@ group :jekyll_plugins do
   gem "jekyll-sitemap", "~> 1.4"
   # 3 docs carry legacy redirect_from front matter whose URLs 404 in production
   # today. This gem restores them.
-  gem "jekyll-redirect-from", "~> 0.16"
+  gem "jekyll-redirect-from", "~> 0.17"
 end
 
 # jekyll serve needs this on Ruby 3.x
