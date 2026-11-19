@@ -11,7 +11,7 @@ bundle exec jekyll serve     # http://localhost:4000
 bundle exec jekyll build     # -> _site/
 ```
 
-Ruby **3.3.6**, pinned in `.ruby-version`. Node is not required and nothing here uses
+Ruby **3.3**, pinned in `.ruby-version`. Node is not required and nothing here uses
 npm. Map canvases stay blank on `localhost` — the MapTiler API key is domain-restricted,
 which is expected, not a bug.
 
