@@ -74,3 +74,9 @@ a.underline {
     color: var(--omt-nav-active-text);
   }
 }
+
+// Off-site nav links (Downloads) hover in the MapTiler card blue (_maptiler.scss,
+// _data.scss) instead of the OMT green, so they read as MapTiler, not a section.
+.nav-inactive-omt.site-header__link--external:hover {
+  background-color: #f1f5ff;
+}

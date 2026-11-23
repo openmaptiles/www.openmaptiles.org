@@ -70,25 +70,34 @@ loadStyle() did — nothing is vendored for this widget.
             {% include icons/map-trifold-regular.svg %}OpenLayers</button>
         </div>
 
-        <div class="viewers__cloud">
+        {%- comment -%}
+        The "Try our maps API!" banner the pre-redesign /viewers/ page floated over
+        the map, folded into this panel since the panel now holds that corner.
+        Tracked explicitly: the generic outbound catch-all suppresses
+        maptiler.com/cloud URLs (classifyMapTiler returns "cloud").
+        {%- endcomment -%}
+        <a
+          href="https://www.maptiler.com/cloud/"
+          target="_blank"
+          rel="noopener"
+          data-tracked="true"
+          data-track-event="cloud_intent_click"
+          data-track-section="viewers_modal"
+          data-track-label="Try our maps API"
+          class="viewers__cloud"
+        >
           <img
             src="{{ '/img/maptiler-logo-icon.png' | relative_url }}"
             alt="MapTiler logo"
             loading="lazy"
             class="viewers__cloud-logo"
           />
-          <a
-            href="https://www.maptiler.com/cloud/"
-            target="_blank"
-            rel="noopener"
-            {%- comment -%}
-            No tracking attributes on purpose: this link had no handler, and
-            the generic outbound catch-all suppresses maptiler.com/cloud URLs
-            (classifyMapTiler returns "cloud"), so nothing fires.
-            {%- endcomment -%}
-            class="viewers__cloud-link"
-          >Try our Maps API <span class="viewers__cloud-note">- free or commercial plans for raster and vector tiles.</span></a>
-        </div>
+          <span class="viewers__cloud-body">
+            <span class="viewers__cloud-title">Try our maps API!</span>
+            <span class="viewers__cloud-note">Free plan · Raster &amp; vector tiles · Your own map style</span>
+          </span>
+          {% include icons/arrow-up-right-bold.svg %}
+        </a>
       </div>
 
       {%- comment -%}

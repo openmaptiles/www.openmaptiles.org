@@ -48,6 +48,22 @@ Note "/" must be an exact test — `contains` would mark Home active everywhere.
            class="site-header__link {% if is_docs %}nav-active-omt{% else %}nav-inactive-omt{% endif %}">Documentation</a>
         <a href="{{ '/about/' | relative_url }}"
            class="site-header__link {% if is_about %}nav-active-omt{% else %}nav-inactive-omt{% endif %}">About</a>
+        {%- comment -%}
+        Off-site links sit after a divider and carry an arrow, so they read as
+        leaving the site rather than as another section of it.
+        {%- endcomment -%}
+        <span class="site-header__divider" aria-hidden="true"></span>
+        <a
+          href="https://www.maptiler.com/on-prem-datasets/planet/"
+          target="_blank"
+          rel="noopener"
+          data-tracked="true"
+          data-track-event="download_intent_click"
+          data-track-section="header"
+          data-track-destination="downloads"
+          data-track-label="Downloads"
+          class="site-header__link site-header__link--external nav-inactive-omt"
+        >Downloads{% include icons/arrow-up-right-bold.svg %}<span class="sr-only"> (opens maptiler.com in a new tab)</span></a>
       </nav>
 
       <div class="site-header__github-wrap">
@@ -99,6 +115,18 @@ Note "/" must be an exact test — `contains` would mark Home active everywhere.
          class="site-header__mobile-link {% if is_docs %}nav-active-omt{% else %}nav-inactive-omt{% endif %}">Documentation</a>
       <a href="{{ '/about/' | relative_url }}"
          class="site-header__mobile-link {% if is_about %}nav-active-omt{% else %}nav-inactive-omt{% endif %}">About</a>
+      <hr class="site-header__mobile-divider" aria-hidden="true" />
+      <a
+        href="https://www.maptiler.com/on-prem-datasets/planet/"
+        target="_blank"
+        rel="noopener"
+        data-tracked="true"
+        data-track-event="download_intent_click"
+        data-track-section="header"
+        data-track-destination="downloads"
+        data-track-label="Downloads"
+        class="site-header__mobile-link site-header__link--external nav-inactive-omt"
+      >Downloads{% include icons/arrow-up-right-bold.svg %}<span class="sr-only"> (opens maptiler.com in a new tab)</span></a>
       <a
         href="https://github.com/openmaptiles/openmaptiles"
         target="_blank"
